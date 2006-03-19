@@ -1,8 +1,8 @@
 <PropertyList>
- <path>LZ-126.dxf</path>
+ <path>LZ-129.dxf</path>
  <offsets>
-  <x-m>-100.0</x-m>
-  <z-m>15.0</z-m>
+  <x-m> 0.0 </x-m>
+  <z-m> 0.0 </z-m>
  </offsets>
 
 </PropertyList>

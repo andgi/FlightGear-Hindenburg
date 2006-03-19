@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!-- LZ-129 Hindenburg online help :
+
+-->
+
+<PropertyList>
+
+ <!-- Specific keys -->
+ <title>LZ-129 Hindenburg</title>
+ <key>
+  <name>?</name>
+  <desc>Display this message.</desc>
+ </key>
+ <!-- Handeling instructions. -->
+ <text>
+ Yada, yada, yada...
+ </text>
+
+</PropertyList>
