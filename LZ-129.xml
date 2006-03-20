@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="LZ-126" version="2.0" release="ALPHA"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+ <fileheader>
+  <author> Anders Gidenstam </author>
+  <filecreationdate> 2006-03-19 </filecreationdate>
+  <version> Version 0.01 </version>
+  <description> Experimental JSBSim model of the Zeppelin LZ-129 </description>
+ </fileheader>
+
+ <!--
+  NOTE: The mooring mast coupling at center of the bow is the origo of the
+        body coordinate system.
+	x/y/z = back/right/up
+ -->
+
+ <!--
+ ==== Metrics =================================================================
+ -->
+
+ <metrics>
+  <wingarea unit="FT2"> 0 </wingarea> <!-- Totally off! -->
+  <wingspan unit="FT"> 0 </wingspan> <!-- Totally off! -->
+  <chord unit="M"> 245.0 </chord> <!-- Totally off! -->
+  <htailarea unit="M2"> 500.0 </htailarea> <!-- Totally off! -->
+  <htailarm unit="M"> 216.0 </htailarm> <!-- Totally off! -->
+  <vtailarea unit="M2"> 500.0 </vtailarea> <!-- Totally off! -->
+  <vtailarm unit="M"> 216.0 </vtailarm> <!-- Totally off! -->
+  <location name="AERORP" unit="M"> <!-- Totally off! -->
+   <x> 100.0 </x>
+   <y> 0.0 </y>
+   <z> -13.5 </z>
+  </location>
+  <location name="EYEPOINT" unit="M"> <!-- Totally off! -->
+   <x> 37.0 </x>
+   <y> 0 </y>
+   <z> -19.0 </z>
+  </location>
+  <location name="VRP" unit="M"> <!-- Totally off! -->
+   <x> 100.0 </x>
+   <y> 0.0 </y>
+   <z> -13.5 </z>
+  </location>
+ </metrics>
+
+ <!--
+ ==== Mass balance ============================================================
+ -->
+
+ <mass_balance>
+  <ixx unit="KG*M2"> 225093750.0 </ixx> <!-- Totally off! -->
+  <iyy unit="KG*M2"> 100 </iyy> <!-- Totally off! -->
+  <izz unit="KG*M2"> 225093750.0 </izz> <!-- Totally off! -->
+  <ixy unit="KG*M2"> -0 </ixy> <!-- Totally off! -->
+  <ixz unit="KG*M2"> -0 </ixz> <!-- Totally off! -->
+  <iyz unit="KG*M2"> -0 </iyz> <!-- Totally off! -->
+
+  <emptywt unit="KG"> 45000.0 </emptywt>
+
+  <location name="CG" unit="M">  <!-- Totally off! -->
+   <x> 100.0 </x>
+   <y> 0.0 </y>
+   <z> -13.5 </z>
+  </location>
+
+  <!-- Engine masses -->
+  <pointmass name="Engine 3">
+   <weight unit="LBS"> 2437.0 </weight> <!-- From LZ-126. -->
+   <location name="POINTMASS" unit="M">
+    <x> 105.3 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Engine 4">
+   <weight unit="LBS"> 2437.0 </weight> <!-- From LZ-126. -->
+   <location name="POINTMASS" unit="M">
+    <x> 105.3 </x>
+    <y> 20.25 </y>
+    <z> -13.77 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Engine 1">
+   <weight unit="LBS"> 2437.0 </weight> <!-- From LZ-126. -->
+   <location name="POINTMASS" unit="M">
+    <x> 152.55 </x>
+    <y> -15.255 </y>
+    <z> -17.82 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Engine 2">
+   <weight unit="LBS"> 2437.0 </weight> <!-- From LZ-126. -->
+   <location name="POINTMASS" unit="M">
+    <x> 152.55 </x>
+    <y> 15.255 </y>
+    <z> -17.82 </z>
+   </location>
+  </pointmass>
+
+  <!-- Add fresh water tanks, oil tanks etc here! -->
+
+ </mass_balance>
+
+ <!--
+ ==== Ground reactions ========================================================
+ -->
+
+ <ground_reactions>
+
+  <contact type="BOGEY" name="CAR">
+   <location unit="M">
+    <x> 43.2 </x>
+    <y> 0 </y>
+    <z> -22.41 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.5 </dynamic_friction>
+   <rolling_friction> 0.02 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="FIN">
+   <location unit="M">
+    <x> 210.0 </x>
+    <y> 0 </y>
+    <z> -23.5 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.5 </dynamic_friction>
+   <rolling_friction> 0.02 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+ </ground_reactions>
+
+ <!--
+ ==== Propulsion ==============================================================
+ -->
+
+ <propulsion>
+ 
+  <!--
+  ==== Engines ===========================================================
+  -->
+
+  <!--
+  ==== Fuel tanks ========================================================
+  -->
+  
+  <!-- Fuel tanks along the keel walk way -->
+
+  <!-- In cell 15 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 18.090 </x>
+    <y> -1.080 </y>
+    <z> -12.420 </z>
+   </location>
+   <capacity unit="M3"> 1.25 </capacity>
+   <contents unit="M3"> 1.25 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 18.090 </x>
+    <y> 1.080 </y>
+    <z> -12.420 </z>
+   </location>
+   <capacity unit="M3"> 1.25 </capacity>
+   <contents unit="M3"> 1.25 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 28.080 </x>
+    <y> -1.080 </y>
+    <z> -13.500 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+
+  <!-- In cell 13 -->
+  <!-- In cell 11 -->
+  <!-- In cell 10 -->
+  <!-- In cell 9 -->
+
+  <!-- In cell 8 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 125.280 </x>
+    <y> -1.080 </y>
+    <z> -19.440 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 127.710 </x>
+    <y> -1.080 </y>
+    <z> -19.440 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 127.710 </x>
+    <y> 1.080 </y>
+    <z> -19.440 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 136.080 </x>
+    <y> 1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 136.080 </x>
+    <y> -1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 138.780 </x>
+    <y> -1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+
+  <!-- In cell 7 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 141.210 </x>
+    <y> 1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 143.910 </x>
+    <y> -1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 143.910 </x>
+    <y> 1.080 </y>
+    <z> -18.900 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+
+  <!-- In cell 6 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 156.870 </x>
+    <y> -1.080 </y>
+    <z> -18.090 </z>
+   </location>
+   <capacity unit="M3"> 0.85 </capacity>
+   <contents unit="M3"> 0.85 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 156.870 </x>
+    <y> 1.080 </y>
+    <z> -18.090 </z>
+   </location>
+   <capacity unit="M3"> 0.85 </capacity>
+   <contents unit="M3"> 0.85 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 166.320 </x>
+    <y> -1.080 </y>
+    <z> -17.415 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 166.320 </x>
+    <y> 1.080 </y>
+    <z> -17.415 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+
+  <!-- In cell 5 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 171.450 </x>
+    <y> -1.080 </y>
+    <z> -17.010 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 183.870 </x>
+    <y> -1.080 </y>
+    <z> -15.390 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 183.870 </x>
+    <y> 1.080 </y>
+    <z> -15.390 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+
+  <!-- In cell 4 -->
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 186.840 </x>
+    <y> -1.080 </y>
+    <z> -14.850 </z>
+   </location>
+   <capacity unit="M3"> 2.5 </capacity>
+   <contents unit="M3"> 2.5 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 196.560 </x>
+    <y> -1.080 </y>
+    <z> -12.960 </z>
+   </location>
+   <capacity unit="M3"> 1.25 </capacity>
+   <contents unit="M3"> 1.25 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 196.560 </x>
+    <y> 1.080 </y>
+    <z> -12.960 </z>
+   </location>
+   <capacity unit="M3"> 1.25 </capacity>
+   <contents unit="M3"> 1.25 </contents>
+  </tank>
+
+  <!--
+  ==== Gas cells =========================================================
+  -->
+
+        <!-- Wild guess Buoyancy -->
+<!--
+        <gas_cell type="HYDROGEN">
+            <location unit="M">
+                <x> 122.5 </x>
+                <y> 0.0 </y>
+                <z> 10.0 </z>
+            </location>
+            <x_radius unit="M"> 122.5 </x_radius>
+            <y_radius unit="M"> 20.0 </y_radius>
+            <z_radius unit="M"> 20.0 </z_radius>
+            <volume unit="M3"> 100000.0 </volume>
+            <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+        </gas_cell>
+-->
+  <!-- Cell[0] -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 235.7 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.2 </x_width>
+   <y_radius unit="M"> 4.93 </y_radius>
+   <z_radius unit="M"> 4.93 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell[1] -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 220.7 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 13.77 </x_width>
+   <y_radius unit="M"> 9.52 </y_radius>
+   <z_radius unit="M"> 9.52 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell[2] -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 207.1 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 13.50 </x_width>
+   <y_radius unit="M"> 12.56 </y_radius>
+   <z_radius unit="M"> 12.56 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!--
+  ==== Ballast ===========================================================
+  -->
+<!--
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 0 </x>
+    <y> 0 </y>
+    <z> 0 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </ballast>
+
+-->
+
+ </propulsion>
+
+ <!--
+ ==== Flight control system ===================================================
+ -->
+
+ <flight_control name="FGFCS">
+ </flight_control>
+
+ <!--
+ ==== Aerodynamics ============================================================
+ -->
+
+ <aerodynamics> <!-- Totally off! -->
+  <axis name="DRAG">
+   <function name="aero/coefficient/CDBo">
+    <description>Drag_from_hull_at_zero_lift</description>
+    <product>
+     <property>aero/qbar-psf</property>
+      <value>14518.0</value>
+      <value>0.03</value>
+      </product>
+     </function>
+  </axis>
+ </aerodynamics>
+
+</fdm_config>
