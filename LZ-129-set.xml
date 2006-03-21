@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <sim>
+
+  <description>LZ-129 Hindenburg</description>
+  <author>Anders Gidenstam</author>
+  <status>experimental</status>
+  <aircraft-version>0.1</aircraft-version>
+
+  <flight-model>jsb</flight-model>
+  <aero>LZ-129</aero>
+
+  <presets>
+   <onground>false</onground>
+   <speed-set>knots</speed-set>
+   <airspeed-kt type="double">0.0</airspeed-kt>
+   <altitude-ft type="double">100.0</altitude-ft>
+  </presets>
+
+  <sound>
+   <audible>false</audible>
+<!--
+   <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
+-->
+  </sound>
+
+<!--
+  <virtual-cockpit archive="y">true</virtual-cockpit>
+  <panel>
+   <path>Aircraft/c172/Panels/c172-trans-mini-panel.xml</path>
+   <visibility>true</visibility>
+  </panel>
+-->
+
+  <model>
+   <path>Aircraft/LZ-129/Models/LZ-129.xml</path>
+  </model>
+  
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m archive="y"> 0.0 </x-offset-m>
+    <y-offset-m archive="y"> -19.0 </y-offset-m>
+    <z-offset-m archive="y"> 37.0 </z-offset-m>
+    <pitch-offset-deg>-2.5</pitch-offset-deg>
+    <default-field-of-view-deg>60</default-field-of-view-deg>
+   </config>
+  </view>
+
+  <chase-distance-m type="double" archive="y">-180.0</chase-distance-m>
+
+  <!-- Aircraft specific help. -->
+  <help include="help.xml"/>
+
+ </sim>
+
+<!--
+ <nasal>
+  <LZ-129>
+   <file>Aircraft/LZ-129/Nasal/LZ-129.nas</file>
+  </LZ-129>
+ </nasal>
+-->
+ <input>
+  <keyboard>
+   <!-- Keyboard commands -->
+   <key n="68">
+    <name>D</name>
+    <desc>Gain ballast</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("gas-ballon.xml: Gaining ballast! (Cheater! ;)");
+       setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
+               1.05 *
+               getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
+       print("Ballast left: ",
+             getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"),
+             " slug");
+     </script>
+    </binding>
+   </key>
+   <key n="100">
+    <name>d</name>
+    <desc>Drop ballast</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("gas-ballon.xml: Dropping ballast!");
+       setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
+               0.95 *
+               getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
+       print("Ballast left: ",
+             getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"),
+             " slug");
+     </script>
+    </binding>
+   </key>
+  </keyboard>
+ </input>
+
+
+</PropertyList>
