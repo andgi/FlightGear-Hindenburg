@@ -6,15 +6,25 @@
 
 <PropertyList>
 
- <!-- Specific keys -->
  <title>LZ-129 Hindenburg</title>
  <key>
   <name>?</name>
   <desc>Display this message.</desc>
  </key>
- <!-- Handeling instructions. -->
+
+ <!-- Specific keys -->
+ <title>Gas balloon</title>
+ <key>
+  <name>d</name>
+  <desc>Drop ballast.</desc>
+ </key>
+ <key>
+  <name>D</name>
+  <desc>Gain ballast. (Magic)</desc>
+ </key>
+ <!-- Handling instructions. -->
  <text>
- Yada, yada, yada...
+  Don't Panic!
  </text>
 
 </PropertyList>

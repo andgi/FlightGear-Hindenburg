@@ -121,7 +121,7 @@
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
+   <max_steer unit="DEG"> 360.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
@@ -137,7 +137,7 @@
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
+   <max_steer unit="DEG"> 360.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
@@ -160,6 +160,8 @@
   
   <!-- Fuel tanks along the keel walk way -->
 
+  <!-- Note: The capacity should be in m^3 (Assumption 1 m^3 = 1000 kg) -->
+
   <!-- In cell 15 -->
   <tank type="FUEL">
    <location unit="M">
@@ -167,8 +169,8 @@
     <y> -1.080 </y>
     <z> -12.420 </z>
    </location>
-   <capacity unit="M3"> 1.25 </capacity>
-   <contents unit="M3"> 1.25 </contents>
+   <capacity unit="KG"> 1250 </capacity>
+   <contents unit="KG"> 1250 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -176,8 +178,8 @@
     <y> 1.080 </y>
     <z> -12.420 </z>
    </location>
-   <capacity unit="M3"> 1.25 </capacity>
-   <contents unit="M3"> 1.25 </contents>
+   <capacity unit="KG"> 1250 </capacity>
+   <contents unit="KG"> 1250 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -185,8 +187,8 @@
     <y> -1.080 </y>
     <z> -13.500 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
 
   <!-- In cell 13 -->
@@ -201,8 +203,8 @@
     <y> -1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -210,8 +212,8 @@
     <y> -1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -219,8 +221,8 @@
     <y> 1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -228,8 +230,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -237,8 +239,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -246,8 +248,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
 
   <!-- In cell 7 -->
@@ -257,8 +259,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -266,8 +268,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -275,8 +277,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
 
   <!-- In cell 6 -->
@@ -286,8 +288,8 @@
     <y> -1.080 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="M3"> 0.85 </capacity>
-   <contents unit="M3"> 0.85 </contents>
+   <capacity unit="KG"> 850 </capacity>
+   <contents unit="KG"> 850 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -295,8 +297,8 @@
     <y> 1.080 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="M3"> 0.85 </capacity>
-   <contents unit="M3"> 0.85 </contents>
+   <capacity unit="KG"> 850 </capacity>
+   <contents unit="KG"> 850 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -304,8 +306,8 @@
     <y> -1.080 </y>
     <z> -17.415 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -313,8 +315,8 @@
     <y> 1.080 </y>
     <z> -17.415 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
 
   <!-- In cell 5 -->
@@ -324,8 +326,8 @@
     <y> -1.080 </y>
     <z> -17.010 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -333,8 +335,8 @@
     <y> -1.080 </y>
     <z> -15.390 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -342,8 +344,8 @@
     <y> 1.080 </y>
     <z> -15.390 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
 
   <!-- In cell 4 -->
@@ -353,8 +355,8 @@
     <y> -1.080 </y>
     <z> -14.850 </z>
    </location>
-   <capacity unit="M3"> 2.5 </capacity>
-   <contents unit="M3"> 2.5 </contents>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -362,8 +364,8 @@
     <y> -1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="M3"> 1.25 </capacity>
-   <contents unit="M3"> 1.25 </contents>
+   <capacity unit="KG"> 1250 </capacity>
+   <contents unit="KG"> 1250 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -371,30 +373,15 @@
     <y> 1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="M3"> 1.25 </capacity>
-   <contents unit="M3"> 1.25 </contents>
+   <capacity unit="KG"> 1250 </capacity>
+   <contents unit="KG"> 1250 </contents>
   </tank>
 
   <!--
   ==== Gas cells =========================================================
   -->
 
-        <!-- Wild guess Buoyancy -->
-<!--
-        <gas_cell type="HYDROGEN">
-            <location unit="M">
-                <x> 122.5 </x>
-                <y> 0.0 </y>
-                <z> 10.0 </z>
-            </location>
-            <x_radius unit="M"> 122.5 </x_radius>
-            <y_radius unit="M"> 20.0 </y_radius>
-            <z_radius unit="M"> 20.0 </z_radius>
-            <volume unit="M3"> 100000.0 </volume>
-            <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-        </gas_cell>
--->
-  <!-- Cell[0] -->
+  <!-- Cell 1 -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
     <x> 235.7 </x>
@@ -407,7 +394,7 @@
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
   </gas_cell>
 
-  <!-- Cell[1] -->
+  <!-- Cell 2 -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
     <x> 220.7 </x>
@@ -420,7 +407,7 @@
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
   </gas_cell>
 
-  <!-- Cell[2] -->
+  <!-- Cell 3 -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
     <x> 207.1 </x>
@@ -433,21 +420,189 @@
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
   </gas_cell>
 
+  <!-- Cell 4 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 192.78 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 15.12 </x_width>
+   <y_radius unit="M"> 15.12 </y_radius>
+   <z_radius unit="M"> 15.12 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 5 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 177.66 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 15.12 </x_width>
+   <y_radius unit="M"> 17.145 </y_radius>
+   <z_radius unit="M"> 17.145 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 6 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 162.61 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 18.56 </y_radius>
+   <z_radius unit="M"> 18.56 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 7 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 147.62 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 19.51 </y_radius>
+   <z_radius unit="M"> 19.51 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 8 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 131.76 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.74 </x_width>
+   <y_radius unit="M"> 20.12 </y_radius>
+   <z_radius unit="M"> 20.12 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 9 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 115.16 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.47 </x_width>
+   <y_radius unit="M"> 20.52 </y_radius>
+   <z_radius unit="M"> 20.52 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 10 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 98.69 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.47 </x_width>
+   <y_radius unit="M"> 20.66 </y_radius>
+   <z_radius unit="M"> 20.66 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 11 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 82.15 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.61 </x_width>
+   <y_radius unit="M"> 20.45 </y_radius>
+   <z_radius unit="M"> 20.45 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 12 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 66.42 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 19.91 </y_radius>
+   <z_radius unit="M"> 19.91 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 13 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 51.50 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 18.90 </y_radius>
+   <z_radius unit="M"> 18.90 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 14 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 36.59 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 17.08 </y_radius>
+   <z_radius unit="M"> 17.08 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 15 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 21.74 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 13.77 </y_radius>
+   <z_radius unit="M"> 13.77 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
+  <!-- Cell 16 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 8.64 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 11.34 </x_width>
+   <y_radius unit="M"> 7.63 </y_radius>
+   <z_radius unit="M"> 7.63 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+  </gas_cell>
+
   <!--
   ==== Ballast ===========================================================
   -->
-<!--
+<!-- Test -->
   <ballast type="WATER">
    <location unit="M">
-    <x> 0 </x>
-    <y> 0 </y>
-    <z> 0 </z>
+    <x> 100.0 </x>
+    <y> 0.0 </y>
+    <z> -13.5 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG"> 155000 </contents>
   </ballast>
 
--->
 
  </propulsion>
 
