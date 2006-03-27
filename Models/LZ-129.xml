@@ -1,8 +1,21 @@
 <PropertyList>
- <path>LZ-129.dxf</path>
+
+ <!-- The hull. -->
+ <path>LZ-129_hull.dxf</path>
  <offsets>
   <x-m> 0.0 </x-m>
   <z-m> 0.0 </z-m>
  </offsets>
+
+ <!-- The control car -->
+ <model>
+  <name>Control car</name>
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_car.dxf</path>
+  <offsets>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
 
 </PropertyList>
