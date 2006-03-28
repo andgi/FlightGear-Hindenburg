@@ -1,0 +1,27 @@
+# LZ-129  Hindenburg description for the zepplin_hull program.
+# (C) 2006  Anders Gidenstam
+# Based on a large blue print poster (1:245000/909). Using 1:270 scale.
+# Format: (Unit: mm)
+# x             diameter   #circle sections 
+2970.0		7290.0		36
+# Extra measure between main rings.
+5670.0		17280.0		36
+5670.0		23220.0		36
+14850.0		31860.0		36
+14850.0		36450.0		36
+14985.0		39150.0		36
+14850.0		40500.0		36
+16605.0		41310.0		36
+16470.0		41310.0		36
+16470.0		40770.0		36
+16740.0		39690.0		36
+14985.0		38340.0		36
+14985.0		35910.0		36
+15120.0		32670.0		36
+15120.0		27810.0		36
+13500.0		22410.0		36
+# The two last sections should have only 18 circle sections.
+13770.0		15660.0		18
+16200.0		4050.0		18
+1080.0		2160.0		18
+540.0		500.0		18
