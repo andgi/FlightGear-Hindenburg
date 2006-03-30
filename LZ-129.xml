@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+  LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
+
+  Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
+  This file is licensed under the GPL license.
+-->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 <fdm_config name="LZ-126" version="2.0" release="ALPHA"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
