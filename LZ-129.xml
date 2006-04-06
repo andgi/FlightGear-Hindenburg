@@ -13,7 +13,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> Version 0.01 </version>
+  <version> $Id: LZ-129.xml,v 1.4 2006-04-06 22:27:34 anders Exp $ </version>
   <description> Experimental JSBSim model of the Zeppelin LZ-129 </description>
  </fileheader>
 
@@ -116,10 +116,10 @@
 
  <ground_reactions>
 
-  <contact type="BOGEY" name="CAR">
+  <contact type="BOGEY" name="CAR_WHEEL">
    <location unit="M">
     <x> 43.2 </x>
-    <y> 0 </y>
+    <y> 0.0 </y>
     <z> -22.41 </z>
    </location>
    <static_friction> 0.8 </static_friction>
@@ -127,15 +127,15 @@
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
-   <max_steer unit="DEG"> 360.0 </max_steer>
+   <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
 
-  <contact type="BOGEY" name="FIN">
+  <contact type="BOGEY" name="LOWER_FIN_WHEEL">
    <location unit="M">
     <x> 210.0 </x>
-    <y> 0 </y>
+    <y> 0.0 </y>
     <z> -23.5 </z>
    </location>
    <static_friction> 0.8 </static_friction>
@@ -143,7 +143,70 @@
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
-   <max_steer unit="DEG"> 360.0 </max_steer>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="NOSE">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <static_friction> 0.2 </static_friction>
+   <dynamic_friction> 0.2 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="MIDDLE">
+   <location unit="M">
+    <x> 87.50 </x>
+    <y> 0.0 </y>
+    <z> -20.66 </z>
+   </location>
+   <static_friction> 0.2 </static_friction>
+   <dynamic_friction> 0.2 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="TAIL">
+   <location unit="M">
+    <x> 245.430 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <static_friction> 0.2 </static_friction>
+   <dynamic_friction> 0.2 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="BOGEY" name="TAIL2">
+   <location unit="M">
+    <x> -245.430 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <static_friction> 0.2 </static_friction>
+   <dynamic_friction> 0.2 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
