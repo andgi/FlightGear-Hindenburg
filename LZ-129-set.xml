@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.4 2006-04-17 18:17:47 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.5 2006-04-17 22:40:49 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -15,6 +15,9 @@
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
 
+  <presets>
+   <onground>true</onground>
+  </presets>
 <!--
   <presets>
    <onground>false</onground>
@@ -84,7 +87,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("gas-ballon.xml: Dropping ballast aft!");
+       print("LZ-129jsb-set.xml: Dropping ballast aft!");
        setprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug",
 	       0.999 *
 	       getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"));
@@ -100,7 +103,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("gas-ballon.xml: Dropping ballast aft!");
+       print("LZ-129jsb-set.xml: Dropping ballast aft!");
        setprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug",
 	       0.99 *
 	       getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"));
@@ -116,7 +119,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("gas-ballon.xml: Dropping ballast fore!");
+       print("LZ-129jsb-set.xml: Dropping ballast fore!");
        setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
 	       0.999 *
 	       getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
@@ -132,7 +135,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("gas-ballon.xml: Dropping ballast fore!");
+       print("LZ-129jsb-set.xml: Dropping ballast fore!");
        setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
 	       0.99 *
 	       getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
@@ -144,7 +147,111 @@
    </key>
    
    <!-- Gas cell commands ====================================== -->
+   <key n="70">
+    <name>F</name>
+    <desc>Open forward gas valves.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("LZ-129jsb-set.xml: Forward gas valves open!");
+       setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[13]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[12]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[11]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[10]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[9]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[8]/valve_open",
+               1.00);
+     </script>
+    </binding>
+   </key>
+   <key n="102">
+    <name>f</name>
+    <desc>Close forward gas valves.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("LZ-129jsb-set.xml: Forward gas valves closed!");
+       setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[13]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[12]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[11]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[10]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[9]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[8]/valve_open",
+               0.00);
+     </script>
+    </binding>
+   </key>
 
+   <key n="71">
+    <name>G</name>
+    <desc>Open aft gas valves.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("LZ-129jsb-set.xml: Aft gas valves open!");
+       setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[5]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[4]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[3]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[2]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[1]/valve_open",
+               1.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell/valve_open",
+               1.00);
+     </script>
+    </binding>
+   </key>
+   <key n="103">
+    <name>g</name>
+    <desc>Close aft gas valves.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       print("LZ-129jsb-set.xml: Aft gas valves closed!");
+       setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[5]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[4]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[3]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[2]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell[1]/valve_open",
+               0.00);
+       setprop("/fdm/jsbsim/propulsion/gas-cell/valve_open",
+               0.00);
+     </script>
+    </binding>
+   </key>
 
   </keyboard>
  </input>
