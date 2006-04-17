@@ -13,7 +13,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.5 2006-04-17 13:42:39 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.6 2006-04-17 14:09:18 anders Exp $ </version>
   <description> Experimental JSBSim model of the Zeppelin LZ-129 </description>
  </fileheader>
 
@@ -50,7 +50,7 @@
   </location>
   <!-- Visual Reference Point -->
   <location name="VRP" unit="M">
-   <x> 0.0 </x>
+   <x> 100.0 </x>
    <y> 0.0 </y>
    <z> 0.0 </z>
   </location>

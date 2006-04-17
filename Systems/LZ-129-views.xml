@@ -24,7 +24,7 @@ This file is licensed under the GPL license.
     <!-- x/y/z == right/up/back -->
     <x-offset-m archive="y"> -0.7 </x-offset-m>
     <y-offset-m archive="y"> -19.0 </y-offset-m>
-    <z-offset-m archive="y"> 39.0 </z-offset-m>
+    <z-offset-m archive="y"> -61.0 </z-offset-m>
     <pitch-offset-deg>-2.5</pitch-offset-deg>
     <default-field-of-view-deg>60</default-field-of-view-deg>
    </config>
