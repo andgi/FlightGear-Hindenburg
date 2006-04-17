@@ -32,12 +32,12 @@ This file is licensed under the GPL license.
 
   <chase-distance-m type="double" archive="y">-300.0</chase-distance-m>
 
+<!--
   <sound>
    <audible>false</audible>
-<!--
    <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
--->
   </sound>
+-->
 
   <!-- Aircraft specific help. -->
   <help include="help.xml"/>
