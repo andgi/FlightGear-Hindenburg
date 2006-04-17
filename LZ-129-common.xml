@@ -30,7 +30,7 @@ This file is licensed under the GPL license.
    </config>
   </view>
 
-  <chase-distance-m type="double" archive="y">-190.0</chase-distance-m>
+  <chase-distance-m type="double" archive="y">-300.0</chase-distance-m>
 
   <sound>
    <audible>false</audible>

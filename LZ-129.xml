@@ -13,7 +13,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.4 2006-04-06 22:27:34 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.5 2006-04-17 13:42:39 anders Exp $ </version>
   <description> Experimental JSBSim model of the Zeppelin LZ-129 </description>
  </fileheader>
 
@@ -30,25 +30,29 @@
  <metrics>
   <wingarea unit="FT2"> 0 </wingarea> <!-- Totally off! -->
   <wingspan unit="FT"> 0 </wingspan> <!-- Totally off! -->
-  <chord unit="M"> 245.0 </chord> <!-- Totally off! -->
+  <chord unit="M"> 0.0 </chord> <!-- Totally off! -->
   <htailarea unit="M2"> 500.0 </htailarea> <!-- Totally off! -->
   <htailarm unit="M"> 216.0 </htailarm> <!-- Totally off! -->
   <vtailarea unit="M2"> 500.0 </vtailarea> <!-- Totally off! -->
-  <vtailarm unit="M"> 216.0 </vtailarm> <!-- Totally off! -->
-  <location name="AERORP" unit="M"> <!-- Totally off! -->
+  <vtailarm unit="M"> 0.0 </vtailarm> <!-- Totally off! -->
+  <!-- Total volume vol = 200000 m^2 = 7062940 ft^2 -->
+
+  <!-- Aerodynamic Reference Point -->
+  <location name="AERORP" unit="M">
    <x> 100.0 </x>
    <y> 0.0 </y>
-   <z> -13.5 </z>
+   <z> 0.0 </z>
   </location>
-  <location name="EYEPOINT" unit="M"> <!-- Totally off! -->
+  <location name="EYEPOINT" unit="M">
    <x> 37.0 </x>
    <y> 0 </y>
    <z> -19.0 </z>
   </location>
-  <location name="VRP" unit="M"> <!-- Totally off! -->
-   <x> 100.0 </x>
+  <!-- Visual Reference Point -->
+  <location name="VRP" unit="M">
+   <x> 0.0 </x>
    <y> 0.0 </y>
-   <z> -13.5 </z>
+   <z> 0.0 </z>
   </location>
  </metrics>
 
@@ -164,6 +168,7 @@
    <retractable>0</retractable>
   </contact>
 
+<!--
   <contact type="BOGEY" name="MIDDLE">
    <location unit="M">
     <x> 87.50 </x>
@@ -179,6 +184,7 @@
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
+-->
 
   <contact type="BOGEY" name="TAIL">
    <location unit="M">
@@ -195,26 +201,11 @@
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
   </contact>
-  <contact type="BOGEY" name="TAIL2">
-   <location unit="M">
-    <x> -245.430 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <static_friction> 0.2 </static_friction>
-   <dynamic_friction> 0.2 </dynamic_friction>
-   <rolling_friction> 0.2 </rolling_friction>
-   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 20000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
-  </contact>
 
  </ground_reactions>
 
  <!--
- ==== Propulsion ==============================================================
+ ==== Propulsion =========================================================
  -->
 
  <propulsion>
@@ -222,6 +213,199 @@
   <!--
   ==== Engines ===========================================================
   -->
+
+  <!-- NOTE: As a temporary measure the engines are borrowed from the
+             Boeing 314A.
+             The engine type is WrightGR-2600 instead of the
+	     Daimler-Benz DB 620 it should be.
+  -->
+  <!-- Engine 1 -->
+  <engine file="WrightGR-2600">
+   <location unit="M">
+    <x> 152.55 </x>
+    <y> -15.255 </y>
+    <z> -17.82 </z>
+   </location>
+   <orient unit="DEG">
+    <roll> 0.0 </roll>
+    <pitch> 0 </pitch>
+    <yaw> 0 </yaw>
+   </orient>
+   <feed>0</feed>
+   <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
+   <feed>8</feed>
+   <feed>9</feed>
+   <feed>10</feed>
+   <feed>11</feed>
+   <feed>12</feed>
+   <feed>13</feed>
+   <feed>14</feed>
+   <feed>15</feed>
+   <feed>16</feed>
+   <feed>17</feed>
+   <feed>18</feed>
+   <feed>19</feed>
+   <feed>20</feed>
+   <thruster file="HamiltonStd6243A-3">
+    <location unit="M">
+     <x> 152.55 </x>
+     <y> -15.255 </y>
+     <z> -17.82 </z>
+    </location>
+    <orient unit="DEG">
+     <roll> 0.0 </roll>
+     <pitch> 0.0 </pitch>
+     <yaw> 0.0 </yaw>
+    </orient>
+   </thruster>
+  </engine>
+
+  <!-- Engine 2 -->
+  <engine file="WrightGR-2600">
+   <location unit="M">
+    <x> 152.55 </x>
+    <y> 15.255 </y>
+    <z> -17.82 </z>
+   </location>
+   <orient unit="DEG">
+    <roll> 0.0 </roll>
+    <pitch> 0 </pitch>
+    <yaw> 0 </yaw>
+   </orient>
+   <feed>0</feed>
+   <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
+   <feed>8</feed>
+   <feed>9</feed>
+   <feed>10</feed>
+   <feed>11</feed>
+   <feed>12</feed>
+   <feed>13</feed>
+   <feed>14</feed>
+   <feed>15</feed>
+   <feed>16</feed>
+   <feed>17</feed>
+   <feed>18</feed>
+   <feed>19</feed>
+   <feed>20</feed>
+   <thruster file="HamiltonStd6243A-3">
+    <location unit="M">
+     <x> 152.55 </x>
+     <y> 15.255 </y>
+     <z> -17.82 </z>
+    </location>
+    <orient unit="DEG">
+     <roll> 0.0 </roll>
+     <pitch> 0.0 </pitch>
+     <yaw> 0.0 </yaw>
+    </orient>
+   </thruster>
+  </engine>
+
+  <!-- Engine 3 -->
+  <engine file="WrightGR-2600">
+   <location unit="M">
+    <x> 105.3 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
+   </location>
+   <orient unit="DEG">
+    <roll> 0.0 </roll>
+    <pitch> 0 </pitch>
+    <yaw> 0 </yaw>
+   </orient>
+   <feed>0</feed>
+   <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
+   <feed>8</feed>
+   <feed>9</feed>
+   <feed>10</feed>
+   <feed>11</feed>
+   <feed>12</feed>
+   <feed>13</feed>
+   <feed>14</feed>
+   <feed>15</feed>
+   <feed>16</feed>
+   <feed>17</feed>
+   <feed>18</feed>
+   <feed>19</feed>
+   <feed>20</feed>
+   <thruster file="HamiltonStd6243A-3">
+    <location unit="M">
+     <x> 105.3 </x>
+     <y> -20.25 </y>
+     <z> -13.77 </z>
+    </location>
+    <orient unit="DEG">
+     <roll> 0.0 </roll>
+     <pitch> 0.0 </pitch>
+     <yaw> 0.0 </yaw>
+    </orient>
+   </thruster>
+  </engine>
+
+  <!-- Engine 4 -->
+  <engine file="WrightGR-2600">
+   <location unit="M">
+    <x> 105.3 </x>
+    <y> 20.25 </y>
+    <z> -13.77 </z>
+   </location>
+   <orient unit="DEG">
+    <roll> 0.0 </roll>
+    <pitch> 0 </pitch>
+    <yaw> 0 </yaw>
+   </orient>
+   <feed>0</feed>
+   <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
+   <feed>8</feed>
+   <feed>9</feed>
+   <feed>10</feed>
+   <feed>11</feed>
+   <feed>12</feed>
+   <feed>13</feed>
+   <feed>14</feed>
+   <feed>15</feed>
+   <feed>16</feed>
+   <feed>17</feed>
+   <feed>18</feed>
+   <feed>19</feed>
+   <feed>20</feed>
+   <thruster file="HamiltonStd6243A-3">
+    <location unit="M">
+     <x> 105.3 </x>
+     <y> 20.25 </y>
+     <z> -13.77 </z>
+    </location>
+    <orient unit="DEG">
+     <roll> 0.0 </roll>
+     <pitch> 0.0 </pitch>
+     <yaw> 0.0 </yaw>
+    </orient>
+   </thruster>
+  </engine>
 
   <!--
   ==== Fuel tanks ========================================================
@@ -664,12 +848,21 @@
 <!-- Test -->
   <ballast type="WATER">
    <location unit="M">
-    <x> 100.0 </x>
+    <x> 20.0 </x>
     <y> 0.0 </y>
     <z> -13.5 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 155000 </contents>
+   <contents unit="KG"> 95000 </contents>
+  </ballast>
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 220.0 </x>
+    <y> 0.0 </y>
+    <z> -13.5 </z>
+   </location>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG"> 75000 </contents>
   </ballast>
 
 
@@ -680,23 +873,344 @@
  -->
 
  <flight_control name="FGFCS">
+
+  <!-- ================================================== -->
+  <channel name="Pitch">
+   <summer name="Pitch Trim Sum">
+    <input>fcs/elevator-cmd-norm</input>
+    <input>fcs/pitch-trim-cmd-norm</input>
+    <clipto>
+     <min>-1</min>
+     <max>1</max>
+    </clipto>
+   </summer>
+
+   <aerosurface_scale name="Elevator Control">
+    <input>fcs/pitch-trim-sum</input>
+    <gain>0.01745</gain>
+    <range>
+     <min>-30</min>
+     <max>30</max>
+    </range>
+    <output>fcs/elevator-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Elevator Position Normalized">
+    <input>fcs/elevator-pos-deg</input>
+    <domain>
+     <min>-30</min>
+     <max>30</max>
+    </domain>
+    <range>
+     <min>-1</min>
+     <max>1</max>
+    </range>
+    <output>fcs/elevator-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+  <!-- ================================================== -->
+  <channel name="Yaw">
+   <summer name="Yaw Trim Sum">
+    <input>fcs/rudder-cmd-norm</input>
+    <input>fcs/yaw-trim-cmd-norm</input>
+    <clipto>
+     <min>-1</min>
+     <max>1</max>
+    </clipto>
+   </summer>
+
+   <aerosurface_scale name="Rudder Control">
+    <input>fcs/yaw-trim-sum</input>
+    <gain>0.01745</gain>
+    <range>
+     <min>-30</min>
+     <max>30</max>
+    </range>
+    <output>fcs/rudder-pos-rad</output>
+   </aerosurface_scale>
+   <aerosurface_scale name="Rudder Position Normalized">
+    <input>fcs/rudder-pos-deg</input>
+    <domain>
+     <min>-30</min>
+     <max>30</max>
+    </domain>
+    <range>
+     <min>-1</min>
+     <max>1</max>
+    </range>
+    <output>fcs/rudder-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
  </flight_control>
 
  <!--
  ==== Aerodynamics ============================================================
  -->
 
- <aerodynamics> <!-- Totally off! -->
+ <aerodynamics>
+
+  <!-- Forces ================================================ -->
+
+  <!-- ================================================== -->
   <axis name="DRAG">
-   <function name="aero/coefficient/CDBo">
-    <description>Drag_from_hull_at_zero_lift</description>
+
+   <function name="aero/coefficient/CDalpha">
+    <description>Drag_due_to_alpha</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative alpha. This table includes drag at zero alpha. 
+	 
+	   CD = D / (q * (vol)^(2/3))
+
+    -->
     <product>
      <property>aero/qbar-psf</property>
-      <value>14518.0</value>
-      <value>0.03</value>
-      </product>
-     </function>
+     <value> 36812.1 </value>
+     <!-- Start CD = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/alpha-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0     3.0    6.0    9.0    12.0   15.0   18.0   20.0
+       12.5  0.0873 0.0628 0.0478 0.0354 0.0280 0.0229 0.0208  0.0198  0.0208 0.0229 0.0280 0.0354 0.0478 0.0628 0.0873
+       19.0  0.0751 0.0619 0.0467 0.0346 0.0273 0.0222 0.0202  0.0193  0.0202 0.0222 0.0273 0.0346 0.0467 0.0619 0.0751
+       25.6  0.0737 0.0613 0.0460 0.0342 0.0270 0.0219 0.0200  0.0190  0.0200 0.0219 0.0270 0.0342 0.0460 0.0613 0.0737
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CDbeta">
+    <description>Drag_due_to_beta</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative beta. This table includes drag at zero beta. 
+	 
+	   CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/beta-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0     3.0    6.0    9.0    12.0   15.0   18.0   20.0
+       12.5  0.0873 0.0628 0.0478 0.0354 0.0280 0.0229 0.0208  0.0198  0.0208 0.0229 0.0280 0.0354 0.0478 0.0628 0.0873
+       19.0  0.0751 0.0619 0.0467 0.0346 0.0273 0.0222 0.0202  0.0193  0.0202 0.0222 0.0273 0.0346 0.0467 0.0619 0.0751
+       25.6  0.0737 0.0613 0.0460 0.0342 0.0270 0.0219 0.0200  0.0190  0.0200 0.0219 0.0270 0.0342 0.0460 0.0613 0.0737
+      </tableData>
+     </table>
+    </product>
+   </function>
+
   </axis>
+
+  <!-- ================================================== -->
+  <axis name="SIDE">
+
+   <function name="aero/coefficient/CYbeta">
+    <description>Side_force_due_to_beta</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative beta.
+	 
+	   CY = Y / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CY = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/beta-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0  3.0   6.0   9.0   12.0  15.0  18.0  20.0
+       12.5  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+       19.0  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+       25.6  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+      </tableData>
+     </table>
+    </product>
+   </function>  
+
+   <function name="aero/coefficient/CYdr"> <!-- Totally off! -->
+    <description>Side_force_due_to_rudder</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sv-sqft</property>
+     <property>fcs/rudder-pos-rad</property>
+     <value>0.1870</value>
+    </product>
+   </function>
+
+  </axis>
+
+  <!-- ================================================== -->
+  <axis name="LIFT">
+
+   <function name="aero/coefficient/CLalpha">
+    <description>Lift_due_to_alpha</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative alpha.
+	 
+	   CL = L / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CL = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/alpha-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0  3.0   6.0   9.0   12.0  15.0  18.0  20.0
+       12.5  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+       19.0  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+       25.6  -0.183 -0.155 -0.115 -0.080 -0.054 -0.029 -0.011  0.0  0.011 0.029 0.054 0.080 0.115 0.155 0.183
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CLDe"> <!-- Totally off! -->
+    <description>Lift_due_to_Elevator_Deflection</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sh-sqft</property>
+     <property>fcs/elevator-pos-rad</property>
+     <value>0.4300</value>
+    </product>
+   </function>
+
+  </axis>
+
+  <!-- Moments =============================================== -->
+
+  <!-- ================================================== -->  
+  <axis name="ROLL"> <!-- Totally off! -->
+   <function name="aero/coefficient/Clp">
+    <description>Roll_moment_due_to_roll_rate_(damping)</description>
+    <!-- The current version is just a hack to make the craft stable. -->
+    <product>
+     <value> -4000.0 </value>
+     <!--property>aero/bi2vel</property-->
+     <property>velocities/p-aero-rad_sec</property>
+    </product>
+   </function>
+  </axis>
+
+  <!-- ================================================== -->
+  <axis name="PITCH">
+
+   <function name="aero/coefficient/Cmq"> <!-- Totally off! -->
+    <description>Pitch_moment_due_to_pitch_rate_(damping)</description>
+    <!-- The current version is just a hack to make the craft stable. -->
+    <product>
+     <value> -4000.0 </value>
+     <!--property>aero/ci2vel</property-->
+     <property>velocities/q-aero-rad_sec</property>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/Cmde"> <!-- Totally off! -->
+    <description>Pitch_moment_due_to_elevator_deflection</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sh-sqft</property>
+     <property>fcs/elevator-pos-rad</property>
+     <value>-0.4300</value>
+     <property>metrics/lh-ft</property>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/Cmalpha">
+    <description>Pitch_moment_due_to_alpha</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative alpha.
+	 
+	   Cm = M / (q * vol)
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 7062940 </value>
+     <!-- Start Cm = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/alpha-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0  3.0   6.0   9.0   12.0  15.0  18.0  20.0
+       12.5  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+       19.0  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+       25.6  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+      </tableData>
+     </table>
+    </product>
+   </function>   
+
+  </axis>
+
+  <!-- ================================================== -->
+  <axis name="YAW">
+
+   <function name="aero/coefficient/Cnr"> <!-- Totally off! -->
+    <description>Yaw_moment_due_to_yaw_rate_(damping)</description>
+    <!-- The current version is just a hack to make the craft stable. -->
+    <product>
+     <value> -4000.0 </value>
+     <!--property>aero/bi2vel</property-->
+     <property>velocities/r-aero-rad_sec</property>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/Cndr"> <!-- Totally off! -->
+    <description>Yaw_moment_due_to_rudder</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sv-sqft</property>
+     <property>fcs/rudder-pos-rad</property>
+     <value>-0.1870</value>
+     <property>metrics/lh-ft</property>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/Cnbeta">
+    <description>Yaw_moment_due_to_beta</description>
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+	 I have made the additional assumption that the coefficients are
+	 symmetric for positive and negative beta.
+	 
+	   Cn = M / (q * vol)
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 7062940 </value>
+     <!-- Start Cm = -->
+     <table>
+      <independentVar lookup="row">aero/qbar-psf</independentVar>
+      <independentVar lookup="column">aero/beta-deg</independentVar>
+      <tableData> 
+             -20.0  -18.0  -15.0  -12.0  -9.0   -6.0   -3.0    0.0  3.0   6.0   9.0   12.0  15.0  18.0  20.0
+       12.5  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+       19.0  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+       25.6  -0.377 -0.348 -0.307 -0.260 -0.212 -0.150 -0.078  0.0  0.078 0.150 0.212 0.260 0.307 0.348 0.377
+      </tableData>
+     </table>
+    </product>
+   </function> 
+
+  </axis>
+
  </aerodynamics>
 
 </fdm_config>

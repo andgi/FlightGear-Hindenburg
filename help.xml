@@ -13,14 +13,21 @@
  </key>
 
  <!-- Specific keys -->
- <title>Gas balloon</title>
+ <key>
+  <name>s</name>
+  <desc>Drop fore ballast in 0.1% decrements.</desc>
+ </key>
+ <key>
+  <name>S</name>
+  <desc>Drop foreballast in 1% decrements.</desc>
+ </key>
  <key>
   <name>d</name>
-  <desc>Drop ballast.</desc>
+  <desc>Drop aft ballast in 0.1% decrements.</desc>
  </key>
  <key>
   <name>D</name>
-  <desc>Gain ballast. (Magic)</desc>
+  <desc>Drop aft ballast in 1% decrements.</desc>
  </key>
  <!-- Handling instructions. -->
  <text>
