@@ -1,22 +1,20 @@
 <?xml version="1.0"?>
+<!-- $Id: LZ-129-set.xml,v 1.4 2006-04-17 18:17:47 anders Exp $ -->
 <!--
-LZ-129 Hindenburg
+  LZ-129 Hindenburg
 
-Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
-This file is licensed under the GPL license.
+  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
 -->
 <PropertyList include="LZ-129-common.xml">
 
  <sim>
 
-  <description>LZ-129 Hindenburg (using the experimental LTA JSBSim FDM)
-  </description>
+  <description>LZ-129 Hindenburg (using the experimental LTA JSBSim FDM)</description>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
-<!--
-  <aero>LZ-129gasless</aero>
--->
+
 <!--
   <presets>
    <onground>false</onground>
@@ -27,16 +25,59 @@ This file is licensed under the GPL license.
 -->
  </sim>
 
+ <!-- Temporary solution. -->
  <sound>
   <audible>true</audible>
   <path>Aircraft/Boeing314/Sounds/Boeing314-sound.xml</path>
  </sound>
+
+ <nasal>
+  <WeighOff>
+   <script>
+    printgearforce = func {
+      gf = getprop("/fdm/jsbsim/forces/fbz-gear-lbs");
+      if (gf != 0.0) {
+        print("Gear force: ",
+	      gf,
+	      " lbs.");
+      }
+      settimer(printgearforce,2);
+    }
+
+    weighoff = func {
+      print("Weigh-off to 10% in progress.");
+      slugtolb = 32.174049;
+      lbtoslug = 1.0/slugtolb;
+      gf = getprop("/fdm/jsbsim/forces/fbz-gear-lbs");
+      cont = getprop("/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug");
+      interpolate("/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug",
+                  cont + 0.90 * gf * lbtoslug,
+                  10);
+    }
+
+    init = func {
+      settimer(printgearforce,2);
+    }
+    init();
+   </script>
+  </WeighOff>
+ </nasal>
 
  <input>
   <keyboard>
    <!-- Keyboard commands -->
 
    <!-- Ballast commands ====================================== -->
+   <key n="87"> 
+    <name>W</name>
+    <desc>Perform on-ground weigh-off.</desc>
+    <binding> 
+     <command>nasal</command>
+     <script>
+      WeighOff.weighoff();
+     </script>     
+    </binding>
+   </key>
    <key n="100">
     <name>d</name>
     <desc>Drop 0.1% ballast aft</desc>

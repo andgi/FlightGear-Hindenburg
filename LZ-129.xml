@@ -2,7 +2,7 @@
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
-  Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
+  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
@@ -13,8 +13,8 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.6 2006-04-17 14:09:18 anders Exp $ </version>
-  <description> Experimental JSBSim model of the Zeppelin LZ-129 </description>
+  <version> $Id: LZ-129.xml,v 1.7 2006-04-17 18:17:47 anders Exp $ </version>
+  <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
  <!--
@@ -24,7 +24,7 @@
  -->
 
  <!--
- ==== Metrics =================================================================
+ ==== Metrics ===============================================================
  -->
 
  <metrics>
@@ -37,9 +37,9 @@
   <vtailarm unit="M"> 0.0 </vtailarm> <!-- Totally off! -->
   <!-- Total volume vol = 200000 m^2 = 7062940 ft^2 -->
 
-  <!-- Aerodynamic Reference Point -->
+  <!-- Aerodynamic Reference Point. Located according to NACA report 432. -->
   <location name="AERORP" unit="M">
-   <x> 100.0 </x>
+   <x> 118.6 </x>
    <y> 0.0 </y>
    <z> 0.0 </z>
   </location>
@@ -57,12 +57,12 @@
  </metrics>
 
  <!--
- ==== Mass balance ============================================================
+ ==== Mass balance ==========================================================
  -->
 
  <mass_balance>
   <ixx unit="KG*M2"> 225093750.0 </ixx> <!-- Totally off! -->
-  <iyy unit="KG*M2"> 100 </iyy> <!-- Totally off! -->
+  <iyy unit="KG*M2"> 10000000 </iyy> <!-- Totally off! -->
   <izz unit="KG*M2"> 225093750.0 </izz> <!-- Totally off! -->
   <ixy unit="KG*M2"> -0 </ixy> <!-- Totally off! -->
   <ixz unit="KG*M2"> -0 </ixz> <!-- Totally off! -->
@@ -115,7 +115,7 @@
  </mass_balance>
 
  <!--
- ==== Ground reactions ========================================================
+ ==== Ground reactions ======================================================
  -->
 
  <ground_reactions>
@@ -205,7 +205,7 @@
  </ground_reactions>
 
  <!--
- ==== Propulsion =========================================================
+ ==== Propulsion ============================================================
  -->
 
  <propulsion>
@@ -645,6 +645,7 @@
    <y_radius unit="M"> 4.93 </y_radius>
    <z_radius unit="M"> 4.93 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 2 -->
@@ -658,6 +659,7 @@
    <y_radius unit="M"> 9.52 </y_radius>
    <z_radius unit="M"> 9.52 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 3 -->
@@ -671,6 +673,7 @@
    <y_radius unit="M"> 12.56 </y_radius>
    <z_radius unit="M"> 12.56 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 4 -->
@@ -684,6 +687,7 @@
    <y_radius unit="M"> 15.12 </y_radius>
    <z_radius unit="M"> 15.12 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 5 -->
@@ -697,6 +701,7 @@
    <y_radius unit="M"> 17.145 </y_radius>
    <z_radius unit="M"> 17.145 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 6 -->
@@ -710,6 +715,7 @@
    <y_radius unit="M"> 18.56 </y_radius>
    <z_radius unit="M"> 18.56 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 7 -->
@@ -723,6 +729,7 @@
    <y_radius unit="M"> 19.51 </y_radius>
    <z_radius unit="M"> 19.51 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 8 -->
@@ -736,6 +743,7 @@
    <y_radius unit="M"> 20.12 </y_radius>
    <z_radius unit="M"> 20.12 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 9 -->
@@ -749,6 +757,7 @@
    <y_radius unit="M"> 20.52 </y_radius>
    <z_radius unit="M"> 20.52 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 10 -->
@@ -762,6 +771,7 @@
    <y_radius unit="M"> 20.66 </y_radius>
    <z_radius unit="M"> 20.66 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 11 -->
@@ -775,6 +785,7 @@
    <y_radius unit="M"> 20.45 </y_radius>
    <z_radius unit="M"> 20.45 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 12 -->
@@ -788,6 +799,7 @@
    <y_radius unit="M"> 19.91 </y_radius>
    <z_radius unit="M"> 19.91 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 13 -->
@@ -801,6 +813,7 @@
    <y_radius unit="M"> 18.90 </y_radius>
    <z_radius unit="M"> 18.90 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 14 -->
@@ -814,6 +827,7 @@
    <y_radius unit="M"> 17.08 </y_radius>
    <z_radius unit="M"> 17.08 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 15 -->
@@ -827,6 +841,7 @@
    <y_radius unit="M"> 13.77 </y_radius>
    <z_radius unit="M"> 13.77 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!-- Cell 16 -->
@@ -840,36 +855,45 @@
    <y_radius unit="M"> 7.63 </y_radius>
    <z_radius unit="M"> 7.63 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
   </gas_cell>
 
   <!--
   ==== Ballast ===========================================================
   -->
-<!-- Test -->
+  <!-- Experimental ballast setup. -->
   <ballast type="WATER">
    <location unit="M">
     <x> 20.0 </x>
     <y> 0.0 </y>
-    <z> -13.5 </z>
+    <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 95000 </contents>
+   <contents unit="KG"> 48000 </contents>
   </ballast>
   <ballast type="WATER">
    <location unit="M">
     <x> 220.0 </x>
     <y> 0.0 </y>
-    <z> -13.5 </z>
+    <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 75000 </contents>
+   <contents unit="KG"> 42000 </contents>
   </ballast>
-
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 100.0 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG"> 80000 </contents>
+  </ballast>
 
  </propulsion>
 
  <!--
- ==== Flight control system ===================================================
+ ==== Flight control system =================================================
  -->
 
  <flight_control name="FGFCS">
@@ -946,7 +970,7 @@
  </flight_control>
 
  <!--
- ==== Aerodynamics ============================================================
+ ==== Aerodynamics ==========================================================
  -->
 
  <aerodynamics>
@@ -958,9 +982,11 @@
 
    <function name="aero/coefficient/CDalpha">
     <description>Drag_due_to_alpha</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
-	 symmetric for positive and negative alpha. This table includes drag at zero alpha. 
+	 symmetric for positive and negative alpha.
+	 This table includes drag at zero alpha. 
 	 
 	   CD = D / (q * (vol)^(2/3))
 
@@ -984,9 +1010,11 @@
 
    <function name="aero/coefficient/CDbeta">
     <description>Drag_due_to_beta</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
-	 symmetric for positive and negative beta. This table includes drag at zero beta. 
+	 symmetric for positive and negative beta.
+	 This table includes drag at zero beta. 
 	 
 	   CD = D / (q * (vol)^(2/3))
 
@@ -1015,7 +1043,8 @@
 
    <function name="aero/coefficient/CYbeta">
     <description>Side_force_due_to_beta</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative beta.
 	 
@@ -1045,7 +1074,7 @@
      <property>aero/qbar-psf</property>
      <property>metrics/Sv-sqft</property>
      <property>fcs/rudder-pos-rad</property>
-     <value>0.1870</value>
+     <value>0.70</value>
     </product>
    </function>
 
@@ -1056,7 +1085,8 @@
 
    <function name="aero/coefficient/CLalpha">
     <description>Lift_due_to_alpha</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative alpha.
 	 
@@ -1086,7 +1116,7 @@
      <property>aero/qbar-psf</property>
      <property>metrics/Sh-sqft</property>
      <property>fcs/elevator-pos-rad</property>
-     <value>0.4300</value>
+     <value>0.70</value>
     </product>
    </function>
 
@@ -1114,7 +1144,7 @@
     <description>Pitch_moment_due_to_pitch_rate_(damping)</description>
     <!-- The current version is just a hack to make the craft stable. -->
     <product>
-     <value> -4000.0 </value>
+     <value> -10000.0 </value>
      <!--property>aero/ci2vel</property-->
      <property>velocities/q-aero-rad_sec</property>
     </product>
@@ -1126,14 +1156,15 @@
      <property>aero/qbar-psf</property>
      <property>metrics/Sh-sqft</property>
      <property>fcs/elevator-pos-rad</property>
-     <value>-0.4300</value>
+     <value>-0.70</value>
      <property>metrics/lh-ft</property>
     </product>
    </function>
 
    <function name="aero/coefficient/Cmalpha">
     <description>Pitch_moment_due_to_alpha</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative alpha.
 	 
@@ -1178,14 +1209,15 @@
      <property>aero/qbar-psf</property>
      <property>metrics/Sv-sqft</property>
      <property>fcs/rudder-pos-rad</property>
-     <value>-0.1870</value>
+     <value>-0.70</value>
      <property>metrics/lh-ft</property>
     </product>
    </function>
 
    <function name="aero/coefficient/Cnbeta">
     <description>Yaw_moment_due_to_beta</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model of the U.S. Airship Akron".
+    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
+         of the U.S. Airship Akron".
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative beta.
 	 

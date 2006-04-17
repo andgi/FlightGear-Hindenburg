@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
+<!-- $Id: LZ-129-common.xml,v 1.5 2006-04-17 18:17:47 anders Exp $ -->
 <!--
-LZ-129 Hindenburg
-Common definitions
-Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
-This file is licensed under the GPL license.
+  LZ-129 Hindenburg
+  Common definitions
+
+  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
 -->
 <PropertyList>
 

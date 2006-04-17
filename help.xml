@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
+<!-- $Id: help.xml,v 1.4 2006-04-17 18:17:47 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
-<!-- LZ-129 Hindenburg online help :
-
+  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
 -->
 
 <PropertyList>
@@ -29,9 +32,18 @@
   <name>D</name>
   <desc>Drop aft ballast in 1% decrements.</desc>
  </key>
+ <key>
+  <name>W</name>
+  <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+ </key>
  <!-- Handling instructions. -->
- <text>
-  Don't Panic!
- </text>
+ <line>Take-off</line>
+ <line></line>
+ <line>1. Weigh-off (W) twice.</line>
+ <line>2. Drop ballast fore and aft if needed.</line>
+ <line>3. Start engines once the airship is clear of the ground.</line>
+ <line>4. Stay in control by careful use of elevator and rudder. (I only manage to do so for a few minutes..)</line>
+ <line>5. ...</line>
+ <line>6. Don't Panic!</line>
 
 </PropertyList>

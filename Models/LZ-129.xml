@@ -1,3 +1,10 @@
+<!-- $Id: LZ-129.xml,v 1.7 2006-04-17 18:17:47 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg.
+
+  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+-->
 <PropertyList>
 
  <!-- The hull. -->
@@ -29,5 +36,30 @@
    <z-m> 0.0 </z-m>
   </offsets>
  </model>
+
+ <!-- ======================================= -->
+ <!-- panel models (X/Y/Z depth/width/height) -->
+ <!-- ======================================= -->
+ 
+ <panel>
+   <!-- Temporary panel. -->
+   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
+   <bottom-left>
+    <x-m>38.21</x-m>
+    <y-m>-0.850</y-m>
+    <z-m> -20.3275</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>38.21</x-m>
+    <y-m> 0.895</y-m>
+    <z-m> -20.3275</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>37.81</x-m>
+    <y-m>-0.850</y-m>
+    <z-m> -19.455</z-m>
+   </top-left>
+ </panel>
+ 
 
 </PropertyList>
