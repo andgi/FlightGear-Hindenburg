@@ -1,3 +1,5 @@
 g-dxf -o LZ-129_hull.dxf -m 1 -a 100 LZ-129.g hull.g
 g-dxf -o LZ-129_car.dxf -m 1 -a 5 LZ-129.g control_car.g
 g-dxf -o LZ-129_engines.dxf -m 1 -a 5 LZ-129.g engine_cars.g
+g-dxf -o LZ-129_elevators.dxf -m 1 -a 5 LZ-129.g elevators.g
+g-dxf -o LZ-129_rudders.dxf -m 1 -a 5 LZ-129.g rudders.g
