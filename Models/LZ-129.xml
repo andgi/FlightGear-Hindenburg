@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.7 2006-04-17 18:17:47 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.8 2006-04-18 22:14:20 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -37,6 +37,29 @@
   </offsets>
  </model>
 
+ <!-- The elevators -->
+ <model>
+  <name>Elevators</name>
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_elevators.dxf</path>
+  <offsets>
+   <x-m> 227.270 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+
+ <!-- The rudders -->
+ <model>
+  <name>Rudders</name>
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_rudders.dxf</path>
+  <offsets>
+   <x-m> 227.270 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+
+
  <!-- ======================================= -->
  <!-- panel models (X/Y/Z depth/width/height) -->
  <!-- ======================================= -->
@@ -61,5 +84,65 @@
    </top-left>
  </panel>
  
+ <!-- Animations ========================================================== -->
+ <animation>
+  <type>rotate</type>
+  <object-name>Elevators</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-30</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>30</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>227.270</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rudders</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-30</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>30</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>227.270</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
 
 </PropertyList>
