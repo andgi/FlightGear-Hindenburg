@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- $Id: LZ-129.xml,v 1.9 2006-04-21 20:00:28 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -13,7 +14,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.8 2006-04-17 22:40:49 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.9 2006-04-21 20:00:28 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
@@ -965,7 +966,8 @@
    <function name="aero/coefficient/CDalpha">
     <description>Drag_due_to_alpha</description>
     <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron".
+         of the U.S. Airship Akron" by Hugh B. Freeman,
+	 Table I bare hull.
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative alpha.
 	 This table includes drag at zero alpha. 
@@ -993,7 +995,8 @@
    <function name="aero/coefficient/CDbeta">
     <description>Drag_due_to_beta</description>
     <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron".
+         of the U.S. Airship Akron" by Hugh B. Freeman,
+	 Table I bare hull.
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative beta.
 	 This table includes drag at zero beta. 
@@ -1026,7 +1029,8 @@
    <function name="aero/coefficient/CYbeta">
     <description>Side_force_due_to_beta</description>
     <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron".
+         of the U.S. Airship Akron" by Hugh B. Freeman,
+	 Table I bare hull.
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative beta.
 	 
@@ -1068,7 +1072,8 @@
    <function name="aero/coefficient/CLalpha">
     <description>Lift_due_to_alpha</description>
     <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron".
+         of the U.S. Airship Akron" by Hugh B. Freeman,
+	 Table I bare hull.
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative alpha.
 	 
@@ -1146,7 +1151,8 @@
    <function name="aero/coefficient/Cmalpha">
     <description>Pitch_moment_due_to_alpha</description>
     <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron".
+         of the U.S. Airship Akron" by Hugh B. Freeman,
+	 Table I bare hull.
 	 I have made the additional assumption that the coefficients are
 	 symmetric for positive and negative alpha.
 	 
