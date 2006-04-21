@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.8 2006-04-18 22:14:20 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.9 2006-04-21 21:57:49 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -18,11 +18,37 @@
  <!-- The control car -->
  <model>
   <name>Control car</name>
+<!--
   <path archive="y">Aircraft/LZ-129/Models/LZ-129_car.dxf</path>
+-->
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_car_no_moving_parts.dxf</path>
   <offsets>
    <x-m> 0.0 </x-m>
    <y-m> 0.0 </y-m>
    <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+
+ <!-- The steering wheel -->
+ <model>
+  <name>Steering wheel</name>
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.dxf</path>
+  <offsets>
+   <x-m> 38.2 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m> -19.67 </z-m>
+  </offsets>
+ </model>
+
+ <!-- The elevator wheel -->
+ <model>
+  <name>Elevator wheel</name>
+  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.dxf</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m> 39.35 </x-m>
+   <y-m> -0.933 </y-m>
+   <z-m> -19.67 </z-m>
   </offsets>
  </model>
 
@@ -68,12 +94,12 @@
    <!-- Temporary panel. -->
    <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
    <bottom-left>
-    <x-m>38.21</x-m>
+    <x-m>38.11</x-m>
     <y-m>-0.850</y-m>
     <z-m> -20.3275</z-m>
    </bottom-left>
    <bottom-right>
-    <x-m>38.21</x-m>
+    <x-m>38.11</x-m>
     <y-m> 0.895</y-m>
     <z-m> -20.3275</z-m>
    </bottom-right>
@@ -84,7 +110,53 @@
    </top-left>
  </panel>
  
- <!-- Animations ========================================================== -->
+ <!-- Animations ======================================================== -->
+ 
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10000</max-m>
+ </animation>
+
+ <!-- Controls -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Steering wheel</object-name>
+  <property>controls/flight/rudder</property>
+  <factor>-250.0</factor>
+  <center>
+   <x-m> 38.2 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m> -19.67 </z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Elevator wheel</object-name>
+  <property>controls/flight/elevator</property>
+  <factor>-250.0</factor>
+  <center>
+   <x-m> 39.35 </x-m>
+   <y-m> -0.933 </y-m>
+   <z-m> -19.67 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <!-- Control surfaces -->
+
  <animation>
   <type>rotate</type>
   <object-name>Elevators</object-name>
@@ -144,5 +216,7 @@
    <z>1.0</z>
   </axis>
  </animation>
+
+ <!-- LODs -->
 
 </PropertyList>
