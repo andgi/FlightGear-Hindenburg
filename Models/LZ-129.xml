@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.9 2006-04-21 21:57:49 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.10 2006-04-24 00:20:25 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -36,7 +36,7 @@
   <offsets>
    <x-m> 38.2 </x-m>
    <y-m>  0.0 </y-m>
-   <z-m> -19.67 </z-m>
+   <z-m> -19.50 </z-m>
   </offsets>
  </model>
 
@@ -46,9 +46,9 @@
   <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.dxf</path>
   <offsets>
    <heading-deg>90</heading-deg>
-   <x-m> 39.35 </x-m>
-   <y-m> -0.933 </y-m>
-   <z-m> -19.67 </z-m>
+   <x-m> 40.10 </x-m>
+   <y-m> -1.1 </y-m>
+   <z-m> -19.50 </z-m>
   </offsets>
  </model>
 
@@ -129,7 +129,7 @@
   <center>
    <x-m> 38.2 </x-m>
    <y-m>  0.0 </y-m>
-   <z-m> -19.67 </z-m>
+   <z-m> -19.50 </z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -144,9 +144,9 @@
   <property>controls/flight/elevator</property>
   <factor>-250.0</factor>
   <center>
-   <x-m> 39.35 </x-m>
-   <y-m> -0.933 </y-m>
-   <z-m> -19.67 </z-m>
+   <x-m> 40.10 </x-m>
+   <y-m> -1.1 </y-m>
+   <z-m> -19.50 </z-m>
   </center>
   <axis>
    <x>0.0</x>
