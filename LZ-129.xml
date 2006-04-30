@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.12 2006-04-23 18:26:32 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.13 2006-04-30 01:38:24 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -14,7 +14,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.12 2006-04-23 18:26:32 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.13 2006-04-30 01:38:24 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
@@ -112,6 +112,152 @@
   </pointmass>
 
   <!-- Add fresh water tanks, oil tanks etc here! -->
+
+  <!-- In cell 15 -->
+
+  <pointmass name="Food storage (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 23.22 </x>
+    <y> -1.35 </y>
+    <z> -12.69 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Food storage (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 23.22 </x>
+    <y> 1.35 </y>
+    <z> -12.69 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 14 -->
+  <!-- In cell 13 -->
+
+  <pointmass name="Waste water (max 2500KG)">
+   <weight unit="KG"> 2500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 50.22 </x>
+    <y> 1.215 </y>
+    <z> -17.82 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Food storage (max 250KG)">
+   <weight unit="KG"> 250.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 58.05 </x>
+    <y> -2.43 </y>
+    <z> -18.36 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 12 -->
+
+   <!-- Passenger compartment. -->
+
+  <!-- In cell 11 -->
+
+  <pointmass name="Food storage (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 77.76 </x>
+    <y> -2.70 </y>
+    <z> -19.575 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Fresh water (max 2500KG)">
+   <weight unit="KG"> 2500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 77.76 </x>
+    <y> -1.08 </y>
+    <z> -19.575 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 10 -->
+
+  <pointmass name="Fresh water (max 2500KG)">
+   <weight unit="KG"> 2500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 91.53 </x>
+    <y> -1.08 </y>
+    <z> -19.71 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 9 -->
+
+  <pointmass name="Freight room (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 113.40 </x>
+    <y> -1.35 </y>
+    <z> -19.98 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Freight room (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 113.40 </x>
+    <y> 1.35 </y>
+    <z> -19.98 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Freight room (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 116.10 </x>
+    <y> -1.35 </y>
+    <z> -19.98 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Freight room (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 116.10 </x>
+    <y> 1.35 </y>
+    <z> -19.98 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 8 -->
+  <!-- In cell 7 -->
+
+  <pointmass name="Fresh water (max 2500KG)">
+   <weight unit="KG"> 2500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 141.21 </x>
+    <y> -1.08 </y>
+    <z> -18.90 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Oil (max 500KG)">
+   <weight unit="KG"> 500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 153.36 </x>
+    <y> -1.08 </y>
+    <z> -18.09 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 6 -->
+  <!-- In cell 5 -->
+
+  <pointmass name="Waste water (max 2500KG)">
+   <weight unit="KG"> 2500.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 171.45 </x>
+    <y> 1.08 </y>
+    <z> -17.01 </z>
+   </location>
+  </pointmass>
+
+  <!-- In cell 4 -->
+  <!-- In cell 3 -->
+  <!-- In cell 2 -->
+  <!-- In cell 1 -->
+  <!-- In cell 0 -->
 
  </mass_balance>
 
@@ -235,6 +381,23 @@
    <feed>18</feed>
    <feed>19</feed>
    <feed>20</feed>
+   <feed>21</feed>
+   <feed>22</feed>
+   <feed>23</feed>
+   <feed>24</feed>
+   <feed>25</feed>
+   <feed>26</feed>
+   <feed>27</feed>
+   <feed>28</feed>
+   <feed>29</feed>
+   <feed>30</feed>
+   <feed>31</feed>
+   <feed>32</feed>
+   <feed>33</feed>
+   <feed>34</feed>
+   <feed>35</feed>
+   <feed>36</feed>
+   <feed>37</feed>
    <thruster file="HamiltonStd6243A-3">
     <location unit="M">
      <x> 152.55 </x>
@@ -282,6 +445,23 @@
    <feed>18</feed>
    <feed>19</feed>
    <feed>20</feed>
+   <feed>21</feed>
+   <feed>22</feed>
+   <feed>23</feed>
+   <feed>24</feed>
+   <feed>25</feed>
+   <feed>26</feed>
+   <feed>27</feed>
+   <feed>28</feed>
+   <feed>29</feed>
+   <feed>30</feed>
+   <feed>31</feed>
+   <feed>32</feed>
+   <feed>33</feed>
+   <feed>34</feed>
+   <feed>35</feed>
+   <feed>36</feed>
+   <feed>37</feed>
    <thruster file="HamiltonStd6243A-3">
     <location unit="M">
      <x> 152.55 </x>
@@ -329,6 +509,23 @@
    <feed>18</feed>
    <feed>19</feed>
    <feed>20</feed>
+   <feed>21</feed>
+   <feed>22</feed>
+   <feed>23</feed>
+   <feed>24</feed>
+   <feed>25</feed>
+   <feed>26</feed>
+   <feed>27</feed>
+   <feed>28</feed>
+   <feed>29</feed>
+   <feed>30</feed>
+   <feed>31</feed>
+   <feed>32</feed>
+   <feed>33</feed>
+   <feed>34</feed>
+   <feed>35</feed>
+   <feed>36</feed>
+   <feed>37</feed>
    <thruster file="HamiltonStd6243A-3">
     <location unit="M">
      <x> 105.3 </x>
@@ -376,6 +573,23 @@
    <feed>18</feed>
    <feed>19</feed>
    <feed>20</feed>
+   <feed>21</feed>
+   <feed>22</feed>
+   <feed>23</feed>
+   <feed>24</feed>
+   <feed>25</feed>
+   <feed>26</feed>
+   <feed>27</feed>
+   <feed>28</feed>
+   <feed>29</feed>
+   <feed>30</feed>
+   <feed>31</feed>
+   <feed>32</feed>
+   <feed>33</feed>
+   <feed>34</feed>
+   <feed>35</feed>
+   <feed>36</feed>
+   <feed>37</feed>
    <thruster file="HamiltonStd6243A-3">
     <location unit="M">
      <x> 105.3 </x>
@@ -397,10 +611,11 @@
   <!-- Fuel tanks along the keel walk way -->
 
   <!-- Note: The capacity numbers should be in liters
-             Assumption: 1 liter (= 0.001 m^3) = 1000 kg
+             Assumption: 1 liter (= 0.001 m^3) = 1 kg
    -->
 
   <!-- In cell 15 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 18.090 </x>
@@ -421,6 +636,24 @@
   </tank>
   <tank type="FUEL">
    <location unit="M">
+    <x> 25.650 </x>
+    <y> -1.080 </y>
+    <z> -12.960 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 25.650 </x>
+    <y> 1.080 </y>
+    <z> -12.960 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
     <x> 28.080 </x>
     <y> -1.080 </y>
     <z> -13.500 </z>
@@ -430,11 +663,146 @@
   </tank>
 
   <!-- In cell 13 -->
+
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 50.220 </x>
+    <y> -1.215 </y>
+    <z> -17.820 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 52.650 </x>
+    <y> -1.215 </y>
+    <z> -18.090 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 52.650 </x>
+    <y>  1.215 </y>
+    <z> -18.090 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 55.350 </x>
+    <y> -1.215 </y>
+    <z> -18.360 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 55.350 </x>
+    <y>  1.215 </y>
+    <z> -18.360 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+
   <!-- In cell 11 -->
+
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 77.760 </x>
+    <y>  1.080 </y>
+    <z> -19.575 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 86.130 </x>
+    <y> -1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 86.130 </x>
+    <y>  1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+
+
   <!-- In cell 10 -->
+
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 91.530 </x>
+    <y>  1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 94.500 </x>
+    <y> -1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+
   <!-- In cell 9 -->
 
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 110.970 </x>
+    <y> -1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 119.070 </x>
+    <y> -1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 119.070 </x>
+    <y>  1.080 </y>
+    <z> -19.710 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+  <tank type="FUEL">
+   <location unit="M">
+    <x> 121.770 </x>
+    <y>  1.080 </y>
+    <z> -19.575 </z>
+   </location>
+   <capacity unit="KG"> 2500 </capacity>
+   <contents unit="KG"> 2500 </contents>
+  </tank>
+
   <!-- In cell 8 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 125.280 </x>
@@ -491,6 +859,7 @@
   </tank>
 
   <!-- In cell 7 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 141.210 </x>
@@ -520,6 +889,7 @@
   </tank>
 
   <!-- In cell 6 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 156.870 </x>
@@ -558,6 +928,7 @@
   </tank>
 
   <!-- In cell 5 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 171.450 </x>
@@ -587,6 +958,7 @@
   </tank>
 
   <!-- In cell 4 -->
+
   <tank type="FUEL">
    <location unit="M">
     <x> 186.840 </x>
@@ -854,7 +1226,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 48000 </contents>
+   <contents unit="KG"> 44000 </contents>
   </ballast>
   <ballast type="WATER">
    <location unit="M">
@@ -863,7 +1235,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 42000 </contents>
+   <contents unit="KG"> 46000 </contents>
   </ballast>
   <ballast type="WATER">
    <location unit="M">
