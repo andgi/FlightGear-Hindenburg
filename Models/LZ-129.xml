@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.10 2006-04-24 00:20:25 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.11 2006-05-02 20:43:44 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -93,23 +93,45 @@
  <panel>
    <!-- Temporary panel. -->
    <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
+   <!--name>RudderCoxswainPanel</name-->
    <bottom-left>
-    <x-m>38.11</x-m>
-    <y-m>-0.850</y-m>
-    <z-m> -20.3275</z-m>
+    <x-m> 38.11 </x-m>
+    <y-m> -0.850 </y-m>
+    <z-m> -20.3275 </z-m>
    </bottom-left>
    <bottom-right>
-    <x-m>38.11</x-m>
-    <y-m> 0.895</y-m>
-    <z-m> -20.3275</z-m>
+    <x-m> 38.11 </x-m>
+    <y-m> 0.895 </y-m>
+    <z-m> -20.3275 </z-m>
    </bottom-right>
    <top-left>
-    <x-m>37.81</x-m>
-    <y-m>-0.850</y-m>
-    <z-m> -19.455</z-m>
+    <x-m> 37.81 </x-m>
+    <y-m> -0.850 </y-m>
+    <z-m> -19.455 </z-m>
    </top-left>
  </panel>
- 
+
+ <panel>
+   <!-- Temporary panel. -->
+   <path>Aircraft/Boeing314/Panels/Boeing314A-radio.xml</path>
+   <!--name>NavigatorPanel</name-->
+   <bottom-left>
+    <x-m> 41.10 </x-m>
+    <y-m> -0.75 </y-m>
+    <z-m> -19.63 </z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m> 41.10 </x-m>
+    <y-m> -0.050 </y-m>
+    <z-m> -19.63 </z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>  41.10 </x-m>
+    <y-m> -0.75 </y-m>
+    <z-m> -19.28 </z-m>
+   </top-left>
+ </panel>
+
  <!-- Animations ======================================================== -->
  
  <!-- LOD for the model as a whole -->
