@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<runscript name="free flight test">
+  <!--
+    This run is for testing lighter-than-air aircraft.
+  -->
+
+  <use aircraft="LZ-129" initialize="sim/reset01"/>
+  <run start="0.0" end="1200" dt="0.00833333">
+
+    <event name="engine 1 start">
+      <description>Start the engine 1</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 0.25
+      </condition>
+      <set name="fcs/throttle-cmd-norm"     value="0.5" action="FG_RAMP" tc ="0.5"/>
+      <set name="fcs/mixture-cmd-norm"      value="0.87" action="FG_RAMP" tc ="0.5"/>
+      <set name="propulsion/magneto_cmd"    value="3"/>
+      <set name="propulsion/starter_cmd"    value="1"/>
+    </event>
+
+    <event name="engine 2 start">
+      <description>Start the engine 2</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 0.27
+      </condition>
+      <set name="fcs/throttle-cmd-norm[1]"     value="0.55" action="FG_RAMP" tc ="0.5"/>
+      <set name="fcs/mixture-cmd-norm[1]"      value="0.87" action="FG_RAMP" tc ="0.5"/>
+      <set name="propulsion/magneto_cmd"       value="3"/>
+      <set name="propulsion/starter_cmd"       value="1"/>
+    </event>
+
+    <event name="Elevator coxswain activate">
+      <description>Activate the elevator coxswain autopilot</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 1.0
+      </condition>
+      <set name="ap/elevator-coxswain-active"  value="1"/>
+      <set name="ap/pitch-setpoint-degrees" value="5"/>
+    </event>
+
+    <event name="Rudder coxswain activate">
+      <description>Activate the rudder coxswain autopilot</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 100.0
+      </condition>
+      <set name="ap/rudder-coxswain-active"   value="1"/>
+      <set name="ap/heading-setpoint-degrees" value="0"/>
+    </event>
+
+    <event name="Time Notify" type="FG_DELTA" persistent="true">
+      <description>Output message at 100 second intervals</description>
+      <notify>
+        <property>velocities/vc-kts</property>
+        <property>position/h-agl-ft</property>
+      </notify>
+      <condition> sim-time-sec >= simulation/notify-time-trigger </condition>
+      <set name="simulation/notify-time-trigger" value="60" type="FG_DELTA"/>
+    </event>
+
+  </run>
+</runscript>

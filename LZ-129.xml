@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.14 2006-04-30 17:31:53 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.15 2006-11-11 23:11:12 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -14,7 +14,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.14 2006-04-30 17:31:53 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.15 2006-11-11 23:11:12 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
@@ -1269,7 +1269,9 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 44000 </contents>
+   <contents unit="KG"> 2900 </contents>
+   <!-- contents unit="KG"> 25000 </contents -->
+   <!-- contents unit="KG"> 44000 </contents -->
   </ballast>
   <ballast type="WATER">
    <location unit="M">
@@ -1278,7 +1280,8 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 46000 </contents>
+   <contents unit="KG"> 26250 </contents>
+   <!-- contents unit="KG"> 46000 </contents -->
   </ballast>
   <ballast type="WATER">
    <location unit="M">
@@ -1287,7 +1290,8 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG"> 80000 </contents>
+   <contents unit="KG"> 40000 </contents>
+   <!-- contents unit="KG"> 80000 </contents -->
   </ballast>
 
  </propulsion>
@@ -1296,6 +1300,8 @@
  ==== Flight control system =================================================
  -->
 
+ <autopilot file="LZ-129_crew_ap"/>
+
  <flight_control name="FGFCS">
 
   <!-- ================================================== -->
@@ -1303,6 +1309,7 @@
    <summer name="Pitch Trim Sum">
     <input>fcs/elevator-cmd-norm</input>
     <input>fcs/pitch-trim-cmd-norm</input>
+    <input>ap/elevator-cmd-norm</input>
     <clipto>
      <min>-1</min>
      <max>1</max>
@@ -1338,6 +1345,7 @@
    <summer name="Yaw Trim Sum">
     <input>fcs/rudder-cmd-norm</input>
     <input>fcs/yaw-trim-cmd-norm</input>
+    <input>ap/rudder-cmd-norm</input>
     <clipto>
      <min>-1</min>
      <max>1</max>
@@ -1706,5 +1714,44 @@
   </axis>
 
  </aerodynamics>
+
+ <output name="LZ-129_datalog.csv" type="CSV" rate="1">
+  <property> aero/qbar-psf </property>
+  <property> attitude/phi-rad </property>
+  <property> position/h-sl-ft </property>
+  <property> velocities/vc-kts </property>
+  <property> fcs/throttle-cmd-norm </property>
+  <property> fcs/throttle-cmd-norm[1] </property>
+  <property> fcs/throttle-cmd-norm[2] </property>
+  <property> fcs/throttle-cmd-norm[3] </property>
+  <property> fcs/elevator-cmd-norm </property>
+  <property> fcs/pitch-trim-cmd-norm </property>
+  <property> propulsion/total-fuel-lbs </property>
+  <property> flight-path/gamma-rad </property>
+  <property> accelerations/n-pilot-z-norm </property>
+  <property> propulsion/gas-cell/temp-K </property>
+  <property> propulsion/gas-cell/pressure-Pa </property>
+  <property> propulsion/gas-cell/volume-m3 </property>
+  <property> propulsion/gas-cell/buoyancy-N </property>
+  <property> propulsion/gas-cell/contents-mol </property>
+  <property> propulsion/gas-cell/valve_open </property>
+  <property> propulsion/gas-cell[15]/temp-K </property>
+  <property> propulsion/gas-cell[15]/pressure-Pa </property>
+  <property> propulsion/gas-cell[15]/volume-m3 </property>
+  <property> propulsion/gas-cell[15]/buoyancy-N </property>
+  <property> propulsion/gas-cell[15]/contents-mol </property>
+  <property> propulsion/gas-cell[15]/valve_open </property>
+
+  <rates> ON </rates>
+  <velocities> ON </velocities>
+  <forces> ON </forces>
+  <moments> ON </moments>
+  <position> ON </position>
+  <fcs> ON </fcs>
+  <propulsion> OFF </propulsion>
+  <aerosurfaces> ON </aerosurfaces>
+  <fcs> ON </fcs>
+  <ground_reactions> ON </ground_reactions>
+ </output>
 
 </fdm_config>

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!-- $Id: LZ-129_crew_ap.xml,v 1.1 2006-11-11 23:11:12 anders Exp $ -->
+<!--
+
+  Author:   Anders Gidenstam
+  Date:     11 November 2006
+  Function: Simulation of the rudder and elevator coxswains etc on the LZ-129.
+
+-->
+
+<autopilot name="LZ-129 Crew Autopilot">
+
+  <!-- INTERFACE PROPERTIES -->
+  <property>ap/rudder-coxswain-active</property>
+  <property>ap/heading-setpoint-degrees</property>
+  <property>ap/rudder-cmd-norm</property>
+  <property>ap/elevator-coxswain-active</property>
+  <property>ap/pitch-setpoint-degrees</property>
+  <property>ap/elevator-cmd-norm</property>
+
+  <!-- SENSORS -->
+
+  <!-- CHANNELS -->
+  <channel name="fcs/ap-rudder-coxswain">
+
+    <!-- The heading error chain is from c172ap.xml by Jon Berndt. -->
+    <pure_gain name="fcs/heading-true-degrees">
+      <input>attitude/heading-true-rad</input>
+      <gain>57.3</gain> <!-- convert to degrees -->
+    </pure_gain>
+
+    <summer name="fcs/heading-error">
+      <input> -fcs/heading-true-degrees</input>
+      <input> ap/heading-setpoint-degrees </input>
+    </summer>
+
+    <switch name="fcs/heading-error-bias-switch">
+      <default value="0.0"/>
+      <test value="360.0">
+        fcs/heading-error lt -180
+      </test>
+      <test value="-360.0">
+        fcs/heading-error gt 180
+      </test>
+    </switch>
+
+    <summer name="fcs/heading-corrected">
+      <input> fcs/heading-error-bias-switch </input>
+      <input> fcs/heading-error </input>
+      <clipto>
+        <min>-30</min>
+        <max> 30</max>
+      </clipto>
+    </summer>
+
+
+    <pure_gain name="Heading AP Linear Cmd">
+      <input> fcs/heading-corrected </input>
+      <gain>1.8</gain>
+    </pure_gain>
+
+    <integrator name="Heading AP Error Integrator">
+      <input> fcs/heading-corrected </input>
+      <c1> 0.00 </c1>
+      <clipto>
+        <min>-1.0</min>
+        <max> 1.0</max>
+      </clipto>
+    </integrator>
+
+    <pure_gain name="Heading AP Error Derivator">
+      <input> velocities/psidot-rad_sec</input>
+      <gain>1.0</gain>
+    </pure_gain>
+
+    <summer name="Heading AP Summer">
+      <input> fcs/heading-ap-linear-cmd </input>
+      <input> fcs/heading-ap-error-integrator </input>
+      <input> fcs/heading-ap-error-derivator </input>
+      <clipto>
+        <min>-1.0</min>
+        <max> 1.0</max>
+      </clipto>
+    </summer>
+
+    <switch name="Heading AP Autoswitch">
+      <default value="0.0"/>
+      <test logic="AND" value="fcs/heading-ap-summer">
+            ap/rudder-coxswain-active == 1
+      </test>
+    </switch>
+
+    <pure_gain name="Heading AP Rudder Command Normalizer">
+      <input>fcs/heading-ap-autoswitch</input>
+      <gain>-1</gain>
+      <output>ap/rudder-cmd-norm</output>
+    </pure_gain>
+
+  </channel>
+
+  <channel name="fcs/ap-elevator-coxswain">
+
+    <pure_gain name="fcs/ap-pitch-setpoint-rad">
+      <input> ap/pitch-setpoint-degrees </input>
+      <gain>0.017453</gain>
+    </pure_gain>
+
+    <summer name="fcs/pitch-error">
+      <input> attitude/theta-rad</input>
+      <input> -fcs/ap-pitch-setpoint-rad </input>
+    </summer>
+
+    <pure_gain name="Pitch AP Linear Cmd">
+      <input> fcs/pitch-error </input>
+      <gain>5.0</gain>
+    </pure_gain>
+
+    <integrator name="Pitch AP Error Integrator">
+      <input> fcs/pitch-error </input>
+      <c1> 0.05 </c1>
+      <clipto>
+        <min>-2.0</min>
+        <max> 2.0</max>
+      </clipto>
+    </integrator>
+
+    <pure_gain name="Pitch AP Error Derivator">
+      <input> velocities/thetadot-rad_sec</input>
+      <gain>200.0</gain>
+    </pure_gain>
+
+    <summer name="Pitch AP Error Summer">
+      <input> fcs/pitch-ap-linear-cmd </input>
+      <input> fcs/pitch-ap-error-integrator </input>
+      <input> fcs/pitch-ap-error-derivator </input>
+      <clipto>
+        <min>-1.0</min>
+        <max> 1.0</max>
+      </clipto>
+    </summer>
+
+    <switch name="Pitch AP Autoswitch">
+      <default value="0.0"/>
+      <test logic="AND" value="fcs/pitch-ap-error-summer">
+            ap/elevator-coxswain-active == 1
+      </test>
+    </switch>
+
+    <pure_gain name="Pitch AP Elevator Command Normalizer">
+      <input>fcs/pitch-ap-autoswitch</input>
+      <gain>1</gain>
+      <output>ap/elevator-cmd-norm</output>
+    </pure_gain>
+
+  </channel>
+
+</autopilot>
