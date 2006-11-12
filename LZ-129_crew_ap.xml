@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129_crew_ap.xml,v 1.1 2006-11-11 23:11:12 anders Exp $ -->
+<!-- $Id: LZ-129_crew_ap.xml,v 1.2 2006-11-12 23:27:48 anders Exp $ -->
 <!--
 
   Author:   Anders Gidenstam
@@ -53,39 +53,20 @@
       </clipto>
     </summer>
 
-
-    <pure_gain name="Heading AP Linear Cmd">
+    <pid name="Heading AP PID"> 
       <input> fcs/heading-corrected </input>
-      <gain>1.8</gain>
-    </pure_gain>
-
-    <integrator name="Heading AP Error Integrator">
-      <input> fcs/heading-corrected </input>
-      <c1> 0.00 </c1>
+      <kp>   8.0  </kp>
+      <ki>   0.05 </ki>
+      <kd> 100.5  </kd>
       <clipto>
         <min>-1.0</min>
         <max> 1.0</max>
-      </clipto>
-    </integrator>
-
-    <pure_gain name="Heading AP Error Derivator">
-      <input> velocities/psidot-rad_sec</input>
-      <gain>1.0</gain>
-    </pure_gain>
-
-    <summer name="Heading AP Summer">
-      <input> fcs/heading-ap-linear-cmd </input>
-      <input> fcs/heading-ap-error-integrator </input>
-      <input> fcs/heading-ap-error-derivator </input>
-      <clipto>
-        <min>-1.0</min>
-        <max> 1.0</max>
-      </clipto>
-    </summer>
+      </clipto> 
+    </pid>
 
     <switch name="Heading AP Autoswitch">
       <default value="0.0"/>
-      <test logic="AND" value="fcs/heading-ap-summer">
+      <test logic="AND" value="fcs/heading-ap-pid">
             ap/rudder-coxswain-active == 1
       </test>
     </switch>
@@ -110,38 +91,20 @@
       <input> -fcs/ap-pitch-setpoint-rad </input>
     </summer>
 
-    <pure_gain name="Pitch AP Linear Cmd">
+    <pid name="Pitch AP PID"> 
       <input> fcs/pitch-error </input>
-      <gain>5.0</gain>
-    </pure_gain>
-
-    <integrator name="Pitch AP Error Integrator">
-      <input> fcs/pitch-error </input>
-      <c1> 0.05 </c1>
-      <clipto>
-        <min>-2.0</min>
-        <max> 2.0</max>
-      </clipto>
-    </integrator>
-
-    <pure_gain name="Pitch AP Error Derivator">
-      <input> velocities/thetadot-rad_sec</input>
-      <gain>200.0</gain>
-    </pure_gain>
-
-    <summer name="Pitch AP Error Summer">
-      <input> fcs/pitch-ap-linear-cmd </input>
-      <input> fcs/pitch-ap-error-integrator </input>
-      <input> fcs/pitch-ap-error-derivator </input>
+      <kp>   5.00 </kp>
+      <ki>   0.05 </ki>
+      <kd> 200.00  </kd>
       <clipto>
         <min>-1.0</min>
         <max> 1.0</max>
-      </clipto>
-    </summer>
+      </clipto> 
+    </pid>
 
     <switch name="Pitch AP Autoswitch">
       <default value="0.0"/>
-      <test logic="AND" value="fcs/pitch-ap-error-summer">
+      <test logic="AND" value="fcs/pitch-ap-pid">
             ap/elevator-coxswain-active == 1
       </test>
     </switch>
