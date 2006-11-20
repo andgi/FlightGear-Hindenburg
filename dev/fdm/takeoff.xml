@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
-<runscript name="free flight test">
+<runscript name="take-off test">
   <!--
     This run is for testing lighter-than-air aircraft.
   -->
 
-  <use aircraft="LZ-129" initialize="sim/reset01"/>
+  <use aircraft="LZ-129" initialize="sim/reset00"/>
   <run start="0.0" end="1200" dt="0.00833333">
 
-    <event name="Set initial ballast">
+    <event name="Add initial ballast">
       <notify/>
       <condition>
         sim-time-sec >= 0.0
       </condition>
       <set name="propulsion/ballast-tank[2]/contents-slug"
-           value="2600.0"/>
+           value="4125.0"/>
     </event>
 
+
+<!--
     <event name="engine 1 start">
       <description>Start the engine 1</description>
       <notify/>
@@ -63,7 +65,9 @@
       <set name="propulsion/magneto_cmd"       value="3"/>
       <set name="propulsion/starter_cmd"       value="1"/>
     </event>
+-->
 
+<!--
     <event name="Elevator coxswain activate">
       <description>Activate the elevator coxswain autopilot</description>
       <notify/>
@@ -71,7 +75,7 @@
         sim-time-sec >= 1.0
       </condition>
       <set name="ap/elevator-coxswain-active"  value="1"/>
-      <set name="ap/pitch-setpoint-degrees" value="0"/>
+      <set name="ap/pitch-setpoint-degrees" value="-2"/>
     </event>
 
     <event name="Rudder coxswain activate">
@@ -83,22 +87,23 @@
       <set name="ap/rudder-coxswain-active"   value="1"/>
       <set name="ap/heading-setpoint-degrees" value="0"/>
     </event>
+-->
 
-    <event name="Course set">
+    <!-- event name="Course set">
       <description>Set new heading setpoint</description>
       <notify/>
       <condition>
         sim-time-sec >= 150.0
       </condition>
       <set name="ap/heading-setpoint-degrees" value="20"/>
-    </event>
+    </event -->
 
     <!-- event name="Drop ballast">
       <notify/>
       <condition>
         sim-time-sec >= 200.0
       </condition>
-      <set name="propulsion/ballast-tank[2]/contents-slug"
+      <set name="propulsion/ballast-tank/contents-slug"
            value="180.0" action="FG_RAMP" tc ="300"/>
     </event -->
 
@@ -110,7 +115,6 @@
         <property>propulsion/ballast-tank/contents-slug</property>
         <property>propulsion/ballast-tank[2]/contents-slug</property>
         <property>propulsion/ballast-tank[1]/contents-slug</property>
-        <property>inertia/cg-x-ft</property>
       </notify>
       <condition> sim-time-sec >= simulation/notify-time-trigger </condition>
       <set name="simulation/notify-time-trigger" value="60" type="FG_DELTA"/>
