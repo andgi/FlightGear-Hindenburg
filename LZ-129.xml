@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.17 2006-11-21 00:00:23 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.18 2006-11-21 23:59:44 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -14,7 +14,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.17 2006-11-21 00:00:23 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.18 2006-11-21 23:59:44 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
@@ -62,54 +62,56 @@
  -->
 
  <mass_balance>
+
+  <emptywt unit="KG"> 45000.0 </emptywt>
+  <!-- Source: http://www.luftschiff.de/2_luftschiffe/2_129.htm -->
+
   <!--
    Question: Is the inertia tensors(?) relative the CG or origo of the
              structural frame?
+   Answer: As far as I can tell they are relative to the base GC 
+           since FGMassBalance.cpp uses Steiner's theorem to convert
+           them to the structural(?)/body(?) frame.
 
-   Very rough estimation of Ixx, Iyy and Izz relative the structural frame:
-   Assume the empty weight of is to 60% a cylindrical shell and
-   to 40% a thin rod (i.e. the keel).
+   % Very rough estimation model of the empty CG and inertia tensor.
+   % Assume the empty weight of is to 60% a cylindrical shell and
+   % to 40% a thin rod (i.e. the keel).
+   % The keel is located r meters below the centrum line.
 
    m = 45000.0 % KG
    r = 20.0    % meter
    l = 245     % meter
-   The keel is located r meters below the centrum line.
 
-   Ixx = (0.6*m) * r^2 + \
-         (0.4*m) * r^2
-
-   Iyy = 1/2*(0.6*m) * r^2 + 1/3*(0.6*m)*l^2 + \
-         1/3*(0.4*m)*l^2
-
-   Izz = 1/2*(0.6*m) * r^2 + 1/3*(0.6*m)*l^2 + \
-         1/3*(0.4*m) * l^2
-
-   Ixy = (0.4*m)*r*l/2
-
-   Ixz = (0.4*m)*r*l/2
-
-   Iyz = 0;
-
-   Steiners theorem:
-   Ixx = \bar{Ixx} + m (\bar{y}^2 + \bar{z}^2)
-   Ixy = \bar{Ixy} + m \bar{x} \bar{y}
-
-
-   Very rough estimate of center of gravity (based on the inertial estimate):
+   % Very rough estimate of center of gravity (based on the inertial estimate):
    CGx = l/2
    CGy = 0
    CGz = - 1/6 * pi * r
 
-  -->
-  <ixx unit="KG*M2">  18000000.0 </ixx>
-  <iyy unit="KG*M2"> 905775000.0 </iyy>
-  <izz unit="KG*M2"> 905775000.0 </izz>
-  <ixy unit="KG*M2">  44100000.0 </ixy>
-  <ixz unit="KG*M2">  44100000.0 </ixz>
-  <iyz unit="KG*M2">         0.0 </iyz>
+   % Steiners theorem:
+   % Ixx = \bar{Ixx} + m sqrt(\bar{y}^2 + \bar{z}^2)
+   % Ixy = \bar{Ixy} + m \bar{x} \bar{y}
 
-  <emptywt unit="KG"> 45000.0 </emptywt>
-  <!-- Source: http://www.luftschiff.de/2_luftschiffe/2_129.htm -->
+   % Very rough estimation model of Ixx, Iyy and Izz relative the CG.
+   Ixx = (0.6*m) * r^2 + (0.6*m) * 1/6 * pi * r + \
+         (0.4*m) * r * (1 - 1/6*pi)
+
+   Iyy = 1/2*(0.6*m) * r^2 + 1/12*(0.6*m)*l^2 + (0.6*m) * 1/6 * pi * r + \
+         1/12*(0.4*m)*l^2 + (0.4*m) * r * (1 - 1/6*pi)
+
+   Izz = 1/2*(0.6*m) * r^2 + 1/12*(0.6*m)*l^2 + \
+         1/12*(0.4*m) * l^2
+
+   Ixy = 0
+   Ixz = 0
+   Iyz = 0
+
+  -->
+  <ixx unit="KG*M2">  12540000.0 </ixx>
+  <iyy unit="KG*M2"> 230950000.0 </iyy>
+  <izz unit="KG*M2"> 230493750.0 </izz>
+  <ixy unit="KG*M2">         0.0 </ixy>
+  <ixz unit="KG*M2">         0.0 </ixz>
+  <iyz unit="KG*M2">         0.0 </iyz>
 
   <location name="CG" unit="M">
    <x> 122.500 </x>
@@ -1356,19 +1358,24 @@
 
    <aerosurface_scale name="Elevator Control">
     <input>fcs/pitch-trim-sum</input>
-    <gain>0.01745</gain>
+    <gain>0.5236</gain>
+    <domain>
+     <min>-1</min>
+     <max>1</max>
+    </domain>
     <range>
-     <min>-30</min>
-     <max>30</max>
+     <min>-0.5236</min>
+     <max>0.5236</max>
     </range>
     <output>fcs/elevator-pos-rad</output>
    </aerosurface_scale>
 
    <aerosurface_scale name="Elevator Position Normalized">
-    <input>fcs/elevator-pos-deg</input>
+    <input>fcs/elevator-pos-rad</input>
+    <gain>1.9099</gain>
     <domain>
-     <min>-30</min>
-     <max>30</max>
+     <min>-0.5236</min>
+     <max>0.5236</max>
     </domain>
     <range>
      <min>-1</min>
@@ -1392,19 +1399,24 @@
 
    <aerosurface_scale name="Rudder Control">
     <input>fcs/yaw-trim-sum</input>
-    <gain>0.01745</gain>
+    <gain>0.5236</gain>
+    <domain>
+     <min>-1</min>
+     <max>1</max>
+    </domain>
     <range>
-     <min>-30</min>
-     <max>30</max>
+     <min>-0.5236</min>
+     <max>0.5236</max>
     </range>
     <output>fcs/rudder-pos-rad</output>
    </aerosurface_scale>
 
    <aerosurface_scale name="Rudder Position Normalized">
-    <input>fcs/rudder-pos-deg</input>
+    <input>fcs/rudder-pos-rad</input>
+    <gain>1.9099</gain>
     <domain>
-     <min>-30</min>
-     <max>30</max>
+     <min>-0.5236</min>
+     <max>0.5236</max>
     </domain>
     <range>
      <min>-1</min>
