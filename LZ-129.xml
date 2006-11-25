@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.18 2006-11-21 23:59:44 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.19 2006-11-25 11:02:02 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -14,7 +14,7 @@
  <fileheader>
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.18 2006-11-21 23:59:44 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.19 2006-11-25 11:02:02 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
  </fileheader>
 
@@ -29,13 +29,13 @@
  -->
 
  <metrics>
-  <wingarea unit="FT2"> 0 </wingarea> <!-- Totally off! -->
-  <wingspan unit="FT"> 0 </wingspan> <!-- Totally off! -->
-  <chord unit="M"> 0.0 </chord> <!-- Totally off! -->
-  <htailarea unit="M2"> 500.0 </htailarea> <!-- Totally off! -->
-  <htailarm unit="M"> 216.0 </htailarm> <!-- Totally off! -->
-  <vtailarea unit="M2"> 500.0 </vtailarea> <!-- Totally off! -->
-  <vtailarm unit="M"> 0.0 </vtailarm> <!-- Totally off! -->
+  <wingarea unit="FT2">   0.000000000001 </wingarea> <!-- Totally off! -->
+  <wingspan unit="FT">    0.000000000001 </wingspan> <!-- Totally off! -->
+  <chord unit="M">        0.0 </chord>               <!-- Totally off! -->
+  <htailarea unit="M2"> 500.0 </htailarea>           <!-- Totally off! -->
+  <htailarm unit="M">   216.0 </htailarm>            <!-- Totally off! -->
+  <vtailarea unit="M2"> 500.0 </vtailarea>           <!-- Totally off! -->
+  <vtailarm unit="M"> 0.0 </vtailarm>                <!-- Totally off! -->
   <!-- Total volume vol = 200000 m^2 = 7062940 ft^2 -->
 
   <!-- Aerodynamic Reference Point. Located according to NACA report 432. -->
@@ -121,7 +121,8 @@
 
   <!-- Engine masses -->
   <pointmass name="Engine 3">
-   <!-- Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
+   <!--
+        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
         Zeppelin Museum Friedrichshafen, 1992.
 	The weight of the cooler is not included and needs to be added.
    -->
@@ -133,7 +134,8 @@
    </location>
   </pointmass>
   <pointmass name="Engine 4">
-   <!-- Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
+   <!--
+        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
         Zeppelin Museum Friedrichshafen, 1992.
 	The weight of the cooler is not included and needs to be added.
    -->
@@ -145,7 +147,8 @@
    </location>
   </pointmass>
   <pointmass name="Engine 1">
-   <!-- Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
+   <!--
+        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
         Zeppelin Museum Friedrichshafen, 1992.
 	The weight of the cooler is not included and needs to be added.
    -->
@@ -157,7 +160,8 @@
    </location>
   </pointmass>
   <pointmass name="Engine 2">
-   <!-- Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
+   <!--
+        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
         Zeppelin Museum Friedrichshafen, 1992.
 	The weight of the cooler is not included and needs to be added.
    -->
@@ -327,15 +331,15 @@
 
   <contact type="BOGEY" name="CAR_WHEEL">
    <location unit="M">
-    <x> 43.2 </x>
-    <y> 0.0 </y>
+    <x>  43.2 </x>
+    <y>   0.0 </y>
     <z> -22.41 </z>
    </location>
-   <static_friction> 0.8 </static_friction>
+   <static_friction>  0.8 </static_friction>
    <dynamic_friction> 0.5 </dynamic_friction>
    <rolling_friction> 0.02 </rolling_friction>
-   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 50000 </damping_coeff>
+   <spring_coeff unit="N/M">      250000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 2500000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -344,14 +348,14 @@
   <contact type="BOGEY" name="LOWER_FIN_WHEEL">
    <location unit="M">
     <x> 210.0 </x>
-    <y> 0.0 </y>
+    <y>   0.0 </y>
     <z> -23.5 </z>
    </location>
-   <static_friction> 0.8 </static_friction>
+   <static_friction>  0.8 </static_friction>
    <dynamic_friction> 0.5 </dynamic_friction>
    <rolling_friction> 0.02 </rolling_friction>
-   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 50000 </damping_coeff>
+   <spring_coeff unit="N/M">      250000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 2500000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -363,11 +367,11 @@
     <y> 0.0 </y>
     <z> 0.0 </z>
    </location>
-   <static_friction> 0.2 </static_friction>
+   <static_friction>  0.2 </static_friction>
    <dynamic_friction> 0.2 </dynamic_friction>
    <rolling_friction> 0.2 </rolling_friction>
-   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 50000 </damping_coeff>
+   <spring_coeff unit="N/M">      1000000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 1000000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -376,14 +380,14 @@
   <contact type="BOGEY" name="TAIL">
    <location unit="M">
     <x> 245.430 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
+    <y>   0.0 </y>
+    <z>   0.0 </z>
    </location>
-   <static_friction> 0.2 </static_friction>
+   <static_friction>  0.2 </static_friction>
    <dynamic_friction> 0.2 </dynamic_friction>
    <rolling_friction> 0.2 </rolling_friction>
-   <spring_coeff unit="LBS/FT"> 100000 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 50000 </damping_coeff>
+   <spring_coeff unit="N/M">      1000000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 1000000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -1331,7 +1335,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  60000 </contents>
+   <contents unit="KG">  70000 </contents>
   </ballast>
 
  </propulsion>
