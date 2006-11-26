@@ -1,21 +1,38 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.19 2006-11-25 11:02:02 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.20 2006-11-26 13:36:34 anders Exp $ -->
 <!--
+
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
-  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
-  This file is licensed under the GPL license.
+    Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
 -->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
-<fdm_config name="LZ-126" version="2.0" release="ALPHA"
+<fdm_config name="LZ-129" version="2.0" release="ALPHA"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
+
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.19 2006-11-25 11:02:02 anders Exp $ </version>
-  <description>Experimental JSBSim model of the Zeppelin LZ-129.</description>
+  <version> $Id: LZ-129.xml,v 1.20 2006-11-26 13:36:34 anders Exp $ </version>
+  <description>Experimental JSBSim model of the Zeppelin LZ 129.</description>
+
  </fileheader>
 
  <!--
@@ -29,6 +46,7 @@
  -->
 
  <metrics>
+
   <wingarea unit="FT2">   0.000000000001 </wingarea> <!-- Totally off! -->
   <wingspan unit="FT">    0.000000000001 </wingspan> <!-- Totally off! -->
   <chord unit="M">        0.0 </chord>               <!-- Totally off! -->
@@ -36,7 +54,7 @@
   <htailarm unit="M">   216.0 </htailarm>            <!-- Totally off! -->
   <vtailarea unit="M2"> 500.0 </vtailarea>           <!-- Totally off! -->
   <vtailarm unit="M"> 0.0 </vtailarm>                <!-- Totally off! -->
-  <!-- Total volume vol = 200000 m^2 = 7062940 ft^2 -->
+  <!-- Total gas volume vol = 200000 m^2 = 7062940 ft^2 -->
 
   <!-- Aerodynamic Reference Point. Located according to NACA report 432. -->
   <location name="AERORP" unit="M">
@@ -44,11 +62,13 @@
    <y> 0.0 </y>
    <z> 0.0 </z>
   </location>
+
   <location name="EYEPOINT" unit="M">
    <x> 37.0 </x>
    <y> 0 </y>
    <z> -19.0 </z>
   </location>
+
   <!-- Visual Reference Point -->
   <location name="VRP" unit="M">
    <x> 100.0 </x>
@@ -57,33 +77,65 @@
   </location>
  </metrics>
 
+
  <!--
  ==== Mass balance ==========================================================
  -->
 
  <mass_balance>
 
-  <emptywt unit="KG"> 45000.0 </emptywt>
-  <!-- Source: http://www.luftschiff.de/2_luftschiffe/2_129.htm -->
+  <!--
+      Mass distribution data from "LZ 130 Graf Zeppelin und das Ende der
+      Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
+      Zeppelin Museum Friedrichshafen, 1992.
+
+      Based on a listing of weight savings in the empty weight of LZ 130
+      over LZ 129 (page 74). All weights (masses) are in kg.
+      The numbers for LZ 129 are inferred based on the listed savings.
+
+      Article                         LZ 130        saving         LZ 129
+      Gerippe, Leitwerk, ruder         55460           908          56368  X
+      Hulle m. Anstrich & Verkleidung   7924          1095           9019  X
+      Zellenanlage                     12895           131          13026  X
+      Maschinenanlage[1]               20520         -4819          15701  X
+      Elektrische & F.T.-Anlage         3746          1214           3960
+      Betriebstoffanlage[2]             2333                         2333
+      Wasseranlage[2]                   1422                         1422
+      Apparate, Zuge, etc                257                          257
+      Verankerung                        915                          915  X
+      Fuhrergondel & Steueranlage       1281           -81           1200  X
+      Fahrgastraume                     6262          4346          10608  X
+      Betriebsraume                     1445           511           1956
+
+      Total                           114460          3305         117765
+
+      X   Accounted for in the model.
+      [1] LZ 130 was equipped for water reclamation from the exhaust.
+      [2] I assume this is the empty weight of the tanks and pipes.
+  -->
+
+  <emptywt unit="KG"> 78413.0 </emptywt>
+  <!-- 
+      The empty weight is estimated to consist of
+        The structural parts   (Gerippe, Leitwerk, ruder)           56368
+        The hull covering      (Hulle m. Anstrich & Verkleidung)     9019
+        The (empty) gas cells  (Zellenanlage)                       13026
+
+      The other items in the list above will be represented by point masses.
+  -->
 
   <!--
-   Question: Is the inertia tensors(?) relative the CG or origo of the
-             structural frame?
-   Answer: As far as I can tell they are relative to the base GC 
-           since FGMassBalance.cpp uses Steiner's theorem to convert
-           them to the structural(?)/body(?) frame.
-
-   % Very rough estimation model of the empty CG and inertia tensor.
+   % Very rough estimation model of the empty weight CG and inertia tensor.
    % Assume the empty weight of is to 60% a cylindrical shell and
    % to 40% a thin rod (i.e. the keel).
    % The keel is located r meters below the centrum line.
 
-   m = 45000.0 % KG
+   m = 78413.0 % KG
    r = 20.0    % meter
    l = 245     % meter
 
    % Very rough estimate of center of gravity (based on the inertial estimate):
-   CGx = l/2
+   CGx = l / 2
    CGy = 0
    CGz = - 1/6 * pi * r
 
@@ -106,9 +158,9 @@
    Iyz = 0
 
   -->
-  <ixx unit="KG*M2">  12540000.0 </ixx>
-  <iyy unit="KG*M2"> 230950000.0 </iyy>
-  <izz unit="KG*M2"> 230493750.0 </izz>
+  <ixx unit="KG*M2">  19611000.0 </ixx>
+  <iyy unit="KG*M2"> 402430000.0 </iyy>
+  <izz unit="KG*M2"> 401640000.0 </izz>
   <ixy unit="KG*M2">         0.0 </ixy>
   <ixz unit="KG*M2">         0.0 </ixz>
   <iyz unit="KG*M2">         0.0 </iyz>
@@ -119,53 +171,66 @@
    <z> -10.472 </z>
   </location>
 
-  <!-- Engine masses -->
+  <!-- 
+  === Engines ================================================
+  -->
   <pointmass name="Engine 3">
    <!--
-        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
-        Zeppelin Museum Friedrichshafen, 1992.
-	The weight of the cooler is not included and needs to be added.
+        The engine weight according to "The Story of a Zeppelin Mechanic",
+        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
+        2200 kg excluding the cooler.
+        The total weight of the engine installations in the list above
+        indicates a weight of 3925.2 kg per engine.
    -->
-   <weight unit="KG"> 2200.0 </weight>
+   <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 105.3 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </location>
   </pointmass>
+
   <pointmass name="Engine 4">
    <!--
-        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
-        Zeppelin Museum Friedrichshafen, 1992.
-	The weight of the cooler is not included and needs to be added.
+        The engine weight according to "The Story of a Zeppelin Mechanic",
+        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
+        2200 kg excluding the cooler.
+        The total weight of the engine installations in the list above
+        indicates a weight of 3925.2 kg per engine.
    -->
-   <weight unit="KG"> 2200.0 </weight>
+   <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 105.3 </x>
     <y> 20.25 </y>
     <z> -13.77 </z>
    </location>
   </pointmass>
+
   <pointmass name="Engine 1">
    <!--
-        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
-        Zeppelin Museum Friedrichshafen, 1992.
-	The weight of the cooler is not included and needs to be added.
+        The engine weight according to "The Story of a Zeppelin Mechanic",
+        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
+        2200 kg excluding the cooler.
+        The total weight of the engine installations in the list above
+        indicates a weight of 3925.2 kg per engine.
    -->
-   <weight unit="KG"> 2200.0 </weight>
+   <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 152.55 </x>
     <y> -15.255 </y>
     <z> -17.82 </z>
    </location>
   </pointmass>
+
   <pointmass name="Engine 2">
    <!--
-        Weight from "The Story of a Zeppelin Mechanic", Eugen Bentele,
-        Zeppelin Museum Friedrichshafen, 1992.
-	The weight of the cooler is not included and needs to be added.
+        The engine weight according to "The Story of a Zeppelin Mechanic",
+        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
+        2200 kg excluding the cooler.
+        The total weight of the engine installations in the list above
+        indicates a weight of 3925.2 kg per engine.
    -->
-   <weight unit="KG"> 2200.0 </weight>
+   <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 152.55 </x>
     <y> 15.255 </y>
@@ -173,9 +238,22 @@
    </location>
   </pointmass>
 
-  <!-- Add fresh water tanks, oil tanks etc here! -->
+
+  <!-- 
+  === Other point masses =====================================
+  -->
+  <!-- Add fresh/waste water tanks, oil tanks etc here! -->
 
   <!-- In cell 15 -->
+
+  <pointmass name="Anchor point">
+   <weight unit="KG"> 915.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+  </pointmass>
 
   <pointmass name="Food storage (max 500KG)">
    <weight unit="KG"> 500.0 </weight>
@@ -195,6 +273,16 @@
   </pointmass>
 
   <!-- In cell 14 -->
+
+  <pointmass name="Control car">
+   <weight unit="KG"> 1200.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x>  43.2 </x>
+    <y>   0.0 </y>
+    <z> -20.0 </z>
+   </location>
+  </pointmass>
+
   <!-- In cell 13 -->
 
   <pointmass name="Waste water (max 2500KG)">
@@ -216,7 +304,23 @@
 
   <!-- In cell 12 -->
 
-   <!-- Passenger compartment. -->
+  <!-- Passenger compartment. -->
+  <pointmass name="Passenger compartment port side">
+   <weight unit="KG"> 5340 </weight>
+   <location name="POINTMASS" unit="M">
+    <x>  65.0 </x>
+    <y> -10.0 </y>
+    <z> -19.575 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Passenger compartment starboard side">
+   <weight unit="KG"> 5340.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x>  65.0 </x>
+    <y>  10.0 </y>
+    <z> -19.575 </z>
+   </location>
+  </pointmass>
 
   <!-- In cell 11 -->
 
@@ -329,6 +433,9 @@
 
  <ground_reactions>
 
+  <!--
+  === Landing gears ===================================================
+  -->
   <contact type="BOGEY" name="CAR_WHEEL">
    <location unit="M">
     <x>  43.2 </x>
@@ -361,6 +468,10 @@
    <retractable>0</retractable>
   </contact>
 
+  <!--
+  === Other contact points ============================================
+  -->
+  <!-- These should induce structural failure. -->
   <contact type="BOGEY" name="NOSE">
    <location unit="M">
     <x> 0.0 </x>
@@ -402,10 +513,10 @@
  <propulsion>
  
   <!--
-  ==== Engines ===========================================================
+  === Engines ===============================================
   -->
-
-  <!-- Engine data from "The Story of a Zeppelin Mechanic", Eugen Bentele,
+  <!--
+       Engine data from "The Story of a Zeppelin Mechanic", Eugen Bentele,
        Zeppelin Museum Friedrichshafen, 1992.
 
        Manufacturer:        Daimler Bentz AG
@@ -429,8 +540,23 @@
        Notes: 2 input, 2 output valves. No supercharger. Could rotate
               in either dricetion. Compressed air starter.
   -->
+  <!--
+      Engine data from "LZ 130 Graf Zeppelin und das Ende der
+      Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
+      Zeppelin Museum Friedrichshafen, 1992.
 
-  <!-- NOTE: As a temporary measure the engines are borrowed from the
+      Daimler Bentz LOF 6
+      Max power:            885 kW (1200 HP) at 1600 rpm
+      Cruise power:         660 kW (900 HP) at 1400 rpm 
+
+      Diesel consumption:   max 245 g/kWh (180 g/HPh)
+      Lub. oil consumption: max   4 g/kWh (3 g/HPh)
+
+      Total diesel fuel:    ca 80000 dm^3
+      Total lub. oil:       ca  4500 dm^3
+  -->
+  <!--
+       NOTE: As a temporary measure the engines are borrowed from the
              Boeing 314A.
              The engine type is WrightGR-2600 instead of the
 	     Daimler-Benz DB 620 it should be.	     
@@ -693,14 +819,15 @@
   </engine>
 
   <!--
-  ==== Fuel tanks ========================================================
+  === Fuel tanks ============================================
   -->
   
   <!-- Fuel tanks along the keel walk way -->
 
-  <!-- Note: The capacity numbers should be in liters
+  <!--
+       NOTE: The capacity numbers should be in liters
              Assumption: 1 liter (= 0.001 m^3) = 1 kg
-   -->
+  -->
 
   <!-- In cell 15 -->
 
@@ -1076,7 +1203,7 @@
   </tank>
 
   <!--
-  ==== Gas cells =========================================================
+  === Gas cells ==============================================
   -->
 
   <!-- Cell 1 -->
@@ -1304,7 +1431,7 @@
   </gas_cell>
 
   <!--
-  ==== Ballast ===========================================================
+  === Ballast ================================================
   -->
   <!-- Experimental ballast setup. -->
   <!-- Forward ballast -->
@@ -1315,7 +1442,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  20000 </contents>
+   <contents unit="KG">  14000 </contents>
   </ballast>
   <!-- Aft ballast -->
   <ballast type="WATER">
@@ -1325,7 +1452,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  11250 </contents>
+   <contents unit="KG">   8250 </contents>
   </ballast>
   <!-- Center ballast -->
   <ballast type="WATER">
@@ -1335,7 +1462,7 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  70000 </contents>
+   <contents unit="KG">  18000 </contents>
   </ballast>
 
  </propulsion>
@@ -1348,7 +1475,9 @@
 
  <flight_control name="FGFCS">
 
-  <!-- ================================================== -->
+  <!--
+  === Pitch ==================================================
+  -->
   <channel name="Pitch">
    <summer name="Pitch Trim Sum">
     <input>fcs/elevator-cmd-norm</input>
@@ -1389,7 +1518,9 @@
    </aerosurface_scale>
   </channel>
 
-  <!-- ================================================== -->
+  <!--
+  === Yaw ====================================================
+  -->
   <channel name="Yaw">
    <summer name="Yaw Trim Sum">
     <input>fcs/rudder-cmd-norm</input>
@@ -1439,7 +1570,9 @@
 
  <aerodynamics>
 
-  <!-- Forces ================================================ -->
+  <!--
+  === Forces =================================================
+  -->
 
   <!-- ================================================== -->
   <axis name="DRAG">

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129_crew_ap.xml,v 1.2 2006-11-12 23:27:48 anders Exp $ -->
+<!-- $Id: LZ-129_crew_ap.xml,v 1.3 2006-11-26 13:36:35 anders Exp $ -->
 <!--
 
   Author:   Anders Gidenstam
@@ -21,6 +21,7 @@
   <!-- SENSORS -->
 
   <!-- CHANNELS -->
+
   <channel name="fcs/ap-rudder-coxswain">
 
     <!-- The heading error chain is from c172ap.xml by Jon Berndt. -->
@@ -95,7 +96,7 @@
       <input> fcs/pitch-error </input>
       <kp>   5.00 </kp>
       <ki>   0.05 </ki>
-      <kd> 200.00  </kd>
+      <kd> 100.00  </kd>
       <clipto>
         <min>-1.0</min>
         <max> 1.0</max>
@@ -114,6 +115,10 @@
       <gain>1</gain>
       <output>ap/elevator-cmd-norm</output>
     </pure_gain>
+
+  </channel>
+
+  <channel name="fcs/ap-boyancy-weigh-off">
 
   </channel>
 
