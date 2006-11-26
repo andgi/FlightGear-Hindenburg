@@ -12,8 +12,41 @@
       <condition>
         sim-time-sec >= 0.0
       </condition>
+      <set name="propulsion/ballast-tank[0]/contents-slug"
+           value="265.0"/>
       <set name="propulsion/ballast-tank[2]/contents-slug"
-           value="2600.0"/>
+           value="420.0"/>
+      <set name="propulsion/ballast-tank[1]/contents-slug"
+           value="180.0"/>
+    </event>
+
+    <event name="Elevator coxswain activate">
+      <description>Activate the elevator coxswain autopilot</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 1.0
+      </condition>
+      <set name="ap/elevator-coxswain-active"  value="1"/>
+      <set name="ap/pitch-setpoint-degrees" value="0"/>
+    </event>
+
+    <event name="Rudder coxswain activate">
+      <description>Activate the rudder coxswain autopilot</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 1.0
+      </condition>
+      <set name="ap/rudder-coxswain-active"   value="1"/>
+      <set name="ap/heading-setpoint-degrees" value="0"/>
+    </event>
+
+    <event name="Course set">
+      <description>Set new heading setpoint</description>
+      <notify/>
+      <condition>
+        sim-time-sec >= 150.0
+      </condition>
+      <set name="ap/heading-setpoint-degrees" value="20"/>
     </event>
 
     <event name="engine 1 start">
@@ -62,35 +95,6 @@
       <set name="fcs/mixture-cmd-norm[3]"      value="0.87" action="FG_RAMP" tc ="0.5"/>
       <set name="propulsion/magneto_cmd"       value="3"/>
       <set name="propulsion/starter_cmd"       value="1"/>
-    </event>
-
-    <event name="Elevator coxswain activate">
-      <description>Activate the elevator coxswain autopilot</description>
-      <notify/>
-      <condition>
-        sim-time-sec >= 1.0
-      </condition>
-      <set name="ap/elevator-coxswain-active"  value="1"/>
-      <set name="ap/pitch-setpoint-degrees" value="0"/>
-    </event>
-
-    <event name="Rudder coxswain activate">
-      <description>Activate the rudder coxswain autopilot</description>
-      <notify/>
-      <condition>
-        sim-time-sec >= 1.0
-      </condition>
-      <set name="ap/rudder-coxswain-active"   value="1"/>
-      <set name="ap/heading-setpoint-degrees" value="0"/>
-    </event>
-
-    <event name="Course set">
-      <description>Set new heading setpoint</description>
-      <notify/>
-      <condition>
-        sim-time-sec >= 150.0
-      </condition>
-      <set name="ap/heading-setpoint-degrees" value="20"/>
     </event>
 
     <!-- event name="Drop ballast">
