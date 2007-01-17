@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.12 2007-01-17 14:00:51 anders Exp $ -->
+<!-- $Id: AI_LZ-129_moored.xml,v 1.2 2007-01-17 14:00:51 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -10,11 +10,11 @@
  <!-- The hull. -->
  <path>LZ-129_hull.ac</path>
  <offsets>
-  <x-m> -100.0 </x-m>
+  <x-m> 0.0 </x-m>
   <y-m> 0.0 </y-m>
   <z-m> 0.0 </z-m>
  </offsets>
-
+ 
  <!-- The control car -->
  <model>
   <name>Control car</name>
@@ -23,29 +23,6 @@
    <x-m> 0.0 </x-m>
    <y-m> 0.0 </y-m>
    <z-m> 0.0 </z-m>
-  </offsets>
- </model>
-
- <!-- The steering wheel -->
- <model>
-  <name>Steering wheel</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
-  <offsets>
-   <x-m> 38.2 </x-m>
-   <y-m>  0.0 </y-m>
-   <z-m> -19.50 </z-m>
-  </offsets>
- </model>
-
- <!-- The elevator wheel -->
- <model>
-  <name>Elevator wheel</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
-  <offsets>
-   <heading-deg>90</heading-deg>
-   <x-m> 40.10 </x-m>
-   <y-m> -1.1 </y-m>
-   <z-m> -19.50 </z-m>
   </offsets>
  </model>
 
@@ -128,52 +105,6 @@
   </offsets>
  </model>
 
- <!-- ======================================= -->
- <!-- panel models (X/Y/Z depth/width/height) -->
- <!-- ======================================= -->
- 
- <panel>
-   <!-- Temporary panel. -->
-   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
-   <name>RudderCoxswainPanel</name>
-   <bottom-left>
-    <x-m> 38.11 </x-m>
-    <y-m> -0.850 </y-m>
-    <z-m> -20.3275 </z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m> 38.11 </x-m>
-    <y-m> 0.895 </y-m>
-    <z-m> -20.3275 </z-m>
-   </bottom-right>
-   <top-left>
-    <x-m> 37.81 </x-m>
-    <y-m> -0.850 </y-m>
-    <z-m> -19.455 </z-m>
-   </top-left>
- </panel>
-
- <panel>
-   <!-- Temporary panel. -->
-   <path>Aircraft/Boeing314/Panels/Boeing314A-radio.xml</path>
-   <name>NavigatorPanel</name>
-   <bottom-left>
-    <x-m> 41.10 </x-m>
-    <y-m> -0.75 </y-m>
-    <z-m> -19.63 </z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m> 41.10 </x-m>
-    <y-m> -0.050 </y-m>
-    <z-m> -19.63 </z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>  41.10 </x-m>
-    <y-m> -0.75 </y-m>
-    <z-m> -19.28 </z-m>
-   </top-left>
- </panel>
-
  <!-- Animations ======================================================== -->
  
  <!-- LOD for the model as a whole -->
@@ -183,13 +114,25 @@
   <max-m>10000</max-m>
  </animation>
 
-<!-- PROPELLERS. NOTE: Temporary animations borrowed from the
-      Boeing 314. -->
-
-<!-- assume 1/7 gear ratio -->
-
- <!-- 1. -->
  <animation>
+  <type>rotate</type>
+  <property>/environment/wind-from-heading-deg</property>
+  <offset-deg>0</offset-deg>
+  <factor>-1</factor>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+ </animation>
+
+ <!-- Propeller 1. -->
+  <animation>
   <type>spin</type>
   <object-name>Propeller1</object-name>
   <property>engines/engine[0]/rpm</property>
@@ -264,42 +207,6 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>Steering wheel</object-name>
-  <property>controls/flight/rudder</property>
-  <factor>-250.0</factor>
-  <center>
-   <x-m> 38.2 </x-m>
-   <y-m>  0.0 </y-m>
-   <z-m> -19.50 </z-m>
-  </center>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>Elevator wheel</object-name>
-  <property>controls/flight/elevator</property>
-  <factor>-250.0</factor>
-  <center>
-   <x-m> 40.10 </x-m>
-   <y-m> -1.1 </y-m>
-   <z-m> -19.50 </z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>1.0</y>
-   <z>0.0</z>
-  </axis>
- </animation>
-
- <!-- Control surfaces -->
-
- <animation>
-  <type>rotate</type>
   <object-name>Elevators</object-name>
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
@@ -356,23 +263,6 @@
    <y>0.0</y>
    <z>1.0</z>
   </axis>
- </animation>
-
- <!-- LODs -->
-
- <!-- Hide panels in outside views. -->
-
- <animation>
-  <type>range</type>
-  <object-name>RudderCoxswainPanel</object-name>
-  <min-m>0</min-m>
-  <max-m>45</max-m>
- </animation>
- <animation>
-  <type>range</type>
-  <object-name>NavigatorPanel</object-name>
-  <min-m>0</min-m>
-  <max-m>48</max-m>
  </animation>
 
 </PropertyList>
