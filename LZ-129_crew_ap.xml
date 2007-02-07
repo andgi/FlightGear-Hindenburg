@@ -1,11 +1,25 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129_crew_ap.xml,v 1.3 2006-11-26 13:36:35 anders Exp $ -->
+<!-- $Id: LZ-129_crew_ap.xml,v 1.4 2007-02-07 23:49:28 anders Exp $ -->
 <!--
 
-  Author:   Anders Gidenstam
-  Date:     11 November 2006
-  Function: Simulation of the rudder and elevator coxswains etc on the LZ-129.
+  LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
+    Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
 -->
 
 <autopilot name="LZ-129 Crew Autopilot">
@@ -56,25 +70,43 @@
 
     <pid name="Heading AP PID"> 
       <input> fcs/heading-corrected </input>
-      <kp>   8.0  </kp>
-      <ki>   0.05 </ki>
-      <kd> 100.5  </kd>
-      <clipto>
+      <kp>  100.00 </kp>
+      <ki>    0.10 </ki>
+      <kd>    0.00 </kd>
+     <clipto>
         <min>-1.0</min>
         <max> 1.0</max>
       </clipto> 
     </pid>
 
+    <pid name="Yaw damper PID"> 
+      <input> aero/beta-deg </input>
+      <kp>    0.50  </kp>
+      <ki>    0.001 </ki>
+      <kd>    0.000 </kd>
+     <clipto>
+        <min>-1.0</min>
+        <max> 1.0</max>
+      </clipto> 
+    </pid>
+
+    <summer name="fcs/heading-ap-sum">
+      <!-- input> -fcs/heading-ap-pid </input -->
+      <input> -fcs/yaw-damper-pid </input>
+    </summer>
+
     <switch name="Heading AP Autoswitch">
       <default value="0.0"/>
-      <test logic="AND" value="fcs/heading-ap-pid">
+      <test logic="AND" value="fcs/heading-ap-sum">
             ap/rudder-coxswain-active == 1
+            fcs/rudder-cmd-norm gt -0.1
+            fcs/rudder-cmd-norm lt 0.1
       </test>
     </switch>
 
     <pure_gain name="Heading AP Rudder Command Normalizer">
       <input>fcs/heading-ap-autoswitch</input>
-      <gain>-1</gain>
+      <gain>1</gain>
       <output>ap/rudder-cmd-norm</output>
     </pure_gain>
 
@@ -94,9 +126,9 @@
 
     <pid name="Pitch AP PID"> 
       <input> fcs/pitch-error </input>
-      <kp>   5.00 </kp>
-      <ki>   0.05 </ki>
-      <kd> 100.00  </kd>
+      <kp> 500.00 </kp>
+      <ki>   0.00 </ki>
+      <kd>  20.00  </kd>
       <clipto>
         <min>-1.0</min>
         <max> 1.0</max>

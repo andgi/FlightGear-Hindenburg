@@ -27,7 +27,7 @@
         sim-time-sec >= 1.0
       </condition>
       <set name="ap/elevator-coxswain-active"  value="1"/>
-      <set name="ap/pitch-setpoint-degrees" value="0"/>
+      <set name="ap/pitch-setpoint-degrees" value="-1"/>
     </event>
 
     <event name="Rudder coxswain activate">
@@ -37,7 +37,7 @@
         sim-time-sec >= 1.0
       </condition>
       <set name="ap/rudder-coxswain-active"   value="1"/>
-      <set name="ap/heading-setpoint-degrees" value="0"/>
+      <set name="ap/heading-setpoint-degrees" value="200"/>
     </event>
 
     <event name="Course set">
@@ -46,7 +46,7 @@
       <condition>
         sim-time-sec >= 150.0
       </condition>
-      <set name="ap/heading-setpoint-degrees" value="20"/>
+      <set name="ap/heading-setpoint-degrees" value="200"/>
     </event>
 
     <event name="engine 1 start">
@@ -105,6 +105,42 @@
       <set name="propulsion/ballast-tank[2]/contents-slug"
            value="180.0" action="FG_RAMP" tc ="300"/>
     </event -->
+
+    <event name="Start turn">
+      <notify/>
+      <condition>
+        sim-time-sec >= 600.0
+      </condition>
+      <set name="fcs/rudder-cmd-norm"
+           value="0.3"/>
+    </event>
+
+    <event name="Neutral rudder">
+      <notify/>
+      <condition>
+        sim-time-sec >= 615.0
+      </condition>
+      <set name="fcs/rudder-cmd-norm"
+           value="0.0"/>
+    </event>
+   
+    <event name="Opposite rudder">
+      <notify/>
+      <condition>
+        sim-time-sec >= 730.0
+      </condition>
+      <set name="fcs/rudder-cmd-norm"
+           value="-0.0"/>
+    </event>
+
+    <event name="Neutral rudder">
+      <notify/>
+      <condition>
+        sim-time-sec >= 735.0
+      </condition>
+      <set name="fcs/rudder-cmd-norm"
+           value="0.0"/>
+    </event>
 
     <event name="Time Notify" type="FG_DELTA" persistent="true">
       <description>Output message at 100 second intervals</description>
