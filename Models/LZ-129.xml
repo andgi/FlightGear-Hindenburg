@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.12 2007-01-17 14:00:51 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.13 2007-02-10 23:15:59 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -18,7 +18,7 @@
  <!-- The control car -->
  <model>
   <name>Control car</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_car_no_moving_parts.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_car_no_moving_parts.ac</path>
   <offsets>
    <x-m> 0.0 </x-m>
    <y-m> 0.0 </y-m>
@@ -29,7 +29,7 @@
  <!-- The steering wheel -->
  <model>
   <name>Steering wheel</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
   <offsets>
    <x-m> 38.2 </x-m>
    <y-m>  0.0 </y-m>
@@ -40,7 +40,7 @@
  <!-- The elevator wheel -->
  <model>
   <name>Elevator wheel</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
   <offsets>
    <heading-deg>90</heading-deg>
    <x-m> 40.10 </x-m>
@@ -52,7 +52,7 @@
  <!-- The engine cars -->
  <model>
   <name>Engine cars</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_engines.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_engines.ac</path>
   <offsets>
    <x-m> 0.0 </x-m>
    <y-m> 0.0 </y-m>
@@ -63,7 +63,7 @@
  <!-- The elevators -->
  <model>
   <name>Elevators</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_elevators.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_elevators.ac</path>
   <offsets>
    <x-m> 227.270 </x-m>
    <y-m> 0.0 </y-m>
@@ -74,7 +74,7 @@
  <!-- The rudders -->
  <model>
   <name>Rudders</name>
-  <path archive="y">Aircraft/LZ-129/Models/LZ-129_rudders.ac</path>
+  <path>Aircraft/LZ-129/Models/LZ-129_rudders.ac</path>
   <offsets>
    <x-m> 227.270 </x-m>
    <y-m> 0.0 </y-m>
@@ -88,8 +88,9 @@
  -->
  <model>
   <name>Propeller1</name>
-  <path archive="y">Aircraft/LZ-129/Models/propeller1.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller2.ac</path>
   <offsets>
+   <heading-deg>180</heading-deg>
    <x-m> 155.720 </x-m>
    <y-m> -15.390 </y-m>
    <z-m> -17.820 </z-m>
@@ -98,7 +99,7 @@
 
  <model>
   <name>Propeller2</name>
-  <path archive="y">Aircraft/LZ-129/Models/propeller2.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller2.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <x-m> 155.720 </x-m>
@@ -109,8 +110,9 @@
 
  <model>
   <name>Propeller3</name>
-  <path archive="y">Aircraft/LZ-129/Models/propeller3.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller2.ac</path>
   <offsets>
+   <heading-deg>180</heading-deg>
    <x-m> 107.525 </x-m>
    <y-m> -20.250 </y-m>
    <z-m> -14.310 </z-m>
@@ -119,7 +121,7 @@
 
  <model>
   <name>Propeller4</name>
-  <path archive="y">Aircraft/LZ-129/Models/propeller4.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller4.ac</path>
   <offsets>
    <heading-deg>180.0</heading-deg>
    <x-m> 107.525 </x-m>
@@ -200,9 +202,9 @@
    <z-m> -17.820 </z-m>
   </center>
   <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
+   <x> 1.0 </x>
+   <y> 0.0</y>
+   <z> 0.0 </z>
   </axis>
  </animation>
 
@@ -218,9 +220,9 @@
    <z-m> -17.820 </z-m>
   </center>
   <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
   </axis>
  </animation>
 
@@ -236,9 +238,9 @@
    <z-m> -14.310 </z-m>
   </center>
   <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
   </axis>
  </animation>
 
@@ -249,14 +251,14 @@
   <property>engines/engine[3]/rpm</property>
   <factor>-0.5625</factor>
   <center>
-   <x-m> 107.325 </x-m>
-   <y-m>  20.250 </y-m>
-   <z-m> -14.310 </z-m>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
   </center>
   <axis>
-   <x>1</x>
-   <y>0</y>
-   <z>0</z>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
   </axis>
  </animation>
 
@@ -265,7 +267,7 @@
  <animation>
   <type>rotate</type>
   <object-name>Steering wheel</object-name>
-  <property>controls/flight/rudder</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>-250.0</factor>
   <center>
    <x-m> 38.2 </x-m>
@@ -282,7 +284,7 @@
  <animation>
   <type>rotate</type>
   <object-name>Elevator wheel</object-name>
-  <property>controls/flight/elevator</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>-250.0</factor>
   <center>
    <x-m> 40.10 </x-m>
