@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.6 2006-04-18 22:23:36 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.7 2007-02-10 23:12:32 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -18,14 +18,6 @@
   <presets>
    <onground>true</onground>
   </presets>
-<!--
-  <presets>
-   <onground>false</onground>
-   <speed-set>knots</speed-set>
-   <airspeed-kt type="double">0.0</airspeed-kt>
-   <altitude-ft type="double">200.0</altitude-ft>
-  </presets>
--->
  </sim>
 
  <!-- Temporary solution. -->
@@ -253,6 +245,55 @@
                0.00);
        setprop("/fdm/jsbsim/propulsion/gas-cell/valve_open",
                0.00);
+     </script>
+    </binding>
+   </key>
+
+   <!-- Crew commands ========================================== -->
+   <key n="69">
+    <name>E</name>
+    <desc>Activate elevator coxswain.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       setprop("/fdm/jsbsim/ap/elevator-coxswain-active",
+               1);
+     </script>
+    </binding>
+   </key>
+
+   <key n="101">
+    <name>e</name>
+    <desc>Deativate elevator coxswain.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       setprop("/fdm/jsbsim/ap/elevator-coxswain-active",
+               0);
+     </script>
+    </binding>
+   </key>
+
+   <key n="82">
+    <name>R</name>
+    <desc>Activate rudder coxswain.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       setprop("/fdm/jsbsim/ap/rudder-coxswain-active",
+               1);
+     </script>
+    </binding>
+   </key>
+ 
+   <key n="114">
+    <name>r</name>
+    <desc>Deactivate rudder coxswain.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       setprop("/fdm/jsbsim/ap/rudder-coxswain-active",
+               0);
      </script>
     </binding>
    </key>
