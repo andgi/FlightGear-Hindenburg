@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.5 2006-04-17 22:40:49 anders Exp $ -->
+<!-- $Id: help.xml,v 1.6 2007-02-11 00:13:12 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -22,7 +22,7 @@
  </key>
  <key>
   <name>S</name>
-  <desc>Drop foreballast in 1% decrements.</desc>
+  <desc>Drop fore ballast in 1% decrements.</desc>
  </key>
  <key>
   <name>d</name>
@@ -51,6 +51,14 @@
  <key>
   <name>g</name>
   <desc>Close aft gas valves.</desc>
+ </key>
+ <key>
+  <name>E/e</name>
+  <desc>Enable/disable elevator coxswain.</desc>
+ </key>
+ <key>
+  <name>R/r</name>
+  <desc>Enable/disable rudder coxswain.</desc>
  </key>
  <!-- Handling instructions. -->
  <line>Take-off</line>
