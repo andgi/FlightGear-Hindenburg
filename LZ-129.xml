@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.23 2007-02-10 21:53:04 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.24 2007-02-11 00:22:15 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.23 2007-02-10 21:53:04 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.24 2007-02-11 00:22:15 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ 129.</description>
 
  </fileheader>
@@ -1846,9 +1846,10 @@
     <description>Roll_moment_due_to_roll_rate_(damping)</description>
     <!-- The current version is just a hack to make the craft stable. -->
     <product>
-     <value> -10000000.0 </value>
-     <!--property>aero/bi2vel</property-->
+     <!-- property>aero/qbar-psf</property -->
+     <!-- property>aero/bi2vel</property -->
      <property>velocities/p-aero-rad_sec</property>
+     <value> -1000000.0 </value>
     </product>
    </function>
 
@@ -1861,9 +1862,10 @@
     <description>Pitch_moment_due_to_pitch_rate_(damping)</description>
     <!-- The current version is just a hack to make the craft stable. -->
     <product>
-     <value> -500000.0 </value>
-     <!--property>aero/ci2vel</property-->
+     <!-- property>aero/qbar-psf</property -->
+     <!-- property>aero/ci2vel</property -->
      <property>velocities/q-aero-rad_sec</property>
+     <value> -5000000.0 </value>
     </product>
    </function>
 
@@ -1953,9 +1955,10 @@
     <description>Yaw_moment_due_to_yaw_rate_(damping)</description>
     <!-- The current version is just a hack to make the craft stable. -->
     <product>
-     <value> -500000.0 </value>
-     <!--property>aero/bi2vel</property-->
+     <!-- property>aero/qbar-psf</property -->
+     <!-- property>aero/ai2vel</property -->
      <property>velocities/r-aero-rad_sec</property>
+     <value> -5000000.0 </value>
     </product>
    </function>
 
