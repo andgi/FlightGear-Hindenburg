@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.6 2007-02-11 00:13:12 anders Exp $ -->
+<!-- $Id: help.xml,v 1.7 2007-05-13 22:20:19 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -35,6 +35,10 @@
  <key>
   <name>W</name>
   <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+ </key>
+ <key>
+  <name>w</name>
+  <desc>Show current on-ground weight.</desc>
  </key>
  <key>
   <name>F</name>

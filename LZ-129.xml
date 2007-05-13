@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.25 2007-02-25 21:34:07 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.26 2007-05-13 22:20:19 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.25 2007-02-25 21:34:07 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.26 2007-05-13 22:20:19 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ 129.</description>
 
  </fileheader>
@@ -84,35 +84,35 @@
 
  <mass_balance>
 
-  <!--
-      Mass distribution data from "LZ 130 Graf Zeppelin und das Ende der
-      Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
-      Zeppelin Museum Friedrichshafen, 1992.
+  <documentation>
+   Mass distribution data from "LZ 130 Graf Zeppelin und das Ende der
+   Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
+   Zeppelin Museum Friedrichshafen, 1992.
 
-      Based on a listing of weight savings in the empty weight of LZ 130
-      over LZ 129 (page 74). All weights (masses) are in kg.
-      The numbers for LZ 129 are inferred based on the listed savings.
+   Based on a listing of weight savings in the empty weight of LZ 130
+   over LZ 129 (page 74). All weights (masses) are in kg.
+   The numbers for LZ 129 are inferred based on the listed savings.
 
-      Article                         LZ 130        saving         LZ 129
-      Gerippe, Leitwerk, ruder         55460           908          56368  X
-      Hulle m. Anstrich & Verkleidung   7924          1095           9019  X
-      Zellenanlage                     12895           131          13026  X
-      Maschinenanlage[1]               20520         -4819          15701  X
-      Elektrische & F.T.-Anlage         3746          1214           3960
-      Betriebstoffanlage[2]             2333                         2333
-      Wasseranlage[2]                   1422                         1422
-      Apparate, Zuge, etc                257                          257
-      Verankerung                        915                          915  X
-      Fuhrergondel & Steueranlage       1281           -81           1200  X
-      Fahrgastraume                     6262          4346          10608  X
-      Betriebsraume                     1445           511           1956
+    Article                         LZ 130        saving         LZ 129
+    Gerippe, Leitwerk, ruder         55460           908          56368  X
+    Hulle m. Anstrich u. Verkleidung  7924          1095           9019  X
+    Zellenanlage                     12895           131          13026  X
+    Maschinenanlage[1]               20520         -4819          15701  X
+    Elektrische u. F.T.-Anlage        3746          1214           3960
+    Betriebstoffanlage[2]             2333                         2333
+    Wasseranlage[2]                   1422                         1422
+    Apparate, Zuge, etc                257                          257
+    Verankerung                        915                          915  X
+    Fuhrergondel u. Steueranlage      1281           -81           1200  X
+    Fahrgastraume                     6262          4346          10608  X
+    Betriebsraume                     1445           511           1956
 
-      Total                           114460          3305         117765
+    Total                           114460          3305         117765
 
-      X   Accounted for in the model.
-      [1] LZ 130 was equipped for water reclamation from the exhaust.
-      [2] I assume this is the empty weight of the tanks and pipes.
-  -->
+   X   Accounted for in the model.
+  [1] LZ 130 was equipped for water reclamation from the exhaust.
+  [2] I assume this is the empty weight of the tanks and pipes.
+  </documentation>
 
   <emptywt unit="KG"> 78413.0 </emptywt>
   <!-- 

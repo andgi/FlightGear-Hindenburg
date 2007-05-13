@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-common.xml,v 1.10 2006-05-01 22:58:19 anders Exp $ -->
+<!-- $Id: LZ-129-common.xml,v 1.11 2007-05-13 22:20:18 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
@@ -11,7 +11,7 @@
 
  <sim>
 
-  <description>LZ-129 Hindenburg</description>
+  <description>LZ 129 Hindenburg</description>
   <author>Anders Gidenstam</author>
   <status>experimental</status>
   <aircraft-version>0.1</aircraft-version>
@@ -35,9 +35,7 @@
   </view>
 
   <!-- Define extra views. -->
-  <number-views type="int">11</number-views>
-
-  <view n="10">
+  <view n="110">
    <name>Elevator Coxswain View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -65,7 +63,7 @@
    </config>
   </view>
 
-  <view n="9">
+  <view n="109">
    <name>Radio Operator / Navigator View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -93,7 +91,7 @@
    </config>
   </view>
 
-  <view n="8">
+  <view n="108">
    <name>Control Car Rear View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -121,7 +119,7 @@
    </config>
   </view>
 
-  <view n="7">
+  <view n="107">
    <name>Engine Car 3 View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -149,7 +147,7 @@
    </config>
   </view>
 
-  <view n="6">
+  <view n="106">
    <name>Engine Car 2 View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>

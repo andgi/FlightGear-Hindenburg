@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.7 2007-02-10 23:12:32 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.8 2007-05-13 22:20:19 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -10,7 +10,7 @@
 
  <sim>
 
-  <description>LZ-129 Hindenburg (using the experimental LTA JSBSim FDM)</description>
+  <description>LZ 129 Hindenburg (using the experimental LTA JSBSim FDM)</description>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -18,6 +18,17 @@
   <presets>
    <onground>true</onground>
   </presets>
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+<!--
+  <instrumentation>
+   <path>Aircraft/Submarine_Scout/Systems/instrumentation.xml</path>
+  </instrumentation>
+-->
  </sim>
 
  <!-- Temporary solution. -->
@@ -29,31 +40,26 @@
  <nasal>
   <WeighOff>
    <script>
-    printgearforce = func {
-      gf = getprop("/fdm/jsbsim/forces/fbz-gear-lbs");
-      if (gf != 0.0) {
-        print("LZ-129jsb-set.xml: Gear force: ",
-	      gf,
-	      " lbs.");
-      }
-      settimer(printgearforce,2);
+    var weight_on_gear =
+      props.globals.getNode("/fdm/jsbsim/forces/fbz-gear-lbs");
+    var ballast = "/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug";
+
+    print_wow = func {
+      gui.popupTip("Current weight on gear " ~
+                   weight_on_gear.getValue() ~ " lbs.");
     }
 
     weighoff = func {
-      print("LZ-129jsb-set.xml: Weigh-off to 10% in progress.");
+      gui.popupTip("Weigh-off to 10% in progress. " ~
+                   "Current weight " ~ weight_on_gear.getValue() ~ " lbs.");
       slugtolb = 32.174049;
       lbtoslug = 1.0/slugtolb;
-      gf = getprop("/fdm/jsbsim/forces/fbz-gear-lbs");
-      cont = getprop("/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug");
-      interpolate("/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug",
-                  cont + 0.90 * gf * lbtoslug,
+      wow = weight_on_gear.getValue();
+      cont = getprop(ballast);
+      interpolate(ballast,
+                  cont + 0.90 * wow * lbtoslug,
                   10);
     }
-
-    init = func {
-      settimer(printgearforce,2);
-    }
-    init();
    </script>
   </WeighOff>
  </nasal>
@@ -73,6 +79,16 @@
      </script>     
     </binding>
    </key>
+   <key n="119">
+    <name>w</name>
+    <desc>Show current on-ground weight.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+      WeighOff.print_wow();
+     </script>
+    </binding>
+   </key>
    <key n="100">
     <name>d</name>
     <desc>Drop 0.1% ballast aft</desc>
@@ -80,13 +96,10 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Dropping ballast aft!");
-       setprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug",
-	       0.999 *
-	       getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"));
-       print("Ballast left: ",
-             getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"),
-	     " slug");
+       var p = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
+       gui.popupTip("Dropping ballast aft! " ~
+                    "Ballast left: " ~ getprop(p) ~ " slug");
+       interpolate(p, 0.999 * getprop(p), 0.5);
      </script>
     </binding>
    </key>
@@ -97,13 +110,10 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Dropping ballast aft!");
-       setprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug",
-	       0.99 *
-	       getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"));
-       print("Ballast left: ",
-             getprop("/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug"),
-	     " slug");
+       var p = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
+       gui.popupTip("Dropping ballast aft! " ~
+                    "Ballast left: " ~ getprop(p) ~ " slug");
+       interpolate(p, 0.99 * getprop(p), 0.5);
      </script>
     </binding>
    </key>
@@ -114,13 +124,10 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Dropping ballast fore!");
-       setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
-	       0.999 *
-	       getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
-       print("Ballast left: ",
-             getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"),
-	     " slug");
+       var p = "/fdm/jsbsim/propulsion/ballast-tank/contents-slug";
+       gui.popupTip("Dropping ballast fore! " ~
+                    "Ballast left: " ~ getprop(p) ~ " slug");
+       interpolate(p, 0.999 * getprop(p), 0.5);
      </script>
     </binding>
    </key>
@@ -131,13 +138,10 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Dropping ballast fore!");
-       setprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug",
-	       0.99 *
-	       getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"));
-       print("Ballast left: ",
-             getprop("/fdm/jsbsim/propulsion/ballast-tank/contents-slug"),
-	     " slug");
+       var p = "/fdm/jsbsim/propulsion/ballast-tank/contents-slug";
+       gui.popupTip("Dropping ballast fore! " ~
+                    "Ballast left: " ~ getprop(p) ~ " slug");
+       interpolate(p, 0.99 * getprop(p), 0.5);
      </script>
     </binding>
    </key>
@@ -149,7 +153,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Forward gas valves open!");
+       gui.popupTip("Forward gas valves open!");
        setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
                1.00);
        setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
@@ -175,7 +179,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Forward gas valves closed!");
+       gui.popupTip("Forward gas valves closed!");
        setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
                0.00);
        setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
@@ -202,7 +206,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Aft gas valves open!");
+       gui.popupTip("Aft gas valves open!");
        setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
                1.00);
        setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
@@ -228,7 +232,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       print("LZ-129jsb-set.xml: Aft gas valves closed!");
+       gui.popupTip("Aft gas valves closed!");
        setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
                0.00);
        setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
