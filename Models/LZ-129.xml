@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.13 2007-02-10 23:15:59 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.14 2007-05-15 22:36:35 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -88,7 +88,7 @@
  -->
  <model>
   <name>Propeller1</name>
-  <path>Aircraft/LZ-129/Models/propeller2.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller1.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <x-m> 155.720 </x-m>
@@ -110,7 +110,7 @@
 
  <model>
   <name>Propeller3</name>
-  <path>Aircraft/LZ-129/Models/propeller2.ac</path>
+  <path>Aircraft/LZ-129/Models/propeller3.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <x-m> 107.525 </x-m>
@@ -203,7 +203,7 @@
   </center>
   <axis>
    <x> 1.0 </x>
-   <y> 0.0</y>
+   <y> 0.0 </y>
    <z> 0.0 </z>
   </axis>
  </animation>
@@ -251,9 +251,9 @@
   <property>engines/engine[3]/rpm</property>
   <factor>-0.5625</factor>
   <center>
-   <x-m> 0.0 </x-m>
-   <y-m> 0.0 </y-m>
-   <z-m> 0.0 </z-m>
+   <x-m> 107.325 </x-m>
+   <y-m>  20.250 </y-m>
+   <z-m> -14.310 </z-m>
   </center>
   <axis>
    <x> 1.0 </x>
