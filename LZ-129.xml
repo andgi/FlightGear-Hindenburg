@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.26 2007-05-13 22:20:19 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.27 2007-05-15 22:38:22 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.26 2007-05-13 22:20:19 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.27 2007-05-15 22:38:22 anders Exp $ </version>
   <description>Experimental JSBSim model of the Zeppelin LZ 129.</description>
 
  </fileheader>
@@ -1689,6 +1689,7 @@
      <property>aero/qbar-psf</property>
      <value> 36812.1 </value>
      <!-- Start CY -->
+     <value> -1.0 </value>  <!-- Note the sign! -->
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
@@ -2043,7 +2044,7 @@
 
  </aerodynamics>
 
-
+<!--
  <output name="LZ-129_datalog.csv" type="CSV" rate="1">
   <property> position/h-sl-ft </property>
   <property> velocities/vc-kts </property>
@@ -2058,21 +2059,6 @@
   <property> accelerations/n-pilot-z-norm </property>
   <property> ap/heading-setpoint-degrees </property>
   <property> ap/pitch-setpoint-degrees </property>
-<!-- 
-  <property> propulsion/gas-cell/temp-K </property>
-  <property> propulsion/gas-cell/pressure-Pa </property>
-  <property> propulsion/gas-cell/volume-m3 </property>
-  <property> propulsion/gas-cell/buoyancy-N </property>
-  <property> propulsion/gas-cell/contents-mol </property>
-  <property> propulsion/gas-cell/valve_open </property>
-  <property> propulsion/gas-cell[15]/temp-K </property>
-  <property> propulsion/gas-cell[15]/pressure-Pa </property>
-  <property> propulsion/gas-cell[15]/volume-m3 </property>
-  <property> propulsion/gas-cell[15]/buoyancy-N </property>
-  <property> propulsion/gas-cell[15]/contents-mol </property>
-  <property> propulsion/gas-cell[15]/valve_open </property>
--->
-
 
   <rates> ON </rates>
   <velocities> ON </velocities>
@@ -2084,5 +2070,6 @@
   <fcs> ON </fcs>
   <ground_reactions> ON </ground_reactions>
  </output>
+-->
 
 </fdm_config>
