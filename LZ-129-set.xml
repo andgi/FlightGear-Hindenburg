@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.8 2007-05-13 22:20:19 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.9 2007-05-27 22:39:26 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
-  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <PropertyList include="LZ-129-common.xml">
 
  <sim>
 
-  <description>LZ 129 Hindenburg (using the experimental LTA JSBSim FDM)</description>
+  <description>LZ 129 Hindenburg (using the LTA JSBSim FDM)</description>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -38,6 +38,42 @@
  </sound>
 
  <nasal>
+  <LZ129>
+   <script>
+    var ballastFore = "/fdm/jsbsim/propulsion/ballast-tank[0]/contents-slug";
+    var ballastAft  = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
+    var gascell     = "/fdm/jsbsim/propulsion/gas-cell";
+
+    setForwardGasValves = func (v) {
+       setprop(gascell ~ "[15]/valve_open", v);
+       setprop(gascell ~ "[14]/valve_open", v);
+       setprop(gascell ~ "[13]/valve_open", v);
+       setprop(gascell ~ "[12]/valve_open", v);
+       setprop(gascell ~ "[11]/valve_open", v);
+       setprop(gascell ~ "[10]/valve_open", v);
+       setprop(gascell ~ "[9]/valve_open", v);
+       setprop(gascell ~ "[8]/valve_open", v);
+    }
+
+    setAftGasValves = func (v) {
+       setprop(gascell ~ "[7]/valve_open", v);
+       setprop(gascell ~ "[6]/valve_open", v);
+       setprop(gascell ~ "[5]/valve_open", v);
+       setprop(gascell ~ "[4]/valve_open", v);
+       setprop(gascell ~ "[3]/valve_open", v);
+       setprop(gascell ~ "[2]/valve_open", v);
+       setprop(gascell ~ "[1]/valve_open", v);
+       setprop(gascell ~ "[0]/valve_open", v);
+    }
+
+    init = func {
+       var crew = "/sim/model/crew/";
+       setprop(crew ~ "rudder_coxswain/visible", 1);
+    }
+
+    init();
+   </script>
+  </LZ129>
   <WeighOff>
    <script>
     var weight_on_gear =
@@ -96,10 +132,9 @@
     <binding>
      <command>nasal</command>
      <script>
-       var p = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
        gui.popupTip("Dropping ballast aft! " ~
-                    "Ballast left: " ~ getprop(p) ~ " slug");
-       interpolate(p, 0.999 * getprop(p), 0.5);
+                    "Ballast left: " ~ getprop(LZ129.ballastAft) ~ " slug");
+       interpolate(LZ129.ballastAft, 0.999 * getprop(LZ129.ballastAft), 0.5);
      </script>
     </binding>
    </key>
@@ -110,10 +145,9 @@
     <binding>
      <command>nasal</command>
      <script>
-       var p = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
        gui.popupTip("Dropping ballast aft! " ~
-                    "Ballast left: " ~ getprop(p) ~ " slug");
-       interpolate(p, 0.99 * getprop(p), 0.5);
+                    "Ballast left: " ~ getprop(LZ129.ballastAft) ~ " slug");
+       interpolate(LZ129.ballastAft, 0.99 * getprop(LZ129.ballastAft), 0.5);
      </script>
     </binding>
    </key>
@@ -124,10 +158,9 @@
     <binding>
      <command>nasal</command>
      <script>
-       var p = "/fdm/jsbsim/propulsion/ballast-tank/contents-slug";
        gui.popupTip("Dropping ballast fore! " ~
-                    "Ballast left: " ~ getprop(p) ~ " slug");
-       interpolate(p, 0.999 * getprop(p), 0.5);
+                    "Ballast left: " ~ getprop(LZ129.ballastFore) ~ " slug");
+       interpolate(LZ129.ballastFore, 0.999 * getprop(LZ129.ballastFore), 0.5);
      </script>
     </binding>
    </key>
@@ -138,10 +171,9 @@
     <binding>
      <command>nasal</command>
      <script>
-       var p = "/fdm/jsbsim/propulsion/ballast-tank/contents-slug";
        gui.popupTip("Dropping ballast fore! " ~
-                    "Ballast left: " ~ getprop(p) ~ " slug");
-       interpolate(p, 0.99 * getprop(p), 0.5);
+                    "Ballast left: " ~ getprop(LZ129.ballastFore) ~ " slug");
+       interpolate(LZ129.ballastFore, 0.99 * getprop(LZ129.ballastFore), 0.5);
      </script>
     </binding>
    </key>
@@ -154,22 +186,7 @@
      <command>nasal</command>
      <script>
        gui.popupTip("Forward gas valves open!");
-       setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[13]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[12]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[11]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[10]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[9]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[8]/valve_open",
-               1.00);
+       LZ129.setForwardGasValves(1.00);
      </script>
     </binding>
    </key>
@@ -180,22 +197,7 @@
      <command>nasal</command>
      <script>
        gui.popupTip("Forward gas valves closed!");
-       setprop("/fdm/jsbsim/propulsion/gas-cell[15]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[14]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[13]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[12]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[11]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[10]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[9]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[8]/valve_open",
-               0.00);
+       LZ129.setForwardGasValves(0.00);
      </script>
     </binding>
    </key>
@@ -207,22 +209,7 @@
      <command>nasal</command>
      <script>
        gui.popupTip("Aft gas valves open!");
-       setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[5]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[4]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[3]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[2]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[1]/valve_open",
-               1.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell/valve_open",
-               1.00);
+       LZ129.setAftGasValves(1.00);
      </script>
     </binding>
    </key>
@@ -233,22 +220,7 @@
      <command>nasal</command>
      <script>
        gui.popupTip("Aft gas valves closed!");
-       setprop("/fdm/jsbsim/propulsion/gas-cell[7]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[6]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[5]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[4]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[3]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[2]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell[1]/valve_open",
-               0.00);
-       setprop("/fdm/jsbsim/propulsion/gas-cell/valve_open",
-               0.00);
+       LZ129.setAftGasValves(0.00);
      </script>
     </binding>
    </key>

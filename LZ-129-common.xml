@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-common.xml,v 1.11 2007-05-13 22:20:18 anders Exp $ -->
+<!-- $Id: LZ-129-common.xml,v 1.12 2007-05-27 22:39:26 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
 
-  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <PropertyList>
@@ -21,10 +21,27 @@
   </model>
   
   <view n="0">
-   <internal archive="y">true</internal>
+   <internal type="bool">true</internal>
    <config>
     <!-- x/y/z == right/up/back -->
-    <!-- rudder coxswain's position -->
+    <!-- commander's position -->
+    <x-offset-m archive="y"> 1.0 </x-offset-m>
+    <y-offset-m archive="y"> -18.9 </y-offset-m>
+    <z-offset-m archive="y"> -59.5 </z-offset-m>
+    <pitch-offset-deg>-3</pitch-offset-deg>
+    <default-field-of-view-deg>65</default-field-of-view-deg>
+    <!-- ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m -->
+   </config>
+  </view>
+
+  <!-- Define extra views. -->
+  <view n="105">
+   <name>Rudder Coxswain View</name>
+   <internal type="bool">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
     <x-offset-m archive="y"> 0.0 </x-offset-m>
     <y-offset-m archive="y"> -18.9 </y-offset-m>
     <z-offset-m archive="y"> -61.0 </z-offset-m>
@@ -33,8 +50,6 @@
     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
    </config>
   </view>
-
-  <!-- Define extra views. -->
   <view n="110">
    <name>Elevator Coxswain View</name>
    <type>lookfrom</type>
