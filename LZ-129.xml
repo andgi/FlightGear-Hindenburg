@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.27 2007-05-15 22:38:22 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.28 2007-05-27 17:50:25 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,22 +30,35 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.27 2007-05-15 22:38:22 anders Exp $ </version>
-  <description>Experimental JSBSim model of the Zeppelin LZ 129.</description>
+  <version> $Id: LZ-129.xml,v 1.28 2007-05-27 17:50:25 anders Exp $ </version>
+  <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
+
+  <reference refID="Bauer:1992:LZ130"
+             author="Manfred Bauer and John Duggan"
+             title="LZ 130 Graf Zeppelin und das Ende der Verkehrsluftschiffahrt"
+             date="1992"/>
+  <reference refID="Bentele:1992:SZM"
+             author="Eugen Bentele"
+             title="The Story of a Zeppelin Mechanic"
+             date="1992"/>
+  <reference refID="Freeman:1932:Akron"
+             author="Hugh B. Freeman"
+             title="Force Measurements on a 1/40-scale Model of the U.S. Airship ``Akron'';  NACA Report #432"
+             date="1932"/>
 
  </fileheader>
-
- <!--
-  NOTE: The mooring mast coupling at center of the bow is the origo of the
-        body coordinate system.
-	x/y/z = back/right/up
- -->
 
  <!--
  ==== Metrics ===============================================================
  -->
 
  <metrics>
+
+  <documentation>
+   NOTE: The mooring mast coupling at center of the bow is the origo of the
+         body coordinate system.
+	 x/y/z = back/right/up
+  </documentation>
 
   <wingarea unit="M2">  10121 </wingarea>            <!-- Totally off! -->
   <wingspan unit="M">   41.31 </wingspan>            <!-- Totally off! -->
@@ -85,9 +98,7 @@
  <mass_balance>
 
   <documentation>
-   Mass distribution data from "LZ 130 Graf Zeppelin und das Ende der
-   Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
-   Zeppelin Museum Friedrichshafen, 1992.
+   Mass distribution data [Bauer:1992:LZ130].
 
    Based on a listing of weight savings in the empty weight of LZ 130
    over LZ 129 (page 74). All weights (masses) are in kg.
@@ -115,16 +126,16 @@
   </documentation>
 
   <emptywt unit="KG"> 78413.0 </emptywt>
-  <!-- 
+  <documentation> 
       The empty weight is estimated to consist of
         The structural parts   (Gerippe, Leitwerk, ruder)           56368
-        The hull covering      (Hulle m. Anstrich & Verkleidung)     9019
+        The hull covering      (Hulle m. Anstrich und Verkleidung)   9019
         The (empty) gas cells  (Zellenanlage)                       13026
 
       The other items in the list above will be represented by point masses.
-  -->
+  </documentation>
 
-  <!--
+  <documentation> 
    % Very rough estimation model of the empty weight CG and inertia tensor.
    % Assume the empty weight of is to 60% a cylindrical shell and
    % to 40% a thin rod (i.e. the keel).
@@ -157,7 +168,8 @@
    Ixz = 0
    Iyz = 0
 
-  -->
+  </documentation> 
+
   <ixx unit="KG*M2">  19611000.0 </ixx>
   <iyy unit="KG*M2"> 402430000.0 </iyy>
   <izz unit="KG*M2"> 401640000.0 </izz>
@@ -174,14 +186,14 @@
   <!-- 
   === Engines ================================================
   -->
+  <documentation>
+   The engine weight according to [Bentele:1992:SZM] is
+   2200 kg excluding the cooler.
+   The total weight of the engine installations in the list above
+   indicates a weight of 3925.2 kg per engine.
+  </documentation>
+
   <pointmass name="Engine 3">
-   <!--
-        The engine weight according to "The Story of a Zeppelin Mechanic",
-        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
-        2200 kg excluding the cooler.
-        The total weight of the engine installations in the list above
-        indicates a weight of 3925.2 kg per engine.
-   -->
    <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 105.3 </x>
@@ -191,13 +203,6 @@
   </pointmass>
 
   <pointmass name="Engine 4">
-   <!--
-        The engine weight according to "The Story of a Zeppelin Mechanic",
-        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
-        2200 kg excluding the cooler.
-        The total weight of the engine installations in the list above
-        indicates a weight of 3925.2 kg per engine.
-   -->
    <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 105.3 </x>
@@ -207,13 +212,6 @@
   </pointmass>
 
   <pointmass name="Engine 1">
-   <!--
-        The engine weight according to "The Story of a Zeppelin Mechanic",
-        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
-        2200 kg excluding the cooler.
-        The total weight of the engine installations in the list above
-        indicates a weight of 3925.2 kg per engine.
-   -->
    <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 152.55 </x>
@@ -223,13 +221,6 @@
   </pointmass>
 
   <pointmass name="Engine 2">
-   <!--
-        The engine weight according to "The Story of a Zeppelin Mechanic",
-        Eugen Bentele, Zeppelin Museum Friedrichshafen, 1992 is
-        2200 kg excluding the cooler.
-        The total weight of the engine installations in the list above
-        indicates a weight of 3925.2 kg per engine.
-   -->
    <weight unit="KG"> 3925.2 </weight>
    <location name="POINTMASS" unit="M">
     <x> 152.55 </x>
@@ -515,9 +506,8 @@
   <!--
   === Engines ===============================================
   -->
-  <!--
-       Engine data from "The Story of a Zeppelin Mechanic", Eugen Bentele,
-       Zeppelin Museum Friedrichshafen, 1992.
+  <documentation>
+       Engine data from [Bentele:1992:SZM].
 
        Manufacturer:        Daimler Bentz AG
        Type:                LOF 6 (DB 602) (Diesel)
@@ -538,12 +528,10 @@
        Propeller rpm (cruise): 625 rpm
        
        Notes: 2 input, 2 output valves. No supercharger. Could rotate
-              in either dricetion. Compressed air starter.
-  -->
-  <!--
-      Engine data from "LZ 130 Graf Zeppelin und das Ende der
-      Verkehrsluftschiffahrt", Manfred Bauer and John Duggan,
-      Zeppelin Museum Friedrichshafen, 1992.
+              in either direction. Compressed air starter.
+  </documentation>
+  <documentation>
+      Engine data from [Bauer:1992:LZ130].
 
       Daimler Bentz LOF 6
       Max power:            885 kW (1200 HP) at 1600 rpm
@@ -554,13 +542,13 @@
 
       Total diesel fuel:    ca 80000 dm^3
       Total lub. oil:       ca  4500 dm^3
-  -->
-  <!--
+  </documentation>
+  <documentation>
        NOTE: As a temporary measure the engines are borrowed from the
              Boeing 314A.
              The engine type is WrightGR-2600 instead of the
 	     Daimler-Benz DB 620 it should be.	     
-  -->
+  </documentation>
 
   <!-- Engine 1 -->
   <engine file="WrightGR-2600">
@@ -824,10 +812,11 @@
   
   <!-- Fuel tanks along the keel walk way -->
 
-  <!--
+  <documentation>
        NOTE: The capacity numbers should be in liters
-             Assumption: 1 liter (= 0.001 m^3) = 1 kg
-  -->
+             Assumption: 1 liter (= 0.001 m^3) = 1 kg.
+       Fixme: The actual density of diesel is 0.850kg/liter.
+  </documentation>
 
   <!-- In cell 15 -->
 
@@ -1580,8 +1569,7 @@
    <function name="aero/coefficient/CDalpha">
     <description>Drag_due_to_alpha</description>
     <!-- 
-         Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+         Formulation based on [Freeman:1932:Akron].
 
             CD = D / (q * (vol)^(2/3))
 
@@ -1627,8 +1615,7 @@
    <function name="aero/coefficient/CDbeta">
     <description>Drag_due_to_side_slip</description>
     <!-- 
-	 Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+	 Formulation based on [Freeman:1932:Akron].
 
            CD = D / (q * (vol)^(2/3))
 
@@ -1679,8 +1666,7 @@
    <function name="aero/coefficient/CYbeta">
     <description>Side_force_due_to_beta</description>
     <!-- 	 
-	 Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+	 Formulation based on [Freeman:1932:Akron].
 
 	    CY = Y / (q * (vol)^(2/3))
 
@@ -1726,8 +1712,7 @@
 
    <function name="aero/coefficient/CYdr">
     <description>Side_force_due_to_rudder</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron" by Hugh B. Freeman,
+    <!-- Based on [Freeman:1932:Akron].
 	 Table III-b - Table I for q = 19 and assuming symmetry.
 	 
 	    CY = Y / (q * (vol)^(2/3))
@@ -1762,8 +1747,7 @@
    <function name="aero/coefficient/CLalpha">
     <description>Lift_due_to_alpha</description>
     <!--	 
-	 Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+	 Formulation based on [Freeman:1932:Akron].
 
 	    CL = L / (q * (vol)^(2/3))
 
@@ -1808,8 +1792,7 @@
 
    <function name="aero/coefficient/CLdr">
     <description>Lift_due_to_elevator</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron" by Hugh B. Freeman,
+    <!-- Based on [Freeman:1932:Akron].
 	 Table III-b - Table I for q = 19 and assuming symmetry.
 	 
 	   CL = L / (q * (vol)^(2/3))
@@ -1873,8 +1856,7 @@
    <function name="aero/coefficient/Cmalpha">
     <description>Pitch_moment_due_to_alpha</description>
     <!--	 
-	 Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+	 Formulation based [Freeman:1932:Akron].
 
             Cm = M / (q * vol)
 
@@ -1919,8 +1901,7 @@
 
    <function name="aero/coefficient/Cmdr">
     <description>Pitch_moment_due_to_horizontal_rudder</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron" by Hugh B. Freeman,
+    <!-- Based on [Freeman:1932:Akron].
 	 Table III-c - Table I for q = 19 and assuming symmetry.
 	 
 	   Cm = M / (q * vol)
@@ -1965,8 +1946,7 @@
 
    <function name="aero/coefficient/Cndr">
     <description>Yaw_moment_due_to_vertical_rudder</description>
-    <!-- Based on NACA report 432 "Force measurements on a 1/40-scale model
-         of the U.S. Airship Akron" by Hugh B. Freeman,
+    <!-- Based on [Freeman:1932:Akron].
 	 Table III-c - Table I for q = 19 and assuming symmetry.
 	 
 	   Cn = M / (q * vol)
@@ -1996,8 +1976,7 @@
    <function name="aero/coefficient/Cnbeta">
     <description>Yaw_moment_due_to_beta</description>
     <!--
-	 Formulation based on NACA report 432 "Force measurements on a
-         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+	 Formulation based on [Freeman:1932:Akron].
 
             Cn = M / (q * vol)
 
