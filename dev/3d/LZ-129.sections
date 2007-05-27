@@ -2,26 +2,53 @@
 # (C) 2006  Anders Gidenstam
 # Based on a large blue print poster (1:245000/909). Using 1:270 scale.
 # Format: (Unit: mm)
-# x             diameter   #circle sections 
-2970.0		7290.0		36
-# Extra measure between main rings.
-5670.0		17280.0		36
+# x             diameter   #circle sections
+# Mooring mast connection
+10		150		36
+# Start of hull
+800		300		36
+# Extra measure
+560.0		2700.0		36
+# Main Ring 242.5
+1600.0		7560.0		36
+# Extra measure
+3510.0		14040.0		36
+# Extra measure
+2160.0		17280.0		36
+# Main Ring 233
 5670.0		23220.0		36
+# Main Ring 218
 14850.0		31860.0		36
+# Main Ring 203
 14850.0		36450.0		36
+# Main Ring 188
 14985.0		39150.0		36
+# Main Ring 173
 14850.0		40500.0		36
+# Main Ring 156.5
 16605.0		41310.0		36
+# Main Ring 140
 16470.0		41310.0		36
+# Main Ring 123.5
 16470.0		40770.0		36
+# Main Ring 107
 16740.0		39690.0		36
+# Main Ring 92
 14985.0		38340.0		36
+# Main Ring 77
 14985.0		35910.0		36
+# Main Ring 62
 15120.0		32670.0		36
+# Main Ring 47
 15120.0		27810.0		36
+# Main Ring 33.5
 13500.0		22410.0		36
 # The two last sections should have only 18 circle sections.
+# Main Ring 20
 13770.0		15660.0		18
+# Main Ring 2
 16200.0		4050.0		18
+# Extra measure
 1080.0		2160.0		18
+# Extra measure
 540.0		500.0		18
