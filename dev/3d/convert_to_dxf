@@ -6,3 +6,4 @@ g-dxf -o LZ-129_rudders.dxf -m 1 -a 5 LZ-129.g rudders.g
 
 g-dxf -o LZ-129_car.dxf -m 1 -a 5 LZ-129.g control_car.g
 g-dxf -o LZ-129_control_wheel.dxf -m 1 -a 1 LZ-129.g control_wheel.r
+g-dxf -o LZ-129_control_base.dxf -m 1 -a 0.1 LZ-129.g control_base.r
