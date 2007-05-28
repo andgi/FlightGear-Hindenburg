@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.15 2007-05-28 15:05:32 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.16 2007-05-28 20:44:28 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -123,6 +123,17 @@
    <x-m> 227.270 </x-m>
    <y-m> 0.0 </y-m>
    <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+
+ <!-- The main landing gear -->
+ <model>
+  <name>Main Gear</name>
+  <path>Aircraft/LZ-129/Models/LZ-129_main_gear.ac</path>
+  <offsets>
+   <x-m>  43.20 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m> -21.40 </z-m>
   </offsets>
  </model>
 
@@ -388,6 +399,23 @@
    <z>1.0</z>
   </axis>
  </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Main Gear</object-name>
+  <property>fdm/jsbsim/gear/unit[0]/slip-angle-deg</property>
+  <center>
+   <x-m> 42.70 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
 
  <!-- LODs -->
 
