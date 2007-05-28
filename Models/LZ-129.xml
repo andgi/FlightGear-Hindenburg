@@ -1,8 +1,8 @@
-<!-- $Id: LZ-129.xml,v 1.14 2007-05-15 22:36:35 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.15 2007-05-28 15:05:32 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
-  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <PropertyList>
@@ -10,6 +10,7 @@
  <!-- The hull. -->
  <path>LZ-129_hull.ac</path>
  <offsets>
+  <!-- x/y/z == back/right/up -->
   <x-m> -100.0 </x-m>
   <y-m> 0.0 </y-m>
   <z-m> 0.0 </z-m>
@@ -26,28 +27,71 @@
   </offsets>
  </model>
 
- <!-- The steering wheel -->
+ <!-- The steering assembly -->
  <model>
-  <name>Steering wheel</name>
-  <path>Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
+  <name>Steering assembly</name>
+  <path>Aircraft/LZ-129/Models/steering_assembly.xml</path>
   <offsets>
-   <x-m> 38.2 </x-m>
-   <y-m>  0.0 </y-m>
-   <z-m> -19.50 </z-m>
+   <x-m>  38.70 </x-m>
+   <y-m>  -0.40 </y-m>
+   <z-m> -19.55 </z-m>
   </offsets>
  </model>
 
- <!-- The elevator wheel -->
+ <!-- The elevator assembly -->
  <model>
-  <name>Elevator wheel</name>
-  <path>Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
+  <name>Elevator assembly</name>
+  <path>Aircraft/LZ-129/Models/elevator_assembly.xml</path>
   <offsets>
-   <heading-deg>90</heading-deg>
-   <x-m> 40.10 </x-m>
-   <y-m> -1.1 </y-m>
-   <z-m> -19.50 </z-m>
+   <x-m>  40.20 </x-m>
+   <y-m>  -0.90 </y-m>
+   <z-m> -19.55 </z-m>
   </offsets>
  </model>
+
+ <!-- Radio -->
+ <model>
+  <name>Radio</name>
+  <path>Aircraft/LZ-129/Models/radio.xml</path>
+  <offsets>
+   <heading-deg>270</heading-deg>
+   <x-m>  41.15 </x-m>
+   <y-m>  -0.40 </y-m>
+   <z-m> -19.68 </z-m>
+  </offsets>
+ </model>
+
+ <!-- Control car crew -->
+ <model>
+  <name>Captain</name>
+  <path>Aircraft/LZ-129/Models/captain.xml</path>
+  <offsets>
+   <heading-deg>-10</heading-deg>
+   <x-m>  39.60 </x-m>
+   <y-m>   0.40 </y-m>
+   <z-m> -19.55 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Rudder Coxswain</name>
+  <path>Aircraft/LZ-129/Models/rudder_coxswain.xml</path>
+  <offsets>
+   <x-m>  39.10 </x-m>
+   <y-m>  -0.40 </y-m>
+   <z-m> -19.55 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Elevator Coxswain</name>
+  <path>Aircraft/LZ-129/Models/elevator_coxswain.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>  40.20 </x-m>
+   <y-m>  -0.55 </y-m>
+   <z-m> -19.55 </z-m>
+  </offsets>
+ </model>
+
 
  <!-- The engine cars -->
  <model>
@@ -130,60 +174,43 @@
   </offsets>
  </model>
 
- <!-- ======================================= -->
- <!-- panel models (X/Y/Z depth/width/height) -->
- <!-- ======================================= -->
- 
- <panel>
-   <!-- Temporary panel. -->
-   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
-   <name>RudderCoxswainPanel</name>
-   <bottom-left>
-    <x-m> 38.11 </x-m>
-    <y-m> -0.850 </y-m>
-    <z-m> -20.3275 </z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m> 38.11 </x-m>
-    <y-m> 0.895 </y-m>
-    <z-m> -20.3275 </z-m>
-   </bottom-right>
-   <top-left>
-    <x-m> 37.81 </x-m>
-    <y-m> -0.850 </y-m>
-    <z-m> -19.455 </z-m>
-   </top-left>
- </panel>
-
- <panel>
-   <!-- Temporary panel. -->
-   <path>Aircraft/Boeing314/Panels/Boeing314A-radio.xml</path>
-   <name>NavigatorPanel</name>
-   <bottom-left>
-    <x-m> 41.10 </x-m>
-    <y-m> -0.75 </y-m>
-    <z-m> -19.63 </z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m> 41.10 </x-m>
-    <y-m> -0.050 </y-m>
-    <z-m> -19.63 </z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>  41.10 </x-m>
-    <y-m> -0.75 </y-m>
-    <z-m> -19.28 </z-m>
-   </top-left>
- </panel>
-
- <!-- Animations ======================================================== -->
+ <!--
+  ==== Animations =============================================================
+ -->
  
  <!-- LOD for the model as a whole -->
  <animation>
   <type>range</type>
   <min-m>0</min-m>
-  <max-m>10000</max-m>
+  <max-m>20000</max-m>
  </animation>
+
+ <!-- LOD Cockpit -->
+ <animation>
+  <type>range</type>
+  <object-name>CockpitDetailHigh</object-name>
+  <min-m>0</min-m>
+  <max-m>50</max-m>
+ </animation>
+ <animation>
+  <type>range</type>
+  <object-name>CockpitDetailLow</object-name>
+  <min-m>0</min-m>
+  <max-m>200</max-m>
+ </animation>
+
+ <animation>
+  <name>CockpitDetailHigh</name>
+ </animation>
+ <animation>
+  <name>CockpitDetailLow</name>
+  <object-name>Rudder Coxswain</object-name>
+  <object-name>Steering assembly</object-name>
+  <object-name>Elevator Coxswain</object-name>
+  <object-name>Elevator assembly</object-name>
+  <object-name>Captain</object-name>
+ </animation>
+
 
 <!-- PROPELLERS. NOTE: Temporary animations borrowed from the
       Boeing 314. -->
@@ -262,40 +289,42 @@
   </axis>
  </animation>
 
- <!-- Controls -->
-
+ <!-- Hide crew. -->
  <animation>
-  <type>rotate</type>
-  <object-name>Steering wheel</object-name>
-  <property>surface-positions/rudder-pos-norm</property>
-  <factor>-250.0</factor>
-  <center>
-   <x-m> 38.2 </x-m>
-   <y-m>  0.0 </y-m>
-   <z-m> -19.50 </z-m>
-  </center>
-  <axis>
-   <x>1.0</x>
-   <y>0.0</y>
-   <z>0.0</z>
-  </axis>
+  <type>select</type>
+  <object-name>Rudder Coxswain</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>7</value>
+    </equals>
+   </not>
+  </condition>
  </animation>
-
  <animation>
-  <type>rotate</type>
-  <object-name>Elevator wheel</object-name>
-  <property>surface-positions/elevator-pos-norm</property>
-  <factor>-250.0</factor>
-  <center>
-   <x-m> 40.10 </x-m>
-   <y-m> -1.1 </y-m>
-   <z-m> -19.50 </z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>1.0</y>
-   <z>0.0</z>
-  </axis>
+  <type>select</type>
+  <object-name>Elevator Coxswain</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>12</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>Captain</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>0</value>
+    </equals>
+   </not>
+  </condition>
  </animation>
 
  <!-- Control surfaces -->
@@ -361,20 +390,5 @@
  </animation>
 
  <!-- LODs -->
-
- <!-- Hide panels in outside views. -->
-
- <animation>
-  <type>range</type>
-  <object-name>RudderCoxswainPanel</object-name>
-  <min-m>0</min-m>
-  <max-m>45</max-m>
- </animation>
- <animation>
-  <type>range</type>
-  <object-name>NavigatorPanel</object-name>
-  <min-m>0</min-m>
-  <max-m>48</max-m>
- </animation>
 
 </PropertyList>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.9 2007-05-27 22:39:26 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.10 2007-05-28 15:05:32 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -19,11 +19,13 @@
    <onground>true</onground>
   </presets>
 
+<!-- Put in the common file.
   <systems>
    <electrical>
     <path/>
    </electrical>
   </systems>
+-->
 <!--
   <instrumentation>
    <path>Aircraft/Submarine_Scout/Systems/instrumentation.xml</path>
@@ -69,11 +71,17 @@
     init = func {
        var crew = "/sim/model/crew/";
        setprop(crew ~ "rudder_coxswain/visible", 1);
+       setprop(crew ~ "elevator_coxswain/visible", 1);
+       setprop(crew ~ "captain/visible", 1);
     }
 
     init();
    </script>
   </LZ129>
+  <Instruments>
+   <file>Aircraft/LZ-129/Systems/electrical.nas</file>
+   <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
+  </Instruments>
   <WeighOff>
    <script>
     var weight_on_gear =

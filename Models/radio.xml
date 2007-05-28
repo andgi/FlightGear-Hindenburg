@@ -1,0 +1,51 @@
+<!-- $Id: radio.xml,v 1.1 2007-05-28 15:05:33 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg - 3d radio.
+
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders@gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <path>radio_box.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!-- 3d instruments -->
+
+ <model>
+  <name>Radio</name>
+  <path>Aircraft/Instruments-3d/ky196/ky196-comm1.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>   0.0  </x-m>
+   <y-m>   0.05 </y-m>
+   <z-m>  -0.05 </z-m>
+  </offsets>
+ </model>
+
+ <panel>
+   <path>Aircraft/LZ-129/Models/radio_panel.xml</path>
+   <bottom-left>
+    <x-m>  0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m> -0.10 </z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m> -0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m> -0.10 </z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>  0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m>  0.10 </z-m>
+   </top-left>
+ </panel>
+
+</PropertyList>

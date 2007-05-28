@@ -1,0 +1,96 @@
+<!-- $Id: elevator_coxswain.xml,v 1.1 2007-05-28 15:05:33 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg.
+
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+
+  The pilot model pilot-b.ac is from Detlef Faber's F4U.
+
+-->
+<PropertyList>
+
+ <path>pilot-b.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!-- arms -->
+ <animation>
+  <type>rotate</type>
+  <object-name>arm1.R</object-name>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>/sim/model/crew/elevator_coxswain/visible</property>
+  <factor>70</factor>
+  <center>
+   <x-m>0.08</x-m>
+   <y-m>0.22</y-m>
+   <z-m>0.45</z-m>
+  </center>
+  <axis>
+   <x>-1.0</x>
+   <y>0.2</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>/sim/model/crew/elevator_coxswain/visible</property>
+  <factor>90</factor>
+  <center>
+   <x-m>0.007</x-m>
+   <y-m>0.533</y-m>
+   <z-m>0.455</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-0.5</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>arm1.L</object-name>
+  <object-name>arm2.L</object-name>
+  <object-name>hand.L</object-name>
+  <property>/sim/model/crew/rudder_coxswain/visible</property>
+  <factor>70</factor>
+  <center>
+   <x-m>0.08</x-m>
+   <y-m>-0.22</y-m>
+   <z-m>0.45</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.2</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>arm2.L</object-name>
+  <object-name>hand.L</object-name>
+  <property>/sim/model/crew/rudder_coxswain/visible</property>
+  <factor>90</factor>
+  <center>
+   <x-m>0.007</x-m>
+   <y-m>-0.533</y-m>
+   <z-m>0.455</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-0.5</y>
+   <z>-1.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>

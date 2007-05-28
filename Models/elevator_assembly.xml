@@ -1,0 +1,49 @@
+<!-- $Id: elevator_assembly.xml,v 1.1 2007-05-28 15:05:33 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg.
+
+  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <model>
+  <name>Elevator wheel</name>
+  <path>Aircraft/LZ-129/Models/LZ-129_control_wheel.ac</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <heading-deg>90</heading-deg>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m>  0.0 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Elevator wheel base</name>
+  <path>Aircraft/LZ-129/Models/LZ-129_control_base.ac</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m>  0.0 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Elevator wheel</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-250.0</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>
