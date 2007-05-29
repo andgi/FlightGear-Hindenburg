@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.30 2007-05-29 21:30:10 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.31 2007-05-29 23:29:04 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.30 2007-05-29 21:30:10 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.31 2007-05-29 23:29:04 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -1614,6 +1614,83 @@
     </product>
    </function>
 
+   <function name="aero/coefficient/CDhfin_alpha">
+    <description>Drag_from_horizontal_fin_due_to_alpha</description>
+    <!-- 
+         Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD -->
+     <table>  
+      <independentVar lookup="row">aero/alpha-deg</independentVar>
+      <!-- Virtual wind-tunnel data computed with Gerris.
+           From Submarine Scout.-->
+      <tableData>
+       -180   0.0016346
+       -165   0.0135650
+       -150   0.0745610
+       -135   0.1331500
+       -120   0.1771500
+       -105   0.2169500
+       -90    0.1910000
+       -75    0.2154000
+       -60    0.17049
+       -45    0.14314
+       -30    0.072847
+       -20    0.027739
+       -10    0.0089855
+       0      0.0010200
+       10     0.0089855
+       20     0.027739
+       30     0.072847
+       45     0.14314
+       60     0.17049
+       75     0.2154000
+       90     0.1910000
+       105    0.2169500
+       120    0.1771500
+       135    0.1331500
+       150    0.0745610
+       165    0.0135650
+       180    0.0016346
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CDde">
+    <description>Drag_due_to_elevator_deflection</description>
+    <!-- 
+         Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD -->
+     <value> 1.0 </value>
+     <table>
+      <independentVar lookup="row">fcs/elevator-pos-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+            From Submarine Scout -->
+      <tableData>
+       -30  0.020407
+       0    0
+       30   0.020407
+      </tableData>
+     </table>
+    </product>
+   </function>
+
    <function name="aero/coefficient/CDhull_beta">
     <description>Drag_from_hull_due_to_side_slip</description>
     <!-- 
@@ -1661,6 +1738,107 @@
      </table>
     </product>
    </function>
+
+   <function name="aero/coefficient/CDvfin_beta">
+    <description>Drag_from_vertical_fin_due_to_beta</description>
+    <!-- 
+         Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD -->
+     <table>  
+      <independentVar lookup="row">aero/beta-deg</independentVar>
+      <!-- Virtual wind-tunnel data computed with Gerris.
+           From Submarine Scout -->
+      <tableData>
+       -180   0.0016346
+       -165   0.0135650
+       -150   0.0745610
+       -135   0.1331500
+       -120   0.1771500
+       -105   0.2169500
+       -90    0.1910000
+       -75    0.2154000
+       -60    0.17049
+       -45    0.14314
+       -30    0.072847
+       -20    0.027739
+       -10    0.0089855
+       0      0.0010200
+       10     0.0089855
+       20     0.027739
+       30     0.072847
+       45     0.14314
+       60     0.17049
+       75     0.2154000
+       90     0.1910000
+       105    0.2169500
+       120    0.1771500
+       135    0.1331500
+       150    0.0745610
+       165    0.0135650
+       180    0.0016346
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CDdr">
+    <description>Drag_due_to_rudder_deflection</description>
+    <!-- 
+         Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD -->
+     <value> 1.0 </value>
+     <table>
+      <independentVar lookup="row">fcs/rudder-pos-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+            From Submarine Scout -->
+      <tableData>
+       -30  0.020407
+       0    0
+       30   0.020407
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CDcar">
+    <description>Drag_from_cars</description>
+    <!-- 
+         Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            CD = D / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CD -->
+     <!-- According to [WD:1941:AATM]
+          the hull on a large rigid contributes approximately
+          60% to the total air resistance.
+          I think they mean 'at zero alpha and beta'.
+     -->  
+     <value> 0.6666667 </value>
+     <value> 0.0089080 </value>
+    </product>
+   </function>
+
 
   </axis>
 
@@ -1715,6 +1893,58 @@
      </table>
     </product>
    </function>  
+
+   <function name="aero/coefficient/CYvfin_beta">
+    <description>Side_force_from_vertical_fin_due_to_beta</description>
+    <!-- 	 
+	 Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+	    CY = Y / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CY -->
+     <value> -1.0 </value>  <!-- Tweaking needed. Note the sign!
+                            -->
+     <table>
+      <independentVar lookup="row">aero/beta-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+            From Submarine Scout -->
+      <tableData>
+       -180   0.00000
+       -165   0.05372
+       -150   0.12950
+       -135   0.13525
+       -120   0.10292
+       -105   0.05388
+       -90    -0.00000
+       -75    -0.05502
+       -60    -0.098868
+       -45    -0.14402
+       -30    -0.12832
+       -20    -0.082526
+       -10    -0.035474
+       0      0.000000
+       10     0.035474
+       20     0.082526
+       30     0.12832
+       45     0.14402
+       60     0.098868
+       75     0.05502
+       90     0.00000
+       105    -0.05388
+       120    -0.10292
+       135    -0.13525
+       150    -0.12950
+       165    -0.05372
+       180    0.00000
+      </tableData>
+     </table>
+    </product>
+   </function>
 
    <function name="aero/coefficient/CYdr">
     <description>Side_force_due_to_rudder</description>
@@ -1793,6 +2023,56 @@
        150   -0.019591
        165   -0.007206
        180   0.000000
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/CLhfin_alpha">
+    <description>Lift_from_horizontal_fin_due_to_alpha</description>
+    <!--	 
+	 Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+	    CL = L / (q * (vol)^(2/3))
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 36812.1 </value>
+     <!-- Start CL -->
+     <table>
+      <independentVar lookup="row">aero/alpha-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+            From Submarine Scout -->
+      <tableData>
+       -180   0.00000
+       -165   0.05372
+       -150   0.12950
+       -135   0.13525
+       -120   0.10292
+       -105   0.05388
+       -90    -0.00000
+       -75    -0.05502
+       -60    -0.098868
+       -45    -0.14402
+       -30    -0.12832
+       -20    -0.082526
+       -10    -0.035474
+       0      0.000000
+       10     0.035474
+       20     0.082526
+       30     0.12832
+       45     0.14402
+       60     0.098868
+       75     0.05502
+       90     0.00000
+       105    -0.05388
+       120    -0.10292
+       135    -0.13525
+       150    -0.12950
+       165    -0.05372
+       180    0.00000
       </tableData>
      </table>
     </product>
@@ -1909,8 +2189,58 @@
     </product>
    </function>   
 
-   <function name="aero/coefficient/Cmdr">
-    <description>Pitch_moment_due_to_horizontal_rudder</description>
+   <function name="aero/coefficient/Cm_fin_alpha">
+    <description>Pitch_moment_from_horizontal_fin_due_to_alpha</description>
+    <!--
+	 Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            Cm = M / (q * vol)
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 7062940 </value>
+     <!-- Start Cm -->
+     <table>
+      <independentVar lookup="row">aero/alpha-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+            From Submarine Scout -->
+      <tableData>
+       -180   0.00000
+       -165   0.06884
+       -150   0.18569
+       -135   0.23584
+       -120   0.25459
+       -105   0.27774
+       -90    0.23735
+       -75    0.27625
+       -60    0.24490
+       -45    0.25233
+       -30    0.18336
+       -20    0.10816
+       -10    0.045351
+       0      0
+       10     -0.045351
+       20     -0.10816
+       30     -0.18336
+       45     -0.25233
+       60     -0.24490
+       75     -0.27625
+       90     -0.23735
+       105    -0.27774
+       120    -0.25459
+       135    -0.23584
+       150    -0.18569
+       165    -0.06884
+       180    0.00000
+      </tableData>
+     </table>
+    </product>
+   </function>
+
+   <function name="aero/coefficient/Cmde">
+    <description>Pitch_moment_due_to_elevator</description>
     <!-- Based on [Freeman:1932:Akron].
 	 Table III-c - Table I for q = 19 and assuming symmetry.
 	 
@@ -1955,7 +2285,7 @@
    </function>
 
    <function name="aero/coefficient/Cndr">
-    <description>Yaw_moment_due_to_vertical_rudder</description>
+    <description>Yaw_moment_due_to_rudder</description>
     <!-- Based on [Freeman:1932:Akron].
 	 Table III-c - Table I for q = 19 and assuming symmetry.
 	 
@@ -1981,7 +2311,7 @@
       </tableData>
      </table>
     </product>
-   </function>   
+   </function>
 
    <function name="aero/coefficient/Cn_hull_beta">
     <description>Yaw_moment_from_hull_due_to_beta</description>
@@ -2030,6 +2360,59 @@
      </table>
     </product>
    </function> 
+
+   <function name="aero/coefficient/Cn_fin_beta">
+    <description>Yaw_moment_from_vertical_fin_due_to_beta</description>
+    <!--
+	 Formulation based on NACA report 432 "Force measurements on a
+         1/40-scale model of the U.S. Airship Akron" by Hugh B. Freeman.
+
+            Cn = M / (q * vol)
+
+    -->
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 7062940 </value>
+     <!-- Start Cn -->
+     <value> -1.0 </value> <!-- NOTE: sign.
+				Tweaking needed.
+                           -->
+     <table>
+      <independentVar lookup="row">aero/beta-deg</independentVar>
+      <!--  Virtual wind-tunnel data computed with Gerris.
+             From Submarine Scout -->
+      <tableData>
+       -180   0.00000
+       -165   0.06884
+       -150   0.18569
+       -135   0.23584
+       -120   0.25459
+       -105   0.27774
+       -90    0.23735
+       -75    0.27625
+       -60    0.24490
+       -45    0.25233
+       -30    0.18336
+       -20    0.10816
+       -10    0.045351
+       0      0
+       10     -0.045351
+       20     -0.10816
+       30     -0.18336
+       45     -0.25233
+       60     -0.24490
+       75     -0.27625
+       90     -0.23735
+       105    -0.27774
+       120    -0.25459
+       135    -0.23584
+       150    -0.18569
+       165    -0.06884
+       180    0.00000
+      </tableData>
+     </table>
+    </product>
+   </function>
 
   </axis>
 
