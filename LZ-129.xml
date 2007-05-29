@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.29 2007-05-28 20:45:24 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.30 2007-05-29 21:30:10 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.29 2007-05-28 20:45:24 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.30 2007-05-29 21:30:10 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -472,8 +472,8 @@
    <static_friction>  0.2 </static_friction>
    <dynamic_friction> 0.2 </dynamic_friction>
    <rolling_friction> 0.2 </rolling_friction>
-   <spring_coeff unit="N/M">      1000000 </spring_coeff>
-   <damping_coeff unit="N/M/SEC"> 1000000 </damping_coeff>
+   <spring_coeff unit="N/M">      10000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 10000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -488,8 +488,8 @@
    <static_friction>  0.2 </static_friction>
    <dynamic_friction> 0.2 </dynamic_friction>
    <rolling_friction> 0.2 </rolling_friction>
-   <spring_coeff unit="N/M">      1000000 </spring_coeff>
-   <damping_coeff unit="N/M/SEC"> 1000000 </damping_coeff>
+   <spring_coeff unit="N/M">      10000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 10000 </damping_coeff>
    <max_steer unit="DEG"> 0.0 </max_steer>
    <brake_group> NONE </brake_group>
    <retractable>0</retractable>
@@ -1566,8 +1566,8 @@
   <!-- ================================================== -->
   <axis name="DRAG">
 
-   <function name="aero/coefficient/CDalpha">
-    <description>Drag_due_to_alpha</description>
+   <function name="aero/coefficient/CDhull_alpha">
+    <description>Drag_from_hull_due_to_alpha</description>
     <!-- 
          Formulation based on [Freeman:1932:Akron].
 
@@ -1582,38 +1582,40 @@
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!-- Virtual wind-tunnel data computed with Gerris. -->
       <tableData>
-       -90   1.2971
-       -75   0.68044
-       -60   0.42372
-       -45   0.27962
-       -40   0.14040
-       -35   0.084478
-       -30   0.064461
-       -25   0.041944
-       -20   0.044676
-       -15   0.031063
-       -10   0.020192
-       -5    0.016296
-       0     0.018832
-       5     0.016296
-       10    0.020192
-       15    0.031063
-       20    0.044676
-       25    0.041944
-       30    0.064461
-       35    0.084478
-       40    0.14040
-       45    0.27962
-       60    0.42372
-       75    0.68044
-       90    1.2971
+       -180  0.0023276
+       -165  0.0056401
+       -150  0.0176930
+       -135  0.0423540
+       -120  0.0843080
+       -105  0.1452500
+       -90   0.1825200
+       -75   0.1284500
+       -60   0.0823620
+       -45   0.0439260
+       -30   0.0199780
+       -20   0.0093953
+       -10   0.0040798
+       0     0.0034340
+       10    0.0040798
+       20    0.0093953
+       30    0.0199780
+       45    0.0439260
+       60    0.0823620
+       75    0.1284500
+       90    0.1825200
+       105   0.1452500
+       120   0.0843080
+       135   0.0423540
+       150   0.0176930
+       165   0.0056401
+       180   0.0023276
       </tableData>
      </table>
     </product>
    </function>
 
-   <function name="aero/coefficient/CDbeta">
-    <description>Drag_due_to_side_slip</description>
+   <function name="aero/coefficient/CDhull_beta">
+    <description>Drag_from_hull_due_to_side_slip</description>
     <!-- 
 	 Formulation based on [Freeman:1932:Akron].
 
@@ -1628,31 +1630,33 @@
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!-- Virtual wind-tunnel data computed with Gerris. -->
       <tableData>
-       -90   1.2971
-       -75   0.68044
-       -60   0.42372
-       -45   0.27962
-       -40   0.14040
-       -35   0.084478
-       -30   0.064461
-       -25   0.041944
-       -20   0.044676
-       -15   0.031063
-       -10   0.020192
-       -5    0.016296
-       0     0.018832
-       5     0.016296
-       10    0.020192
-       15    0.031063
-       20    0.044676
-       25    0.041944
-       30    0.064461
-       35    0.084478
-       40    0.14040
-       45    0.27962
-       60    0.42372
-       75    0.68044
-       90    1.2971
+       -180  0.0023276
+       -165  0.0056401
+       -150  0.0176930
+       -135  0.0423540
+       -120  0.0843080
+       -105  0.1452500
+       -90   0.1825200
+       -75   0.1284500
+       -60   0.0823620
+       -45   0.0439260
+       -30   0.0199780
+       -20   0.0093953
+       -10   0.0040798
+       0     0.0034340
+       10    0.0040798
+       20    0.0093953
+       30    0.0199780
+       45    0.0439260
+       60    0.0823620
+       75    0.1284500
+       90    0.1825200
+       105   0.1452500
+       120   0.0843080
+       135   0.0423540
+       150   0.0176930
+       165   0.0056401
+       180   0.0023276
       </tableData>
      </table>
     </product>
@@ -1663,8 +1667,8 @@
   <!-- ================================================== -->
   <axis name="SIDE">
 
-   <function name="aero/coefficient/CYbeta">
-    <description>Side_force_due_to_beta</description>
+   <function name="aero/coefficient/CYhull_beta">
+    <description>Side_force_from_hull_due_to_beta</description>
     <!-- 	 
 	 Formulation based on [Freeman:1932:Akron].
 
@@ -1680,31 +1684,33 @@
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
       <tableData>
-       -90  -0.17729
-       -75  -0.26159
-       -60  -0.26146
-       -45  -0.29343
-       -40  -0.17366
-       -35  -0.12106
-       -30  -0.11253
-       -25  -0.076808
-       -20  -0.068279
-       -15  -0.051532
-       -10  -0.037376
-       -5   -0.018914
-       0    0.0
-       5    0.018914
-       10   0.037376
-       15   0.051532
-       20   0.068279
-       25   0.076808
-       30   0.11253
-       35   0.12106
-       40   0.17366
-       45   0.29343
-       60   0.26146
-       75   0.26159
-       90   0.17729
+       -180  0.000000
+       -165  0.007206
+       -150  0.019591
+       -135  0.032773
+       -120  0.029182
+       -105  0.030047
+       -90   -0.007365
+       -75   -0.038327
+       -60   -0.040328
+       -45   -0.033295
+       -30   -0.023790
+       -20   -0.014728
+       -10   -0.005454
+       0     0.000000
+       10    0.005454
+       20    0.014728
+       30    0.023790
+       45    0.033295
+       60    0.040328
+       75    0.038327
+       90    0.007365
+       105   -0.030047
+       120   -0.029182
+       135   -0.032773
+       150   -0.019591
+       165   -0.007206
+       180   0.000000
       </tableData>
      </table>
     </product>
@@ -1744,8 +1750,8 @@
   <!-- ================================================== -->
   <axis name="LIFT">
 
-   <function name="aero/coefficient/CLalpha">
-    <description>Lift_due_to_alpha</description>
+   <function name="aero/coefficient/CLhull_alpha">
+    <description>Lift_from_hull_due_to_alpha</description>
     <!--	 
 	 Formulation based on [Freeman:1932:Akron].
 
@@ -1759,32 +1765,34 @@
      <table>
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
-      <tableData> 
-       -90  -0.17729
-       -75  -0.26159
-       -60  -0.26146
-       -45  -0.29343
-       -40  -0.17366
-       -35  -0.12106
-       -30  -0.11253
-       -25  -0.076808
-       -20  -0.068279
-       -15  -0.051532
-       -10  -0.037376
-       -5   -0.018914
-       0    0.0
-       5    0.018914
-       10   0.037376
-       15   0.051532
-       20   0.068279
-       25   0.076808
-       30   0.11253
-       35   0.12106
-       40   0.17366
-       45   0.29343
-       60   0.26146
-       75   0.26159
-       90   0.17729
+      <tableData>
+       -180  0.000000
+       -165  0.007206
+       -150  0.019591
+       -135  0.032773
+       -120  0.029182
+       -105  0.030047
+       -90   -0.007365
+       -75   -0.038327
+       -60   -0.040328
+       -45   -0.033295
+       -30   -0.023790
+       -20   -0.014728
+       -10   -0.005454
+       0     0.000000
+       10    0.005454
+       20    0.014728
+       30    0.023790
+       45    0.033295
+       60    0.040328
+       75    0.038327
+       90    0.007365
+       105   -0.030047
+       120   -0.029182
+       135   -0.032773
+       150   -0.019591
+       165   -0.007206
+       180   0.000000
       </tableData>
      </table>
     </product>
@@ -1853,8 +1861,8 @@
     </product>
    </function>
 
-   <function name="aero/coefficient/Cmalpha">
-    <description>Pitch_moment_due_to_alpha</description>
+   <function name="aero/coefficient/Cm_hull_alpha">
+    <description>Pitch_moment_from_hull_due_to_alpha</description>
     <!--	 
 	 Formulation based [Freeman:1932:Akron].
 
@@ -1869,31 +1877,33 @@
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
       <tableData> 
-       -90  0.84128
-       -75  0.014697
-       -60  -0.49456
-       -45  -0.55217
-       -40  -0.70482
-       -35  -0.73835
-       -30  -0.67837
-       -25  -0.61447
-       -20  -0.49109
-       -15  -0.38404
-       -10  -0.25670
-       -5   -0.13091
-       0    0.0
-       5    0.13091
-       10   0.25670
-       15   0.38404
-       20   0.49109
-       25   0.61447
-       30   0.67837
-       35   0.73835
-       40   0.70482
-       45   0.55217
-       60   0.49456
-       75   -0.014697
-       90   -0.84128
+       -180   0.00037515;
+       -165   0.45935
+       -150   0.79738
+       -135   0.92990
+       -120   0.81680
+       -105   0.47337
+       -90    0.0083590
+       -75    -0.45171
+       -60    -0.80467
+       -45    -0.92266
+       -30    -0.80836
+       -20    -0.59129
+       -10    -0.31354
+       0      0.00020871
+       10     0.31354
+       20     0.59129
+       30     0.80836
+       45     0.92266
+       60     0.80467
+       75     0.45171
+       90     -0.0083590
+       105    -0.47337
+       120    -0.81680
+       135    -0.92990
+       150    -0.79738
+       165    -0.45935
+       180    0.00037515;
       </tableData>
      </table>
     </product>
@@ -1973,8 +1983,8 @@
     </product>
    </function>   
 
-   <function name="aero/coefficient/Cnbeta">
-    <description>Yaw_moment_due_to_beta</description>
+   <function name="aero/coefficient/Cn_hull_beta">
+    <description>Yaw_moment_from_hull_due_to_beta</description>
     <!--
 	 Formulation based on [Freeman:1932:Akron].
 
@@ -1988,32 +1998,34 @@
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
-      <tableData> 
-       -90  0.84128
-       -75  0.014697
-       -60  -0.49456
-       -45  -0.55217
-       -40  -0.70482
-       -35  -0.73835
-       -30  -0.67837
-       -25  -0.61447
-       -20  -0.49109
-       -15  -0.38404
-       -10  -0.25670
-       -5   -0.13091
-       0    0.0
-       5    0.13091
-       10   0.25670
-       15   0.38404
-       20   0.49109
-       25   0.61447
-       30   0.67837
-       35   0.73835
-       40   0.70482
-       45   0.55217
-       60   0.49456
-       75   -0.014697
-       90   -0.84128
+      <tableData>
+       -180   0.00037515;
+       -165   0.45935
+       -150   0.79738
+       -135   0.92990
+       -120   0.81680
+       -105   0.47337
+       -90    0.0083590
+       -75    -0.45171
+       -60    -0.80467
+       -45    -0.92266
+       -30    -0.80836
+       -20    -0.59129
+       -10    -0.31354
+       0      0.00020871
+       10     0.31354
+       20     0.59129
+       30     0.80836
+       45     0.92266
+       60     0.80467
+       75     0.45171
+       90     -0.0083590
+       105    -0.47337
+       120    -0.81680
+       135    -0.92990
+       150    -0.79738
+       165    -0.45935
+       180    0.00037515;
       </tableData>
      </table>
     </product>
