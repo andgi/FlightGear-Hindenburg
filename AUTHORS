@@ -1,0 +1,18 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - LZ 129 Hindenburg FlightGear configuration
+  - LZ 129 Flight Dynamics Model Configuration
+  - LZ 129 Hindenburg 3d model
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+Detlef Faber
+  - Crew 3d model (From FlightGear/Aircraft/F4U/)
+
+Syd Adams
+  - Radio panel (From FlightGear/Aircraft/Instruments-3d/ky196/)
+  - Template for the Nasal electrical system.
+
+Anonymous?
+  - Propellers (From FlightGear/Aircraft/Boeing314/)
+  - FDM engine definitions. (From FlightGear/Aircraft/Boeing314/)
