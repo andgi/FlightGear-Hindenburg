@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.32 2007-05-29 23:58:41 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.33 2007-05-30 21:44:13 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.32 2007-05-29 23:58:41 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.33 2007-05-30 21:44:13 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -2296,6 +2296,7 @@
      <property>aero/qbar-psf</property>
      <value> 7062940 </value>
      <!-- Start Cn -->
+     <value> 2.0 </value> <!-- The rudder is not adjusted yet. -->
      <table>
       <independentVar lookup="row">fcs/rudder-pos-deg</independentVar>
       <tableData>
