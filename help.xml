@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.7 2007-05-13 22:20:19 anders Exp $ -->
+<!-- $Id: help.xml,v 1.8 2007-05-30 18:43:37 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -70,7 +70,7 @@
  <line>1. Weigh-off (W) twice.</line>
  <line>2. Drop ballast fore and aft if needed.</line>
  <line>3. Start engines once the airship is clear of the ground.</line>
- <line>4. Stay in control by careful use of elevator and rudder. (I only manage to do so for a few minutes..)</line>
+ <line>4. Stay in control by careful use of elevator and rudder.</line>
  <line>5. ...</line>
  <line>6. Don't Panic!</line>
 
