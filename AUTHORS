@@ -7,12 +7,13 @@ The model borrows content from the following authors' contributions
 to FlightGear:
 
 Detlef Faber
-  - Crew 3d model (From FlightGear/Aircraft/F4U/)
+  - Crew 3d model. (From FlightGear/Aircraft/F4U/)
 
 Syd Adams
-  - Radio panel (From FlightGear/Aircraft/Instruments-3d/ky196/)
+  - Radio panel. (From FlightGear/Aircraft/Instruments-3d/ky196/)
   - Template for the Nasal electrical system.
 
 Anonymous?
-  - Propellers (From FlightGear/Aircraft/Boeing314/)
+  - Propellers. (From FlightGear/Aircraft/Boeing314/)
   - FDM engine definitions. (From FlightGear/Aircraft/Boeing314/)
+  - Template for the sound configuration.
