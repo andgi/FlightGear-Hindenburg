@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.11 2007-06-05 22:11:08 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.12 2007-06-10 12:40:11 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -42,71 +42,12 @@
 
  <nasal>
   <LZ129>
-   <script>
-    var ballastFore = "/fdm/jsbsim/propulsion/ballast-tank[0]/contents-slug";
-    var ballastAft  = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
-    var gascell     = "/fdm/jsbsim/propulsion/gas-cell";
-
-    setForwardGasValves = func (v) {
-       setprop(gascell ~ "[15]/valve_open", v);
-       setprop(gascell ~ "[14]/valve_open", v);
-       setprop(gascell ~ "[13]/valve_open", v);
-       setprop(gascell ~ "[12]/valve_open", v);
-       setprop(gascell ~ "[11]/valve_open", v);
-       setprop(gascell ~ "[10]/valve_open", v);
-       setprop(gascell ~ "[9]/valve_open", v);
-       setprop(gascell ~ "[8]/valve_open", v);
-    }
-
-    setAftGasValves = func (v) {
-       setprop(gascell ~ "[7]/valve_open", v);
-       setprop(gascell ~ "[6]/valve_open", v);
-       setprop(gascell ~ "[5]/valve_open", v);
-       setprop(gascell ~ "[4]/valve_open", v);
-       setprop(gascell ~ "[3]/valve_open", v);
-       setprop(gascell ~ "[2]/valve_open", v);
-       setprop(gascell ~ "[1]/valve_open", v);
-       setprop(gascell ~ "[0]/valve_open", v);
-    }
-
-    init = func {
-       var crew = "/sim/model/crew/";
-       setprop(crew ~ "rudder_coxswain/visible", 1);
-       setprop(crew ~ "elevator_coxswain/visible", 1);
-       setprop(crew ~ "captain/visible", 1);
-    }
-
-    init();
-   </script>
+   <file>Aircraft/LZ-129/Systems/LZ-129.nas</file>
   </LZ129>
   <Instruments>
    <file>Aircraft/LZ-129/Systems/electrical.nas</file>
    <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
   </Instruments>
-  <WeighOff>
-   <script>
-    var weight_on_gear =
-      props.globals.getNode("/fdm/jsbsim/forces/fbz-gear-lbs");
-    var ballast = "/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug";
-
-    print_wow = func {
-      gui.popupTip("Current weight on gear " ~
-                   weight_on_gear.getValue() ~ " lbs.");
-    }
-
-    weighoff = func {
-      gui.popupTip("Weigh-off to 10% in progress. " ~
-                   "Current weight " ~ weight_on_gear.getValue() ~ " lbs.");
-      slugtolb = 32.174049;
-      lbtoslug = 1.0/slugtolb;
-      wow = weight_on_gear.getValue();
-      cont = getprop(ballast);
-      interpolate(ballast,
-                  cont + 0.90 * wow * lbtoslug,
-                  10);
-    }
-   </script>
-  </WeighOff>
  </nasal>
 
  <input>
@@ -120,7 +61,7 @@
     <binding> 
      <command>nasal</command>
      <script>
-      WeighOff.weighoff();
+      LZ129.weighoff();
      </script>     
     </binding>
    </key>
@@ -130,7 +71,7 @@
     <binding>
      <command>nasal</command>
      <script>
-      WeighOff.print_wow();
+      LZ129.print_wow();
      </script>
     </binding>
    </key>
@@ -141,9 +82,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       gui.popupTip("Dropping ballast aft! " ~
-                    "Ballast left: " ~ getprop(LZ129.ballastAft) ~ " slug");
-       interpolate(LZ129.ballastAft, 0.999 * getprop(LZ129.ballastAft), 0.5);
+      LZ129.drop_ballast(LZ129.ballastAft, 0.001);
      </script>
     </binding>
    </key>
@@ -154,9 +93,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       gui.popupTip("Dropping ballast aft! " ~
-                    "Ballast left: " ~ getprop(LZ129.ballastAft) ~ " slug");
-       interpolate(LZ129.ballastAft, 0.99 * getprop(LZ129.ballastAft), 0.5);
+      LZ129.drop_ballast(LZ129.ballastAft, 0.01);
      </script>
     </binding>
    </key>
@@ -167,9 +104,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       gui.popupTip("Dropping ballast fore! " ~
-                    "Ballast left: " ~ getprop(LZ129.ballastFore) ~ " slug");
-       interpolate(LZ129.ballastFore, 0.999 * getprop(LZ129.ballastFore), 0.5);
+      LZ129.drop_ballast(LZ129.ballastFore, 0.001);
      </script>
     </binding>
    </key>
@@ -180,9 +115,7 @@
     <binding>
      <command>nasal</command>
      <script>
-       gui.popupTip("Dropping ballast fore! " ~
-                    "Ballast left: " ~ getprop(LZ129.ballastFore) ~ " slug");
-       interpolate(LZ129.ballastFore, 0.99 * getprop(LZ129.ballastFore), 0.5);
+      LZ129.drop_ballast(LZ129.ballastFore, 0.01);
      </script>
     </binding>
    </key>
