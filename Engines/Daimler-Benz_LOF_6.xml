@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<!-- $Id: Daimler-Benz_LOF_6.xml,v 1.1 2007-06-12 00:30:10 anders Exp $ -->
+<!--
+
+  LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
+
+    Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+<!--
+
+       Engine data from [Bentele, 1992]:
+
+       Manufacturer:        Daimler Bentz AG
+       Type:                LOF 6 (DB 602) (Diesel)
+       No. cylinders:       V 16
+       Max power:           1050 HP
+       Max rpm:             1500 rpm
+       Cruise power:        940 HP
+       Cruise rpm:          1350 rpm
+       Swept volume:        88 dm3
+       Weight (w/o cooler): 2200 kg
+       Power/weight ration: 2.8 kg/kWh
+       Fuel consumption (cruise): 0.225 kg/kWh
+       Piston diameter:     175 mm
+       Piston stroke:       230 mm
+       Compression ration:  1:16
+       Reduction gear:      2:1
+       Propeller diameter:  6.0 m
+       Propeller rpm (cruise): 625 rpm
+       
+       Notes: 2 input, 2 output valves. No supercharger. Could rotate
+              in either direction. Compressed air starter.
+
+  References :
+  ==========
+
+  - Eugen Bentele, "The Story of a Zeppelin Mechanic",
+    Zeppelin-Museum Friedrichshafen, 1992.
+
+-->
+
+<piston_engine name="Daimler-Benz LOF 6 / DB 602">
+
+   <minmp unit="INHG"> 6.0 </minmp>   <!-- Guess -->
+   <maxmp unit="INHG"> 30.0 </maxmp>  <!-- Guess -->
+   <displacement unit="M3"> 0.088 </displacement>
+   <maxhp> 1050.00 </maxhp>
+   <cycles> 4.0 </cycles>
+   <idlerpm> 200.0 </idlerpm>
+   <maxthrottle> 1.0 </maxthrottle>
+   <minthrottle> 0.1 </minthrottle>
+
+</piston_engine>

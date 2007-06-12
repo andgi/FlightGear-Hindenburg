@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.1 2007-06-10 12:40:12 anders Exp $
+## $Id: LZ-129.nas,v 1.2 2007-06-12 00:30:10 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -73,4 +73,6 @@ init = func {
     setprop(crew ~ "captain/visible", 1);
 }
 
-init();
+_setlistener("/sim/signals/fdm-initialized", func {
+    init();
+});

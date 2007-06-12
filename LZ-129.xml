@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.33 2007-05-30 21:44:13 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.34 2007-06-12 00:30:10 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.33 2007-05-30 21:44:13 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.34 2007-06-12 00:30:10 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -433,8 +433,8 @@
     <y>   0.0 </y>
     <z> -22.00 </z>
    </location>
-   <static_friction>  0.8 </static_friction>
-   <dynamic_friction> 0.5 </dynamic_friction>
+   <static_friction>  0.80 </static_friction>
+   <dynamic_friction> 0.50 </dynamic_friction>
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="N/M">      250000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 2500000 </damping_coeff>
@@ -449,8 +449,8 @@
     <y>   0.0 </y>
     <z> -23.5 </z>
    </location>
-   <static_friction>  0.8 </static_friction>
-   <dynamic_friction> 0.5 </dynamic_friction>
+   <static_friction>  0.80 </static_friction>
+   <dynamic_friction> 0.50 </dynamic_friction>
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="N/M">      250000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 2500000 </damping_coeff>
@@ -544,14 +544,14 @@
       Total lub. oil:       ca  4500 dm^3
   </documentation>
   <documentation>
-       NOTE: As a temporary measure the engines are borrowed from the
-             Boeing 314A.
+       NOTE: As a temporary measure the engines and propellers
+             are borrowed from the Boeing 314A.
              The engine type is WrightGR-2600 instead of the
 	     Daimler-Benz DB 620 it should be.	     
   </documentation>
 
   <!-- Engine 1 -->
-  <engine file="WrightGR-2600">
+  <engine file="Daimler-Benz_LOF_6">
    <location unit="M">
     <x> 152.55 </x>
     <y> -15.255 </y>
@@ -600,7 +600,7 @@
    <feed>35</feed>
    <feed>36</feed>
    <feed>37</feed>
-   <thruster file="HamiltonStd6243A-3">
+   <thruster file="LZ-129_prop">
     <location unit="M">
      <x> 152.55 </x>
      <y> -15.255 </y>
@@ -615,7 +615,7 @@
   </engine>
 
   <!-- Engine 2 -->
-  <engine file="WrightGR-2600">
+  <engine file="Daimler-Benz_LOF_6">
    <location unit="M">
     <x> 152.55 </x>
     <y> 15.255 </y>
@@ -664,7 +664,7 @@
    <feed>35</feed>
    <feed>36</feed>
    <feed>37</feed>
-   <thruster file="HamiltonStd6243A-3">
+   <thruster file="LZ-129_prop">
     <location unit="M">
      <x> 152.55 </x>
      <y> 15.255 </y>
@@ -679,7 +679,7 @@
   </engine>
 
   <!-- Engine 3 -->
-  <engine file="WrightGR-2600">
+  <engine file="Daimler-Benz_LOF_6">
    <location unit="M">
     <x> 105.3 </x>
     <y> -20.25 </y>
@@ -728,7 +728,7 @@
    <feed>35</feed>
    <feed>36</feed>
    <feed>37</feed>
-   <thruster file="HamiltonStd6243A-3">
+   <thruster file="LZ-129_prop">
     <location unit="M">
      <x> 105.3 </x>
      <y> -20.25 </y>
@@ -743,7 +743,7 @@
   </engine>
 
   <!-- Engine 4 -->
-  <engine file="WrightGR-2600">
+  <engine file="Daimler-Benz_LOF_6">
    <location unit="M">
     <x> 105.3 </x>
     <y> 20.25 </y>
@@ -792,7 +792,7 @@
    <feed>35</feed>
    <feed>36</feed>
    <feed>37</feed>
-   <thruster file="HamiltonStd6243A-3">
+   <thruster file="LZ-129_prop">
     <location unit="M">
      <x> 105.3 </x>
      <y> 20.25 </y>
@@ -1468,7 +1468,8 @@
   === Pitch ==================================================
   -->
   <channel name="Pitch">
-   <summer name="Pitch Trim Sum">
+
+   <summer name="fcs/pitch-trim-sum">
     <input>fcs/elevator-cmd-norm</input>
     <input>fcs/pitch-trim-cmd-norm</input>
     <input>ap/elevator-cmd-norm</input>
@@ -2296,7 +2297,7 @@
      <property>aero/qbar-psf</property>
      <value> 7062940 </value>
      <!-- Start Cn -->
-     <value> 2.0 </value> <!-- The rudder is not adjusted yet. -->
+     <value> 1.5 </value> <!-- The rudder is not adjusted yet. -->
      <table>
       <independentVar lookup="row">fcs/rudder-pos-deg</independentVar>
       <tableData>
