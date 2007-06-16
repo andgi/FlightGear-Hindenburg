@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.12 2007-06-10 12:40:11 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.13 2007-06-16 20:57:29 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -10,7 +10,7 @@
 
  <sim>
 
-  <description>LZ 129 Hindenburg (using the LTA JSBSim FDM)</description>
+  <description>LZ 129 Hindenburg (for exprimental JSBSim-LTA)</description>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -19,24 +19,16 @@
    <onground>true</onground>
   </presets>
 
-<!-- Put in the common file.
-  <systems>
-   <electrical>
-    <path/>
-   </electrical>
-  </systems>
--->
 <!--
   <instrumentation>
    <path>Aircraft/Submarine_Scout/Systems/instrumentation.xml</path>
   </instrumentation>
 -->
 
- <!-- Temporary solution. -->
- <sound>
-  <audible>true</audible>
-  <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
- </sound>
+  <sound>
+   <audible>true</audible>
+   <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
+  </sound>
 
  </sim>
 
