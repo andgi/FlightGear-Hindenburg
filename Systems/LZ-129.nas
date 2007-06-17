@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.2 2007-06-12 00:30:10 anders Exp $
+## $Id: LZ-129.nas,v 1.3 2007-06-17 23:50:40 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -8,10 +8,10 @@
 ##
 ###############################################################################
 
-var ballastFore    = "/fdm/jsbsim/propulsion/ballast-tank[0]/contents-slug";
-var ballastAft     = "/fdm/jsbsim/propulsion/ballast-tank[1]/contents-slug";
-var ballastCenter  = "/fdm/jsbsim/propulsion/ballast-tank[2]/contents-slug";
-var gascell        = "/fdm/jsbsim/propulsion/gas-cell";
+var ballastFore    = "/fdm/jsbsim/inertia/ballast-tank[0]/contents-slug";
+var ballastAft     = "/fdm/jsbsim/inertia/ballast-tank[1]/contents-slug";
+var ballastCenter  = "/fdm/jsbsim/inertia/ballast-tank[2]/contents-slug";
+var gascell        = "/fdm/jsbsim/inertia/gas-cell";
 var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
 var slugtolb  = 32.174049;
 var lbtoslug  = 1.0/slugtolb;

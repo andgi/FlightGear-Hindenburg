@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.34 2007-06-12 00:30:10 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.35 2007-06-17 23:50:40 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.34 2007-06-12 00:30:10 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.35 2007-06-17 23:50:40 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -415,6 +415,269 @@
   <!-- In cell 2 -->
   <!-- In cell 1 -->
   <!-- In cell 0 -->
+
+  <!--
+  === Gas cells ==============================================
+  -->
+
+  <!-- Cell 1 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 235.7 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.2 </x_width>
+   <y_radius unit="M"> 4.93 </y_radius>
+   <z_radius unit="M"> 4.93 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 2 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 220.7 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 13.77 </x_width>
+   <y_radius unit="M"> 9.52 </y_radius>
+   <z_radius unit="M"> 9.52 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 3 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 207.1 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 13.50 </x_width>
+   <y_radius unit="M"> 12.56 </y_radius>
+   <z_radius unit="M"> 12.56 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 4 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 192.78 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 15.12 </x_width>
+   <y_radius unit="M"> 15.12 </y_radius>
+   <z_radius unit="M"> 15.12 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 5 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 177.66 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 15.12 </x_width>
+   <y_radius unit="M"> 17.145 </y_radius>
+   <z_radius unit="M"> 17.145 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 6 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 162.61 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 18.56 </y_radius>
+   <z_radius unit="M"> 18.56 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 7 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 147.62 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 19.51 </y_radius>
+   <z_radius unit="M"> 19.51 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 8 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 131.76 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.74 </x_width>
+   <y_radius unit="M"> 20.12 </y_radius>
+   <z_radius unit="M"> 20.12 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 9 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 115.16 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.47 </x_width>
+   <y_radius unit="M"> 20.52 </y_radius>
+   <z_radius unit="M"> 20.52 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 10 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 98.69 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.47 </x_width>
+   <y_radius unit="M"> 20.66 </y_radius>
+   <z_radius unit="M"> 20.66 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 11 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 82.15 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 16.61 </x_width>
+   <y_radius unit="M"> 20.45 </y_radius>
+   <z_radius unit="M"> 20.45 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 12 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 66.42 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 19.91 </y_radius>
+   <z_radius unit="M"> 19.91 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 13 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 51.50 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.985 </x_width>
+   <y_radius unit="M"> 18.90 </y_radius>
+   <z_radius unit="M"> 18.90 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 14 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 36.59 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 17.08 </y_radius>
+   <z_radius unit="M"> 17.08 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 15 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 21.74 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 14.85 </x_width>
+   <y_radius unit="M"> 13.77 </y_radius>
+   <z_radius unit="M"> 13.77 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!-- Cell 16 -->
+  <gas_cell type="HYDROGEN">
+   <location unit="M">
+    <x> 8.64 </x>
+    <y> 0.0 </y>
+    <z> 5.0 </z>
+   </location>
+   <x_width unit="M"> 11.34 </x_width>
+   <y_radius unit="M"> 7.63 </y_radius>
+   <z_radius unit="M"> 7.63 </z_radius>
+   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
+   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+  </gas_cell>
+
+  <!--
+  === Ballast ================================================
+  -->
+  <!-- Experimental ballast setup. -->
+  <!-- Forward ballast -->
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG">  14000 </contents>
+  </ballast>
+  <!-- Aft ballast -->
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 220.0 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG">   8250 </contents>
+  </ballast>
+  <!-- Center ballast -->
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 122.5 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <capacity unit="KG"> 200000 </capacity>
+   <contents unit="KG">  18000 </contents>
+  </ballast>
 
  </mass_balance>
 
@@ -1190,269 +1453,6 @@
    <capacity unit="KG"> 1250 </capacity>
    <contents unit="KG"> 1250 </contents>
   </tank>
-
-  <!--
-  === Gas cells ==============================================
-  -->
-
-  <!-- Cell 1 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 235.7 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 16.2 </x_width>
-   <y_radius unit="M"> 4.93 </y_radius>
-   <z_radius unit="M"> 4.93 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 2 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 220.7 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 13.77 </x_width>
-   <y_radius unit="M"> 9.52 </y_radius>
-   <z_radius unit="M"> 9.52 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 3 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 207.1 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 13.50 </x_width>
-   <y_radius unit="M"> 12.56 </y_radius>
-   <z_radius unit="M"> 12.56 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 4 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 192.78 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 15.12 </x_width>
-   <y_radius unit="M"> 15.12 </y_radius>
-   <z_radius unit="M"> 15.12 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 5 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 177.66 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 15.12 </x_width>
-   <y_radius unit="M"> 17.145 </y_radius>
-   <z_radius unit="M"> 17.145 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 6 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 162.61 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.985 </x_width>
-   <y_radius unit="M"> 18.56 </y_radius>
-   <z_radius unit="M"> 18.56 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 7 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 147.62 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.985 </x_width>
-   <y_radius unit="M"> 19.51 </y_radius>
-   <z_radius unit="M"> 19.51 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 8 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 131.76 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 16.74 </x_width>
-   <y_radius unit="M"> 20.12 </y_radius>
-   <z_radius unit="M"> 20.12 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 9 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 115.16 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 16.47 </x_width>
-   <y_radius unit="M"> 20.52 </y_radius>
-   <z_radius unit="M"> 20.52 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 10 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 98.69 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 16.47 </x_width>
-   <y_radius unit="M"> 20.66 </y_radius>
-   <z_radius unit="M"> 20.66 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 11 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 82.15 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 16.61 </x_width>
-   <y_radius unit="M"> 20.45 </y_radius>
-   <z_radius unit="M"> 20.45 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 12 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 66.42 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.85 </x_width>
-   <y_radius unit="M"> 19.91 </y_radius>
-   <z_radius unit="M"> 19.91 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 13 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 51.50 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.985 </x_width>
-   <y_radius unit="M"> 18.90 </y_radius>
-   <z_radius unit="M"> 18.90 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 14 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 36.59 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.85 </x_width>
-   <y_radius unit="M"> 17.08 </y_radius>
-   <z_radius unit="M"> 17.08 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 15 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 21.74 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 14.85 </x_width>
-   <y_radius unit="M"> 13.77 </y_radius>
-   <z_radius unit="M"> 13.77 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!-- Cell 16 -->
-  <gas_cell type="HYDROGEN">
-   <location unit="M">
-    <x> 8.64 </x>
-    <y> 0.0 </y>
-    <z> 5.0 </z>
-   </location>
-   <x_width unit="M"> 11.34 </x_width>
-   <y_radius unit="M"> 7.63 </y_radius>
-   <z_radius unit="M"> 7.63 </z_radius>
-   <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-  </gas_cell>
-
-  <!--
-  === Ballast ================================================
-  -->
-  <!-- Experimental ballast setup. -->
-  <!-- Forward ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 20.0 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  14000 </contents>
-  </ballast>
-  <!-- Aft ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 220.0 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">   8250 </contents>
-  </ballast>
-  <!-- Center ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 122.5 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  18000 </contents>
-  </ballast>
 
  </propulsion>
 
