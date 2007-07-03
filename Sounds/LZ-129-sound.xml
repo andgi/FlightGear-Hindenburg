@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-sound.xml,v 1.1 2007-06-05 22:11:08 anders Exp $ -->
+<!-- $Id: LZ-129-sound.xml,v 1.2 2007-07-03 23:03:51 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -10,8 +10,12 @@
 <PropertyList>
 
  <!--
-   Guess: Coordinate system origin at the 3d model origin, i.e.
-          100 meter behind the FDM origin.
+   x/y/z == back/left/up
+   Coordinate system origin at the 3d model origin, i.e.
+   100 meter behind the FDM origin.
+
+   NOTE: This is how I interpret README.xmlsound but the actual result
+         is not consistent with what I would expect.
  -->
  
  <fx>
@@ -26,10 +30,10 @@
     <property>engines/engine[0]/cranking</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y>  15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.1</offset>
@@ -50,10 +54,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y>  15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -67,10 +71,10 @@
     <property>engines/engine[0]/running</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y>  15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -91,10 +95,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y>  15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <property>engines/engine[0]/mp-osi</property>
@@ -126,10 +130,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y>  15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <property>engines/engine[0]/mp-osi</property>
@@ -157,10 +161,10 @@
     <property>engines/engine[1]/cranking</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y> -15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.1</offset>
@@ -181,10 +185,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y> -15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -198,10 +202,10 @@
     <property>engines/engine[1]/running</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y> -15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -222,10 +226,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y> -15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <property>engines/engine[1]/mp-osi</property>
@@ -257,10 +261,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  15.26 </x>
-    <y> -17.82 </y>
-    <z>  52.55 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>  52.55 </x>
+    <y> -15.26 </y>
+    <z> -17.82 </z>
    </position>
    <volume>
     <property>engines/engine[1]/mp-osi</property>
@@ -288,10 +292,10 @@
     <property>engines/engine[2]/cranking</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y>  20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.1</offset>
@@ -312,10 +316,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y>  20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -329,10 +333,10 @@
     <property>engines/engine[2]/running</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y>  20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -353,10 +357,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y>  20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <property>engines/engine[2]/mp-osi</property>
@@ -388,10 +392,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x> -20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y>  20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <property>engines/engine[2]/mp-osi</property>
@@ -419,10 +423,10 @@
     <property>engines/engine[3]/cranking</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.1</offset>
@@ -443,10 +447,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -460,10 +464,10 @@
     <property>engines/engine[3]/running</property>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -484,10 +488,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <property>engines/engine[3]/mp-osi</property>
@@ -519,10 +523,10 @@
     </and>
    </condition>
    <position>
-    <!-- x/y/z == right/up/back -->
-    <x>  20.25 </x>
-    <y> -13.77 </y>
-    <z>   5.30 </z>
+    <!-- x/y/z == back/left/up -->
+    <x>   5.30 </x>
+    <y> -20.25 </y>
+    <z> -13.77 </z>
    </position>
    <volume>
     <property>engines/engine[3]/mp-osi</property>
