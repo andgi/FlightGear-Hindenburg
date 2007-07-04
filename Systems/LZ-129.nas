@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.3 2007-06-17 23:50:40 anders Exp $
+## $Id: LZ-129.nas,v 1.4 2007-07-04 23:38:06 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -64,6 +64,25 @@ drop_ballast = func (ballast, x) {
                  "! " ~
                  "Ballast left: " ~ getprop(ballast) ~ " slug");
     interpolate(ballast, (1.0 - x) * getprop(ballast), 0.5);
+}
+
+switch_engine_direction = func (eng) {
+    var engineJSB = "/fdm/jsbsim/propulsion/engine" ~ "[" ~ eng ~ "]";
+    var engineFG  = "/engines/engine" ~ "[" ~ eng ~ "]";
+    var dir       = engineJSB ~ "/yaw-angle-rad";
+
+    if (!getprop(engineFG ~ "/running")) {
+        setprop(dir, (getprop(dir) == 0) ? 3.14159265 : 0.0);
+        # NOTE: The popup tip should probably be at the callers discretion. 
+        gui.popupTip("Changing direction for engine " ~ eng ~
+                     " to " ~
+                     ((getprop(dir) == 0) ? "forward." : "reverse."));
+    } else {
+        # NOTE: The popup tip should probably be at the callers discretion. 
+        gui.popupTip("Cannot change direction for " ~
+                     ((getprop(dir) == 0) ? "forward" : "reverse") ~
+                     " running engine " ~ eng ~ ".");
+    }
 }
 
 init = func {

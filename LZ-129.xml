@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.35 2007-06-17 23:50:40 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.36 2007-07-04 23:38:06 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.35 2007-06-17 23:50:40 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.36 2007-07-04 23:38:06 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -1549,6 +1549,57 @@
     </range>
     <output>fcs/rudder-pos-norm</output>
    </aerosurface_scale>
+
+  </channel>
+
+  <!--
+  === Engine reversal ========================================
+  -->
+  <channel name="Engine Control">
+
+   <switch name="Engine 0 direction switch">
+    <default value="0.0"/>
+    <test value="3.14159265">
+     /controls/engines/engine[0]/reverser == 1
+    </test>
+   </switch>
+   <!-- pure_gain name="fcs/engine-direction[0]">
+    <gain>1.0</gain>
+    <output>propulsion/engine[0]/yaw-angle-rad</output>
+   </pure_gain -->
+
+   <switch name="Engine 1 direction switch">
+    <default value="0.0"/>
+    <test value="3.14159265">
+     /controls/engines/engine[1]/reverser == 1
+    </test>
+   </switch>
+   <!-- pure_gain name="fcs/engine-direction[1]">
+    <gain>1.0</gain>
+    <output>propulsion/engine[1]/yaw-angle-rad</output>
+   </pure_gain -->
+
+   <switch name="Engine 2 direction switch">
+    <default value="0.0"/>
+    <test value="3.14159265">
+     /controls/engines/engine[2]/reverser == 1
+    </test>
+   </switch>
+   <!-- pure_gain name="fcs/engine-direction[2]">
+    <gain>1.0</gain>
+    <output>propulsion/engine[2]/yaw-angle-rad</output>
+   </pure_gain -->
+
+   <switch name="Engine 3 direction switch">
+    <default value="0.0"/>
+    <test value="3.14159265">
+     /controls/engines/engine[3]/reverser == 1
+    </test>
+   </switch>
+   <!-- pure_gain name="fcs/engine-direction[3]">
+    <gain>1.0</gain>
+    <output>propulsion/engine[3]/yaw-angle-rad</output>
+   </pure_gain -->
 
   </channel>
 
