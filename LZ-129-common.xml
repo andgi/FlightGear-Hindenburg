@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-common.xml,v 1.13 2007-05-28 15:05:32 anders Exp $ -->
+<!-- $Id: LZ-129-common.xml,v 1.14 2007-07-05 23:14:17 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
@@ -40,7 +40,7 @@
   </view>
 
   <!-- Define extra views. -->
-  <view n="105">
+  <view n="131">
    <name>Rudder Coxswain View</name>
    <internal type="bool">true</internal>
    <config>
@@ -55,7 +55,7 @@
     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
    </config>
   </view>
-  <view n="110">
+  <view n="132">
    <name>Elevator Coxswain View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -83,7 +83,7 @@
    </config>
   </view>
 
-  <view n="109">
+  <view n="111">
    <name>Radio Operator / Navigator View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -111,7 +111,7 @@
    </config>
   </view>
 
-  <view n="108">
+  <view n="112">
    <name>Control Car Rear View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -139,7 +139,35 @@
    </config>
   </view>
 
-  <view n="107">
+  <view n="124">
+   <name>Engine Car 4 View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+    <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
+    <default-pitch-deg type="double">0</default-pitch-deg>
+    <default-heading-deg type="double">0</default-heading-deg>
+    <front-direction-deg type="double">0</front-direction-deg>
+    <front-left-direction-deg type="double">45</front-left-direction-deg>
+    <left-direction-deg type="double">90</left-direction-deg>
+    <back-left-direction-deg type="double">135</back-left-direction-deg>
+    <back-direction-deg type="double">180</back-direction-deg>
+    <back-right-direction-deg type="double">225</back-right-direction-deg>
+    <right-direction-deg type="double">270</right-direction-deg>
+    <front-right-direction-deg type="double">315</front-right-direction-deg>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m archive="y">  20.25 </x-offset-m>
+    <y-offset-m archive="y"> -12.97 </y-offset-m>
+    <z-offset-m archive="y"> 6.0 </z-offset-m>
+    <pitch-offset-deg>-5</pitch-offset-deg>
+    <heading-offset-deg type="double">180</heading-offset-deg>
+   </config>
+  </view>
+
+  <view n="123">
    <name>Engine Car 3 View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -167,7 +195,7 @@
    </config>
   </view>
 
-  <view n="106">
+  <view n="122">
    <name>Engine Car 2 View</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>
@@ -188,6 +216,34 @@
     <front-right-direction-deg type="double">315</front-right-direction-deg>
     <!-- x/y/z == right/up/back -->
     <x-offset-m archive="y"> 15.255 </x-offset-m>
+    <y-offset-m archive="y"> -16.52 </y-offset-m>
+    <z-offset-m archive="y"> 53.25 </z-offset-m>
+    <pitch-offset-deg>-5</pitch-offset-deg>
+    <heading-offset-deg type="double">180</heading-offset-deg>
+   </config>
+  </view>
+
+  <view n="121">
+   <name>Engine Car 1 View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+    <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
+    <default-pitch-deg type="double">0</default-pitch-deg>
+    <default-heading-deg type="double">0</default-heading-deg>
+    <front-direction-deg type="double">0</front-direction-deg>
+    <front-left-direction-deg type="double">45</front-left-direction-deg>
+    <left-direction-deg type="double">90</left-direction-deg>
+    <back-left-direction-deg type="double">135</back-left-direction-deg>
+    <back-direction-deg type="double">180</back-direction-deg>
+    <back-right-direction-deg type="double">225</back-right-direction-deg>
+    <right-direction-deg type="double">270</right-direction-deg>
+    <front-right-direction-deg type="double">315</front-right-direction-deg>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m archive="y"> -15.255 </x-offset-m>
     <y-offset-m archive="y"> -16.52 </y-offset-m>
     <z-offset-m archive="y"> 53.25 </z-offset-m>
     <pitch-offset-deg>-5</pitch-offset-deg>

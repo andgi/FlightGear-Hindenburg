@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.17 2007-05-30 18:43:09 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.18 2007-07-05 23:14:17 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -202,40 +202,6 @@
   ==== Animations =============================================================
  -->
  
- <!-- LOD for the model as a whole -->
- <animation>
-  <type>range</type>
-  <min-m>0</min-m>
-  <max-m>20000</max-m>
- </animation>
-
- <!-- LOD Cockpit -->
- <animation>
-  <type>range</type>
-  <object-name>CockpitDetailHigh</object-name>
-  <min-m>0</min-m>
-  <max-m>50</max-m>
- </animation>
- <animation>
-  <type>range</type>
-  <object-name>CockpitDetailLow</object-name>
-  <min-m>0</min-m>
-  <max-m>200</max-m>
- </animation>
-
- <animation>
-  <name>CockpitDetailHigh</name>
- </animation>
- <animation>
-  <name>CockpitDetailLow</name>
-  <object-name>Rudder Coxswain</object-name>
-  <object-name>Steering assembly</object-name>
-  <object-name>Elevator Coxswain</object-name>
-  <object-name>Elevator assembly</object-name>
-  <object-name>Captain</object-name>
- </animation>
-
-
 <!-- PROPELLERS. NOTE: Temporary animations borrowed from the
       Boeing 314. -->
 
@@ -321,7 +287,7 @@
    <not>
     <equals>
      <property>sim/current-view/view-number</property>
-     <value>7</value>
+     <value>13</value>
     </equals>
    </not>
   </condition>
@@ -333,7 +299,7 @@
    <not>
     <equals>
      <property>sim/current-view/view-number</property>
-     <value>12</value>
+     <value>14</value>
     </equals>
    </not>
   </condition>
@@ -448,5 +414,42 @@
 -->
 
  <!-- LODs -->
+
+<!--
+ <animation>
+  <name>CockpitDetailHigh</name>
+ </animation>
+-->
+ <animation>
+  <name>CockpitDetailLow</name>
+  <object-name>Rudder Coxswain</object-name>
+  <object-name>Steering assembly</object-name>
+  <object-name>Elevator Coxswain</object-name>
+  <object-name>Elevator assembly</object-name>
+  <object-name>Captain</object-name>
+ </animation>
+
+ <!-- LOD Cockpit -->
+<!--
+ <animation>
+  <type>range</type>
+  <object-name>CockpitDetailHigh</object-name>
+  <min-m>0</min-m>
+  <max-m>50</max-m>
+ </animation>
+-->
+ <animation>
+  <type>range</type>
+  <object-name>CockpitDetailLow</object-name>
+  <min-m>0</min-m>
+  <max-m>2000</max-m>
+ </animation>
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>20000</max-m>
+ </animation>
 
 </PropertyList>
