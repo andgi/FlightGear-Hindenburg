@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.4 2007-07-04 23:38:06 anders Exp $
+## $Id: LZ-129.nas,v 1.5 2007-07-10 22:24:30 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -86,10 +86,7 @@ switch_engine_direction = func (eng) {
 }
 
 init = func {
-    var crew = "/sim/model/crew/";
-    setprop(crew ~ "rudder_coxswain/visible", 1);
-    setprop(crew ~ "elevator_coxswain/visible", 1);
-    setprop(crew ~ "captain/visible", 1);
+    # Nothing to do here yet.
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {

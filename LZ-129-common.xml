@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-common.xml,v 1.14 2007-07-05 23:14:17 anders Exp $ -->
+<!-- $Id: LZ-129-common.xml,v 1.15 2007-07-10 22:24:30 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
@@ -265,11 +265,4 @@
 
  </sim>
 
-<!--
- <nasal>
-  <LZ-129>
-   <file>Aircraft/LZ-129/Nasal/LZ-129.nas</file>
-  </LZ-129>
- </nasal>
--->
 </PropertyList>

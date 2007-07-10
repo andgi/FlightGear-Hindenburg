@@ -1,4 +1,4 @@
-<!-- $Id: rudder_coxswain.xml,v 1.1 2007-05-28 15:05:33 anders Exp $ -->
+<!-- $Id: rudder_coxswain.xml,v 1.2 2007-07-10 22:24:30 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -24,8 +24,8 @@
   <object-name>arm1.R</object-name>
   <object-name>arm2.R</object-name>
   <object-name>hand.R</object-name>
-  <property>/sim/model/crew/rudder_coxswain/visible</property>
-  <factor>70</factor>
+  <property>constants/zero</property>
+  <offset-deg>70</offset-deg>
   <center>
    <x-m>0.08</x-m>
    <y-m>0.22</y-m>
@@ -42,8 +42,8 @@
   <type>rotate</type>
   <object-name>arm2.R</object-name>
   <object-name>hand.R</object-name>
-  <property>/sim/model/crew/rudder_coxswain/visible</property>
-  <factor>90</factor>
+  <property>constants/zero</property>
+  <offset-deg>90</offset-deg>
   <center>
    <x-m>0.007</x-m>
    <y-m>0.533</y-m>
@@ -61,8 +61,8 @@
   <object-name>arm1.L</object-name>
   <object-name>arm2.L</object-name>
   <object-name>hand.L</object-name>
-  <property>/sim/model/crew/rudder_coxswain/visible</property>
-  <factor>70</factor>
+  <property>constants/zero</property>
+  <offset-deg>70</offset-deg>
   <center>
    <x-m>0.08</x-m>
    <y-m>-0.22</y-m>
@@ -79,8 +79,8 @@
   <type>rotate</type>
   <object-name>arm2.L</object-name>
   <object-name>hand.L</object-name>
-  <property>/sim/model/crew/rudder_coxswain/visible</property>
-  <factor>90</factor>
+  <property>constants/zero</property>
+  <offset-deg>90</offset-deg>
   <center>
    <x-m>0.007</x-m>
    <y-m>-0.533</y-m>
