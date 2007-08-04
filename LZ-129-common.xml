@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-common.xml,v 1.15 2007-07-10 22:24:30 anders Exp $ -->
+<!-- $Id: LZ-129-common.xml,v 1.16 2007-08-04 16:13:38 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
@@ -139,6 +139,23 @@
    </config>
   </view>
 
+  <view n="130">
+   <name>Star Observation View</name>
+   <internal type="bool">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <x-offset-m archive="y">  0.00 </x-offset-m>
+    <y-offset-m archive="y"> 21.00 </y-offset-m>
+    <z-offset-m archive="y">  0.00 </z-offset-m>
+    <pitch-offset-deg>0</pitch-offset-deg>
+    <default-field-of-view-deg>65</default-field-of-view-deg>
+    <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+   </config>
+  </view>
+
+
   <view n="124">
    <name>Engine Car 4 View</name>
    <type>lookfrom</type>
@@ -263,6 +280,47 @@
   <!-- Aircraft specific help. -->
   <help include="help.xml"/>
 
+  <hud>
+   <path n="1">Aircraft/Instruments-3d/BubbleSextant/hud.xml</path>
+   <visibility n="1" type="bool">false</visibility>
+   <enable3d n="1" type="bool">false</enable3d>
+   <color>
+    <antialiased type="bool">true</antialiased>
+    <transparent type="bool">true</transparent>
+    <alpha type="float">0.70</alpha>
+    <brightness type="float">1.00</brightness>
+    <alpha-clamp type="float">0.01</alpha-clamp>
+   </color>
+   <palette>
+    <color n="2">
+     <red   type="float">1.00</red>
+     <green type="float">0.75</green>
+     <blue  type="float">0.05</blue>
+    </color> 
+   </palette>
+  </hud>
+
  </sim>
+
+ <nasal>
+  <BubbleSextant>
+   <file>Aircraft/Instruments-3d/BubbleSextant/bubble_sextant.nas</file>
+  </BubbleSextant>
+ </nasal>
+
+ <input>
+  <keyboard>
+   <!-- Astro Observation -->
+   <key n="111">
+    <name>o</name>
+    <desc>Activate sextant view</desc>
+    <repeatable type="bool">false</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>BubbleSextant.toggle_active();</script>
+    </binding>
+   </key>
+  </keyboard>
+ </input>
 
 </PropertyList>
