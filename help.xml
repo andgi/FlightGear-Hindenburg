@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.9 2007-07-04 23:38:06 anders Exp $ -->
+<!-- $Id: help.xml,v 1.10 2007-08-05 17:19:51 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -17,11 +17,11 @@
 
  <!-- Specific keys -->
  <key>
-  <name>s</name>
+  <name>a</name>
   <desc>Drop fore ballast in 0.1% decrements.</desc>
  </key>
  <key>
-  <name>S</name>
+  <name>A</name>
   <desc>Drop fore ballast in 1% decrements.</desc>
  </key>
  <key>
