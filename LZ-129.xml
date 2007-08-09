@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.37 2007-08-06 23:03:59 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.38 2007-08-09 18:37:44 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -30,7 +30,7 @@
 
   <author> Anders Gidenstam </author>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.37 2007-08-06 23:03:59 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.38 2007-08-09 18:37:44 anders Exp $ </version>
   <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
 
   <reference refID="Bauer:1992:LZ130"
@@ -807,10 +807,12 @@
       Total lub. oil:       ca  4500 dm^3
   </documentation>
   <documentation>
-       NOTE: As a temporary measure the engines and propellers
-             are borrowed from the Boeing 314A.
-             The engine type is WrightGR-2600 instead of the
-	     Daimler-Benz DB 620 it should be.	     
+      NOTE: Reversing of the engine is simulated by rotating the thruster
+            180 degrees around the yaw (z) axis.
+      NOTE: The fuel system is incomplete - each engine should feed from
+            a local feeder tank located inside the hull above it.i
+            These tanks were in turn fed from the tanks along the keel in
+            a manner controlled by the crew.
   </documentation>
 
   <!-- Engine 1 -->
@@ -1076,9 +1078,8 @@
   <!-- Fuel tanks along the keel walk way -->
 
   <documentation>
-       NOTE: The capacity numbers should be in liters
-             Assumption: 1 liter (= 0.001 m^3) = 1 kg.
-       Fixme: The actual density of diesel is 0.850kg/liter.
+       NOTE: The capacity numbers were given in liters.
+             The density of diesel is 0.850kg/liter.
   </documentation>
 
   <!-- In cell 15 -->
@@ -1089,8 +1090,8 @@
     <y> -1.080 </y>
     <z> -12.420 </z>
    </location>
-   <capacity unit="KG"> 1250 </capacity>
-   <contents unit="KG"> 1250 </contents>
+   <capacity unit="KG"> 1062.5 </capacity> <!-- 1250 liter -->
+   <contents unit="KG"> 1062.5 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1098,8 +1099,8 @@
     <y> 1.080 </y>
     <z> -12.420 </z>
    </location>
-   <capacity unit="KG"> 1250 </capacity>
-   <contents unit="KG"> 1250 </contents>
+   <capacity unit="KG"> 1062.5 </capacity> <!-- 1250 liter -->
+   <contents unit="KG"> 1062.5 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1107,8 +1108,8 @@
     <y> -1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1116,8 +1117,8 @@
     <y> 1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1125,8 +1126,8 @@
     <y> -1.080 </y>
     <z> -13.500 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 13 -->
@@ -1137,8 +1138,8 @@
     <y> -1.215 </y>
     <z> -17.820 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1146,8 +1147,8 @@
     <y> -1.215 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1155,8 +1156,8 @@
     <y>  1.215 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1164,8 +1165,8 @@
     <y> -1.215 </y>
     <z> -18.360 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1173,8 +1174,8 @@
     <y>  1.215 </y>
     <z> -18.360 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 11 -->
@@ -1185,8 +1186,8 @@
     <y>  1.080 </y>
     <z> -19.575 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1194,8 +1195,8 @@
     <y> -1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1203,8 +1204,8 @@
     <y>  1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
 
@@ -1216,8 +1217,8 @@
     <y>  1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1225,8 +1226,8 @@
     <y> -1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 9 -->
@@ -1237,8 +1238,8 @@
     <y> -1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1246,8 +1247,8 @@
     <y> -1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1255,8 +1256,8 @@
     <y>  1.080 </y>
     <z> -19.710 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1264,8 +1265,8 @@
     <y>  1.080 </y>
     <z> -19.575 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 8 -->
@@ -1276,8 +1277,8 @@
     <y> -1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1285,8 +1286,8 @@
     <y> -1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1294,8 +1295,8 @@
     <y> 1.080 </y>
     <z> -19.440 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1303,8 +1304,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1312,8 +1313,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1321,8 +1322,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 7 -->
@@ -1333,8 +1334,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1342,8 +1343,8 @@
     <y> -1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1351,8 +1352,8 @@
     <y> 1.080 </y>
     <z> -18.900 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 6 -->
@@ -1363,8 +1364,8 @@
     <y> -1.080 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="KG"> 850 </capacity>
-   <contents unit="KG"> 850 </contents>
+   <capacity unit="KG"> 722.5 </capacity> <!-- 850 liter -->
+   <contents unit="KG"> 722.5 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1372,8 +1373,8 @@
     <y> 1.080 </y>
     <z> -18.090 </z>
    </location>
-   <capacity unit="KG"> 850 </capacity>
-   <contents unit="KG"> 850 </contents>
+   <capacity unit="KG"> 722.5 </capacity> <!-- 850 liter -->
+   <contents unit="KG"> 722.5 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1381,8 +1382,8 @@
     <y> -1.080 </y>
     <z> -17.415 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1390,8 +1391,8 @@
     <y> 1.080 </y>
     <z> -17.415 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 5 -->
@@ -1402,8 +1403,8 @@
     <y> -1.080 </y>
     <z> -17.010 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1411,8 +1412,8 @@
     <y> -1.080 </y>
     <z> -15.390 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1420,8 +1421,8 @@
     <y> 1.080 </y>
     <z> -15.390 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
 
   <!-- In cell 4 -->
@@ -1432,8 +1433,8 @@
     <y> -1.080 </y>
     <z> -14.850 </z>
    </location>
-   <capacity unit="KG"> 2500 </capacity>
-   <contents unit="KG"> 2500 </contents>
+   <capacity unit="KG"> 2125.0 </capacity> <!-- 2500 liter -->
+   <contents unit="KG"> 2125.0 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1441,8 +1442,8 @@
     <y> -1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="KG"> 1250 </capacity>
-   <contents unit="KG"> 1250 </contents>
+   <capacity unit="KG"> 1062.5 </capacity> <!-- 1250 liter -->
+   <contents unit="KG"> 1062.5 </contents>
   </tank>
   <tank type="FUEL">
    <location unit="M">
@@ -1450,8 +1451,8 @@
     <y> 1.080 </y>
     <z> -12.960 </z>
    </location>
-   <capacity unit="KG"> 1250 </capacity>
-   <contents unit="KG"> 1250 </contents>
+   <capacity unit="KG"> 1062.5 </capacity> <!-- 1250 liter -->
+   <contents unit="KG"> 1062.5 </contents>
   </tank>
 
  </propulsion>
