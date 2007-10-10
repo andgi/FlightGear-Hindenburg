@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: electrical.nas,v 1.1 2007-05-28 15:05:33 anders Exp $
+## $Id: electrical.nas,v 1.2 2007-10-10 19:59:31 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -8,7 +8,7 @@
 ##
 ###############################################################################
 
-battery = nil;
+var battery = nil;
 var last_time = 0.0;
 var ammeter_ave = 0.0;
 
@@ -23,11 +23,11 @@ setlistener("/sim/signals/fdm-initialized", func {
     setprop("/controls/switches/strobe", 0);
     setprop("/controls/switches/cabin-lights", 0);
     print("Electrical System ... initialized");
-    });
+});
 
 
 ## The battery class is from the FGFS Aerostar (C) Syd Adams
-BatteryClass = {};
+var BatteryClass = {};
 
 BatteryClass.new = func {
     obj = { parents : [BatteryClass],
@@ -67,7 +67,7 @@ BatteryClass.get_output_amps = func {
 
 ###############################################################################
 
-update_virtual_bus = func( dt ) {
+var update_virtual_bus = func( dt ) {
     battery_volts = battery.get_output_volts();
     external_volts = 0.0;
     load = 0.0;
@@ -111,7 +111,7 @@ update_virtual_bus = func( dt ) {
 
 ###############################################################################
 
-update_electrical = func {
+var update_electrical = func {
     if(getprop("/sim/signals/fdm-initialized")){
 	time = getprop("/sim/time/elapsed-sec");
     	dt = time - last_time;
@@ -125,4 +125,4 @@ update_electrical = func {
 setlistener("/sim/signals/fdm-initialized", func {
     settimer(update_electrical, 0);
     print("Electrical System ... running");
-    });
+});

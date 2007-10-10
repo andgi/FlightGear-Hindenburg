@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.5 2007-07-10 22:24:30 anders Exp $
+## $Id: LZ-129.nas,v 1.6 2007-10-10 19:59:31 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -17,7 +17,7 @@ var slugtolb  = 32.174049;
 var lbtoslug  = 1.0/slugtolb;
 
 
-setForwardGasValves = func (v) {
+var setForwardGasValves = func (v) {
     setprop(gascell ~ "[15]/valve_open", v);
     setprop(gascell ~ "[14]/valve_open", v);
     setprop(gascell ~ "[13]/valve_open", v);
@@ -28,7 +28,7 @@ setForwardGasValves = func (v) {
     setprop(gascell ~ "[8]/valve_open", v);
 }
 
-setAftGasValves = func (v) {
+var setAftGasValves = func (v) {
     setprop(gascell ~ "[7]/valve_open", v);
     setprop(gascell ~ "[6]/valve_open", v);
     setprop(gascell ~ "[5]/valve_open", v);
@@ -39,12 +39,12 @@ setAftGasValves = func (v) {
     setprop(gascell ~ "[0]/valve_open", v);
 }
 
-print_wow = func {
+var print_wow = func {
     gui.popupTip("Current weight on gear " ~
                  getprop(weight_on_gear) ~ " lbs.");
 }
 
-weighoff = func {
+var weighoff = func {
     gui.popupTip("Weigh-off to 10% in progress. " ~
                    "Current weight " ~ getprop(weight_on_gear) ~ " lbs.");
     var after =
@@ -54,7 +54,7 @@ weighoff = func {
                 10);
 }
 
-drop_ballast = func (ballast, x) {
+var drop_ballast = func (ballast, x) {
     # NOTE: The popup tip should probably be at the callers discretion. 
     gui.popupTip("Dropping ballast " ~
                  ((ballast == ballastAft)    ? "aft" :
@@ -66,7 +66,7 @@ drop_ballast = func (ballast, x) {
     interpolate(ballast, (1.0 - x) * getprop(ballast), 0.5);
 }
 
-switch_engine_direction = func (eng) {
+var switch_engine_direction = func (eng) {
     var engineJSB = "/fdm/jsbsim/propulsion/engine" ~ "[" ~ eng ~ "]";
     var engineFG  = "/engines/engine" ~ "[" ~ eng ~ "]";
     var dir       = engineJSB ~ "/yaw-angle-rad";
@@ -85,7 +85,7 @@ switch_engine_direction = func (eng) {
     }
 }
 
-init = func {
+var init = func {
     # Nothing to do here yet.
 }
 
