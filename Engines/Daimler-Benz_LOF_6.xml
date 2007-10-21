@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<!-- $Id: Daimler-Benz_LOF_6.xml,v 1.1 2007-06-12 00:30:10 anders Exp $ -->
+<!-- $Id: Daimler-Benz_LOF_6.xml,v 1.2 2007-10-21 16:36:59 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -58,7 +58,8 @@
 
    <minmp unit="INHG"> 6.0 </minmp>   <!-- Guess -->
    <maxmp unit="INHG"> 30.0 </maxmp>  <!-- Guess -->
-   <displacement unit="M3"> 0.088 </displacement>
+   <!-- displacement unit="M3"> 0.088 </displacement -->
+   <displacement unit="IN3"> 5370.0895 </displacement>
    <maxhp> 1050.00 </maxhp>
    <cycles> 4.0 </cycles>
    <idlerpm> 200.0 </idlerpm>
