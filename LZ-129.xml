@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.40 2007-10-15 19:12:43 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.41 2007-10-21 14:02:37 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.40 2007-10-15 19:12:43 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.41 2007-10-21 14:02:37 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -54,6 +54,10 @@
              author="Hugh B. Freeman"
              title="Force Measurements on a 1/40-scale Model of the U.S. Airship ``Akron'';  NACA Report #432"
              date="1932"/>
+  <reference refID="Tittel:1997:LZ129"
+             author="Lutz Tittel"
+             title="1936 - 1937  LZ 129 ''Hindenburg''"
+             date="1997"/>
 
  </fileheader>
 
@@ -441,6 +445,7 @@
    <z_radius unit="M"> 4.93 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 2 -->
@@ -455,6 +460,7 @@
    <z_radius unit="M"> 9.52 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 3 -->
@@ -469,6 +475,7 @@
    <z_radius unit="M"> 12.56 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 4 -->
@@ -483,6 +490,7 @@
    <z_radius unit="M"> 15.12 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 5 -->
@@ -497,6 +505,7 @@
    <z_radius unit="M"> 17.145 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 6 -->
@@ -511,6 +520,7 @@
    <z_radius unit="M"> 18.56 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 7 -->
@@ -525,6 +535,7 @@
    <z_radius unit="M"> 19.51 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 8 -->
@@ -539,6 +550,7 @@
    <z_radius unit="M"> 20.12 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 9 -->
@@ -553,6 +565,7 @@
    <z_radius unit="M"> 20.52 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 10 -->
@@ -567,6 +580,7 @@
    <z_radius unit="M"> 20.66 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 11 -->
@@ -581,6 +595,7 @@
    <z_radius unit="M"> 20.45 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 12 -->
@@ -595,6 +610,7 @@
    <z_radius unit="M"> 19.91 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 13 -->
@@ -609,6 +625,7 @@
    <z_radius unit="M"> 18.90 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 14 -->
@@ -623,6 +640,7 @@
    <z_radius unit="M"> 17.08 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 15 -->
@@ -637,6 +655,7 @@
    <z_radius unit="M"> 13.77 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!-- Cell 16 -->
@@ -651,11 +670,18 @@
    <z_radius unit="M"> 7.63 </z_radius>
    <max_overpressure unit="Pa"> 10.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
+   <fullness> 0.90 </fullness>
   </gas_cell>
 
   <!--
   === Ballast ================================================
   -->
+  <documentation>
+   "... 23 Beh"alter mit 40_000 Liter Gesamt-Inhalt f"ur Frisch- und
+    Abwasser..." [Tittel:1997:LZ129]
+   "S"amtliche Wasserf"asser sind mit Schnellentlerungsventilen (50 l/s.)
+    ausger"ustet." [Tittel:1997:LZ129] (")
+  </documentation>
   <!-- Experimental ballast setup. -->
   <!-- Forward ballast -->
   <ballast type="WATER">
@@ -788,7 +814,7 @@
        Max rpm:             1500 rpm
        Cruise power:        940 HP
        Cruise rpm:          1350 rpm
-       Swpet volume:        88 dm3
+       Swept volume:        88 dm3
        Weight (w/o cooler): 2200 kg
        Power/weight ration: 2.8 kg/kWh
        Fuel consumption (cruise): 0.225 kg/kWh
@@ -1612,6 +1638,41 @@
     <output>propulsion/engine[3]/yaw-angle-rad</output>
    </pure_gain -->
 
+  </channel>
+
+  <!--
+  === Gas monitors ===========================================
+  -->
+  <channel name="Gas cell monitors">
+<!--
+   <fcs_function name="fcs/gas-cells/measured-pressure-psf[0]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!- - gravity fps - ->
+       <difference>
+        <product>
+         <value> 0.0079711 </value>   <!- - 2/(pi*r*w) - ->
+         <property> inertia/gas-cell[0]/volume-ft3 </property>
+        </product>
+        <value> 4.93 </value>         <!- - r - ->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!- - M_gas - ->
+          <property> inertia/gas-cell[0]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[0]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+-->
   </channel>
 
  </flight_control>
