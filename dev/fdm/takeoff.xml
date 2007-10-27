@@ -12,7 +12,7 @@
       <condition>
         sim-time-sec >= 100.0
       </condition>
-      <set name="inertia/ballast-tank[2]/contents-slug"
+      <set name="inertia/ballast[2]/contents-slug"
            value="1030.0"
            action="FG_RAMP" tc ="60.0"/>
     </event>
@@ -22,7 +22,7 @@
       <condition>
         sim-time-sec >= 100.0
       </condition>
-      <set name="inertia/ballast-tank[0]/contents-slug"
+      <set name="inertia/ballast[0]/contents-slug"
            value="870.0"
            action="FG_RAMP" tc ="30.0"/>
     </event>
@@ -111,7 +111,7 @@
       <condition>
         sim-time-sec >= 200.0
       </condition>
-      <set name="inertia/ballast-tank/contents-slug"
+      <set name="inertia/ballast/contents-slug"
            value="180.0" action="FG_RAMP" tc ="300"/>
     </event -->
 
@@ -120,9 +120,10 @@
       <notify>
         <property>velocities/vc-kts</property>
         <property>position/h-agl-ft</property>
-        <property>inertia/ballast-tank/contents-slug</property>
-        <property>inertia/ballast-tank[2]/contents-slug</property>
-        <property>inertia/ballast-tank[1]/contents-slug</property>
+        <property>inertia/ballast/contents-slug</property>
+        <property>inertia/ballast[2]/contents-slug</property>
+        <property>inertia/ballast[1]/contents-slug</property>
+        <property>fcs/gas-cells/measured-pressure-psf[0]</property>
       </notify>
       <condition> sim-time-sec >= simulation/notify-time-trigger </condition>
       <set name="simulation/notify-time-trigger" value="60" type="FG_DELTA"/>
