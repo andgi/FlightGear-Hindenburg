@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.42 2007-10-21 16:36:59 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.43 2007-10-28 13:06:35 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -22,7 +22,7 @@
   
 -->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
-<fdm_config name="LZ-129" version="2.0" release="ALPHA"
+<fdm_config name="LZ-129" version="2.0" release="BETA"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
@@ -36,11 +36,13 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.42 2007-10-21 16:36:59 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.43 2007-10-28 13:06:35 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
   <limitation> Aerodynamic data approximated </limitation>
+  <limitation> Propulsion data approximated </limitation>
+  <limitation> Autopilot non-functional </limitation>
 
   <reference refID="Bauer:1992:LZ130"
              author="Manfred Bauer and John Duggan"
@@ -113,7 +115,7 @@
   <documentation>
    Mass distribution data [Bauer:1992:LZ130].
 
-   Based on a listing of weight savings in the empty weight of LZ 130
+   Based on a list of weight savings in the empty weight of LZ 130
    over LZ 129 (page 74). All weights (masses) are in kg.
    The numbers for LZ 129 are inferred based on the listed savings.
 
@@ -163,7 +165,7 @@
    CGy = 0
    CGz = - 1/6 * pi * r
 
-   % Steiners theorem:
+   % Steiner's theorem:
    % Ixx = \bar{Ixx} + m sqrt(\bar{y}^2 + \bar{z}^2)
    % Ixy = \bar{Ixy} + m \bar{x} \bar{y}
 
@@ -443,9 +445,9 @@
    <x_width unit="M"> 16.2 </x_width>
    <y_radius unit="M"> 4.93 </y_radius>
    <z_radius unit="M"> 4.93 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 2 -->
@@ -458,9 +460,9 @@
    <x_width unit="M"> 13.77 </x_width>
    <y_radius unit="M"> 9.52 </y_radius>
    <z_radius unit="M"> 9.52 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 3 -->
@@ -473,9 +475,9 @@
    <x_width unit="M"> 13.50 </x_width>
    <y_radius unit="M"> 12.56 </y_radius>
    <z_radius unit="M"> 12.56 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 4 -->
@@ -488,9 +490,9 @@
    <x_width unit="M"> 15.12 </x_width>
    <y_radius unit="M"> 15.12 </y_radius>
    <z_radius unit="M"> 15.12 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 5 -->
@@ -503,9 +505,9 @@
    <x_width unit="M"> 15.12 </x_width>
    <y_radius unit="M"> 17.145 </y_radius>
    <z_radius unit="M"> 17.145 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 6 -->
@@ -518,9 +520,9 @@
    <x_width unit="M"> 14.985 </x_width>
    <y_radius unit="M"> 18.56 </y_radius>
    <z_radius unit="M"> 18.56 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 7 -->
@@ -533,9 +535,9 @@
    <x_width unit="M"> 14.985 </x_width>
    <y_radius unit="M"> 19.51 </y_radius>
    <z_radius unit="M"> 19.51 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 8 -->
@@ -548,9 +550,9 @@
    <x_width unit="M"> 16.74 </x_width>
    <y_radius unit="M"> 20.12 </y_radius>
    <z_radius unit="M"> 20.12 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 9 -->
@@ -563,9 +565,9 @@
    <x_width unit="M"> 16.47 </x_width>
    <y_radius unit="M"> 20.52 </y_radius>
    <z_radius unit="M"> 20.52 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 10 -->
@@ -578,9 +580,9 @@
    <x_width unit="M"> 16.47 </x_width>
    <y_radius unit="M"> 20.66 </y_radius>
    <z_radius unit="M"> 20.66 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 11 -->
@@ -593,9 +595,9 @@
    <x_width unit="M"> 16.61 </x_width>
    <y_radius unit="M"> 20.45 </y_radius>
    <z_radius unit="M"> 20.45 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 12 -->
@@ -608,9 +610,9 @@
    <x_width unit="M"> 14.85 </x_width>
    <y_radius unit="M"> 19.91 </y_radius>
    <z_radius unit="M"> 19.91 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 13 -->
@@ -623,9 +625,9 @@
    <x_width unit="M"> 14.985 </x_width>
    <y_radius unit="M"> 18.90 </y_radius>
    <z_radius unit="M"> 18.90 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 14 -->
@@ -638,9 +640,9 @@
    <x_width unit="M"> 14.85 </x_width>
    <y_radius unit="M"> 17.08 </y_radius>
    <z_radius unit="M"> 17.08 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 15 -->
@@ -653,9 +655,9 @@
    <x_width unit="M"> 14.85 </x_width>
    <y_radius unit="M"> 13.77 </y_radius>
    <z_radius unit="M"> 13.77 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!-- Cell 16 -->
@@ -668,19 +670,19 @@
    <x_width unit="M"> 11.34 </x_width>
    <y_radius unit="M"> 7.63 </y_radius>
    <z_radius unit="M"> 7.63 </z_radius>
-   <max_overpressure unit="PA"> 10.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
-   <fullness> 0.90 </fullness>
+   <fullness> 0.95 </fullness>
   </gas_cell>
 
   <!--
   === Ballast ================================================
   -->
   <documentation>
-   "... 23 Beh"alter mit 40_000 Liter Gesamt-Inhalt f"ur Frisch- und
+   "... 23 Beh\"alter mit 40_000 Liter Gesamt-Inhalt f\"ur Frisch- und
     Abwasser..." [Tittel:1997:LZ129]
-   "S"amtliche Wasserf"asser sind mit Schnellentlerungsventilen (50 l/s.)
-    ausger"ustet." [Tittel:1997:LZ129] (")
+   "S\"amtliche Wasserf\"asser sind mit Schnellentlerungsventilen (50 l/s.)
+    ausger\"ustet." [Tittel:1997:LZ129] (")
   </documentation>
   <!-- Experimental ballast setup. -->
   <!-- Forward ballast -->
@@ -845,7 +847,7 @@
       NOTE: Reversing of the engine is simulated by rotating the thruster
             180 degrees around the yaw (z) axis.
       NOTE: The fuel system is incomplete - each engine should feed from
-            a local feeder tank located inside the hull above it.i
+            a local feeder tank located inside the hull above it.
             These tanks were in turn fed from the tanks along the keel in
             a manner controlled by the crew.
   </documentation>
@@ -1498,7 +1500,7 @@
 
  <autopilot file="LZ-129_crew_ap"/>
 
- <flight_control name="FGFCS">
+ <flight_control name="LZ-129 FCS">
 
   <!--
   === Pitch ==================================================
@@ -1590,79 +1592,29 @@
   </channel>
 
   <!--
-  === Engine reversal ========================================
+  === Instrumentation ========================================
   -->
-  <channel name="Engine Control">
 
-   <switch name="Engine 0 direction switch">
-    <default value="0.0"/>
-    <test value="3.14159265">
-     /controls/engines/engine[0]/reverser == 1
-    </test>
-   </switch>
-   <!-- pure_gain name="fcs/engine-direction[0]">
-    <gain>1.0</gain>
-    <output>propulsion/engine[0]/yaw-angle-rad</output>
-   </pure_gain -->
+  <channel name="Gas cell pressure sensors">
 
-   <switch name="Engine 1 direction switch">
-    <default value="0.0"/>
-    <test value="3.14159265">
-     /controls/engines/engine[1]/reverser == 1
-    </test>
-   </switch>
-   <!-- pure_gain name="fcs/engine-direction[1]">
-    <gain>1.0</gain>
-    <output>propulsion/engine[1]/yaw-angle-rad</output>
-   </pure_gain -->
-
-   <switch name="Engine 2 direction switch">
-    <default value="0.0"/>
-    <test value="3.14159265">
-     /controls/engines/engine[2]/reverser == 1
-    </test>
-   </switch>
-   <!-- pure_gain name="fcs/engine-direction[2]">
-    <gain>1.0</gain>
-    <output>propulsion/engine[2]/yaw-angle-rad</output>
-   </pure_gain -->
-
-   <switch name="Engine 3 direction switch">
-    <default value="0.0"/>
-    <test value="3.14159265">
-     /controls/engines/engine[3]/reverser == 1
-    </test>
-   </switch>
-   <!-- pure_gain name="fcs/engine-direction[3]">
-    <gain>1.0</gain>
-    <output>propulsion/engine[3]/yaw-angle-rad</output>
-   </pure_gain -->
-
-  </channel>
-
-  <!--
-  === Gas monitors ===========================================
-  -->
-  <channel name="Gas cell monitors">
-<!--
-   <fcs_function name="fcs/gas-cells/measured-pressure-psf[0]">
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[0]">
     <function>
      <max>
       <value> 0.0 </value>
       <product>
-       <value> 32.185039 </value>     <!- - gravity fps - ->
+       <value> 32.185039 </value>     <!-- gravity fps -->
        <difference>
         <product>
-         <value> 0.0079711 </value>   <!- - 2/(pi*r*w) - ->
+         <value> 0.0079711 </value>   <!-- 2/(pi*r*w) -->
          <property> inertia/gas-cell[0]/volume-ft3 </property>
         </product>
-        <value> 4.93 </value>         <!- - r - ->
+        <value> 4.93 </value>         <!-- r -->
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
-          <value> 0.00013841 </value>  <!- - M_gas - ->
+          <value> 0.00013841 </value>  <!-- M_gas -->
           <property> inertia/gas-cell[0]/contents-mol </property>
          </product>
          <property> inertia/gas-cell[0]/volume-ft3 </property>
@@ -1672,7 +1624,549 @@
      </max>
     </function>
    </fcs_function>
--->
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[1]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0048563 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 9.52 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[2]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0037545 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 12.56 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[3]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0027847 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 15.12 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[4]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0024558 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 17.145 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[5]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0022890 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 18.56 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[6]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0021775 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 19.51 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[7]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0018902 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 20.12 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[8]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0018837 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 20.52 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[9]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0018709 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 20.66 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[10]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0018742 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 20.45 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[11]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0021532 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 19.91 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[12]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0022478 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 18.90 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[13]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0025100 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 17.08 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[14]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0031133 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 13.77 </value>        <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[15]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <value> 0.0073577 </value>   <!-- 2/(pi*r*w) -->
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <value> 7.63 </value>         <!-- r -->
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> inertia/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> inertia/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <!-- Prall detectors -->
+
+   <switch name="fcs/instrumentation/gas-cells/prall[0]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[0]/volume-ft3 GE inertia/gas-cell[0]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[1]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[1]/volume-ft3 GE inertia/gas-cell[1]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[2]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[2]/volume-ft3 GE inertia/gas-cell[2]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[3]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[3]/volume-ft3 GE inertia/gas-cell[3]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[4]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[4]/volume-ft3 GE inertia/gas-cell[4]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[5]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[5]/volume-ft3 GE inertia/gas-cell[5]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[6]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[6]/volume-ft3 GE inertia/gas-cell[6]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[7]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[7]/volume-ft3 GE inertia/gas-cell[7]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[8]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[8]/volume-ft3 GE inertia/gas-cell[8]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[9]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[9]/volume-ft3 GE inertia/gas-cell[9]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[10]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[10]/volume-ft3 GE inertia/gas-cell[10]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[11]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[11]/volume-ft3 GE inertia/gas-cell[11]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[12]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[12]/volume-ft3 GE inertia/gas-cell[12]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[13]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[13]/volume-ft3 GE inertia/gas-cell[13]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[14]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[14]/volume-ft3 GE inertia/gas-cell[14]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[15]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     inertia/gas-cell[15]/volume-ft3 GE inertia/gas-cell[15]/max_volume-ft3
+    </test>
+   </switch>
+
+   <summer name="fcs/instrumentation/gas-cells/any-prall">
+    <input>fcs/instrumentation/gas-cells/prall[0]</input>
+    <input>fcs/instrumentation/gas-cells/prall[1]</input>
+    <input>fcs/instrumentation/gas-cells/prall[2]</input>
+    <input>fcs/instrumentation/gas-cells/prall[3]</input>
+    <input>fcs/instrumentation/gas-cells/prall[4]</input>
+    <input>fcs/instrumentation/gas-cells/prall[5]</input>
+    <input>fcs/instrumentation/gas-cells/prall[6]</input>
+    <input>fcs/instrumentation/gas-cells/prall[7]</input>
+    <input>fcs/instrumentation/gas-cells/prall[8]</input>
+    <input>fcs/instrumentation/gas-cells/prall[9]</input>
+    <input>fcs/instrumentation/gas-cells/prall[10]</input>
+    <input>fcs/instrumentation/gas-cells/prall[11]</input>
+    <input>fcs/instrumentation/gas-cells/prall[12]</input>
+    <input>fcs/instrumentation/gas-cells/prall[13]</input>
+    <input>fcs/instrumentation/gas-cells/prall[14]</input>
+    <input>fcs/instrumentation/gas-cells/prall[15]</input>
+    <clipto>
+     <min>0</min>
+     <max>1</max>
+    </clipto>
+   </summer>
+
   </channel>
 
  </flight_control>
