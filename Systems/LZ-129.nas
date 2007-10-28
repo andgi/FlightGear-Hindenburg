@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.7 2007-10-21 16:36:59 anders Exp $
+## $Id: LZ-129.nas,v 1.8 2007-10-28 13:09:19 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -85,8 +85,40 @@ var switch_engine_direction = func (eng) {
     }
 }
 
+## Helpful crew annoncements by autonomous singleton class.
+var assistant = {
+    init : func {
+        me.UPDATE_INTERVAL = 1.73;
+        me.loopid = 0;
+        me.prall = 1;
+        me.prall_prop = "/fdm/jsbsim/fcs/instrumentation/gas-cells/any-prall";
+        me.reset();
+        print("LZ 129 Crew ... All present and accounted for.");
+     },
+    update : func {
+        var p = getprop(me.prall_prop);
+
+        if ((me.prall == 0) and (p > 0)) {
+            me.prall = 1;
+            setprop("/sim/messages/copilot",
+                    "We are above pressure height.");
+        } elsif (p < 1) {
+            me.prall = 0;
+        }
+    },
+    reset : func {
+        me.loopid += 1;
+        me._loop_(me.loopid);
+    },
+    _loop_ : func(id) {
+        id == me.loopid or return;
+        me.update();
+        settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
+    }
+};
+
 var init = func {
-    # Nothing to do here yet.
+    assistant.init(); 
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {

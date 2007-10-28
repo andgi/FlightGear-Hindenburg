@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-views.xml,v 1.18 2007-10-15 19:13:12 anders Exp $ -->
+<!-- $Id: LZ-129-views.xml,v 1.19 2007-10-28 13:09:19 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   Common definitions
@@ -270,16 +270,10 @@
 
   <chase-distance-m type="double" archive="y">-300.0</chase-distance-m>
 
-<!--
-  <sound>
-   <audible>false</audible>
-   <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
-  </sound>
--->
-
   <!-- Aircraft specific help. -->
   <help include="help.xml"/>
 
+<!--
   <hud>
    <path n="1">Aircraft/Instruments-3d/BubbleSextant/hud.xml</path>
    <visibility n="1" type="bool">false</visibility>
@@ -299,18 +293,20 @@
     </color> 
    </palette>
   </hud>
+-->
 
  </sim>
 
- <nasal>
+ <!-- nasal>
   <BubbleSextant>
    <file>Aircraft/Instruments-3d/BubbleSextant/bubble_sextant.nas</file>
   </BubbleSextant>
- </nasal>
+ </nasal -->
 
  <input>
   <keyboard>
    <!-- Astro Observation -->
+<!--
    <key n="111">
     <name>o</name>
     <desc>Activate sextant view</desc>
@@ -320,6 +316,7 @@
      <script>BubbleSextant.toggle_active();</script>
     </binding>
    </key>
+-->
   </keyboard>
  </input>
 
