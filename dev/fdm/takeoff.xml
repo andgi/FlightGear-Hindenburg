@@ -123,7 +123,23 @@
         <property>inertia/ballast/contents-slug</property>
         <property>inertia/ballast[2]/contents-slug</property>
         <property>inertia/ballast[1]/contents-slug</property>
-        <property>fcs/gas-cells/measured-pressure-psf[0]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[0]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[1]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[2]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[3]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[4]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[5]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[6]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[7]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[8]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[9]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[10]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[11]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[12]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[13]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[14]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[15]</property>
+        <property>fcs/instrumentation/gas-cells/any-prall</property>
       </notify>
       <condition> sim-time-sec >= simulation/notify-time-trigger </condition>
       <set name="simulation/notify-time-trigger" value="60" type="FG_DELTA"/>
