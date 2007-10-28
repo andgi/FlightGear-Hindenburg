@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.44 2007-10-28 15:00:15 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.45 2007-10-28 20:17:13 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.44 2007-10-28 15:00:15 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.45 2007-10-28 20:17:13 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -692,8 +692,8 @@
     <y> 0.0 </y>
     <z> -20.0 </z>
    </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  14000 </contents>
+   <capacity unit="KG"> 20000 </capacity>
+   <contents unit="KG"> 14000 </contents>
   </ballast>
   <!-- Aft ballast -->
   <ballast type="WATER">
@@ -702,8 +702,8 @@
     <y> 0.0 </y>
     <z> -20.0 </z>
    </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">   8250 </contents>
+   <capacity unit="KG"> 20000 </capacity>
+   <contents unit="KG">  8250 </contents>
   </ballast>
   <!-- Center ballast -->
   <ballast type="WATER">
@@ -712,8 +712,8 @@
     <y> 0.0 </y>
     <z> -20.0 </z>
    </location>
-   <capacity unit="KG"> 200000 </capacity>
-   <contents unit="KG">  38000 </contents>
+   <capacity unit="KG"> 50000 </capacity>
+   <contents unit="KG"> 28000 </contents>
   </ballast>
 
  </mass_balance>
@@ -2176,12 +2176,25 @@
  -->
 
  <aerodynamics>
+  
+  <!-- Constants -->
+  <function name="aero/volume-ft3">
+   <!-- Total volume in ft^3. -->
+   <value> 7062940 </value>
+  </function>
+  <function name="aero/volume-ft3_2_3">
+   <!-- (Total volume)^(2/3). -->
+   <value> 36812.1 </value>
+  </function>
 
   <!-- Tuning parameter for CD, CL, CM due to hull alpha. -->
   <function name="aero/hull-lift-tweak-factor">
-   <sum>
-    <value> 4.0 </value>
-   </sum>
+   <!-- This looks way high but the behaviour seems ok. -->
+   <value> 15.0 </value>
+  </function>
+  <!-- Tuning parameter for CD, CY, CN due to hull beta. -->
+  <function name="aero/hull-side-tweak-factor">
+   <value> 1.0 </value>
   </function>
 
   <!--
@@ -2201,8 +2214,9 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
+     <value> 0.5 </value> <!-- Avoid double accounting. -->
      <property>aero/hull-lift-tweak-factor</property>
      <table>  
       <independentVar lookup="row">aero/alpha-deg</independentVar>
@@ -2251,7 +2265,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
      <table>  
       <independentVar lookup="row">aero/alpha-deg</independentVar>
@@ -2301,9 +2315,8 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
-     <value> 1.0 </value>
      <table>
       <independentVar lookup="row">fcs/elevator-pos-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris.
@@ -2327,8 +2340,10 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
+     <value> 0.5 </value> <!-- Avoid double accounting. -->
+     <property>aero/hull-side-tweak-factor</property>
      <table>  
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!-- Virtual wind-tunnel data computed with Gerris. -->
@@ -2376,7 +2391,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
      <table>  
       <independentVar lookup="row">aero/beta-deg</independentVar>
@@ -2426,9 +2441,8 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
-     <value> 1.0 </value>
      <table>
       <independentVar lookup="row">fcs/rudder-pos-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris.
@@ -2453,7 +2467,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CD -->
      <!-- According to [WD:1941:AATM]
           the hull on a large rigid contributes approximately
@@ -2464,7 +2478,6 @@
      <value> 0.0089080 </value>
     </product>
    </function>
-
 
   </axis>
 
@@ -2481,8 +2494,9 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CY -->
+     <property>aero/hull-side-tweak-factor</property>
      <value> -1.0 </value>  <!-- Note the sign! -->
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
@@ -2531,10 +2545,9 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CY -->
-     <value> -1.0 </value>  <!-- Tweaking needed. Note the sign!
-                            -->
+     <value> -1.0 </value>  <!-- Note the sign! -->
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris.
@@ -2582,7 +2595,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CY -->
      <table>
       <independentVar lookup="row">fcs/rudder-pos-deg</independentVar>
@@ -2616,7 +2629,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CL -->
      <property>aero/hull-lift-tweak-factor</property>
      <table>
@@ -2666,7 +2679,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CL -->
      <table>
       <independentVar lookup="row">aero/alpha-deg</independentVar>
@@ -2715,7 +2728,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 36812.1 </value>
+     <property>aero/volume-ft3_2_3</property>
      <!-- Start CL -->
      <table>
       <independentVar lookup="row">fcs/elevator-pos-deg</independentVar>
@@ -2778,7 +2791,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cm -->
      <property>aero/hull-lift-tweak-factor</property>
      <table>
@@ -2828,7 +2841,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cm -->
      <table>
       <independentVar lookup="row">aero/alpha-deg</independentVar>
@@ -2877,7 +2890,7 @@
     -->	 
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cmdr = -->
      <table>
       <independentVar lookup="row">fcs/elevator-pos-deg</independentVar>
@@ -2922,7 +2935,7 @@
     -->	 
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cn -->
      <value> 1.5 </value> <!-- The rudder is not adjusted yet. -->
      <table>
@@ -2952,8 +2965,9 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cn -->
+     <property>aero/hull-side-tweak-factor</property>
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
@@ -3001,11 +3015,9 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 7062940 </value>
+     <property>aero/volume-ft3</property>
      <!-- Start Cn -->
-     <value> -1.0 </value> <!-- NOTE: sign.
-				Tweaking needed.
-                           -->
+     <value> -1.0 </value> <!-- NOTE: sign. -->
      <table>
       <independentVar lookup="row">aero/beta-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris.
