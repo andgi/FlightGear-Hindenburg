@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.16 2007-08-05 17:19:51 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.17 2007-10-28 15:00:15 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -63,7 +63,7 @@
     <binding>
      <command>nasal</command>
      <script>
-      LZ129.print_wow();
+      LZ129.weightoff_report();
      </script>
     </binding>
    </key>

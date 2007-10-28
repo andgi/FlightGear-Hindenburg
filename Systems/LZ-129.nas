@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.8 2007-10-28 13:09:19 anders Exp $
+## $Id: LZ-129.nas,v 1.9 2007-10-28 15:00:15 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -13,6 +13,7 @@ var ballastAft     = "/fdm/jsbsim/inertia/ballast[1]/contents-slug";
 var ballastCenter  = "/fdm/jsbsim/inertia/ballast[2]/contents-slug";
 var gascell        = "/fdm/jsbsim/inertia/gas-cell";
 var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
+var weight         = "/fdm/jsbsim/inertia/weight-lbs";
 var slugtolb  = 32.174049;
 var lbtoslug  = 1.0/slugtolb;
 
@@ -83,6 +84,24 @@ var switch_engine_direction = func (eng) {
                      ((getprop(dir) == 0) ? "forward" : "reverse") ~
                      " running engine " ~ eng ~ ".");
     }
+}
+
+var weightoff_report = func {
+    var cells =
+      props.globals.getNode("/fdm/jsbsim/inertia").getChildren("gas-cell");
+    var L = 0;
+    var W = getprop(weight);
+
+    foreach (c; cells) {
+        L += c.getChild("buoyancy-lbs").getValue();
+    }
+
+#    setprop("/sim/messages/copilot",
+#            "Weight " ~ int(W) ~ " pound. Lift " ~ int(L) ~ " pound.");
+
+    setprop("/sim/messages/copilot",
+            "We are " ~ int(abs(L - W)) ~ " pounds " ~
+            ((L - W) > 0 ? "light." : "heavy."));
 }
 
 ## Helpful crew annoncements by autonomous singleton class.

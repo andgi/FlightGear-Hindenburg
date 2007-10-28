@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.43 2007-10-28 13:06:35 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.44 2007-10-28 15:00:15 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.43 2007-10-28 13:06:35 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.44 2007-10-28 15:00:15 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -2177,6 +2177,13 @@
 
  <aerodynamics>
 
+  <!-- Tuning parameter for CD, CL, CM due to hull alpha. -->
+  <function name="aero/hull-lift-tweak-factor">
+   <sum>
+    <value> 4.0 </value>
+   </sum>
+  </function>
+
   <!--
   === Forces =================================================
   -->
@@ -2196,7 +2203,7 @@
      <property>aero/qbar-psf</property>
      <value> 36812.1 </value>
      <!-- Start CD -->
-     <value>2.0</value> <!-- Dynamic lift seemed to be on the low side. -->
+     <property>aero/hull-lift-tweak-factor</property>
      <table>  
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!-- Virtual wind-tunnel data computed with Gerris. -->
@@ -2611,7 +2618,7 @@
      <property>aero/qbar-psf</property>
      <value> 36812.1 </value>
      <!-- Start CL -->
-     <value>2.0</value> <!-- Dynamic lift seemed to be on the low side. -->
+     <property>aero/hull-lift-tweak-factor</property>
      <table>
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
@@ -2773,6 +2780,7 @@
      <property>aero/qbar-psf</property>
      <value> 7062940 </value>
      <!-- Start Cm -->
+     <property>aero/hull-lift-tweak-factor</property>
      <table>
       <independentVar lookup="row">aero/alpha-deg</independentVar>
       <!--  Virtual wind-tunnel data computed with Gerris. -->
