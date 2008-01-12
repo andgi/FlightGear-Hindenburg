@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<runscript name="moored test">
+  <!--
+    This run is for testing lighter-than-air aircraft.
+  -->
+
+  <use aircraft="LZ-129" initialize="sim/reset00"/>
+  <run start="0.0" end="1200" dt="0.00833333">
+
+   <event name="Set Moored">
+      <notify/>
+      <condition>
+        sim-time-sec >= 5.0
+      </condition>
+      <set name="mooring/is-moored"
+           value="1.0"/>
+      <set name="mooring/lat-gc-deg"
+           value="47.0"/>
+      <set name="mooring/long-gc-deg"
+           value="122.0"/>
+      <set name="mooring/h-sl-ft"
+           value="35.0"/>
+    </event>
+
+   <event name="Drop ballast Aft">
+      <notify/>
+      <condition>
+        sim-time-sec >= 100.0
+      </condition>
+      <set name="inertia/ballast[1]/contents-slug"
+           value="500.0"
+           action="FG_RAMP" tc ="60.0"/>
+    </event>
+
+   <event name="Drop ballast Center">
+      <notify/>
+      <condition>
+        sim-time-sec >= 100.0
+      </condition>
+      <set name="inertia/ballast[2]/contents-slug"
+           value="1255.0"
+           action="FG_RAMP" tc ="60.0"/>
+    </event>
+
+   <event name="Drop ballast Forward">
+      <notify/>
+      <condition>
+        sim-time-sec >= 100.0
+      </condition>
+      <set name="inertia/ballast[0]/contents-slug"
+           value="895.0"
+           action="FG_RAMP" tc ="30.0"/>
+    </event>
+
+    <event name="Time Notify" type="FG_DELTA" persistent="true">
+      <description>Output message at 100 second intervals</description>
+      <notify>
+        <property>velocities/vc-kts</property>
+        <property>position/h-agl-ft</property>
+        <property>inertia/ballast/contents-slug</property>
+        <property>inertia/ballast[2]/contents-slug</property>
+        <property>inertia/ballast[1]/contents-slug</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[0]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[1]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[2]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[3]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[4]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[5]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[6]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[7]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[8]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[9]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[10]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[11]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[12]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[13]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[14]</property>
+        <property>fcs/instrumentation/gas-cells/measured-pressure-psf[15]</property>
+        <property>fcs/instrumentation/gas-cells/any-prall</property>
+        <property>external_reactions/mooring-coupling-north/magnitude</property>
+        <property>external_reactions/mooring-coupling-east/magnitude</property>
+        <property>external_reactions/mooring-coupling-down/magnitude</property>
+        <!-- property>mooring/lat-diff-deg</property>
+        <property>mooring/long-diff-deg</property>
+        <property>mooring/h-diff-ft</property -->
+       <!-- property>mooring/is-moored</property -->
+      </notify>
+      <condition> sim-time-sec >= simulation/notify-time-trigger </condition>
+      <set name="simulation/notify-time-trigger" value="60" type="FG_DELTA"/>
+    </event>
+
+  </run>
+</runscript>

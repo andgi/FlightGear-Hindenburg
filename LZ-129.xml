@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.46 2007-10-31 23:40:47 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.47 2008-01-12 22:29:01 anders Exp $ -->
 <!--
 
-  LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
+  LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
 
-    Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.46 2007-10-31 23:40:47 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.47 2008-01-12 22:29:01 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -1495,10 +1495,56 @@
  </propulsion>
 
  <!--
+ ==== External reactions ====================================================
+ -->
+
+ <external_reactions>
+
+  <force name="mooring-coupling-north" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x>-1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-coupling-east" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y>-1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-coupling-down" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+
+ </external_reactions>
+
+ <!--
  ==== Flight control system =================================================
  -->
 
  <autopilot file="LZ-129_crew_ap"/>
+ <!-- system file="LZ-129_instrumentation"/ -->
 
  <flight_control name="LZ-129 FCS">
 
@@ -1591,9 +1637,13 @@
 
   </channel>
 
-  <!--
-  === Instrumentation ========================================
-  -->
+ </flight_control>
+
+ <!--
+ ==== Instrumentation =======================================================
+ -->
+
+ <system name="LZ-129_Instrumentation">
 
   <!-- These should preferably have been exported by the gas_cell class. -->
   <property value="16.17"> inertia/gas_cell[0]/radius-ft </property>
@@ -2316,7 +2366,76 @@
 
   </channel>
 
- </flight_control>
+ </system>
+
+ <!--
+ ==== Mooring force calculation =============================================
+ -->
+
+ <!-- system file="LZ-129_mooring"/ -->
+ <system name="LZ-129_Mooring">
+
+  <!-- INTERFACE PROPERTIES -->
+  <property value="0.0"> mooring/is-moored </property>
+  <property value="0.0"> mooring/lat-gc-deg  </property>
+  <property value="0.0"> mooring/long-gc-deg </property>
+  <property value="0.0"> mooring/h-sl-ft </property>
+
+  <channel name="Mooring Forces">
+
+   <summer name="mooring/lat-diff-deg">
+    <input>-mooring/lat-gc-deg </input>
+    <input> position/lat-gc-deg </input>
+   </summer>
+
+   <summer name="mooring/long-diff-deg">
+    <input>-mooring/long-gc-deg </input>
+    <input> position/long-gc-deg </input>
+   </summer>
+
+   <summer name="mooring/h-diff-ft">
+    <input> mooring/h-sl-ft </input>
+    <input>-position/h-sl-ft </input>
+   </summer>
+
+   <fcs_function name="mooring/force-north-lbs">
+    <function>
+     <product>
+      <property> mooring/is-moored </property>
+      <value> 100.0 </value>
+      <value> 364560.0 </value>
+      <property> mooring/lat-diff-deg </property>
+     </product>
+    </function>
+    <output>external_reactions/mooring-coupling-north/magnitude</output>
+   </fcs_function>
+
+   <fcs_function name="mooring/force-east-lbs">
+    <function>
+     <product>
+      <property> mooring/is-moored </property>
+      <value> 100.0 </value>
+      <value> 364560.0 </value>
+      <property> mooring/long-diff-deg </property>
+     </product>
+    </function>
+    <output>external_reactions/mooring-coupling-east/magnitude</output>
+   </fcs_function>
+
+   <fcs_function name="mooring/force-down-lbs">
+    <function>
+     <product>
+      <property> mooring/is-moored </property>
+      <value> 100.0 </value>
+      <property> mooring/h-diff-ft </property>
+     </product>
+    </function>
+    <output>external_reactions/mooring-coupling-down/magnitude</output>
+   </fcs_function>
+
+  </channel>  
+
+ </system>
 
  <!--
  ==== Aerodynamics ==========================================================
@@ -2341,6 +2460,8 @@
   </function>
   <!-- Tuning parameter for CD, CY, CN due to hull beta. -->
   <function name="aero/hull-side-tweak-factor">
+   <!-- This should probably be increased since the ship seems
+        too course stable. -->
    <value> 1.0 </value>
   </function>
 
@@ -3206,7 +3327,6 @@
 
  </aerodynamics>
 
-<!--
  <output name="LZ-129_datalog.csv" type="CSV" rate="1">
   <property> position/h-sl-ft </property>
   <property> velocities/vc-kts </property>
@@ -3232,6 +3352,5 @@
   <fcs> ON </fcs>
   <ground_reactions> ON </ground_reactions>
  </output>
--->
 
 </fdm_config>
