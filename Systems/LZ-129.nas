@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.10 2008-01-13 19:24:11 anders Exp $
+## $Id: LZ-129.nas,v 1.11 2008-01-13 22:57:24 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -111,6 +111,7 @@ var assistant = {
         me.loopid = 0;
         me.prall = 1;
         me.prall_prop = "/fdm/jsbsim/fcs/instrumentation/gas-cells/any-prall";
+        me.moored = 0;
         me.reset();
         print("LZ 129 Crew ... All present and accounted for.");
      },
@@ -122,6 +123,14 @@ var assistant = {
             me.announce("We are above pressure height.");
         } elsif (p < 1) {
             me.prall = 0;
+        }
+
+        var m = getprop("/fdm/jsbsim/mooring/moored");
+        if ((me.moored == 0) and (m > 0)) {
+            me.moored = 1;
+            me.announce("Docked to the mooring mast.");
+        } elsif (m < 1) {
+            me.moored = 0;
         }
     },
     announce : func(msg) {
@@ -141,23 +150,42 @@ var assistant = {
 ## Experimental mooring mast and ground crew
 var ground_crew = {
     init : func {
+        me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
         var ais =
             props.globals.getNode("/ai/models").getChildren("aircraft");
         var found = 0;
         foreach (ai; ais) {
             if (ai.getNode("callsign").getValue() == "Mooring mast KNUQ") {
-                setprop("/fdm/jsbsim/mooring/latitude-deg",
-                        ai.getNode("position/latitude-deg").getValue());
-                setprop("/fdm/jsbsim/mooring/longitude-deg",
-                        ai.getNode("position/longitude-deg").getValue());
-                setprop("/fdm/jsbsim/mooring/altitude-ft",
-                        ai.getNode("position/altitude-ft").getValue() + 650.0);
+                me.mooring.getNode("latitude-deg").setValue
+                    (ai.getNode("position/latitude-deg").getValue());
+                me.mooring.getNode("longitude-deg").setValue
+                    (ai.getNode("position/longitude-deg").getValue());
+                me.mooring.getNode("altitude-ft").setValue
+                    (ai.getNode("position/altitude-ft").getValue() + 650.0);
                 found = 1;
             }
         }
         if (!found) print("LZ 129 Ground crew ... No mooring mast available.");
         print("LZ 129 Ground crew ... Standing by.");
     },
+    attach_mooring_wire : func {
+        if ((me.mooring.getNode("total-distance-ft").getValue() < 1500.0) and
+            (getprop("/position/altitude-agl-ft") < 1000.0)) {
+            interpolate("/fdm/jsbsim/mooring/on-the-wire", 1.0, 10);
+            assistant.announce("Ground reports: Mooring cable attached.");
+        } else {
+            assistant.announce("We are too far from the mooring mast.");
+        }
+    },
+    release_mooring : func {
+        if (me.mooring.getNode("moored").getValue() >= 1.0) {
+            me.mooring.getNode("on-the-wire").setValue(0.0);
+            assistant.announce("Mooring connection released.");
+        } elsif (me.mooring.getNode("on-the-wire").getValue() >= 1.0) {
+            me.mooring.getNode("on-the-wire").setValue(0.0);
+            assistant.announce("Released mooring wire.");
+        }
+    }
 };
 
 var init = func {

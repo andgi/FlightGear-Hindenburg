@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.18 2008-01-13 19:24:10 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.19 2008-01-13 22:57:24 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -183,6 +183,29 @@
               LZ129.switch_engine_direction(node.getIndex());
           }
       }
+     </script>
+    </binding>
+   </key>
+
+   <!-- Mooring commands ======================================= -->
+   <key n="85">
+    <name>U</name>
+    <desc>Drop guy lines and attach mooring wire.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       LZ129.ground_crew.attach_mooring_wire();
+     </script>
+    </binding>
+   </key>
+
+   <key n="117">
+    <name>u</name>
+    <desc>Release mooring connection or wire.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       LZ129.ground_crew.release_mooring();
      </script>
     </binding>
    </key>

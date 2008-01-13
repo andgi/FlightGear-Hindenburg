@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.12 2007-10-28 15:00:15 anders Exp $ -->
+<!-- $Id: help.xml,v 1.13 2008-01-13 22:57:24 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -60,6 +60,15 @@
   <name>R</name>
   <desc>Switch the direction of the selected engines. An engine must be stopped before changing direction.</desc>
  </key>
+ <key>
+  <name>U</name>
+  <desc>Attach mooring wire. Only possible within 1500 feet of the mooring mast.</desc>
+ </key>
+ <key>
+  <name>u</name>
+  <desc>Release mooring mast connection or wire.</desc>
+ </key>
+
 <!--
  <key>
   <name>E/e</name>
