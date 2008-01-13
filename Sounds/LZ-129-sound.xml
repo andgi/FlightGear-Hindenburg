@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-sound.xml,v 1.3 2007-07-05 23:14:17 anders Exp $ -->
+<!-- $Id: LZ-129-sound.xml,v 1.4 2008-01-13 19:24:10 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -31,7 +31,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y>  15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -55,7 +55,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y>  15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -72,7 +72,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y>  15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -96,7 +96,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y>  15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -131,7 +131,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y>  15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -162,7 +162,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y> -15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -186,7 +186,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y> -15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -203,7 +203,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y> -15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -227,7 +227,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y> -15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -262,7 +262,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>  52.55 </x>
+    <x> 152.55 </x>
     <y> -15.26 </y>
     <z> -17.82 </z>
    </position>
@@ -293,7 +293,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y>  20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -317,7 +317,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y>  20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -334,7 +334,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y>  20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -358,7 +358,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y>  20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -393,7 +393,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y>  20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -424,7 +424,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -448,7 +448,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -465,7 +465,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -489,7 +489,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </position>
@@ -524,7 +524,7 @@
    </condition>
    <position>
     <!-- x/y/z == back/left/up -->
-    <x>   5.30 </x>
+    <x> 105.30 </x>
     <y> -20.25 </y>
     <z> -13.77 </z>
    </position>

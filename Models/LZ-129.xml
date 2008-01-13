@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.18 2007-07-05 23:14:17 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.19 2008-01-13 19:24:10 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -11,7 +11,7 @@
  <path>LZ-129_hull.ac</path>
  <offsets>
   <!-- x/y/z == back/right/up -->
-  <x-m> -100.0 </x-m>
+  <x-m> 0.0 </x-m>
   <y-m> 0.0 </y-m>
   <z-m> 0.0 </z-m>
  </offsets>

@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.9 2007-10-28 15:00:15 anders Exp $
+## $Id: LZ-129.nas,v 1.10 2008-01-13 19:24:11 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -46,8 +46,7 @@ var print_wow = func {
 }
 
 var weighoff = func {
-    gui.popupTip("Weigh-off to 10% in progress. " ~
-                   "Current weight " ~ getprop(weight_on_gear) ~ " lbs.");
+    assistant.announce("Weigh-off in progress.");
     var after =
       getprop(ballastCenter) + 0.90 * getprop(weight_on_gear) * lbtoslug;
     interpolate(ballastCenter,
@@ -56,14 +55,15 @@ var weighoff = func {
 }
 
 var drop_ballast = func (ballast, x) {
-    # NOTE: The popup tip should probably be at the callers discretion. 
-    gui.popupTip("Dropping ballast " ~
-                 ((ballast == ballastAft)    ? "aft" :
-                  (ballast == ballastFore)   ? "fore" :
-                  (ballast == ballastCenter) ? "center" :
-                  "BAD BALLAST SELECTOR") ~
-                 "! " ~
-                 "Ballast left: " ~ getprop(ballast) ~ " slug");
+    # NOTE: The announcement should probably be at the callers discretion. 
+    assistant.announce("Dropping ballast " ~
+                       ((ballast == ballastAft)    ? "aft" :
+                       (ballast == ballastFore)   ? "fore" :
+                       (ballast == ballastCenter) ? "center" :
+                       "BAD BALLAST SELECTOR") ~
+                       "! " ~
+                       int(slugtolb * getprop(ballast)) ~
+                       " pounds remaining.");
     interpolate(ballast, (1.0 - x) * getprop(ballast), 0.5);
 }
 
@@ -72,17 +72,19 @@ var switch_engine_direction = func (eng) {
     var engineFG  = "/engines/engine" ~ "[" ~ eng ~ "]";
     var dir       = engineJSB ~ "/yaw-angle-rad";
 
+    if ((eng < 0) or (eng > 4)) return;
+
     if (!getprop(engineFG ~ "/running")) {
         setprop(dir, (getprop(dir) == 0) ? 3.14159265 : 0.0);
         # NOTE: The popup tip should probably be at the callers discretion. 
-        gui.popupTip("Changing direction for engine " ~ eng ~
-                     " to " ~
-                     ((getprop(dir) == 0) ? "forward." : "reverse."));
+        assistant.announce("Changing engine " ~ eng ~
+                           " direction to " ~
+                           ((getprop(dir) == 0) ? "forward." : "reverse."));
     } else {
         # NOTE: The popup tip should probably be at the callers discretion. 
-        gui.popupTip("Cannot change direction for " ~
-                     ((getprop(dir) == 0) ? "forward" : "reverse") ~
-                     " running engine " ~ eng ~ ".");
+        assistant.announce("Cannot change direction for " ~
+                           ((getprop(dir) == 0) ? "forward" : "reverse") ~
+                           " running engine " ~ eng ~ ".");
     }
 }
 
@@ -96,15 +98,13 @@ var weightoff_report = func {
         L += c.getChild("buoyancy-lbs").getValue();
     }
 
-#    setprop("/sim/messages/copilot",
-#            "Weight " ~ int(W) ~ " pound. Lift " ~ int(L) ~ " pound.");
+#    assistant.announce("Weight " ~ int(W) ~ " pound. Lift " ~ int(L) ~ " pound.");
 
-    setprop("/sim/messages/copilot",
-            "We are " ~ int(abs(L - W)) ~ " pounds " ~
-            ((L - W) > 0 ? "light." : "heavy."));
+    assistant.announce("We are " ~ int(abs(L - W)) ~ " pounds " ~
+                       ((L - W) > 0 ? "light." : "heavy."));
 }
 
-## Helpful crew annoncements by autonomous singleton class.
+## Helpful crew announcements by autonomous singleton class.
 var assistant = {
     init : func {
         me.UPDATE_INTERVAL = 1.73;
@@ -119,11 +119,13 @@ var assistant = {
 
         if ((me.prall == 0) and (p > 0)) {
             me.prall = 1;
-            setprop("/sim/messages/copilot",
-                    "We are above pressure height.");
+            me.announce("We are above pressure height.");
         } elsif (p < 1) {
             me.prall = 0;
         }
+    },
+    announce : func(msg) {
+        setprop("/sim/messages/copilot", msg);
     },
     reset : func {
         me.loopid += 1;
@@ -136,8 +138,31 @@ var assistant = {
     }
 };
 
+## Experimental mooring mast and ground crew
+var ground_crew = {
+    init : func {
+        var ais =
+            props.globals.getNode("/ai/models").getChildren("aircraft");
+        var found = 0;
+        foreach (ai; ais) {
+            if (ai.getNode("callsign").getValue() == "Mooring mast KNUQ") {
+                setprop("/fdm/jsbsim/mooring/latitude-deg",
+                        ai.getNode("position/latitude-deg").getValue());
+                setprop("/fdm/jsbsim/mooring/longitude-deg",
+                        ai.getNode("position/longitude-deg").getValue());
+                setprop("/fdm/jsbsim/mooring/altitude-ft",
+                        ai.getNode("position/altitude-ft").getValue() + 650.0);
+                found = 1;
+            }
+        }
+        if (!found) print("LZ 129 Ground crew ... No mooring mast available.");
+        print("LZ 129 Ground crew ... Standing by.");
+    },
+};
+
 var init = func {
-    assistant.init(); 
+    assistant.init();
+    ground_crew.init();
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {

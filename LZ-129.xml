@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.47 2008-01-12 22:29:01 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.48 2008-01-13 19:24:10 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.47 2008-01-12 22:29:01 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.48 2008-01-13 19:24:10 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -99,7 +99,7 @@
 
   <!-- Visual Reference Point -->
   <location name="VRP" unit="M">
-   <x> 100.0 </x>
+   <x> 0.0 </x>
    <y> 0.0 </y>
    <z> 0.0 </z>
   </location>
@@ -1495,51 +1495,6 @@
  </propulsion>
 
  <!--
- ==== External reactions ====================================================
- -->
-
- <external_reactions>
-
-  <force name="mooring-coupling-north" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x>-1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="mooring-coupling-east" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y>-1.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="mooring-coupling-down" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z>-1.0 </z>
-   </direction>
-  </force>
-
- </external_reactions>
-
- <!--
  ==== Flight control system =================================================
  -->
 
@@ -2369,6 +2324,51 @@
  </system>
 
  <!--
+ ==== External reactions ====================================================
+ -->
+
+ <external_reactions>
+
+  <force name="mooring-coupling-north" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-coupling-east" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-coupling-down" frame="LOCAL">
+   <location unit="M">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 1.0 </z>
+   </direction>
+  </force>
+
+ </external_reactions>
+
+ <!--
  ==== Mooring force calculation =============================================
  -->
 
@@ -2376,61 +2376,185 @@
  <system name="LZ-129_Mooring">
 
   <!-- INTERFACE PROPERTIES -->
-  <property value="0.0"> mooring/is-moored </property>
-  <property value="0.0"> mooring/lat-gc-deg  </property>
-  <property value="0.0"> mooring/long-gc-deg </property>
-  <property value="0.0"> mooring/h-sl-ft </property>
+  <property value="0.0"> mooring/on-the-wire </property>
+  <property value="0.0"> mooring/moored </property>
+  <property value="0.0"> mooring/latitude-deg  </property>
+  <property value="0.0"> mooring/longitude-deg </property>
+  <property value="0.0"> mooring/altitude-ft </property>
+
+  <!-- Constants -->
+  <property value="1000.0"> mooring/spring-coeff </property>
+  <property value="-1000.0"> mooring/damping-coeff-base </property>
+  <property value="10000.0"> mooring/max-wire-force-lbs </property>
+  <property value="1.0"> mooring/max-winch-speed-fps </property>
 
   <channel name="Mooring Forces">
 
-   <summer name="mooring/lat-diff-deg">
-    <input>-mooring/lat-gc-deg </input>
-    <input> position/lat-gc-deg </input>
+   <fcs_function name="mooring/max-force-lbs">
+    <function>
+     <sum>
+      <property> mooring/max-wire-force-lbs </property>
+      <product>
+       <property> mooring/moored </property>
+       <value> 9.0 </value>
+       <property> mooring/max-wire-force-lbs </property>
+      </product>
+     </sum>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="mooring/damping-coeff">
+    <function>
+     <sum>
+      <property> mooring/damping-coeff-base </property>
+      <product>
+       <property> mooring/moored </property>
+       <value> 9.0 </value>
+       <property> mooring/damping-coeff-base </property>
+      </product>
+     </sum>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="mooring/latitude-diff-ft">
+    <function>
+     <product>
+      <value> -364560.0 </value>
+      <difference>
+       <property> /position/latitude-deg </property>
+       <property> mooring/latitude-deg </property>
+      </difference>
+     </product>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="mooring/longitude-diff-ft">
+    <function>
+     <product>
+      <value> -364560.0 </value>
+      <difference>
+       <property> /position/longitude-deg </property>
+       <property> mooring/longitude-deg </property>
+      </difference>
+     </product>
+    </function>
+   </fcs_function>
+
+   <summer name="mooring/altitude-diff-ft">
+    <input> /position/altitude-ft </input>
+    <input> -mooring/altitude-ft </input>
    </summer>
 
-   <summer name="mooring/long-diff-deg">
-    <input>-mooring/long-gc-deg </input>
-    <input> position/long-gc-deg </input>
-   </summer>
+   <fcs_function name="mooring/total-distance-ft">
+    <function>
+     <pow>
+      <sum>
+       <pow>
+        <property> mooring/latitude-diff-ft </property>
+        <value> 2.0 </value>
+       </pow>
+       <pow>
+        <property> mooring/longitude-diff-ft </property>
+        <value> 2.0 </value>
+       </pow>
+       <pow>
+        <property> mooring/altitude-diff-ft </property>
+        <value> 2.0 </value>
+       </pow>
+      </sum>
+      <value> 0.5 </value>
+     </pow>
+    </function>
+   </fcs_function>
 
-   <summer name="mooring/h-diff-ft">
-    <input> mooring/h-sl-ft </input>
-    <input>-position/h-sl-ft </input>
-   </summer>
+   <fcs_function name="mooring/total-force-lbs">
+    <function>
+     <product>
+      <property> mooring/spring-coeff </property>
+      <property> mooring/total-distance-ft </property>
+<!--
+       <min>
+        <value> 1.0 </value>
+        <abs>
+         <quotient>
+          <property> velocities/v-fps </property>
+          <property> mooring/max-winch-speed-fps </property>
+         </quotient>
+        </abs>
+       </min>
+-->
+     </product>
+    </function>
+    <clipto>
+     <min> 0.0 </min>
+     <max> mooring/max-force-lbs </max>
+    </clipto>
+   </fcs_function>
 
    <fcs_function name="mooring/force-north-lbs">
     <function>
      <product>
-      <property> mooring/is-moored </property>
-      <value> 100.0 </value>
-      <value> 364560.0 </value>
-      <property> mooring/lat-diff-deg </property>
+      <property> mooring/on-the-wire </property>
+       <sum>
+       <product>
+        <property> mooring/total-force-lbs </property>
+        <quotient>
+         <property> mooring/latitude-diff-ft </property>
+         <property> mooring/total-distance-ft </property>
+        </quotient>
+       </product>
+       <product>
+        <property> mooring/damping-coeff </property>
+        <property> /velocities/speed-north-fps </property>
+       </product>
+      </sum>
      </product>
     </function>
-    <output>external_reactions/mooring-coupling-north/magnitude</output>
+    <output> external_reactions/mooring-coupling-north/magnitude </output>
    </fcs_function>
 
    <fcs_function name="mooring/force-east-lbs">
     <function>
      <product>
-      <property> mooring/is-moored </property>
-      <value> 100.0 </value>
-      <value> 364560.0 </value>
-      <property> mooring/long-diff-deg </property>
+      <property> mooring/on-the-wire </property>
+      <sum>
+       <product>
+        <property> mooring/total-force-lbs </property>
+        <quotient>
+         <property> mooring/longitude-diff-ft </property>
+         <property> mooring/total-distance-ft </property>
+        </quotient>
+       </product>
+       <product>
+        <property> mooring/damping-coeff </property>
+        <property> /velocities/speed-east-fps </property>
+       </product>
+      </sum>
      </product>
     </function>
-    <output>external_reactions/mooring-coupling-east/magnitude</output>
+    <output> external_reactions/mooring-coupling-east/magnitude </output>
    </fcs_function>
 
    <fcs_function name="mooring/force-down-lbs">
     <function>
      <product>
-      <property> mooring/is-moored </property>
-      <value> 100.0 </value>
-      <property> mooring/h-diff-ft </property>
+      <property> mooring/on-the-wire </property>
+      <sum>
+       <product>
+        <property> mooring/total-force-lbs </property>
+        <quotient>
+         <property> mooring/altitude-diff-ft </property>
+         <property> mooring/total-distance-ft </property>
+        </quotient>
+       </product>
+       <product>
+        <property> mooring/damping-coeff </property>
+        <property> /velocities/speed-down-fps </property>
+       </product>
+      </sum>
      </product>
     </function>
-    <output>external_reactions/mooring-coupling-down/magnitude</output>
+    <output> external_reactions/mooring-coupling-down/magnitude </output>
    </fcs_function>
 
   </channel>  
@@ -3326,7 +3450,7 @@
   </axis>
 
  </aerodynamics>
-
+<!--
  <output name="LZ-129_datalog.csv" type="CSV" rate="1">
   <property> position/h-sl-ft </property>
   <property> velocities/vc-kts </property>
@@ -3352,5 +3476,5 @@
   <fcs> ON </fcs>
   <ground_reactions> ON </ground_reactions>
  </output>
-
+-->
 </fdm_config>

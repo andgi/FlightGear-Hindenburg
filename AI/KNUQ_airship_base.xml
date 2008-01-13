@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- $Id: KNUQ_airship_base.xml,v 1.1 2008-01-13 19:24:10 anders Exp $ -->
+<!-- 
+     Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+     This file is licensed under the GPL license.
+-->
+
+<PropertyList>
+
+ <scenario>
+
+  <entry>
+   <callsign>Mooring mast KNUQ</callsign>
+   <type>aircraft</type>
+   <class>tanker</class>
+   <model>Models/Structures/radio-medium.xml</model>
+   <latitude>37.4070</latitude>
+   <longitude>-122.0520</longitude>
+   <altitude>-545.0</altitude>
+   <heading>0</heading>
+   <speed>0</speed>
+   <roll>0</roll>
+  </entry>
+
+ </scenario>
+
+</PropertyList>
