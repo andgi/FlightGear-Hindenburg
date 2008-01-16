@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.13 2008-01-13 22:57:24 anders Exp $ -->
+<!-- $Id: help.xml,v 1.14 2008-01-16 00:43:22 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
-  Copyright (C) 2006  Anders Gidenstam  (anders(at)gidenstam.org)
-  This file is licensed under the GPL license.
+  Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license v2 or later.
 -->
 
 <PropertyList>
@@ -34,7 +34,9 @@
  </key>
  <key>
   <name>W</name>
-  <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+  <desc>Weigh-off to 10% of current weight by dropping ballast.
+   (Takes about 10 seconds and only works on ground.)
+  </desc>
  </key>
  <key>
   <name>w</name>
@@ -58,15 +60,27 @@
  </key>
  <key>
   <name>R</name>
-  <desc>Switch the direction of the selected engines. An engine must be stopped before changing direction.</desc>
+  <desc>Switch the direction of the selected engines.
+   An engine must be stopped before changing direction.
+  </desc>
+ </key>
+ <key>
+  <name>Y</name>
+  <desc>Release mooring mast connection or wire.</desc>
  </key>
  <key>
   <name>U</name>
-  <desc>Attach mooring wire. Only possible within 1500 feet of the mooring mast.</desc>
+  <desc>Attach mooring wire. Only possible within 1500
+   feet of the mooring mast.
+  </desc>
+ </key>
+ <key>
+  <name>y</name>
+  <desc>Play out mooring wire.</desc>
  </key>
  <key>
   <name>u</name>
-  <desc>Release mooring mast connection or wire.</desc>
+  <desc>Winch in mooring wire.</desc>
  </key>
 
 <!--
@@ -83,14 +97,24 @@
   <desc>Toggle bubble sextant view.</desc>
  </key>
 -->
- <!-- Handling instructions. -->
- <line>Take-off</line>
- <line></line>
- <line>1. Weigh-off (W) twice.</line>
- <line>2. Drop ballast fore and aft if needed.</line>
- <line>3. Start engines once the airship is clear of the ground.</line>
- <line>4. Stay in control by careful use of elevator and rudder.</line>
- <line>5. ...</line>
- <line>6. Don't Panic!</line>
+ <text>
+ Handling instructions
 
+ Take-off
+   The initial static condition is very heavy. Check with (w).
+   Weigh-off (W) twice.
+   Drop some ballast fore (A) and aft (D) if needed.
+   Start engines once the airship is 150 - 200 ft above ground.
+
+ Approach:
+   Slow and against the wind at 500 - 900 ft.
+   Adjust the static condition to be close (within ~1000lbs) of equilibrium. Gas: (F)(G) wait a second (f)(g). Ballast (A|a) (D|d).
+   Setting (some of) the engines to reverse (R) allows braking.
+
+ Landing:
+   Attach mooring wire (U) when 200 - 400 ft down-wind of the mast.
+   Forward speed should be very low at this point and the altitude about 400 ft.
+   Slowly winch in the mooring wire (u) until the ship is attached to the mooring mast.
+   Beware of oscillations.
+ </text>
 </PropertyList>

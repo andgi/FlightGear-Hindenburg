@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.19 2008-01-13 22:57:24 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.20 2008-01-16 00:43:22 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -199,13 +199,35 @@
     </binding>
    </key>
 
-   <key n="117">
-    <name>u</name>
+   <key n="89">
+    <name>Y</name>
     <desc>Release mooring connection or wire.</desc>
     <binding>
      <command>nasal</command>
      <script>
        LZ129.ground_crew.release_mooring();
+     </script>
+    </binding>
+   </key>
+
+   <key n="117">
+    <name>u</name>
+    <desc>Shorten mooring wire.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       LZ129.ground_crew.change_wire_length(-10);
+     </script>
+    </binding>
+   </key>
+
+   <key n="121">
+    <name>y</name>
+    <desc>Lengthen mooring wire.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       LZ129.ground_crew.change_wire_length(10);
      </script>
     </binding>
    </key>
