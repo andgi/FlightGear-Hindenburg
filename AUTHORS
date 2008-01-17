@@ -17,3 +17,4 @@ Anonymous?
   - Propellers. (From FlightGear/Aircraft/Boeing314/)
   - FDM engine definitions. (From FlightGear/Aircraft/Boeing314/)
   - Template for the sound configuration.
+  - The mooring mast is based on Models/Airport/beacon.{ac,xml}

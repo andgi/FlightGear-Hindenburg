@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.12 2008-01-16 00:43:22 anders Exp $
+## $Id: LZ-129.nas,v 1.13 2008-01-17 00:17:40 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -156,8 +156,8 @@ var ground_crew = {
     me.loopid = 0;
     ## Hash containing all supported mooring locations.
     ## NOTE: the altitude offset is model dependent.
-    me.moorings = {"KNUQ_mooring_mast" : { alt_offset : 650.0 },
-                   "KNEL_mooring_mast" : { alt_offset : 650.0 },
+    me.moorings = {"KNUQ_mooring_mast" : { alt_offset : 85.0 },
+                   "KNEL_mooring_mast" : { alt_offset : 85.0 },
                    "MP-Nimitz" :         { alt_offset : 260.0 }};
     me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
     var ais =

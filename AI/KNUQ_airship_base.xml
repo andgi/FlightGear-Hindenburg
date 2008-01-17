@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: KNUQ_airship_base.xml,v 1.2 2008-01-16 00:43:22 anders Exp $ -->
+<!-- $Id: KNUQ_airship_base.xml,v 1.3 2008-01-17 00:17:40 anders Exp $ -->
 <!-- 
      Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
      This file is licensed under the GPL license v2 or later.
@@ -13,10 +13,10 @@
    <callsign>KNUQ_mooring_mast</callsign>
    <type>aircraft</type>
    <class>tanker</class>
-   <model>Models/Structures/radio-medium.xml</model>
+   <model>Aircraft/LZ-129/Models/mooring_mast.xml</model>
    <latitude>37.4070</latitude>
    <longitude>-122.0520</longitude>
-   <altitude>-545.0</altitude>
+   <altitude>17.0</altitude>
    <heading>0</heading>
    <speed>0</speed>
    <roll>0</roll>
@@ -26,10 +26,10 @@
    <callsign>KNEL_mooring_mast</callsign>
    <type>aircraft</type>
    <class>tanker</class>
-   <model>Models/Structures/radio-medium.xml</model>
+   <model>Aircraft/LZ-129/Models/mooring_mast.xml</model>
    <latitude>40.0329</latitude>
    <longitude>-74.3416</longitude>
-   <altitude>-500.0</altitude>
+   <altitude>65.0</altitude>
    <heading>0</heading>
    <speed>0</speed>
    <roll>0</roll>
