@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.19 2008-01-13 19:24:10 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.20 2008-01-19 19:33:53 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -150,18 +150,19 @@
  </model>
 -->
 
- <!-- The propellers. Temporary models and animations borrowed from the
-      Boeing 314.
-      The propeller origin is set 20 cm behind the propeller's true center. 
+ <!--
+  The propellers. Models and animations based on the Vickers Vimy
+  by Emmanuel BARANGER.
  -->
  <model>
   <name>Propeller1_</name>
   <path>Aircraft/LZ-129/Models/propeller1.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
-   <x-m> 155.720 </x-m>
+   <x-m> 155.520 </x-m>
    <y-m> -15.390 </y-m>
    <z-m> -17.820 </z-m>
+   <roll-deg> 12.5 </roll-deg>
   </offsets>
  </model>
 
@@ -170,9 +171,10 @@
   <path>Aircraft/LZ-129/Models/propeller2.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
-   <x-m> 155.720 </x-m>
+   <x-m> 155.520 </x-m>
    <y-m>  15.390 </y-m>
    <z-m> -17.820 </z-m>
+   <roll-deg> 42.0 </roll-deg>
   </offsets>
  </model>
 
@@ -181,9 +183,10 @@
   <path>Aircraft/LZ-129/Models/propeller3.ac</path>
   <offsets>
    <heading-deg>180</heading-deg>
-   <x-m> 107.525 </x-m>
+   <x-m> 107.325 </x-m>
    <y-m> -20.250 </y-m>
    <z-m> -14.310 </z-m>
+   <roll-deg> -23.0 </roll-deg>
   </offsets>
  </model>
 
@@ -192,9 +195,10 @@
   <path>Aircraft/LZ-129/Models/propeller4.ac</path>
   <offsets>
    <heading-deg>180.0</heading-deg>
-   <x-m> 107.525 </x-m>
+   <x-m> 107.325 </x-m>
    <y-m>  20.250 </y-m>
    <z-m> -14.310 </z-m>
+   <roll-deg> 11.0 </roll-deg>
   </offsets>
  </model>
 
@@ -202,10 +206,20 @@
   ==== Animations =============================================================
  -->
  
-<!-- PROPELLERS. NOTE: Temporary animations borrowed from the
-      Boeing 314. -->
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropDisc1</object-name>
+  <object-name>PropBlur1</object-name>
+  <object-name>PropDisc2</object-name>
+  <object-name>PropBlur2</object-name>
+  <object-name>PropDisc3</object-name>
+  <object-name>PropBlur3</object-name>
+  <object-name>PropDisc4</object-name>
+  <object-name>PropBlur4</object-name>
+ </animation>
 
-<!-- assume 1/7 gear ratio -->
+ <!-- PROPELLERS. -->
+ <!--   Assumes 1/7 gear ratio -->
 
  <!-- 1. -->
  <animation>
@@ -223,6 +237,32 @@
    <y> 0.0 </y>
    <z> 0.0 </z>
   </axis>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc1</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur1</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
  </animation>
 
  <!-- 2. -->
@@ -242,6 +282,32 @@
    <z> 0.0 </z>
   </axis>
  </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc2</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[1]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur2</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[1]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[1]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
 
  <!-- 3. -->
  <animation>
@@ -260,6 +326,32 @@
    <z> 0.0 </z>
   </axis>
  </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc3</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[2]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur3</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[2]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[2]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
 
  <!-- 4. -->
  <animation>
@@ -277,6 +369,32 @@
    <y> 0.0 </y>
    <z> 0.0 </z>
   </axis>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc4</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[3]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur4</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[3]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[3]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
  </animation>
 
  <!-- Hide crew. -->
