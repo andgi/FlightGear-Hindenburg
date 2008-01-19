@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.13 2008-01-17 00:17:40 anders Exp $
+## $Id: LZ-129.nas,v 1.14 2008-01-19 01:11:01 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -16,7 +16,6 @@ var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
 var weight         = "/fdm/jsbsim/inertia/weight-lbs";
 var slugtolb  = 32.174049;
 var lbtoslug  = 1.0/slugtolb;
-
 
 var setForwardGasValves = func (v) {
     setprop(gascell ~ "[15]/valve_open", v);
@@ -156,9 +155,10 @@ var ground_crew = {
     me.loopid = 0;
     ## Hash containing all supported mooring locations.
     ## NOTE: the altitude offset is model dependent.
-    me.moorings = {"KNUQ_mooring_mast" : { alt_offset : 85.0 },
-                   "KNEL_mooring_mast" : { alt_offset : 85.0 },
-                   "MP-Nimitz" :         { alt_offset : 260.0 }};
+    me.moorings = {"KNUQ_mooring_mast_north" : { alt_offset : 85.0 },
+                   "KNUQ_mooring_mast_south" : { alt_offset : 85.0 },
+                   "KNEL_mooring_mast"       : { alt_offset : 85.0 },
+                   "MP-Nimitz"               : { alt_offset : 260.0 }};
     me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft");
@@ -220,48 +220,49 @@ var ground_crew = {
       props.globals.getNode("/ai/models").getChildren("aircraft") ~
       props.globals.getNode("/ai/models").getChildren("carrier");
     var distance =
-      3.2808399*me.mooring.getNode("total-distance-ft").getValue();
+      geo.FT2M * me.mooring.getNode("total-distance-ft").getValue();
     var ac_pos = geo.aircraft_position();
     foreach (ai; ais) {
       var name = ai.getNode("callsign").getValue();
-      if (name == "") name = ai.getNode("name").getValue();
+      if (name == "") { name = ai.getNode("name").getValue(); }
       if (me.moorings[name] != nil) {
         var pos =
           geo.Coord.set_latlon
             (ai.getNode("position/latitude-deg").getValue(),
              ai.getNode("position/longitude-deg").getValue(),
-             ai.getNode("position/altitude-ft").getValue() +
-             me.moorings[name].alt_offset);
-          if ((name == me.selected) or
-              (pos.distance_to(ac_pos) < distance)) {
-            if (name != me.selected) {
-              print("LZ 129 ground crew: Switched mooring to " ~ name ~ ".");
-              me.selected = name;
-            }
-            distance = pos.distance_to(ac_pos);
-            me.mooring.getNode("latitude-deg").setValue(pos.lat());
-            me.mooring.getNode("longitude-deg").setValue(pos.lon());
-            me.mooring.getNode("altitude-ft").setValue(pos.alt());
+             geo.FT2M * (ai.getNode("position/altitude-ft").getValue() +
+                         me.moorings[name].alt_offset));
+        if ((name == me.selected) or
+            (pos.direct_distance_to(ac_pos) < distance)) {
+          if (name != me.selected) {
+            print("LZ 129 Ground crew: Switched mooring to " ~ name ~ ".");
+            me.selected = name;
           }
+          distance = pos.distance_to(ac_pos);
+          me.mooring.getNode("latitude-deg").setValue(pos.lat());
+          me.mooring.getNode("longitude-deg").setValue(pos.lon());
+          me.mooring.getNode("altitude-ft").setValue(geo.M2FT * pos.alt());
         }
       }
-    },
-    reset : func {
-        me.loopid += 1;
-        me._loop_(me.loopid);
-    },
-    _loop_ : func(id) {
-        id == me.loopid or return;
-        me.update();
-        settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
     }
+  },
+  reset : func {
+    me.loopid += 1;
+    me._loop_(me.loopid);
+  },
+  _loop_ : func(id) {
+    id == me.loopid or return;
+    me.update();
+    settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
+  }
 };
 
 var init = func {
-    assistant.init();
-    ground_crew.init();
+  assistant.init();
+  ground_crew.init();
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {
-    init();
+  init();
 });
+
