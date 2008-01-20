@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.51 2008-01-17 00:17:40 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.52 2008-01-20 01:44:54 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.51 2008-01-17 00:17:40 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.52 2008-01-20 01:44:54 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -713,7 +713,17 @@
     <z> -20.0 </z>
    </location>
    <capacity unit="KG"> 50000 </capacity>
-   <contents unit="KG"> 18000 </contents>
+   <contents unit="KG"> 16000 </contents>
+  </ballast>
+  <!--  Initial trim ballast -->
+  <ballast type="WATER">
+   <location unit="M">
+    <x> 122.5 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <capacity unit="KG"> 10000 </capacity>
+   <contents unit="KG"> 0 </contents>
   </ballast>
 
  </mass_balance>
@@ -1595,6 +1605,60 @@
  </flight_control>
 
  <!--
+ ==== Initial static condition trim =========================================
+ -->
+
+ <system name="LZ-129_Static_Trim">
+  <channel name="Initial_Static_Trim">
+   <!-- This system ensures that the ship starts slightly heavy. -->
+
+   <summer name="static-condition/net-lift-lbs">
+    <input> inertia/gas-cell[0]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[1]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[2]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[3]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[4]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[5]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[6]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[7]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[8]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[9]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[10]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[11]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[12]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[13]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[14]/buoyancy-lbs </input>
+    <input> inertia/gas-cell[15]/buoyancy-lbs </input>
+    <input> -inertia/weight-lbs </input>
+   </summer>
+
+   <switch name="static-condition/initial-trim-sample-hold">
+    <default value="static-condition/net-lift-lbs"/>
+    <test logic="AND" value="static-condition/initial-trim-sample-hold">
+     sim-time-sec GE 0.01
+    </test>
+   </switch>
+
+   <fcs_function name="static-condition/initial-trim-ballast-slug">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <sum>
+       <value> 15.5 </value>
+       <product>
+        <value> 0.03108095 </value>
+        <property> static-condition/initial-trim-sample-hold </property>
+       </product>
+      </sum>
+     </max>
+    </function>
+    <output> inertia/ballast[3]/contents-slug </output>
+   </fcs_function>
+
+  </channel>
+ </system>
+
+ <!--
  ==== Instrumentation =======================================================
  -->
 
@@ -2372,13 +2436,14 @@
  ==== Mooring force calculation =============================================
  -->
 
- <!-- system file="Systems/LZ-129_mooring"/ -->
- <system name="LZ-129_Mooring">
+ <!-- system file="Systems/mooring"/ -->
+ <system name="mooring">
 
   <!-- INTERFACE PROPERTIES -->
   <!--  Mooring actions -->
-  <property value="0.0"> mooring/on-the-wire </property>
-  <property value="0.0"> mooring/wire-length-ft </property>
+  <property value="0.0"> mooring/wire-connected </property>
+  <property value="0.0"> mooring/winch-speed-fps </property>
+  <property value="0.0"> mooring/initial-wire-length-ft </property>
   <!--  Mooring mast location -->
   <property value="0.0"> mooring/latitude-deg  </property>
   <property value="0.0"> mooring/longitude-deg </property>
@@ -2392,7 +2457,7 @@
   <!--  Wire -->
   <property value="250.0"> mooring/wire-spring-coeff </property>
   <property value="10000.0"> mooring/max-wire-force-lbs </property>
-  <property value="2.0"> mooring/max-winch-speed-fps </property>
+  <property value="5.0"> mooring/max-winch-speed-fps </property>
 
   <channel name="Mooring Forces">
 
@@ -2450,7 +2515,7 @@
    <switch name="mooring/moored">
     <default value="0.0"/>
     <test logic="AND" value="1.0">
-     mooring/on-the-wire GE 1.0
+     mooring/wire-connected GE 1.0
      mooring/total-distance-ft LE 10.0
     </test>
    </switch>
@@ -2469,10 +2534,43 @@
     </clipto>
    </fcs_function>
 
+   <switch name="mooring/winch-reset">
+    <default value="-1.0"/>
+    <test logic="AND" value="0.0">
+     mooring/wire-connected GT 0.0
+    </test>
+   </switch>
+
+   <pid name="mooring/wire-length-change-ft">
+    <!-- NOTE: The plain integrator component does not reset. -->
+    <input> mooring/winch-speed-fps </input>
+    <kp>    0.00 </kp>
+    <ki>    1.00 </ki>
+    <kd>    0.00 </kd>
+    <trigger> mooring/winch-reset </trigger>
+    <clipto>
+     <min>-mooring/initial-wire-length-ft </min>
+     <max> 0.0 </max> <!-- Might not be wise. -->
+    </clipto>
+    </pid>
+
+   <fcs_function name="mooring/wire-length-ft">
+    <function>
+     <sum>
+      <property> mooring/initial-wire-length-ft </property>
+      <property> mooring/wire-length-change-ft </property>
+     </sum>
+    </function>
+    <clipto>
+     <min> 0.0 </min>
+     <max> mooring/initial-wire-length-ft </max> <!-- Might not be wise. -->
+    </clipto>
+   </fcs_function>
+
    <fcs_function name="mooring/wire-force-lbs">
     <function>
      <product>
-      <property> mooring/on-the-wire </property>
+      <property> mooring/wire-connected </property>
       <property> mooring/wire-spring-coeff </property>
       <max>
        <difference>
@@ -2501,7 +2599,7 @@
    <fcs_function name="mooring/force-north-lbs">
     <function>
      <product>
-      <property> mooring/on-the-wire </property>
+      <property> mooring/wire-connected </property>
       <sum>
        <product>
         <property> mooring/total-force-lbs </property>
@@ -2524,7 +2622,7 @@
    <fcs_function name="mooring/force-east-lbs">
     <function>
      <product>
-      <property> mooring/on-the-wire </property>
+      <property> mooring/wire-connected </property>
       <sum>
        <product>
         <property> mooring/total-force-lbs </property>
@@ -2547,7 +2645,7 @@
    <fcs_function name="mooring/force-down-lbs">
     <function>
      <product>
-      <property> mooring/on-the-wire </property>
+      <property> mooring/wire-connected </property>
       <sum>
        <product>
         <property> mooring/total-force-lbs </property>
@@ -2596,7 +2694,7 @@
   <function name="aero/hull-side-tweak-factor">
    <!-- This should probably be increased since the ship seems
         too course stable. -->
-   <value> 2.0 </value>
+   <value> 4.0 </value>
   </function>
 
   <!--

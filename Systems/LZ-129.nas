@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.14 2008-01-19 01:11:01 anders Exp $
+## $Id: LZ-129.nas,v 1.15 2008-01-20 01:44:54 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -76,8 +76,8 @@ var switch_engine_direction = func (eng) {
     if (!getprop(engineFG ~ "/running")) {
         setprop(dir, (getprop(dir) == 0) ? 3.14159265 : 0.0);
         # NOTE: The popup tip should probably be at the callers discretion. 
-        assistant.announce("Changing engine " ~ eng ~
-                           " direction to " ~
+        assistant.announce("Engine " ~ eng ~
+                           " set to " ~
                            ((getprop(dir) == 0) ? "forward." : "reverse."));
     } else {
         # NOTE: The popup tip should probably be at the callers discretion. 
@@ -126,7 +126,8 @@ var assistant = {
         }
 
         var m = getprop("/fdm/jsbsim/mooring/moored");
-        if ((me.moored == 0) and (m > 0)) {
+        var w = getprop("/fdm/jsbsim/mooring/wire-connected");
+        if ((me.moored == 0) and (m > 0.5) and (w > 0.5)) {
             me.moored = 1;
             me.announce("Docked to the mooring mast.");
         } elsif (m < 1) {
@@ -150,6 +151,7 @@ var assistant = {
 ###########################################################################
 ## Experimental mooring mast and ground crew
 var ground_crew = {
+  ##################################################
   init : func {
     me.UPDATE_INTERVAL = 0.42;
     me.loopid = 0;
@@ -184,37 +186,58 @@ var ground_crew = {
     }
     print("LZ 129 Ground crew ... Standing by.");
   },
+  ##################################################
   attach_mooring_wire : func {
     var dist = me.mooring.getNode("total-distance-ft").getValue();
     if ((dist < 1500.0) and
         (getprop("/position/altitude-agl-ft") < 1000.0)) {
-      me.mooring.getNode("wire-length-ft").setValue(dist);
-      me.mooring.getNode("on-the-wire").setValue(1.0);
+      me.mooring.getNode("winch-speed-fps").setValue(0);
+      me.mooring.getNode("initial-wire-length-ft").setValue(dist);
+      me.mooring.getNode("wire-connected").setValue(1.0);
       assistant.announce("Ground reports: Mooring cable attached.");
     } else {
       assistant.announce("We are too far from the mooring mast.");
     }
   },
+  ##################################################
   change_wire_length : func(d) {
-    var len = me.mooring.getNode("wire-length-ft").getValue();
+    var len = me.mooring.getNode("initial-wire-length-ft").getValue();
     var sp  = me.mooring.getNode("max-winch-speed-fps").getValue();
     if ((len == 0) and (d < 0)) {
-      var t = me.mooring.getNode("on-the-wire").getValue();
-      interpolate(me.mooring.getNode("on-the-wire"), 2*t, 5.0);
+      var t = me.mooring.getNode("wire-connected").getValue();
+      interpolate(me.mooring.getNode("wire-connected"), 2*t, 5.0);
     } else {
-      interpolate(me.mooring.getNode("wire-length-ft"),
+      interpolate(me.mooring.getNode("initial-wire-length-ft"),
                   (len + d) < 0 ? 0 : len + d, math.abs(d/sp));
     }
   },
+  ##################################################
+  set_winch_speed : func(sp) {
+    if (me.mooring.getNode("wire-connected").getValue() == 0.0) {
+      me.mooring.getNode("winch-speed-fps").setValue(0);
+      return;
+    }
+
+    var max = me.mooring.getNode("max-winch-speed-fps").getValue();
+    if (math.abs (sp) > max) {
+      sp = sp/math.abs(sp) * max;
+    }
+    me.mooring.getNode("winch-speed-fps").setValue(sp);
+    LZ129.assistant.announce("Winch " ~ math.abs(sp) ~ " fps " ~
+                             ((sp < 0) ? "in" : "out") ~ ".");
+  },
+  ##################################################
   release_mooring : func {
     if (me.mooring.getNode("moored").getValue() >= 1.0) {
-        me.mooring.getNode("on-the-wire").setValue(0.0);
+        me.mooring.getNode("wire-connected").setValue(0.0);
       assistant.announce("Mooring connection released.");
-    } elsif (me.mooring.getNode("on-the-wire").getValue() >= 1.0) {
-      me.mooring.getNode("on-the-wire").setValue(0.0);
+    } elsif (me.mooring.getNode("wire-connected").getValue() >= 1.0) {
+      me.mooring.getNode("wire-connected").setValue(0.0);
       assistant.announce("Released mooring wire.");
     }
+    me.mooring.getNode("winch-speed-fps").setValue(0);
   },
+  ##################################################
   update : func {
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft") ~
@@ -222,6 +245,7 @@ var ground_crew = {
     var distance =
       geo.FT2M * me.mooring.getNode("total-distance-ft").getValue();
     var ac_pos = geo.aircraft_position();
+    var found = 0;
     foreach (ai; ais) {
       var name = ai.getNode("callsign").getValue();
       if (name == "") { name = ai.getNode("name").getValue(); }
@@ -242,14 +266,22 @@ var ground_crew = {
           me.mooring.getNode("latitude-deg").setValue(pos.lat());
           me.mooring.getNode("longitude-deg").setValue(pos.lon());
           me.mooring.getNode("altitude-ft").setValue(geo.M2FT * pos.alt());
+          found = 1;
         }
       }
     }
+    if (found == 0) {
+      # This is an error. Reset mooring location.
+      print("LZ 129 Ground crew: Mooring location corrupted!!");
+      me.reset();
+    }
   },
+  ##################################################
   reset : func {
     me.loopid += 1;
     me._loop_(me.loopid);
   },
+  ##################################################
   _loop_ : func(id) {
     id == me.loopid or return;
     me.update();
