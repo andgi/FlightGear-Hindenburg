@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: KNUQ_airship_base.xml,v 1.4 2008-01-19 01:11:01 anders Exp $ -->
+<!-- $Id: KNUQ_airship_base.xml,v 1.5 2008-01-20 21:29:49 anders Exp $ -->
 <!-- 
      Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
      This file is licensed under the GPL license v2 or later.
@@ -35,6 +35,7 @@
    <roll>0</roll>
   </entry>
 
+  <!-- Unrelated mast sites. -->
   <entry>
    <callsign>KNEL_mooring_mast</callsign>
    <type>aircraft</type>
@@ -43,6 +44,32 @@
    <latitude>40.0329</latitude>
    <longitude>-74.3416</longitude>
    <altitude>65.0</altitude>
+   <heading>0</heading>
+   <speed>0</speed>
+   <roll>0</roll>
+  </entry>
+
+  <entry>
+   <callsign>EDDI_mooring_mast</callsign>
+   <type>aircraft</type>
+   <class>tanker</class>
+   <model>Aircraft/LZ-129/Models/mooring_mast.xml</model>
+   <latitude>52.4780</latitude>
+   <longitude>13.3992</longitude>
+   <altitude>145.0</altitude>
+   <heading>0</heading>
+   <speed>0</speed>
+   <roll>0</roll>
+  </entry>
+
+  <entry>
+   <callsign>EDNY_mooring_mast</callsign>
+   <type>aircraft</type>
+   <class>tanker</class>
+   <model>Aircraft/LZ-129/Models/mooring_mast.xml</model>
+   <latitude>47.6676</latitude>
+   <longitude>9.5049</longitude>
+   <altitude>1325.0</altitude>
    <heading>0</heading>
    <speed>0</speed>
    <roll>0</roll>
