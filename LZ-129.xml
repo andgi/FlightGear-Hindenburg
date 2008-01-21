@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.53 2008-01-20 21:29:49 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.54 2008-01-21 21:33:24 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.53 2008-01-20 21:29:49 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.54 2008-01-21 21:33:24 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -197,6 +197,53 @@
    <y>   0.000 </y>
    <z> -10.472 </z>
   </location>
+
+  <!--
+  === Ballast ================================================
+  -->
+  <documentation>
+   "... 23 Beh\"alter mit 40_000 Liter Gesamt-Inhalt f\"ur Frisch- und
+    Abwasser..." [Tittel:1997:LZ129]
+   "S\"amtliche Wasserf\"asser sind mit Schnellentlerungsventilen (50 l/s.)
+    ausger\"ustet." [Tittel:1997:LZ129] (")
+  </documentation>
+  <!-- Experimental ballast setup. -->
+  <!-- Forward ballast -->
+  <pointmass name="Ballast_Fore">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <weight unit="KG"> 14000 </weight>
+  </pointmass>
+  <!-- Aft ballast -->
+  <pointmass name="Ballast_Aft">
+   <location unit="M">
+    <x> 220.0 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <weight unit="KG">  8250 </weight>
+  </pointmass>
+  <!-- Center ballast -->
+  <pointmass name="Ballast_Center">
+   <location unit="M">
+    <x> 122.5 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <weight unit="KG"> 16000 </weight>
+  </pointmass>
+  <!--  Initial trim ballast -->
+  <pointmass name="Ballast_Initial_Trim">
+   <location unit="M">
+    <x> 122.5 </x>
+    <y> 0.0 </y>
+    <z> -20.0 </z>
+   </location>
+   <weight unit="KG"> 0 </weight>
+  </pointmass>
 
   <!-- 
   === Engines ================================================
@@ -674,57 +721,6 @@
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
   </gas_cell>
-
-  <!--
-  === Ballast ================================================
-  -->
-  <documentation>
-   "... 23 Beh\"alter mit 40_000 Liter Gesamt-Inhalt f\"ur Frisch- und
-    Abwasser..." [Tittel:1997:LZ129]
-   "S\"amtliche Wasserf\"asser sind mit Schnellentlerungsventilen (50 l/s.)
-    ausger\"ustet." [Tittel:1997:LZ129] (")
-  </documentation>
-  <!-- Experimental ballast setup. -->
-  <!-- Forward ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 20.0 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 20000 </capacity>
-   <contents unit="KG"> 14000 </contents>
-  </ballast>
-  <!-- Aft ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 220.0 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 20000 </capacity>
-   <contents unit="KG">  8250 </contents>
-  </ballast>
-  <!-- Center ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 122.5 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 50000 </capacity>
-   <contents unit="KG"> 16000 </contents>
-  </ballast>
-  <!--  Initial trim ballast -->
-  <ballast type="WATER">
-   <location unit="M">
-    <x> 122.5 </x>
-    <y> 0.0 </y>
-    <z> -20.0 </z>
-   </location>
-   <capacity unit="KG"> 10000 </capacity>
-   <contents unit="KG"> 0 </contents>
-  </ballast>
 
  </mass_balance>
 
@@ -1599,6 +1595,73 @@
     </range>
     <output>fcs/rudder-pos-norm</output>
    </aerosurface_scale>
+
+  </channel>
+
+  <!--
+  === Ballast control ========================================
+  -->
+
+  <!-- INTERFACE PROPERTIES -->
+  <property value="959.3">  inertia/ballast[0]/contents-slug </property>
+  <property value="565.3">  inertia/ballast[1]/contents-slug </property>
+  <property value="1096.3"> inertia/ballast[2]/contents-slug </property>
+  <property value="0.0">    inertia/ballast[3]/contents-slug </property>
+
+  <channel name="Ballast">
+
+   <fcs_function name="Ballast Fore">
+    <function>
+     <product>
+      <value> 32.174049 </value>
+      <property> inertia/ballast[0]/contents-slug </property>
+     </product>
+    </function>
+    <clipto>
+     <min>0</min>
+     <max>44000</max>
+    </clipto>
+    <output> inertia/pointmass-weight-lbs[0] </output>
+   </fcs_function>
+   <fcs_function name="Ballast Aft">
+    <function>
+     <product>
+      <value> 32.174049 </value>
+      <property> inertia/ballast[1]/contents-slug </property>
+     </product>
+    </function>
+    <clipto>
+     <min>0</min>
+     <max>44000</max>
+    </clipto>
+    <output> inertia/pointmass-weight-lbs[1] </output>
+   </fcs_function>
+   <fcs_function name="Ballast Center">
+    <function>
+     <product>
+      <value> 32.174049 </value>
+      <property> inertia/ballast[2]/contents-slug </property>
+     </product>
+    </function>
+    <clipto>
+     <min>0</min>
+     <max>44000</max>
+    </clipto>
+    <output> inertia/pointmass-weight-lbs[2] </output>
+   </fcs_function>
+   <fcs_function name="Ballast Trim">
+    <function>
+     <product>
+      <value> 32.174049 </value>
+      <property> inertia/ballast[3]/contents-slug </property>
+     </product>
+    </function>
+    <clipto>
+     <min>0</min>
+     <max>44000</max>
+    </clipto>
+    <output> inertia/pointmass-weight-lbs[3] </output>
+   </fcs_function>
 
   </channel>
 
