@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.54 2008-01-21 21:33:24 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.55 2008-01-22 01:35:56 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.54 2008-01-21 21:33:24 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.55 2008-01-22 01:35:56 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -211,7 +211,7 @@
   <!-- Forward ballast -->
   <pointmass name="Ballast_Fore">
    <location unit="M">
-    <x> 20.0 </x>
+    <x> 30.0 </x>
     <y> 0.0 </y>
     <z> -20.0 </z>
    </location>
@@ -220,7 +220,7 @@
   <!-- Aft ballast -->
   <pointmass name="Ballast_Aft">
    <location unit="M">
-    <x> 220.0 </x>
+    <x> 205.0 </x>
     <y> 0.0 </y>
     <z> -20.0 </z>
    </location>
@@ -1603,8 +1603,8 @@
   -->
 
   <!-- INTERFACE PROPERTIES -->
-  <property value="959.3">  inertia/ballast[0]/contents-slug </property>
-  <property value="565.3">  inertia/ballast[1]/contents-slug </property>
+  <property value="919.3">  inertia/ballast[0]/contents-slug </property>
+  <property value="605.3">  inertia/ballast[1]/contents-slug </property>
   <property value="1096.3"> inertia/ballast[2]/contents-slug </property>
   <property value="0.0">    inertia/ballast[3]/contents-slug </property>
 
