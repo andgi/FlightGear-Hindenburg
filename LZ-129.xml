@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.55 2008-01-22 01:35:56 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.56 2008-01-24 22:55:49 anders Exp $ -->
 <!--
 
-  LZ-129 Hindenburg flight model for JSBSim with my LTA extension.
+  LZ-129 Hindenburg flight model for JSBSim.
 
     Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
 
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.55 2008-01-22 01:35:56 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.56 2008-01-24 22:55:49 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -478,10 +478,13 @@
   <!-- In cell 1 -->
   <!-- In cell 0 -->
 
-  <!--
-  === Gas cells ==============================================
-  -->
+ </mass_balance>
 
+ <!--
+ === Gas cells ==============================================
+ -->
+
+ <buoyant_forces>
   <!-- Cell 1 -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
@@ -722,7 +725,7 @@
    <fullness> 0.95 </fullness>
   </gas_cell>
 
- </mass_balance>
+ </buoyant_forces>
 
  <!--
  ==== Ground reactions ======================================================
@@ -1676,22 +1679,22 @@
    <!-- This system ensures that the ship starts slightly heavy. -->
 
    <summer name="static-condition/net-lift-lbs">
-    <input> inertia/gas-cell[0]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[1]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[2]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[3]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[4]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[5]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[6]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[7]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[8]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[9]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[10]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[11]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[12]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[13]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[14]/buoyancy-lbs </input>
-    <input> inertia/gas-cell[15]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[0]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[1]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[2]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[3]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[4]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[5]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[6]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[7]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[8]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[9]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[10]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[11]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[12]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[13]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[14]/buoyancy-lbs </input>
+    <input> buoyant_forces/gas-cell[15]/buoyancy-lbs </input>
     <input> -inertia/weight-lbs </input>
    </summer>
 
@@ -1728,38 +1731,38 @@
  <system name="LZ-129_Instrumentation">
 
   <!-- These should preferably have been exported by the gas_cell class. -->
-  <property value="16.17"> inertia/gas_cell[0]/radius-ft </property>
-  <property value="53.15"> inertia/gas_cell[0]/width-ft </property>
-  <property value="31.23"> inertia/gas_cell[1]/radius-ft </property>
-  <property value="45.18"> inertia/gas_cell[1]/width-ft </property>
-  <property value="41.21"> inertia/gas_cell[2]/radius-ft </property>
-  <property value="44.29"> inertia/gas_cell[2]/width-ft </property>
-  <property value="49.61"> inertia/gas_cell[3]/radius-ft </property>
-  <property value="49.61"> inertia/gas_cell[3]/width-ft </property>
-  <property value="56.25"> inertia/gas_cell[4]/radius-ft </property>
-  <property value="49.61"> inertia/gas_cell[4]/width-ft </property>
-  <property value="60.89"> inertia/gas_cell[5]/radius-ft </property>
-  <property value="49.16"> inertia/gas_cell[5]/width-ft </property>
-  <property value="64.01"> inertia/gas_cell[6]/radius-ft </property>
-  <property value="49.16"> inertia/gas_cell[6]/width-ft </property>
-  <property value="66.01"> inertia/gas_cell[7]/radius-ft </property>
-  <property value="54.92"> inertia/gas_cell[7]/width-ft </property>
-  <property value="67.32"> inertia/gas_cell[8]/radius-ft </property>
-  <property value="54.04"> inertia/gas_cell[8]/width-ft </property>
-  <property value="67.78"> inertia/gas_cell[9]/radius-ft </property>
-  <property value="54.04"> inertia/gas_cell[9]/width-ft </property>
-  <property value="67.03"> inertia/gas_cell[10]/radius-ft </property>
-  <property value="54.49"> inertia/gas_cell[10]/width-ft </property>
-  <property value="65.32"> inertia/gas_cell[11]/radius-ft </property>
-  <property value="48.72"> inertia/gas_cell[11]/width-ft </property>
-  <property value="62.01"> inertia/gas_cell[12]/radius-ft </property>
-  <property value="49.16"> inertia/gas_cell[12]/width-ft </property>
-  <property value="56.04"> inertia/gas_cell[13]/radius-ft </property>
-  <property value="48.72"> inertia/gas_cell[13]/width-ft </property>
-  <property value="45.18"> inertia/gas_cell[14]/radius-ft </property>
-  <property value="48.72"> inertia/gas_cell[14]/width-ft </property>
-  <property value="25.03"> inertia/gas_cell[15]/radius-ft </property>
-  <property value="37.20"> inertia/gas_cell[15]/width-ft </property>
+  <property value="16.17"> buoyant_forces/gas_cell[0]/radius-ft </property>
+  <property value="53.15"> buoyant_forces/gas_cell[0]/width-ft </property>
+  <property value="31.23"> buoyant_forces/gas_cell[1]/radius-ft </property>
+  <property value="45.18"> buoyant_forces/gas_cell[1]/width-ft </property>
+  <property value="41.21"> buoyant_forces/gas_cell[2]/radius-ft </property>
+  <property value="44.29"> buoyant_forces/gas_cell[2]/width-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[3]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[3]/width-ft </property>
+  <property value="56.25"> buoyant_forces/gas_cell[4]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[4]/width-ft </property>
+  <property value="60.89"> buoyant_forces/gas_cell[5]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[5]/width-ft </property>
+  <property value="64.01"> buoyant_forces/gas_cell[6]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[6]/width-ft </property>
+  <property value="66.01"> buoyant_forces/gas_cell[7]/radius-ft </property>
+  <property value="54.92"> buoyant_forces/gas_cell[7]/width-ft </property>
+  <property value="67.32"> buoyant_forces/gas_cell[8]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas_cell[8]/width-ft </property>
+  <property value="67.78"> buoyant_forces/gas_cell[9]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas_cell[9]/width-ft </property>
+  <property value="67.03"> buoyant_forces/gas_cell[10]/radius-ft </property>
+  <property value="54.49"> buoyant_forces/gas_cell[10]/width-ft </property>
+  <property value="65.32"> buoyant_forces/gas_cell[11]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[11]/width-ft </property>
+  <property value="62.01"> buoyant_forces/gas_cell[12]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[12]/width-ft </property>
+  <property value="56.04"> buoyant_forces/gas_cell[13]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[13]/width-ft </property>
+  <property value="45.18"> buoyant_forces/gas_cell[14]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[14]/width-ft </property>
+  <property value="25.03"> buoyant_forces/gas_cell[15]/radius-ft </property>
+  <property value="37.20"> buoyant_forces/gas_cell[15]/width-ft </property>
 
 
   <channel name="Gas cell pressure sensors">
@@ -1776,22 +1779,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[0]/radius-ft </property>
-           <property> inertia/gas_cell[0]/width-ft </property>
+           <property> buoyant_forces/gas_cell[0]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[0]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[0]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[0]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[0]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[0]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[0]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[0]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[0]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[0]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1811,22 +1814,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[1]/radius-ft </property>
-           <property> inertia/gas_cell[1]/width-ft </property>
+           <property> buoyant_forces/gas_cell[1]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[1]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[1]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[1]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[1]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[1]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[1]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[1]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[1]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[1]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1846,22 +1849,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[2]/radius-ft </property>
-           <property> inertia/gas_cell[2]/width-ft </property>
+           <property> buoyant_forces/gas_cell[2]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[2]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[2]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[2]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[2]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[2]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[2]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[2]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[2]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[2]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1881,22 +1884,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[3]/radius-ft </property>
-           <property> inertia/gas_cell[3]/width-ft </property>
+           <property> buoyant_forces/gas_cell[3]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[3]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[3]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[3]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[3]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[3]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[3]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[3]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[3]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[3]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1916,22 +1919,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[4]/radius-ft </property>
-           <property> inertia/gas_cell[4]/width-ft </property>
+           <property> buoyant_forces/gas_cell[4]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[4]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[4]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[4]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[4]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[4]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[4]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[4]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[4]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[4]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1951,22 +1954,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[5]/radius-ft </property>
-           <property> inertia/gas_cell[5]/width-ft </property>
+           <property> buoyant_forces/gas_cell[5]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[5]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[5]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[5]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[5]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[5]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[5]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[5]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[5]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[5]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -1986,22 +1989,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[6]/radius-ft </property>
-           <property> inertia/gas_cell[6]/width-ft </property>
+           <property> buoyant_forces/gas_cell[6]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[6]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[6]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[6]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[6]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[6]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[6]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[6]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[6]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[6]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2021,22 +2024,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[7]/radius-ft </property>
-           <property> inertia/gas_cell[7]/width-ft </property>
+           <property> buoyant_forces/gas_cell[7]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[7]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[7]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[7]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[7]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[7]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[7]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[7]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[7]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[7]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2056,22 +2059,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[8]/radius-ft </property>
-           <property> inertia/gas_cell[8]/width-ft </property>
+           <property> buoyant_forces/gas_cell[8]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[8]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[8]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[8]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[8]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[8]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[8]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[8]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[8]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[8]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2091,22 +2094,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[9]/radius-ft </property>
-           <property> inertia/gas_cell[9]/width-ft </property>
+           <property> buoyant_forces/gas_cell[9]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[9]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[9]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[9]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[9]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[9]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[9]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[9]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[9]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[9]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2126,22 +2129,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[10]/radius-ft </property>
-           <property> inertia/gas_cell[10]/width-ft </property>
+           <property> buoyant_forces/gas_cell[10]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[10]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[10]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[10]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[10]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[10]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[10]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[10]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[10]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[10]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2161,22 +2164,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[11]/radius-ft </property>
-           <property> inertia/gas_cell[11]/width-ft </property>
+           <property> buoyant_forces/gas_cell[11]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[11]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[11]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[11]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[11]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[11]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[11]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[11]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[11]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[11]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2196,22 +2199,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[12]/radius-ft </property>
-           <property> inertia/gas_cell[12]/width-ft </property>
+           <property> buoyant_forces/gas_cell[12]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[12]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[12]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[12]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[12]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[12]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[12]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[12]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[12]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[12]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2231,22 +2234,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[13]/radius-ft </property>
-           <property> inertia/gas_cell[13]/width-ft </property>
+           <property> buoyant_forces/gas_cell[13]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[13]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[13]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[13]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[13]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[13]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[13]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[13]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[13]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[13]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2266,22 +2269,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[14]/radius-ft </property>
-           <property> inertia/gas_cell[14]/width-ft </property>
+           <property> buoyant_forces/gas_cell[14]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[14]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[14]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[14]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[14]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[14]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[14]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[14]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[14]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[14]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2301,22 +2304,22 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> inertia/gas_cell[15]/radius-ft </property>
-           <property> inertia/gas_cell[15]/width-ft </property>
+           <property> buoyant_forces/gas_cell[15]/radius-ft </property>
+           <property> buoyant_forces/gas_cell[15]/width-ft </property>
           </product>
          </quotient>
-         <property> inertia/gas-cell[15]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[15]/volume-ft3 </property>
         </product>
-        <property> inertia/gas_cell[15]/radius-ft </property>
+        <property> buoyant_forces/gas_cell[15]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
         <quotient>
          <product>
           <value> 0.00013841 </value>  <!-- M_gas -->
-          <property> inertia/gas-cell[15]/contents-mol </property>
+          <property> buoyant_forces/gas-cell[15]/contents-mol </property>
          </product>
-         <property> inertia/gas-cell[15]/volume-ft3 </property>
+         <property> buoyant_forces/gas-cell[15]/volume-ft3 </property>
         </quotient>
        </difference>
       </product>
@@ -2329,97 +2332,97 @@
    <switch name="fcs/instrumentation/gas-cells/prall[0]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[0]/volume-ft3 GE inertia/gas-cell[0]/max_volume-ft3
+     buoyant_forces/gas-cell[0]/volume-ft3 GE buoyant_forces/gas-cell[0]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[1]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[1]/volume-ft3 GE inertia/gas-cell[1]/max_volume-ft3
+     buoyant_forces/gas-cell[1]/volume-ft3 GE buoyant_forces/gas-cell[1]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[2]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[2]/volume-ft3 GE inertia/gas-cell[2]/max_volume-ft3
+     buoyant_forces/gas-cell[2]/volume-ft3 GE buoyant_forces/gas-cell[2]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[3]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[3]/volume-ft3 GE inertia/gas-cell[3]/max_volume-ft3
+     buoyant_forces/gas-cell[3]/volume-ft3 GE buoyant_forces/gas-cell[3]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[4]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[4]/volume-ft3 GE inertia/gas-cell[4]/max_volume-ft3
+     buoyant_forces/gas-cell[4]/volume-ft3 GE buoyant_forces/gas-cell[4]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[5]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[5]/volume-ft3 GE inertia/gas-cell[5]/max_volume-ft3
+     buoyant_forces/gas-cell[5]/volume-ft3 GE buoyant_forces/gas-cell[5]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[6]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[6]/volume-ft3 GE inertia/gas-cell[6]/max_volume-ft3
+     buoyant_forces/gas-cell[6]/volume-ft3 GE buoyant_forces/gas-cell[6]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[7]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[7]/volume-ft3 GE inertia/gas-cell[7]/max_volume-ft3
+     buoyant_forces/gas-cell[7]/volume-ft3 GE buoyant_forces/gas-cell[7]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[8]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[8]/volume-ft3 GE inertia/gas-cell[8]/max_volume-ft3
+     buoyant_forces/gas-cell[8]/volume-ft3 GE buoyant_forces/gas-cell[8]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[9]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[9]/volume-ft3 GE inertia/gas-cell[9]/max_volume-ft3
+     buoyant_forces/gas-cell[9]/volume-ft3 GE buoyant_forces/gas-cell[9]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[10]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[10]/volume-ft3 GE inertia/gas-cell[10]/max_volume-ft3
+     buoyant_forces/gas-cell[10]/volume-ft3 GE buoyant_forces/gas-cell[10]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[11]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[11]/volume-ft3 GE inertia/gas-cell[11]/max_volume-ft3
+     buoyant_forces/gas-cell[11]/volume-ft3 GE buoyant_forces/gas-cell[11]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[12]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[12]/volume-ft3 GE inertia/gas-cell[12]/max_volume-ft3
+     buoyant_forces/gas-cell[12]/volume-ft3 GE buoyant_forces/gas-cell[12]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[13]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[13]/volume-ft3 GE inertia/gas-cell[13]/max_volume-ft3
+     buoyant_forces/gas-cell[13]/volume-ft3 GE buoyant_forces/gas-cell[13]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[14]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[14]/volume-ft3 GE inertia/gas-cell[14]/max_volume-ft3
+     buoyant_forces/gas-cell[14]/volume-ft3 GE buoyant_forces/gas-cell[14]/max_volume-ft3
     </test>
    </switch>
    <switch name="fcs/instrumentation/gas-cells/prall[15]">
     <default value="0"/>
     <test logic="AND" value="1">
-     inertia/gas-cell[15]/volume-ft3 GE inertia/gas-cell[15]/max_volume-ft3
+     buoyant_forces/gas-cell[15]/volume-ft3 GE buoyant_forces/gas-cell[15]/max_volume-ft3
     </test>
    </switch>
 
