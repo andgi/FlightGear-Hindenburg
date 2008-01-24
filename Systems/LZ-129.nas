@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.16 2008-01-20 21:29:49 anders Exp $
+## $Id: LZ-129.nas,v 1.17 2008-01-24 23:51:43 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -11,7 +11,7 @@
 var ballastFore    = "/fdm/jsbsim/inertia/ballast[0]/contents-slug";
 var ballastAft     = "/fdm/jsbsim/inertia/ballast[1]/contents-slug";
 var ballastCenter  = "/fdm/jsbsim/inertia/ballast[2]/contents-slug";
-var gascell        = "/fdm/jsbsim/inertia/gas-cell";
+var gascell        = "/fdm/jsbsim/buoyant_forces/gas-cell";
 var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
 var weight         = "/fdm/jsbsim/inertia/weight-lbs";
 var slugtolb  = 32.174049;
@@ -89,7 +89,7 @@ var switch_engine_direction = func (eng) {
 
 var weightoff_report = func {
     var cells =
-      props.globals.getNode("/fdm/jsbsim/inertia").getChildren("gas-cell");
+      props.globals.getNode("/fdm/jsbsim/buoyant_forces").getChildren("gas-cell");
     var L = 0;
     var W = getprop(weight);
 
