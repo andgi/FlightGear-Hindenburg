@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.17 2008-01-24 23:51:43 anders Exp $
+## $Id: LZ-129.nas,v 1.18 2008-02-12 01:01:43 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -162,7 +162,7 @@ var ground_crew = {
                    "KNEL_mooring_mast"       : { alt_offset : 85.0 },
                    "EDDI_mooring_mast"       : { alt_offset : 85.0 },
                    "EDNY_mooring_mast"       : { alt_offset : 85.0 },
-                   "MP-Nimitz"               : { alt_offset : 260.0 }};
+                   "Nimitz"               : { alt_offset : 260.0 }};
     me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft");
