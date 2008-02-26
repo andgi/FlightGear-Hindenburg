@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- $Id: fgfs4jsbsim.xml,v 1.1 2008-02-26 22:03:34 anders Exp $ -->
+<!--
+
+  LZ-129 Hindenburg flight model for JSBSim.
+
+    Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+
+<system name="fgfs4jsbsim">
+
+ <documentation>
+  The system should only be used with JSBSim/standalone.
+  It creates some properties the LZ-129 FDM config uses
+  which are normally provided by FlightGear.
+ </documentation
+
+ <!-- INTERFACE PROPERTIES Normally provided by FlightGear. -->
+ <property value="0.0"> /position/latitude-deg </property>
+ <property value="0.0"> /position/longitude-deg </property>
+ <property value="0.0"> /position/altitude-ft </property>
+ <property value="0.0"> /velocities/speed-north-fps </property>
+ <property value="0.0"> /velocities/speed-east-fps </property>
+ <property value="0.0"> /velocities/speed-down-fps </property>
+
+</system>
