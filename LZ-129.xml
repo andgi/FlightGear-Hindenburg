@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.56 2008-01-24 22:55:49 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.57 2008-03-26 19:42:39 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.56 2008-01-24 22:55:49 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.57 2008-03-26 19:42:39 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -52,6 +52,10 @@
              author="Eugen Bentele"
              title="The Story of a Zeppelin Mechanic"
              date="1992"/>
+  <reference refID="Dick:1985:TGA"
+             author="Harold G. Dick and Douglas H. Robinson"
+             title="The Golden Age of the Great Passenger Airships"
+             date="1985"/>
   <reference refID="Freeman:1932:Akron"
              author="Hugh B. Freeman"
              title="Force Measurements on a 1/40-scale Model of the U.S. Airship ``Akron'';  NACA Report #432"
@@ -235,8 +239,8 @@
    </location>
    <weight unit="KG"> 16000 </weight>
   </pointmass>
-  <!--  Initial trim ballast -->
-  <pointmass name="Ballast_Initial_Trim">
+  <!--  Initial weigh-off ballast -->
+  <pointmass name="Ballast_Initial_Weigh_Off">
    <location unit="M">
     <x> 122.5 </x>
     <y> 0.0 </y>
@@ -651,6 +655,9 @@
   </gas_cell>
 
   <!-- Cell 12 -->
+  <!-- Note: According to [Dick:1985:TGA] cell 12 should have 80% of the
+             volume of cell 11 due to the passenger space.
+  -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
     <x> 66.42 </x>
@@ -1608,7 +1615,7 @@
   <!-- INTERFACE PROPERTIES -->
   <property value="919.3">  inertia/ballast[0]/contents-slug </property>
   <property value="605.3">  inertia/ballast[1]/contents-slug </property>
-  <property value="1096.3"> inertia/ballast[2]/contents-slug </property>
+  <property value="900.0">  inertia/ballast[2]/contents-slug </property>
   <property value="0.0">    inertia/ballast[3]/contents-slug </property>
 
   <channel name="Ballast">
@@ -1652,7 +1659,7 @@
     </clipto>
     <output> inertia/pointmass-weight-lbs[2] </output>
    </fcs_function>
-   <fcs_function name="Ballast Trim">
+   <fcs_function name="Ballast Weigh Off">
     <function>
      <product>
       <value> 32.174049 </value>
@@ -1671,12 +1678,22 @@
  </flight_control>
 
  <!--
- ==== Initial static condition trim =========================================
+ ==== Initial static condition weigh-off ====================================
  -->
 
- <system name="LZ-129_Static_Trim">
-  <channel name="Initial_Static_Trim">
+ <system name="LZ-129_Weigh_Off">
+  <channel name="Initial_Static_Weigh_Off">
    <!-- This system ensures that the ship starts slightly heavy. -->
+   <!-- The trim ballast is set from Nasal. This mess doesn't work. -->
+<!--
+   <switch name="static-condition/initial-weight-sample-hold">
+    <default value="inertia/weight-lbs"/>
+    <test logic="AND" value="static-condition/initial-weight-sample-hold">
+     static-condition/trimmed GE 0.9
+     sim-time-sec GE 0.01
+    </test>
+   </switch>
+-->
 
    <summer name="static-condition/net-lift-lbs">
     <input> buoyant_forces/gas-cell[0]/buoyancy-lbs </input>
@@ -1695,32 +1712,35 @@
     <input> buoyant_forces/gas-cell[13]/buoyancy-lbs </input>
     <input> buoyant_forces/gas-cell[14]/buoyancy-lbs </input>
     <input> buoyant_forces/gas-cell[15]/buoyancy-lbs </input>
+    <!-- input> -static-condition/initial-weight-sample-hold </input -->
     <input> -inertia/weight-lbs </input>
    </summer>
 
-   <switch name="static-condition/initial-trim-sample-hold">
+<!-- 
+   <switch name="static-condition/initial-lift-sample-hold">
     <default value="static-condition/net-lift-lbs"/>
-    <test logic="AND" value="static-condition/initial-trim-sample-hold">
-     sim-time-sec GE 0.01
+    <test logic="AND" value="static-condition/initial-lift-sample-hold">
+     static-condition/trimmed GE 0.9
+     sim-time-sec GE 0.02
     </test>
    </switch>
 
-   <fcs_function name="static-condition/initial-trim-ballast-slug">
+   <fcs_function name="static-condition/initial-weigh-off-ballast-slug">
     <function>
      <max>
       <value> 0.0 </value>
       <sum>
-       <value> 15.5 </value>
+       <value> 200.0 </value>
        <product>
         <value> 0.03108095 </value>
-        <property> static-condition/initial-trim-sample-hold </property>
+        <property> static-condition/initial-lift-sample-hold </property>
        </product>
       </sum>
      </max>
     </function>
     <output> inertia/ballast[3]/contents-slug </output>
    </fcs_function>
-
+-->
   </channel>
  </system>
 
@@ -2502,7 +2522,8 @@
  ==== Mooring force calculation =============================================
  -->
 
- <!-- system file="Systems/mooring"/ -->
+ <!-- system file="fgfs4jsbsim"/ -->
+
  <system name="mooring">
 
   <!-- INTERFACE PROPERTIES -->

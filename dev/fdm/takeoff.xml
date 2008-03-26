@@ -5,8 +5,9 @@
   -->
 
   <use aircraft="LZ-129" initialize="sim/reset00"/>
-  <run start="0.0" end="1200" dt="0.00833333">
+  <run start="0.0" end="10" dt="0.00833333">
 
+<!--
    <event name="Drop ballast Center">
       <notify/>
       <condition>
@@ -26,7 +27,8 @@
            value="870.0"
            action="FG_RAMP" tc ="30.0"/>
     </event>
-
+-->
+<!--
     <event name="Elevator coxswain activate">
       <description>Activate the elevator coxswain autopilot</description>
       <notify/>
@@ -94,7 +96,7 @@
       <set name="propulsion/magneto_cmd"       value="3"/>
       <set name="propulsion/starter_cmd"       value="1"/>
     </event>
-
+-->
 
 
     <!-- event name="Course set">
@@ -123,6 +125,7 @@
         <property>inertia/ballast/contents-slug</property>
         <property>inertia/ballast[2]/contents-slug</property>
         <property>inertia/ballast[1]/contents-slug</property>
+        <property>inertia/ballast[3]/contents-slug</property>
         <property>fcs/instrumentation/gas-cells/measured-pressure-psf[0]</property>
         <property>fcs/instrumentation/gas-cells/measured-pressure-psf[1]</property>
         <property>fcs/instrumentation/gas-cells/measured-pressure-psf[2]</property>

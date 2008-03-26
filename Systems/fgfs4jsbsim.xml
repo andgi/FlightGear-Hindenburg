@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: fgfs4jsbsim.xml,v 1.1 2008-02-26 22:03:34 anders Exp $ -->
+<!-- $Id: fgfs4jsbsim.xml,v 1.2 2008-03-26 19:42:39 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim.
@@ -28,7 +28,7 @@
   The system should only be used with JSBSim/standalone.
   It creates some properties the LZ-129 FDM config uses
   which are normally provided by FlightGear.
- </documentation
+ </documentation>
 
  <!-- INTERFACE PROPERTIES Normally provided by FlightGear. -->
  <property value="0.0"> /position/latitude-deg </property>
