@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.19 2008-03-26 19:42:39 anders Exp $
+## $Id: LZ-129.nas,v 1.20 2008-03-26 21:19:31 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -294,15 +294,18 @@ var ground_crew = {
 var init = func {
   assistant.init();
   ground_crew.init();
+  # Set iniial static condition.
+  setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
+          100.0 +
+          0.0310809 * getprop("/fdm/jsbsim/static-condition/net-lift-lbs"));
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {
   init();
-  settimer(func {
-    setprop("/fdm/jsbsim/static-condition/trimmed", 1.0);
-    setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-            100.0 +
-            0.0310809 *getprop("/fdm/jsbsim/static-condition/net-lift-lbs"));
-  }, 0.0);
+  setlistener("/sim/signals/reinit", func (reinit) {
+    if (reinit.getValue()) {
+      init();
+    }
+  });
 });
 
