@@ -11,14 +11,6 @@
  </animation>
 
  <animation>
-  <object-name>Head</object-name>
-  <object-name>Mast</object-name>
-  <object-name>GreenFlash.1</object-name>
-  <object-name>GreenFlash.2</object-name>
-  <object-name>WhiteFlash.1</object-name>
-  <object-name>WhiteFlash.2</object-name>
-  <object-name>GreenHalo.2</object-name>
-  <object-name>WhiteHalo.2</object-name>
   <enable-hot type="bool">false</enable-hot>
  </animation>
 
@@ -41,40 +33,9 @@
   <object-name>GreenHalo.2</object-name>
   <object-name>WhiteHalo.2</object-name>
   <condition>
-   <greater-than>
-    <property>/constants/zero</property>
-    <value>42.0</value>
-   </greater-than>
+   <property>/constants/zero</property>
   </condition>
  </animation>
-
- <animation>
-  <type>range</type>
-  <object-name>GreenHalo.2</object-name>
-  <object-name>WhiteHalo.2</object-name>
-  <min-m>0</min-m>
-  <max-m>750</max-m>
- </animation>
-
-<!--
- <animation>
-  <type>rotate</type>
-  <object-name>GreenHalo.2</object-name>
-  <object-name>WhiteHalo.2</object-name>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
--->
 
  <animation>
   <type>range</type>
@@ -83,30 +44,6 @@
   <max-m>1500</max-m>
  </animation>
 
-<!--
- <animation>
-  <type>rotate</type>
-  <object-name>Head</object-name>
-  <condition>
-   <greater-than>
-    <property>/sim/time/sun-angle-rad</property>
-    <value>1.57</value>
-   </greater-than>
-  </condition>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
--->
  <animation>
   <type>range</type>
   <object-name>Mast</object-name>
@@ -117,7 +54,7 @@
    </less-than-equals>
   </condition>
   <min-m>0</min-m>
-  <max-m>1500</max-m>
+  <max-m>2500</max-m>
  </animation>
 
  <animation>
@@ -131,166 +68,6 @@
   </condition>
   <min-m>0</min-m>
   <max-m>500</max-m>
- </animation>
-
- <animation>
-  <type>range</type>
-  <object-name>GreenFlash.1</object-name>
-  <min-m>0</min-m>
-  <max-m>1000</max-m>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>GreenFlash.1</object-name>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
- 
- <animation>
-  <type>flash</type>
-  <object-name>GreenFlash.1</object-name>
-  <center>
-   <x-m>0</x-m>
-   <y-m>-0.35</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>-1</y>
-   <z>0.1</z>
-  </axis>
-  <power>100</power>
- </animation>
-
- <animation>
-  <type>range</type>
-  <object-name>GreenFlash.2</object-name>
-  <min-m>1000</min-m>
-  <max-m>16000</max-m>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>GreenFlash.2</object-name>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
- 
- <animation>
-  <type>flash</type>
-  <object-name>GreenFlash.2</object-name>
-  <center>
-   <x-m>0</x-m>
-   <y-m>-0.35</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>-1</y>
-   <z>0.1</z>
-  </axis>
-  <power>100</power>
- </animation>
-
- <animation>
-  <type>range</type>
-  <object-name>WhiteFlash.1</object-name>
-  <min-m>0</min-m>
-  <max-m>1000</max-m>
- </animation>
- 
- <animation>
-  <type>rotate</type>
-  <object-name>WhiteFlash.1</object-name>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
- 
- <animation>
-  <type>flash</type>
-  <object-name>WhiteFlash.1</object-name>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0.35</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>1</y>
-   <z>0.1</z>
-  </axis>
-  <power>100</power>
- </animation>
-
- <animation>
-  <type>range</type>
-  <object-name>WhiteFlash.2</object-name>
-  <min-m>1000</min-m>
-  <max-m>16000</max-m>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>WhiteFlash.2</object-name>
-  <property>/sim/time/elapsed-sec</property>
-  <factor>90.0</factor>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>1</z>
-  </axis>
- </animation>
- 
- <animation>
-  <type>flash</type>
-  <object-name>WhiteFlash.2</object-name>
-  <center>
-   <x-m>0</x-m>
-   <y-m>0.35</y-m>
-   <z-m>16.8</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>1</y>
-   <z>0.1</z>
-  </axis>
-  <power>100</power>
  </animation>
 
 </PropertyList>

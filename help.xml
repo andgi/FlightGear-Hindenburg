@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: help.xml,v 1.14 2008-01-16 00:43:22 anders Exp $ -->
+<!-- $Id: help.xml,v 1.15 2008-03-29 14:15:00 anders Exp $ -->
 <!--
   LZ-129 Hindenburg flight model for JSBSim with my LTA patch.
 
@@ -101,9 +101,10 @@
  Handling instructions
 
  Take-off
-   The initial static condition is very heavy. Check with (w).
-   Weigh-off (W) twice.
+   Check initial static condition (w).
+   Weight off (W) once or twice.
    Drop some ballast fore (A) and aft (D) if needed.
+   Release the mooring (Y) when the ship is 1000 lbs or more light.
    Start engines once the airship is 150 - 200 ft above ground.
 
  Approach:
@@ -111,7 +112,7 @@
    Adjust the static condition to be close (within ~1000lbs) of equilibrium. Gas: (F)(G) wait a second (f)(g). Ballast (A|a) (D|d).
    Setting (some of) the engines to reverse (R) allows braking.
 
- Landing:
+ Landing (US Navy style):
    Attach mooring wire (U) when 200 - 400 ft down-wind of the mast.
    Forward speed should be very low at this point and the altitude about 400 ft.
    Slowly winch in the mooring wire (u) until the ship is attached to the mooring mast.

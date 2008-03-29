@@ -1,10 +1,10 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.20 2008-03-26 21:19:31 anders Exp $
+## $Id: LZ-129.nas,v 1.21 2008-03-29 14:15:00 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
 ##  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
-##  This file is licensed under the GPL license.
+##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
 
@@ -46,11 +46,10 @@ var print_wow = func {
 
 var weighoff = func {
     assistant.announce("Weigh-off in progress.");
-    var after =
-      getprop(ballastCenter) + 0.90 * getprop(weight_on_gear) * lbtoslug;
-    interpolate(ballastCenter,
-                (after >= 0) ? after : 0,
-                10);
+    var after = getprop(ballastCenter) + 0.9 * static_condition() * lbtoslug;
+    if ((0 <= after) and (after < getprop(ballastCenter))) {
+        interpolate(ballastCenter, after, 10);
+    }
 }
 
 var drop_ballast = func (ballast, x) {
@@ -87,20 +86,26 @@ var switch_engine_direction = func (eng) {
     }
 }
 
-var weightoff_report = func {
+var static_condition = func {
     var cells =
-      props.globals.getNode("/fdm/jsbsim/buoyant_forces").getChildren("gas-cell");
+        props.globals.getNode("/fdm/jsbsim/buoyant_forces").
+            getChildren("gas-cell");
     var L = 0;
     var W = getprop(weight);
-
+    
     foreach (c; cells) {
         L += c.getChild("buoyancy-lbs").getValue();
     }
+    return L - W;
+};
+
+var weightoff_report = func {
+    var s = static_condition();
 
 #    assistant.announce("Weight " ~ int(W) ~ " pound. Lift " ~ int(L) ~ " pound.");
 
-    assistant.announce("We are " ~ int(abs(L - W)) ~ " pounds " ~
-                       ((L - W) > 0 ? "light." : "heavy."));
+    assistant.announce("We are " ~ int(abs(s)) ~ " pounds " ~
+                       (s > 0 ? "light." : "heavy."));
 }
 
 ###########################################################################
@@ -162,7 +167,8 @@ var ground_crew = {
                    "KNEL_mooring_mast"       : { alt_offset : 85.0 },
                    "EDDI_mooring_mast"       : { alt_offset : 85.0 },
                    "EDNY_mooring_mast"       : { alt_offset : 85.0 },
-                   "Nimitz"               : { alt_offset : 260.0 }};
+                   "Nimitz"                  : { alt_offset : 260.0 },
+                   "Generic_mooring_mast"    : { alt_offset : 80.0 }};
     me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft");
@@ -187,6 +193,21 @@ var ground_crew = {
       print("LZ 129 Ground crew ... No mooring mast available.");
     }
     print("LZ 129 Ground crew ... Standing by.");
+  },
+  ##################################################
+  set_mooring_location : func (pos) {
+    var geo_info = geodinfo(pos.lat(), pos.lon());
+    pos.set_alt(geo_info[0]); # Crash if we don't know the terrain elevation.
+    me.selected = "Generic_mooring_mast";
+    me.mooring.getNode("latitude-deg").setValue(pos.lat());
+    me.mooring.getNode("longitude-deg").setValue(pos.lon());
+    me.mooring.getNode("altitude-ft").setValue
+        (pos.alt()*geo.M2FT + me.moorings[me.selected].alt_offset);
+    # Put a mooring mast model here. Note the model specific offset.
+    pos.set_alt(geo_info[0] - 5*geo.FT2M);
+    geo.put_model("Aircraft/LZ-129/Models/mooring_mast.xml", pos);
+    print("LZ 129 Ground crew: Switched mooring to " ~
+          pos.lat() ~ ", " ~ pos.lon() ~ ".");
   },
   ##################################################
   attach_mooring_wire : func {
@@ -241,6 +262,8 @@ var ground_crew = {
   },
   ##################################################
   update : func {
+    if (me.mooring.getNode("wire-connected").getValue()) return;
+
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft") ~
       props.globals.getNode("/ai/models").getChildren("carrier");
@@ -272,11 +295,11 @@ var ground_crew = {
         }
       }
     }
-    if (found == 0) {
-      # This is an error. Reset mooring location.
-      print("LZ 129 Ground crew: Mooring location corrupted!!");
-      me.reset();
-    }
+#    if ((found == 0)) {
+#      # This is might be an error. Reset mooring location.
+#      print("LZ 129 Ground crew: Mooring location corrupted!!");
+#      me.reset();
+#    }
   },
   ##################################################
   reset : func {
@@ -292,20 +315,30 @@ var ground_crew = {
 };
 
 var init = func {
-  assistant.init();
-  ground_crew.init();
-  # Set iniial static condition.
-  setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-          100.0 +
-          0.0310809 * getprop("/fdm/jsbsim/static-condition/net-lift-lbs"));
+    # Initialize crew and ground crew.
+    assistant.init();
+    ground_crew.init();
+    # Set initial static condition.
+    setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
+            1.0 +
+            0.0310809 * getprop("/fdm/jsbsim/static-condition/net-lift-lbs"));
+    if (getprop("/sim/presets/onground")) {
+        # Set up an initial mooring location.
+        ground_crew.set_mooring_location(geo.aircraft_position());
+        # We need the FDM to run in between.
+        settimer(func {
+            ground_crew.attach_mooring_wire();
+            ground_crew.set_winch_speed(-1.0);
+        }, 0.01);
+    }
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {
-  init();
-  setlistener("/sim/signals/reinit", func (reinit) {
-    if (reinit.getValue()) {
-      init();
-    }
-  });
+    init();
+    setlistener("/sim/signals/reinit", func (reinit) {
+        if (reinit.getValue()) {
+            init();
+        }
+    });
 });
 
