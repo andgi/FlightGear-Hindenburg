@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.57 2008-03-26 19:42:39 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.58 2008-04-13 22:47:46 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.57 2008-03-26 19:42:39 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.58 2008-04-13 22:47:46 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -485,6 +485,50 @@
  </mass_balance>
 
  <!--
+ ==== External environment properties ======================================
+ -->
+ <system name="Externam environment properties">
+  <property> fcs/sun-angle-rad </property>
+  <property> fcs/sun-radiation-norm </property>
+ </system>
+
+ <system name="Gas cell constants">
+  <!-- These should preferably have been exported by the gas_cell class. -->
+  <property value="16.17"> buoyant_forces/gas_cell[0]/radius-ft </property>
+  <property value="53.15"> buoyant_forces/gas_cell[0]/width-ft </property>
+  <property value="31.23"> buoyant_forces/gas_cell[1]/radius-ft </property>
+  <property value="45.18"> buoyant_forces/gas_cell[1]/width-ft </property>
+  <property value="41.21"> buoyant_forces/gas_cell[2]/radius-ft </property>
+  <property value="44.29"> buoyant_forces/gas_cell[2]/width-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[3]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[3]/width-ft </property>
+  <property value="56.25"> buoyant_forces/gas_cell[4]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas_cell[4]/width-ft </property>
+  <property value="60.89"> buoyant_forces/gas_cell[5]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[5]/width-ft </property>
+  <property value="64.01"> buoyant_forces/gas_cell[6]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[6]/width-ft </property>
+  <property value="66.01"> buoyant_forces/gas_cell[7]/radius-ft </property>
+  <property value="54.92"> buoyant_forces/gas_cell[7]/width-ft </property>
+  <property value="67.32"> buoyant_forces/gas_cell[8]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas_cell[8]/width-ft </property>
+  <property value="67.78"> buoyant_forces/gas_cell[9]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas_cell[9]/width-ft </property>
+  <property value="67.03"> buoyant_forces/gas_cell[10]/radius-ft </property>
+  <property value="54.49"> buoyant_forces/gas_cell[10]/width-ft </property>
+  <property value="65.32"> buoyant_forces/gas_cell[11]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[11]/width-ft </property>
+  <property value="62.01"> buoyant_forces/gas_cell[12]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas_cell[12]/width-ft </property>
+  <property value="56.04"> buoyant_forces/gas_cell[13]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[13]/width-ft </property>
+  <property value="45.18"> buoyant_forces/gas_cell[14]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas_cell[14]/width-ft </property>
+  <property value="25.03"> buoyant_forces/gas_cell[15]/radius-ft </property>
+  <property value="37.20"> buoyant_forces/gas_cell[15]/width-ft </property>
+ </system>
+
+ <!--
  === Gas cells ==============================================
  -->
 
@@ -502,6 +546,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[0]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[0]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[0]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[0]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 2 -->
@@ -517,6 +597,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[1]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[1]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[1]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[1]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 3 -->
@@ -532,6 +648,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[2]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[2]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[2]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[2]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 4 -->
@@ -547,6 +699,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[3]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[3]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[3]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[3]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 5 -->
@@ -562,6 +750,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[4]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[4]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[4]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[4]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 6 -->
@@ -577,6 +801,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[5]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[5]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[5]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[5]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 7 -->
@@ -592,6 +852,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[6]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[6]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[6]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[6]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 8 -->
@@ -607,6 +903,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[7]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[7]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[7]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[7]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 9 -->
@@ -622,6 +954,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[8]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[8]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[8]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[8]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 10 -->
@@ -637,6 +1005,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[9]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[9]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[9]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[9]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 11 -->
@@ -652,6 +1056,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[10]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[10]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[10]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[10]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 12 -->
@@ -670,6 +1110,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[11]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[11]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[11]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[11]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 13 -->
@@ -685,6 +1161,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[12]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[12]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[12]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[12]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 14 -->
@@ -700,6 +1212,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[13]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[13]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[13]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[13]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 15 -->
@@ -715,6 +1263,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[14]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[14]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[14]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[14]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
   <!-- Cell 16 -->
@@ -730,6 +1314,42 @@
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.02 </valve_coefficient>
    <fullness> 0.95 </fullness>
+   <!-- heat exchange with the environment. [lb ft / sec] -->
+   <heat>
+    <!-- Heat transfer due to temperature difference. -->
+    <function name="dU_due_conduction">
+     <product>
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[15]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[15]/width-ft  </property>
+      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <difference>
+       <property> atmosphere/T-R </property>
+       <property> buoyant_forces/gas-cell/temp-R </property>
+      </difference>
+     </product>
+    </function>
+    <function name="dU_due_radiation">
+     <product>
+      <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
+                                      [Btu / (h ft^2 R^4)] -->
+      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <value> 6.283185 </value> <!-- Surface area [ft2] -->
+      <property> buoyant_forces/gas_cell[15]/radius-ft </property>
+      <property> buoyant_forces/gas_cell[15]/width-ft  </property>
+      <difference>
+       <pow>
+        <property> atmosphere/T-R </property>
+        <value> 4.0 </value>
+       </pow>
+       <pow>
+        <property> buoyant_forces/gas-cell/temp-R </property>
+        <value> 4.0 </value>
+       </pow>
+      </difference>
+     </product>
+    </function>
+   </heat>
   </gas_cell>
 
  </buoyant_forces>
@@ -1749,41 +2369,6 @@
  -->
 
  <system name="LZ-129_Instrumentation">
-
-  <!-- These should preferably have been exported by the gas_cell class. -->
-  <property value="16.17"> buoyant_forces/gas_cell[0]/radius-ft </property>
-  <property value="53.15"> buoyant_forces/gas_cell[0]/width-ft </property>
-  <property value="31.23"> buoyant_forces/gas_cell[1]/radius-ft </property>
-  <property value="45.18"> buoyant_forces/gas_cell[1]/width-ft </property>
-  <property value="41.21"> buoyant_forces/gas_cell[2]/radius-ft </property>
-  <property value="44.29"> buoyant_forces/gas_cell[2]/width-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[3]/radius-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[3]/width-ft </property>
-  <property value="56.25"> buoyant_forces/gas_cell[4]/radius-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[4]/width-ft </property>
-  <property value="60.89"> buoyant_forces/gas_cell[5]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[5]/width-ft </property>
-  <property value="64.01"> buoyant_forces/gas_cell[6]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[6]/width-ft </property>
-  <property value="66.01"> buoyant_forces/gas_cell[7]/radius-ft </property>
-  <property value="54.92"> buoyant_forces/gas_cell[7]/width-ft </property>
-  <property value="67.32"> buoyant_forces/gas_cell[8]/radius-ft </property>
-  <property value="54.04"> buoyant_forces/gas_cell[8]/width-ft </property>
-  <property value="67.78"> buoyant_forces/gas_cell[9]/radius-ft </property>
-  <property value="54.04"> buoyant_forces/gas_cell[9]/width-ft </property>
-  <property value="67.03"> buoyant_forces/gas_cell[10]/radius-ft </property>
-  <property value="54.49"> buoyant_forces/gas_cell[10]/width-ft </property>
-  <property value="65.32"> buoyant_forces/gas_cell[11]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[11]/width-ft </property>
-  <property value="62.01"> buoyant_forces/gas_cell[12]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[12]/width-ft </property>
-  <property value="56.04"> buoyant_forces/gas_cell[13]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[13]/width-ft </property>
-  <property value="45.18"> buoyant_forces/gas_cell[14]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[14]/width-ft </property>
-  <property value="25.03"> buoyant_forces/gas_cell[15]/radius-ft </property>
-  <property value="37.20"> buoyant_forces/gas_cell[15]/width-ft </property>
-
 
   <channel name="Gas cell pressure sensors">
 

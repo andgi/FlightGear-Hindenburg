@@ -5,7 +5,7 @@
   -->
 
   <use aircraft="LZ-129" initialize="sim/reset00"/>
-  <run start="0.0" end="10" dt="0.00833333">
+  <run start="0.0" end="2400" dt="0.00833333">
 
 <!--
    <event name="Drop ballast Center">

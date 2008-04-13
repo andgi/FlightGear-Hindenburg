@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.21 2008-03-29 14:15:00 anders Exp $
+## $Id: LZ-129.nas,v 1.22 2008-04-13 22:47:46 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -336,7 +336,7 @@ var init = func {
 _setlistener("/sim/signals/fdm-initialized", func {
     init();
     setlistener("/sim/signals/reinit", func (reinit) {
-        if (reinit.getValue()) {
+        if (!reinit.getValue()) {
             init();
         }
     });
