@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.22 2008-04-13 22:47:46 anders Exp $
+## $Id: LZ-129.nas,v 1.23 2008-04-22 23:50:52 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -330,6 +330,13 @@ var init = func {
             ground_crew.attach_mooring_wire();
             ground_crew.set_winch_speed(-1.0);
         }, 0.01);
+        settimer(func {
+            setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
+                    1.0 +
+                    0.0310809 *
+                    max(0,
+                        getprop("/fdm/jsbsim/static-condition/net-lift-lbs")));
+        }, 0.1);
     }
 }
 

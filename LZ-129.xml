@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.58 2008-04-13 22:47:46 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.59 2008-04-22 23:50:52 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim.
@@ -36,7 +36,7 @@
    <licenseName> GPL </licenseName>
   </license>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.58 2008-04-13 22:47:46 anders Exp $ </version>
+  <version> $Id: LZ-129.xml,v 1.59 2008-04-22 23:50:52 anders Exp $ </version>
 
 
   <limitation> Mass balance data approximated </limitation>
@@ -493,39 +493,44 @@
  </system>
 
  <system name="Gas cell constants">
-  <!-- These should preferably have been exported by the gas_cell class. -->
-  <property value="16.17"> buoyant_forces/gas_cell[0]/radius-ft </property>
-  <property value="53.15"> buoyant_forces/gas_cell[0]/width-ft </property>
-  <property value="31.23"> buoyant_forces/gas_cell[1]/radius-ft </property>
-  <property value="45.18"> buoyant_forces/gas_cell[1]/width-ft </property>
-  <property value="41.21"> buoyant_forces/gas_cell[2]/radius-ft </property>
-  <property value="44.29"> buoyant_forces/gas_cell[2]/width-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[3]/radius-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[3]/width-ft </property>
-  <property value="56.25"> buoyant_forces/gas_cell[4]/radius-ft </property>
-  <property value="49.61"> buoyant_forces/gas_cell[4]/width-ft </property>
-  <property value="60.89"> buoyant_forces/gas_cell[5]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[5]/width-ft </property>
-  <property value="64.01"> buoyant_forces/gas_cell[6]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[6]/width-ft </property>
-  <property value="66.01"> buoyant_forces/gas_cell[7]/radius-ft </property>
-  <property value="54.92"> buoyant_forces/gas_cell[7]/width-ft </property>
-  <property value="67.32"> buoyant_forces/gas_cell[8]/radius-ft </property>
-  <property value="54.04"> buoyant_forces/gas_cell[8]/width-ft </property>
-  <property value="67.78"> buoyant_forces/gas_cell[9]/radius-ft </property>
-  <property value="54.04"> buoyant_forces/gas_cell[9]/width-ft </property>
-  <property value="67.03"> buoyant_forces/gas_cell[10]/radius-ft </property>
-  <property value="54.49"> buoyant_forces/gas_cell[10]/width-ft </property>
-  <property value="65.32"> buoyant_forces/gas_cell[11]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[11]/width-ft </property>
-  <property value="62.01"> buoyant_forces/gas_cell[12]/radius-ft </property>
-  <property value="49.16"> buoyant_forces/gas_cell[12]/width-ft </property>
-  <property value="56.04"> buoyant_forces/gas_cell[13]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[13]/width-ft </property>
-  <property value="45.18"> buoyant_forces/gas_cell[14]/radius-ft </property>
-  <property value="48.72"> buoyant_forces/gas_cell[14]/width-ft </property>
-  <property value="25.03"> buoyant_forces/gas_cell[15]/radius-ft </property>
-  <property value="37.20"> buoyant_forces/gas_cell[15]/width-ft </property>
+  <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+  <property value="0.05"> buoyant_forces/heat-coeffs/conductivity </property>
+  <!-- Emissivity [0,1] (Guess) -->
+  <property value="0.1"> buoyant_forces/heat-coeffs/emissivity </property>
+
+  <!-- These should preferably have been exported by the gas-cell class. -->
+  <property value="16.17"> buoyant_forces/gas-cell[0]/radius-ft </property>
+  <property value="53.15"> buoyant_forces/gas-cell[0]/width-ft </property>
+  <property value="31.23"> buoyant_forces/gas-cell[1]/radius-ft </property>
+  <property value="45.18"> buoyant_forces/gas-cell[1]/width-ft </property>
+  <property value="41.21"> buoyant_forces/gas-cell[2]/radius-ft </property>
+  <property value="44.29"> buoyant_forces/gas-cell[2]/width-ft </property>
+  <property value="49.61"> buoyant_forces/gas-cell[3]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas-cell[3]/width-ft </property>
+  <property value="56.25"> buoyant_forces/gas-cell[4]/radius-ft </property>
+  <property value="49.61"> buoyant_forces/gas-cell[4]/width-ft </property>
+  <property value="60.89"> buoyant_forces/gas-cell[5]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas-cell[5]/width-ft </property>
+  <property value="64.01"> buoyant_forces/gas-cell[6]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas-cell[6]/width-ft </property>
+  <property value="66.01"> buoyant_forces/gas-cell[7]/radius-ft </property>
+  <property value="54.92"> buoyant_forces/gas-cell[7]/width-ft </property>
+  <property value="67.32"> buoyant_forces/gas-cell[8]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas-cell[8]/width-ft </property>
+  <property value="67.78"> buoyant_forces/gas-cell[9]/radius-ft </property>
+  <property value="54.04"> buoyant_forces/gas-cell[9]/width-ft </property>
+  <property value="67.03"> buoyant_forces/gas-cell[10]/radius-ft </property>
+  <property value="54.49"> buoyant_forces/gas-cell[10]/width-ft </property>
+  <property value="65.32"> buoyant_forces/gas-cell[11]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas-cell[11]/width-ft </property>
+  <property value="62.01"> buoyant_forces/gas-cell[12]/radius-ft </property>
+  <property value="49.16"> buoyant_forces/gas-cell[12]/width-ft </property>
+  <property value="56.04"> buoyant_forces/gas-cell[13]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas-cell[13]/width-ft </property>
+  <property value="45.18"> buoyant_forces/gas-cell[14]/radius-ft </property>
+  <property value="48.72"> buoyant_forces/gas-cell[14]/width-ft </property>
+  <property value="25.03"> buoyant_forces/gas-cell[15]/radius-ft </property>
+  <property value="37.20"> buoyant_forces/gas-cell[15]/width-ft </property>
  </system>
 
  <!--
@@ -549,26 +554,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[0]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[0]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[0]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[0]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[0]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[0]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[0]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[0]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[0]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[0]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -600,26 +605,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[1]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[1]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[1]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[1]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[1]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[1]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[1]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[1]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[1]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[1]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -651,26 +656,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[2]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[2]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[2]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[2]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[2]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[2]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[2]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[2]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[2]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[2]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -702,26 +707,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[3]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[3]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[3]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[3]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[3]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[3]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[3]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[3]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[3]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[3]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -753,26 +758,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[4]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[4]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[4]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[4]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[4]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[4]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[4]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[4]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[4]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[4]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -804,26 +809,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[5]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[5]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[5]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[5]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[5]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[5]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[5]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[5]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[5]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[5]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -855,26 +860,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[6]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[6]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[6]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[6]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[6]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[6]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[6]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[6]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[6]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[6]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -906,26 +911,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[7]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[7]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[7]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[7]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[7]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[7]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[7]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[7]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[7]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[7]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -957,26 +962,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[8]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[8]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[8]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[8]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[8]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[8]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[8]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[8]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[8]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[8]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1008,26 +1013,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[9]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[9]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[9]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[9]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[9]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[9]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[9]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[9]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[9]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[9]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1059,26 +1064,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[10]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[10]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[10]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[10]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[10]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[10]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[10]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[10]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[10]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[10]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1113,26 +1118,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[11]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[11]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[11]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[11]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[11]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[11]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[11]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[11]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[11]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[11]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1164,26 +1169,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[12]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[12]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[12]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[12]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[12]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[12]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[12]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[12]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[12]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[12]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1215,26 +1220,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[13]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[13]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[13]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[13]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[13]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[13]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[13]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[13]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[13]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[13]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1266,26 +1271,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[14]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[14]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[14]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[14]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[14]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[14]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[14]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[14]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[14]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[14]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -1317,26 +1322,26 @@
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <heat>
     <!-- Heat transfer due to temperature difference. -->
-    <function name="dU_due_conduction">
+    <function name="buoyant_forces/gas-cell[15]/dU_conduction">
      <product>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[15]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[15]/width-ft  </property>
-      <value>     0.05 </value> <!-- Conductivity [lb / (K ft sec)] (Guess) -->
+      <property> buoyant_forces/gas-cell[15]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[15]/width-ft  </property>
+      <property> buoyant_forces/heat-coeffs/conductivity </property>
       <difference>
        <property> atmosphere/T-R </property>
        <property> buoyant_forces/gas-cell/temp-R </property>
       </difference>
      </product>
     </function>
-    <function name="dU_due_radiation">
+    <function name="buoyant_forces/gas-cell[15]/dU_radiation">
      <product>
       <value> 0.1714e-8 </value> <!-- Stefan-Boltzmann's constant
                                       [Btu / (h ft^2 R^4)] -->
-      <value>       0.2 </value> <!-- Emissivity [0,1] (Guess) -->
+      <property> buoyant_forces/heat-coeffs/emissivity </property>
       <value> 6.283185 </value> <!-- Surface area [ft2] -->
-      <property> buoyant_forces/gas_cell[15]/radius-ft </property>
-      <property> buoyant_forces/gas_cell[15]/width-ft  </property>
+      <property> buoyant_forces/gas-cell[15]/radius-ft </property>
+      <property> buoyant_forces/gas-cell[15]/width-ft  </property>
       <difference>
        <pow>
         <property> atmosphere/T-R </property>
@@ -2384,13 +2389,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[0]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[0]/width-ft </property>
+           <property> buoyant_forces/gas-cell[0]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[0]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[0]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[0]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[0]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2419,13 +2424,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[1]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[1]/width-ft </property>
+           <property> buoyant_forces/gas-cell[1]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[1]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[1]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[1]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[1]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2454,13 +2459,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[2]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[2]/width-ft </property>
+           <property> buoyant_forces/gas-cell[2]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[2]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[2]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[2]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[2]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2489,13 +2494,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[3]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[3]/width-ft </property>
+           <property> buoyant_forces/gas-cell[3]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[3]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[3]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[3]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[3]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2524,13 +2529,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[4]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[4]/width-ft </property>
+           <property> buoyant_forces/gas-cell[4]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[4]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[4]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[4]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[4]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2559,13 +2564,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[5]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[5]/width-ft </property>
+           <property> buoyant_forces/gas-cell[5]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[5]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[5]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[5]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[5]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2594,13 +2599,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[6]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[6]/width-ft </property>
+           <property> buoyant_forces/gas-cell[6]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[6]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[6]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[6]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[6]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2629,13 +2634,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[7]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[7]/width-ft </property>
+           <property> buoyant_forces/gas-cell[7]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[7]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[7]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[7]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[7]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2664,13 +2669,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[8]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[8]/width-ft </property>
+           <property> buoyant_forces/gas-cell[8]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[8]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[8]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[8]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[8]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2699,13 +2704,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[9]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[9]/width-ft </property>
+           <property> buoyant_forces/gas-cell[9]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[9]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[9]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[9]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[9]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2734,13 +2739,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[10]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[10]/width-ft </property>
+           <property> buoyant_forces/gas-cell[10]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[10]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[10]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[10]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[10]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2769,13 +2774,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[11]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[11]/width-ft </property>
+           <property> buoyant_forces/gas-cell[11]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[11]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[11]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[11]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[11]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2804,13 +2809,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[12]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[12]/width-ft </property>
+           <property> buoyant_forces/gas-cell[12]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[12]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[12]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[12]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[12]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2839,13 +2844,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[13]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[13]/width-ft </property>
+           <property> buoyant_forces/gas-cell[13]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[13]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[13]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[13]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[13]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2874,13 +2879,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[14]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[14]/width-ft </property>
+           <property> buoyant_forces/gas-cell[14]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[14]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[14]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[14]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[14]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
@@ -2909,13 +2914,13 @@
           <value> 2.0 </value>
           <product>
            <value> 3.141592654 </value> <!-- pi -->
-           <property> buoyant_forces/gas_cell[15]/radius-ft </property>
-           <property> buoyant_forces/gas_cell[15]/width-ft </property>
+           <property> buoyant_forces/gas-cell[15]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[15]/width-ft </property>
           </product>
          </quotient>
          <property> buoyant_forces/gas-cell[15]/volume-ft3 </property>
         </product>
-        <property> buoyant_forces/gas_cell[15]/radius-ft </property>
+        <property> buoyant_forces/gas-cell[15]/radius-ft </property>
        </difference>
        <difference>
         <property> atmosphere/rho-slugs_ft3 </property>
