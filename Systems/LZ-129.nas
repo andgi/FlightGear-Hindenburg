@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.23 2008-04-22 23:50:52 anders Exp $
+## $Id: LZ-129.nas,v 1.24 2008-05-25 22:42:04 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -16,6 +16,8 @@ var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
 var weight         = "/fdm/jsbsim/inertia/weight-lbs";
 var slugtolb  = 32.174049;
 var lbtoslug  = 1.0/slugtolb;
+var slugtokg  = 14.593903;
+var lbtokg    = 0.45359237;
 
 var setForwardGasValves = func (v) {
     setprop(gascell ~ "[15]/valve_open", v);
@@ -60,8 +62,8 @@ var drop_ballast = func (ballast, x) {
                        (ballast == ballastCenter) ? "center" :
                        "BAD BALLAST SELECTOR") ~
                        "! " ~
-                       int(slugtolb * getprop(ballast)) ~
-                       " pounds remaining.");
+                       int(slugtokg * getprop(ballast)) ~
+                       " kilo remaining.");
     interpolate(ballast, (1.0 - x) * getprop(ballast), 0.5);
 }
 
@@ -100,11 +102,9 @@ var static_condition = func {
 };
 
 var weightoff_report = func {
-    var s = static_condition();
+    var s = lbtokg * static_condition();
 
-#    assistant.announce("Weight " ~ int(W) ~ " pound. Lift " ~ int(L) ~ " pound.");
-
-    assistant.announce("We are " ~ int(abs(s)) ~ " pounds " ~
+    assistant.announce("We are " ~ int(abs(s)) ~ " kilos " ~
                        (s > 0 ? "light." : "heavy."));
 }
 
@@ -170,6 +170,7 @@ var ground_crew = {
                    "Nimitz"                  : { alt_offset : 260.0 },
                    "Generic_mooring_mast"    : { alt_offset : 80.0 }};
     me.mooring = props.globals.getNode("/fdm/jsbsim/mooring");
+    me.mast_model = nil;
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft");
     var found = 0;
@@ -205,7 +206,9 @@ var ground_crew = {
         (pos.alt()*geo.M2FT + me.moorings[me.selected].alt_offset);
     # Put a mooring mast model here. Note the model specific offset.
     pos.set_alt(geo_info[0] - 5*geo.FT2M);
-    geo.put_model("Aircraft/LZ-129/Models/mooring_mast.xml", pos);
+    if (me.mast_model) me.mast_model.remove();
+    me.mast_model =
+      geo.put_model("Aircraft/LZ-129/Models/mooring_mast.xml", pos);
     print("LZ 129 Ground crew: Switched mooring to " ~
           pos.lat() ~ ", " ~ pos.lon() ~ ".");
   },
@@ -246,7 +249,10 @@ var ground_crew = {
       sp = sp/math.abs(sp) * max;
     }
     me.mooring.getNode("winch-speed-fps").setValue(sp);
-    LZ129.assistant.announce("Winch " ~ math.abs(sp) ~ " fps " ~
+    LZ129.assistant.announce("Winch " ~
+                             math.abs(int(0.3048*sp)) ~ "." ~
+                             math.mod(math.abs(int(3.048*sp)), 10) ~
+                             " meters-per-second " ~
                              ((sp < 0) ? "in" : "out") ~ ".");
   },
   ##################################################
@@ -314,14 +320,19 @@ var ground_crew = {
   }
 };
 
-var init = func {
+var init_all = func {
     # Initialize crew and ground crew.
     assistant.init();
     ground_crew.init();
     # Set initial static condition.
+    var net = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
     setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-            1.0 +
-            0.0310809 * getprop("/fdm/jsbsim/static-condition/net-lift-lbs"));
+            1.0 + 0.0310809 * ((net > 0) ? net : 0));
+    settimer(func {
+        var net = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
+        setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
+                1.0 + 0.0310809 * ((net > 0) ? net : 0));
+    }, 2.0);
     if (getprop("/sim/presets/onground")) {
         # Set up an initial mooring location.
         ground_crew.set_mooring_location(geo.aircraft_position());
@@ -330,21 +341,14 @@ var init = func {
             ground_crew.attach_mooring_wire();
             ground_crew.set_winch_speed(-1.0);
         }, 0.01);
-        settimer(func {
-            setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-                    1.0 +
-                    0.0310809 *
-                    max(0,
-                        getprop("/fdm/jsbsim/static-condition/net-lift-lbs")));
-        }, 0.1);
     }
 }
 
 _setlistener("/sim/signals/fdm-initialized", func {
-    init();
+    init_all();
     setlistener("/sim/signals/reinit", func (reinit) {
         if (!reinit.getValue()) {
-            init();
+            init_all();
         }
     });
 });

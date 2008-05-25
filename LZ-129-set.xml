@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.21 2008-01-20 01:44:54 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.22 2008-05-25 22:42:04 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
-  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
-  This file is licensed under the GPL license.
+  Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
 -->
-<PropertyList include="LZ-129-common.xml">
+<PropertyList include="Systems/LZ-129-views.xml">
 
  <sim>
 
-  <description>LZ 129 Hindenburg (for exprimental JSBSim-LTA)</description>
+  <description>LZ 129 Hindenburg (for JSBSim/CVS)</description>
+  <author>Anders Gidenstam</author>
+  <status>Alpha</status>
+  <aircraft-version>$Id: LZ-129-set.xml,v 1.22 2008-05-25 22:42:04 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -18,6 +21,16 @@
   <presets>
    <onground>true</onground>
   </presets>
+
+  <model>
+   <path>Aircraft/LZ-129/Models/LZ-129.xml</path>
+  </model>
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
 
 <!--
   <instrumentation>
@@ -29,6 +42,38 @@
    <audible>true</audible>
    <path>Aircraft/LZ-129/Sounds/LZ-129-sound.xml</path>
   </sound>
+
+  <chase-distance-m type="double" archive="y">-400.0</chase-distance-m>
+
+  <!-- Aircraft specific help. -->
+  <help include="help.xml"/>
+
+  <ai>
+   <enabled type="bool">true</enabled>
+   <scenario n="100">KNUQ_airship_base</scenario>
+  </ai>
+
+<!--
+  <hud>
+   <path n="1">Aircraft/Instruments-3d/BubbleSextant/hud.xml</path>
+   <visibility n="1" type="bool">false</visibility>
+   <enable3d n="1" type="bool">false</enable3d>
+   <color>
+    <antialiased type="bool">true</antialiased>
+    <transparent type="bool">false</transparent>
+    <alpha type="float">1.00</alpha>
+    <brightness type="float">1.00</brightness>
+    <alpha-clamp type="float">0.01</alpha-clamp>
+   </color>
+   <palette>
+    <color n="2">
+     <red   type="float">1.00</red>
+     <green type="float">0.75</green>
+     <blue  type="float">0.05</blue>
+    </color> 
+   </palette>
+  </hud>
+-->
 
  </sim>
 
