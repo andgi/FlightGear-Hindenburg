@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!-- $Id: LZ-129-payload.xml,v 1.1 2008-06-08 22:37:47 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg payload
+
+  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- ======================================================================-->
+ <weight>
+  <name type="string">Fore Ballast</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">31000.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Center Ballast</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">40000.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Aft Ballast</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">31000.0</max-lb>
+ </weight>
+
+ <!-- ======================================================================-->
+ <!-- Water. Should be part of ballast system. -->
+ <weight>
+  <name type="string">Water (Frame 203R)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[12]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5512.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Water (Frame 173L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[17]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5512.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Water (Frame 156.5L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[18]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5512.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Water (Frame 107L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[23]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5512.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Water (Frame 77R)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[25]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5512.0</max-lb>
+ </weight>
+
+ <!-- ======================================================================-->
+ <!-- Freight -->
+ <weight>
+  <name type="string">Food storage (Frame 218L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[9]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Food storage (Frame 218R)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[10]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Food storage (Frame 188L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[13]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">551.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Food storage (Frame 173L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[16]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Freight (Frame 140L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[19]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Freight (Frame 140R)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[20]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Freight (Frame 123.5L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[21]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Freight (Frame 123.5R)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[22]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+
+ <!-- ======================================================================-->
+ <!-- Oil. -->
+ <weight>
+  <name type="string">Oil (Frame 92L)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[24]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1102.0</max-lb>
+ </weight>
+
+</PropertyList>

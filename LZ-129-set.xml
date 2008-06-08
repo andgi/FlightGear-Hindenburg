@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.22 2008-05-25 22:42:04 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.23 2008-06-08 22:37:47 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -13,7 +13,7 @@
   <description>LZ 129 Hindenburg (for JSBSim/CVS)</description>
   <author>Anders Gidenstam</author>
   <status>Alpha</status>
-  <aircraft-version>$Id: LZ-129-set.xml,v 1.22 2008-05-25 22:42:04 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: LZ-129-set.xml,v 1.23 2008-06-08 22:37:47 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -86,6 +86,8 @@
    <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
   </Instruments>
  </nasal>
+
+ <payload include="Systems/LZ-129-payload.xml"/>
 
  <input>
   <keyboard>
