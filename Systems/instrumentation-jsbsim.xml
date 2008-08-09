@@ -1,0 +1,712 @@
+<?xml version="1.0"?>
+<!-- $Id: instrumentation-jsbsim.xml,v 1.1 2008-08-09 22:13:53 anders Exp $ -->
+<!--
+
+  LZ-129 Hindenburg flight model for JSBSim.
+
+    Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+<system name="LZ-129_Instrumentation">
+
+  <channel name="Gas cell pressure sensors">
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[0]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>       <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[0]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[0]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[0]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[0]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[0]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[0]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[1]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[1]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[1]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[1]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[1]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[1]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[1]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[2]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[2]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[2]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[2]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[2]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[2]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[2]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[3]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[3]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[3]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[3]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[3]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[3]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[3]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[4]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[4]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[4]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[4]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[4]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[4]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[4]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[5]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[5]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[5]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[5]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[5]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[5]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[5]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[6]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[6]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[6]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[6]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[6]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[6]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[6]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[7]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[7]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[7]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[7]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[7]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[7]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[7]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[8]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[8]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[8]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[8]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[8]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[8]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[8]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[9]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[9]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[9]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[9]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[9]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[9]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[9]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[10]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[10]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[10]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[10]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[10]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[10]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[10]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[11]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[11]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[11]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[11]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[11]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[11]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[11]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[12]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[12]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[12]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[12]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[12]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[12]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[12]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[13]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[13]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[13]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[13]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[13]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[13]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[13]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[14]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[14]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[14]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[14]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[14]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[14]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[14]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="fcs/instrumentation/gas-cells/measured-pressure-psf[15]">
+    <function>
+     <max>
+      <value> 0.0 </value>
+      <product>
+       <value> 32.185039 </value>     <!-- gravity fps -->
+       <difference>
+        <product>
+         <quotient>
+          <value> 2.0 </value>
+          <product>
+           <value> 3.141592654 </value> <!-- pi -->
+           <property> buoyant_forces/gas-cell[15]/radius-ft </property>
+           <property> buoyant_forces/gas-cell[15]/width-ft </property>
+          </product>
+         </quotient>
+         <property> buoyant_forces/gas-cell[15]/volume-ft3 </property>
+        </product>
+        <property> buoyant_forces/gas-cell[15]/radius-ft </property>
+       </difference>
+       <difference>
+        <property> atmosphere/rho-slugs_ft3 </property>
+        <quotient>
+         <product>
+          <value> 0.00013841 </value>  <!-- M_gas -->
+          <property> buoyant_forces/gas-cell[15]/contents-mol </property>
+         </product>
+         <property> buoyant_forces/gas-cell[15]/volume-ft3 </property>
+        </quotient>
+       </difference>
+      </product>
+     </max>
+    </function>
+   </fcs_function>
+
+   <!-- Prall detectors -->
+
+   <switch name="fcs/instrumentation/gas-cells/prall[0]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[0]/volume-ft3 GE buoyant_forces/gas-cell[0]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[1]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[1]/volume-ft3 GE buoyant_forces/gas-cell[1]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[2]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[2]/volume-ft3 GE buoyant_forces/gas-cell[2]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[3]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[3]/volume-ft3 GE buoyant_forces/gas-cell[3]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[4]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[4]/volume-ft3 GE buoyant_forces/gas-cell[4]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[5]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[5]/volume-ft3 GE buoyant_forces/gas-cell[5]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[6]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[6]/volume-ft3 GE buoyant_forces/gas-cell[6]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[7]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[7]/volume-ft3 GE buoyant_forces/gas-cell[7]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[8]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[8]/volume-ft3 GE buoyant_forces/gas-cell[8]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[9]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[9]/volume-ft3 GE buoyant_forces/gas-cell[9]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[10]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[10]/volume-ft3 GE buoyant_forces/gas-cell[10]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[11]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[11]/volume-ft3 GE buoyant_forces/gas-cell[11]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[12]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[12]/volume-ft3 GE buoyant_forces/gas-cell[12]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[13]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[13]/volume-ft3 GE buoyant_forces/gas-cell[13]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[14]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[14]/volume-ft3 GE buoyant_forces/gas-cell[14]/max_volume-ft3
+    </test>
+   </switch>
+   <switch name="fcs/instrumentation/gas-cells/prall[15]">
+    <default value="0"/>
+    <test logic="AND" value="1">
+     buoyant_forces/gas-cell[15]/volume-ft3 GE buoyant_forces/gas-cell[15]/max_volume-ft3
+    </test>
+   </switch>
+
+   <summer name="fcs/instrumentation/gas-cells/any-prall">
+    <input>fcs/instrumentation/gas-cells/prall[0]</input>
+    <input>fcs/instrumentation/gas-cells/prall[1]</input>
+    <input>fcs/instrumentation/gas-cells/prall[2]</input>
+    <input>fcs/instrumentation/gas-cells/prall[3]</input>
+    <input>fcs/instrumentation/gas-cells/prall[4]</input>
+    <input>fcs/instrumentation/gas-cells/prall[5]</input>
+    <input>fcs/instrumentation/gas-cells/prall[6]</input>
+    <input>fcs/instrumentation/gas-cells/prall[7]</input>
+    <input>fcs/instrumentation/gas-cells/prall[8]</input>
+    <input>fcs/instrumentation/gas-cells/prall[9]</input>
+    <input>fcs/instrumentation/gas-cells/prall[10]</input>
+    <input>fcs/instrumentation/gas-cells/prall[11]</input>
+    <input>fcs/instrumentation/gas-cells/prall[12]</input>
+    <input>fcs/instrumentation/gas-cells/prall[13]</input>
+    <input>fcs/instrumentation/gas-cells/prall[14]</input>
+    <input>fcs/instrumentation/gas-cells/prall[15]</input>
+    <clipto>
+     <min>0</min>
+     <max>1</max>
+    </clipto>
+   </summer>
+
+  </channel>
+
+</system>

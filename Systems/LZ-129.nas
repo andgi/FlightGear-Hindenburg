@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.24 2008-05-25 22:42:04 anders Exp $
+## $Id: LZ-129.nas,v 1.25 2008-08-09 22:13:53 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -11,6 +11,7 @@
 var ballastFore    = "/fdm/jsbsim/inertia/ballast[0]/contents-slug";
 var ballastAft     = "/fdm/jsbsim/inertia/ballast[1]/contents-slug";
 var ballastCenter  = "/fdm/jsbsim/inertia/ballast[2]/contents-slug";
+var ballast_p      = "/fdm/jsbsim/inertia/ballast[3]/contents-slug";
 var gascell        = "/fdm/jsbsim/buoyant_forces/gas-cell";
 var weight_on_gear = "/fdm/jsbsim/forces/fbz-gear-lbs";
 var weight         = "/fdm/jsbsim/inertia/weight-lbs";
@@ -320,35 +321,48 @@ var ground_crew = {
   }
 };
 
-var init_all = func {
-    # Initialize crew and ground crew.
-    assistant.init();
-    ground_crew.init();
+var auto_weighoff = func {
+    var v = getprop(ballast_p) * slugtolb +
+        getprop("/fdm/jsbsim/static-condition/net-lift-lbs") - 2000;
+
+    interpolate(ballast_p,
+                (v > 0 ? v * lbtoslug : 0),
+                0.5);
+}
+
+var initial_weighoff = func {
     # Set initial static condition.
-    var net = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-    setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-            1.0 + 0.0310809 * ((net > 0) ? net : 0));
-    settimer(func {
-        var net = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-        setprop("/fdm/jsbsim/inertia/ballast[3]/contents-slug",
-                1.0 + 0.0310809 * ((net > 0) ? net : 0));
-    }, 2.0);
+    # Finding the right static condition at initialization time is tricky.
+    auto_weighoff();
+    settimer(auto_weighoff, 0.25);
+    settimer(auto_weighoff, 1.0);
+}
+
+var init_all = func (reinit=0) {
+    # Initialize crew and ground crew.
+    if (!reinit) assistant.init();
+    if (!reinit) ground_crew.init();
+    # Set initial static condition.
+    initial_weighoff();
+
     if (getprop("/sim/presets/onground")) {
         # Set up an initial mooring location.
-        ground_crew.set_mooring_location(geo.aircraft_position());
+        settimer(func {
+            ground_crew.set_mooring_location(geo.aircraft_position());
+        }, 0.1);
         # We need the FDM to run in between.
         settimer(func {
             ground_crew.attach_mooring_wire();
             ground_crew.set_winch_speed(-1.0);
-        }, 0.01);
+        }, 1.0);
     }
 }
 
-_setlistener("/sim/signals/fdm-initialized", func {
+setlistener("/sim/signals/fdm-initialized", func {
     init_all();
     setlistener("/sim/signals/reinit", func (reinit) {
         if (!reinit.getValue()) {
-            init_all();
+            init_all(reinit=1);
         }
     });
 });
