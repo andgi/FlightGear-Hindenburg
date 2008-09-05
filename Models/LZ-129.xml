@@ -1,4 +1,4 @@
-<!-- $Id: LZ-129.xml,v 1.21 2008-02-26 22:04:47 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.22 2008-09-05 00:05:09 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
@@ -60,6 +60,27 @@
    <z-m> -19.68 </z-m>
   </offsets>
  </model>
+
+ <!-- Star observer's instruments -->
+ <model>
+  <name>Bubble_sextant</name>
+  <path>Aircraft/Instruments-3d/BubbleSextant/RAF_Mk9_bubble_sextant.xml</path>
+  <offsets>
+   <x-m> 100.00 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>  21.00 </z-m>
+  </offsets>
+ </model>
+ <animation>
+  <type>select</type>
+  <object-name>Bubble_sextant</object-name>
+  <condition>
+   <equals>
+    <property>sim/current-view/name</property>
+    <value>Star Observation View</value>
+   </equals>
+  </condition>
+ </animation>
 
  <!-- Control car crew -->
  <model>

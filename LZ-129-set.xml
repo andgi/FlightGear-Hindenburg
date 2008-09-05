@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.23 2008-06-08 22:37:47 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.24 2008-09-05 00:05:09 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
@@ -13,7 +13,7 @@
   <description>LZ 129 Hindenburg (for JSBSim/CVS)</description>
   <author>Anders Gidenstam</author>
   <status>Alpha</status>
-  <aircraft-version>$Id: LZ-129-set.xml,v 1.23 2008-06-08 22:37:47 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: LZ-129-set.xml,v 1.24 2008-09-05 00:05:09 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -53,28 +53,6 @@
    <scenario n="100">KNUQ_airship_base</scenario>
   </ai>
 
-<!--
-  <hud>
-   <path n="1">Aircraft/Instruments-3d/BubbleSextant/hud.xml</path>
-   <visibility n="1" type="bool">false</visibility>
-   <enable3d n="1" type="bool">false</enable3d>
-   <color>
-    <antialiased type="bool">true</antialiased>
-    <transparent type="bool">false</transparent>
-    <alpha type="float">1.00</alpha>
-    <brightness type="float">1.00</brightness>
-    <alpha-clamp type="float">0.01</alpha-clamp>
-   </color>
-   <palette>
-    <color n="2">
-     <red   type="float">1.00</red>
-     <green type="float">0.75</green>
-     <blue  type="float">0.05</blue>
-    </color> 
-   </palette>
-  </hud>
--->
-
  </sim>
 
  <nasal>
@@ -85,6 +63,17 @@
    <file>Aircraft/LZ-129/Systems/electrical.nas</file>
    <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
   </Instruments>
+  <RAFmk9sextant>
+   <file>Aircraft/Instruments-3d/BubbleSextant/RAF_Mk9_bubble_sextant.nas</file>
+   <script>
+    var VIEW_NAME = "Star Observation View";
+    var STOWED = { position    : {x:-0.3, y: 0.0, z: -0.2},
+                   orientation : {heading : 320.0,
+                                  pitch   : -45.0,
+                                  roll    : 0.0}
+                 };
+   </script>
+  </RAFmk9sextant>
  </nasal>
 
  <payload include="Systems/LZ-129-payload.xml"/>

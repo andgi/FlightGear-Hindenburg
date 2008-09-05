@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-views.xml,v 1.23 2008-05-25 22:42:04 anders Exp $ -->
+<!-- $Id: LZ-129-views.xml,v 1.24 2008-09-05 00:06:53 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
   View definitions
@@ -143,10 +143,10 @@
     <right-direction-deg type="double">270</right-direction-deg>
     <front-right-direction-deg type="double">315</front-right-direction-deg>
     <!-- x/y/z == right/up/back -->
-    <x-offset-m archive="y">   0.70 </x-offset-m>
-    <y-offset-m archive="y"> -18.90 </y-offset-m>
-    <z-offset-m archive="y">  44.50 </z-offset-m>
-    <pitch-offset-deg>-5</pitch-offset-deg>
+    <x-offset-m type="double" archive="y">   0.70 </x-offset-m>
+    <y-offset-m type="double" archive="y"> -18.90 </y-offset-m>
+    <z-offset-m type="double" archive="y">  44.50 </z-offset-m>
+    <pitch-offset-deg type="double">-5</pitch-offset-deg>
     <heading-offset-deg type="double">180</heading-offset-deg>
    </config>
   </view>
@@ -158,12 +158,11 @@
     <!-- x/y/z == right/up/back -->
     <from-model type="bool">true</from-model>
     <from-model-idx type="int">0</from-model-idx>
-    <x-offset-m archive="y">   0.00 </x-offset-m>
-    <y-offset-m archive="y">  21.00 </y-offset-m>
-    <z-offset-m archive="y"> 100.00 </z-offset-m>
-    <pitch-offset-deg>0</pitch-offset-deg>
-    <default-field-of-view-deg>65</default-field-of-view-deg>
-    <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+    <x-offset-m type="double" archive="y">   0.00 </x-offset-m>
+    <y-offset-m type="double" archive="y">  21.00 </y-offset-m>
+    <z-offset-m type="double" archive="y"> 100.00 </z-offset-m>
+    <pitch-offset-deg type="double">0</pitch-offset-deg>
+    <default-field-of-view-deg type="double">65</default-field-of-view-deg>
    </config>
   </view>
 
