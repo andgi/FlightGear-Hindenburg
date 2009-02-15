@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.24 2008-09-05 00:05:09 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.25 2009-02-15 19:16:11 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
-  Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList include="Systems/LZ-129-views.xml">
 
  <sim>
 
-  <description>LZ 129 Hindenburg (for JSBSim/CVS)</description>
+  <description>LZ 129 Hindenburg</description>
   <author>Anders Gidenstam</author>
   <status>Alpha</status>
-  <aircraft-version>$Id: LZ-129-set.xml,v 1.24 2008-09-05 00:05:09 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: LZ-129-set.xml,v 1.25 2009-02-15 19:16:11 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -63,6 +63,7 @@
    <file>Aircraft/LZ-129/Systems/electrical.nas</file>
    <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
   </Instruments>
+<!--
   <RAFmk9sextant>
    <file>Aircraft/Instruments-3d/BubbleSextant/RAF_Mk9_bubble_sextant.nas</file>
    <script>
@@ -74,6 +75,7 @@
                  };
    </script>
   </RAFmk9sextant>
+-->
  </nasal>
 
  <payload include="Systems/LZ-129-payload.xml"/>

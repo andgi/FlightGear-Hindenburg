@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.25 2008-08-09 22:13:53 anders Exp $
+## $Id: LZ-129.nas,v 1.26 2009-02-15 19:16:11 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
@@ -204,9 +204,9 @@ var ground_crew = {
     me.mooring.getNode("latitude-deg").setValue(pos.lat());
     me.mooring.getNode("longitude-deg").setValue(pos.lon());
     me.mooring.getNode("altitude-ft").setValue
-        (pos.alt()*geo.M2FT + me.moorings[me.selected].alt_offset);
+        (pos.alt()*M2FT + me.moorings[me.selected].alt_offset);
     # Put a mooring mast model here. Note the model specific offset.
-    pos.set_alt(geo_info[0] - 5*geo.FT2M);
+    pos.set_alt(geo_info[0] - 5*FT2M);
     if (me.mast_model) me.mast_model.remove();
     me.mast_model =
       geo.put_model("Aircraft/LZ-129/Models/mooring_mast.xml", pos);
@@ -274,8 +274,7 @@ var ground_crew = {
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft") ~
       props.globals.getNode("/ai/models").getChildren("carrier");
-    var distance =
-      geo.FT2M * me.mooring.getNode("total-distance-ft").getValue();
+    var distance = FT2M * me.mooring.getNode("total-distance-ft").getValue();
     var ac_pos = geo.aircraft_position();
     var found = 0;
     foreach (ai; ais) {
@@ -286,8 +285,8 @@ var ground_crew = {
           geo.Coord.set_latlon
             (ai.getNode("position/latitude-deg").getValue(),
              ai.getNode("position/longitude-deg").getValue(),
-             geo.FT2M * (ai.getNode("position/altitude-ft").getValue() +
-                         me.moorings[name].alt_offset));
+             FT2M * (ai.getNode("position/altitude-ft").getValue() +
+                     me.moorings[name].alt_offset));
         if ((name == me.selected) or
             (pos.direct_distance_to(ac_pos) < distance)) {
           if (name != me.selected) {
@@ -297,7 +296,7 @@ var ground_crew = {
           distance = pos.distance_to(ac_pos);
           me.mooring.getNode("latitude-deg").setValue(pos.lat());
           me.mooring.getNode("longitude-deg").setValue(pos.lon());
-          me.mooring.getNode("altitude-ft").setValue(geo.M2FT * pos.alt());
+          me.mooring.getNode("altitude-ft").setValue(M2FT * pos.alt());
           found = 1;
         }
       }
