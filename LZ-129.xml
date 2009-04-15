@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129.xml,v 1.62 2009-04-09 21:20:15 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.63 2009-04-15 19:14:05 anders Exp $ -->
 <!--
 
   LZ-129 Hindenburg flight model for JSBSim.
@@ -28,20 +28,35 @@
 
  <fileheader>
 
+  <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
+
   <author> Anders Gidenstam </author>
   <email> anders at gidenstam dot org </email>
 
-  <description>JSBSim model of the Zeppelin LZ 129 Hindenburg.</description>
-  <license licenseName="GPL"
-           licenseURL="http://www.gnu.org/licenses/gpl.html"/>
   <filecreationdate> 2006-03-19 </filecreationdate>
-  <version> $Id: LZ-129.xml,v 1.62 2009-04-09 21:20:15 anders Exp $ </version>
+  <version>$Id: LZ-129.xml,v 1.63 2009-04-15 19:14:05 anders Exp $</version>
 
+  <license>
+   <licenseName>GPL</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+  </license>
+  <note>
+   This model was created using publicly available data, publicly available
+   technical reports, textbooks, and guesses. It contains no proprietary or
+   restricted data. It has been validated only to the extent that it may seem
+   to "fly right", and possibly to comply to published, publicly known, 
+   performance data (maximum speed, endurance, etc.).
 
-  <limitation> Mass balance data approximated </limitation>
-  <limitation> Aerodynamic data approximated </limitation>
-  <limitation> Propulsion data approximated </limitation>
-  <limitation> Autopilot non-functional </limitation>
+   This model is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+  </note>
+
+  <limitation>Mass balance data approximated.</limitation>
+  <limitation>Aerodynamic data approximated.</limitation>
+  <limitation>Propulsion data approximated.</limitation>
+  <limitation>Autopilot non-functional.</limitation>
 
   <reference refID="Bauer:1992:LZ130"
              author="Manfred Bauer and John Duggan"
@@ -484,14 +499,13 @@
  </mass_balance>
 
  <!--
- ==== External environment properties ======================================
+ === Gas cells ==============================================
  -->
- <system name="Externam environment properties">
-  <property> fcs/sun-angle-rad </property>
-  <property> fcs/sun-radiation-norm </property>
- </system>
 
- <system name="Gas cell constants">
+ <buoyant_forces>
+
+  <!-- Gas cell constants -->
+
   <!-- Conductivity [lb / (K ft sec)] (Guess) -->
   <property value="0.05"> buoyant_forces/heat-coeffs/conductivity </property>
   <!-- Emissivity [0,1] (Guess) -->
@@ -530,13 +544,7 @@
   <property value="48.72"> buoyant_forces/gas-cell[14]/width-ft </property>
   <property value="25.03"> buoyant_forces/gas-cell[15]/radius-ft </property>
   <property value="37.20"> buoyant_forces/gas-cell[15]/width-ft </property>
- </system>
 
- <!--
- === Gas cells ==============================================
- -->
-
- <buoyant_forces>
   <!-- Cell 1 -->
   <gas_cell type="HYDROGEN">
    <location unit="M">
