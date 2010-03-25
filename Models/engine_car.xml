@@ -1,0 +1,258 @@
+<!--
+  LZ 129 Hindenburg.
+
+  Copyright (C) 2009 -2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license v2 or later.
+-->
+<PropertyList>
+
+ <parameters>
+  <engine-rpm>engines/engine[0]/rpm</engine-rpm>
+  <engine-oil-pressure-psi>engines/engine[0]/oil-pressure-psi</engine-oil-pressure-psi>
+  <engine-oil-temperature-degf>engines/engine[0]/oil-temperature-degf</engine-oil-temperature-degf>
+  <cowl-flaps-norm>controls/engines/engine[0]/cowl-flaps-norm</cowl-flaps-norm>
+  <other-side>constants/zero</other-side> <!-- 0.0 for right side and 1.0 for left side. -->
+ </parameters>
+
+ <path>engine_car.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!--
+  The propeller. Model and animations based on the Vickers Vimy
+  by Emmanuel BARANGER.
+ -->
+ <model>
+  <name>Propeller_</name>
+  <path>Aircraft/LZ-129/Models/propeller.ac</path>
+  <offsets>
+   <x-m> 0.24 </x-m>
+   <roll-deg> 11.0 </roll-deg>
+  </offsets>
+ </model>
+
+ <!--
+  The engine instruments. Temporary standins so far.
+  Box origin: 4.40, 1.07, 0.85
+ -->
+ <model>
+  <name>Engine RPM</name>
+  <path>Aircraft/Superwal/Models/Instruments/Drehzahlmess/Drehzahlmess0.xml</path>
+  <offsets>
+   <heading-deg>270</heading-deg>
+   <x-m> 4.60 </x-m>
+   <y-m> 1.019 </y-m>
+   <z-m> 0.80 </z-m>
+  </offsets>
+  <overlay>
+   <animation>
+    <property alias="../../../../parameters/engine-rpm"/>
+   </animation>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Engine oil temperature</name>
+  <path>Aircraft/Superwal/Models/Instruments/Oeldruck/Oeldruck0.xml</path>
+  <offsets>
+   <heading-deg>270</heading-deg>
+   <x-m> 4.50 </x-m>
+   <y-m> 1.019 </y-m>
+   <z-m> 0.95 </z-m>
+  </offsets>
+  <overlay>
+   <animation>
+    <property alias="../../../../parameters/engine-oil-pressure-psi"/>
+    <interpolation>
+     <entry><ind> 0.0</ind><dep> 0</dep></entry>     
+     <!-- entry><ind> 100</ind><dep> 17</dep></entry>     
+     <entry><ind> 300</ind><dep> 45</dep></entry>     
+     <entry><ind> 1000</ind><dep> 102</dep></entry>     
+     <entry><ind> 6000</ind><dep> 160</dep></entry>     
+     <entry><ind> 7000</ind><dep> 215</dep></entry -->     
+     <entry><ind> 142.3</ind><dep> 275</dep></entry>     
+    </interpolation>
+   </animation>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Engine oil temperature</name>
+  <path>Aircraft/Superwal/Models/Instruments/Schmierstofftemp/Schmierstofftemp0.xml</path>
+  <offsets>
+   <heading-deg>270</heading-deg>
+   <x-m> 4.60 </x-m>
+   <y-m> 1.019 </y-m>
+   <z-m> 0.95 </z-m>
+  </offsets>
+  <overlay>
+   <animation>
+    <property alias="../../../../parameters/engine-oil-temperature-degf"/>
+   </animation>
+  </overlay>
+ </model>
+
+ <!--
+  ==== Animations =============================================================
+ -->
+
+ <!-- Group the engine instruments. -->
+ <animation>
+  <name>instruments</name>
+  <object-name>Engine RPM</object-name>
+  <object-name>Engine oil pressure</object-name>
+  <object-name>Engine oil temperature</object-name>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropDisc</object-name>
+  <object-name>PropBlur</object-name>
+ </animation>
+
+ <!-- Propeller -->
+ <animation>
+  <type>spin</type>
+  <object-name>Propeller</object-name>
+  <object-name>Hub</object-name>
+  <object-name>drive_shaft</object-name>
+  <property alias="../../parameters/engine-rpm"/>
+  <factor>-0.5</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc</object-name>
+  <condition>
+   <greater-than>
+    <property alias="../../../../parameters/engine-rpm"/>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property alias="../../../../../parameters/engine-rpm"/>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property alias="../../../../../parameters/engine-rpm"/>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
+
+ <!-- Cooling gills -->
+ <animation>
+  <type>rotate</type>
+  <object-name>cooling_gill_upper</object-name>
+  <property alias="../../parameters/cowl-flaps-norm"/>
+  <factor>-45.0</factor>
+  <center>
+   <x-m> 5.85 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.51 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>cooling_gill_lower</object-name>
+  <property alias="../../parameters/cowl-flaps-norm"/>
+  <factor>45.0</factor>
+  <center>
+   <x-m> 5.85 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.51 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <!--
+   Select mirrored cover and frame depending on which side
+   the engine car is on.
+ -->
+ <animation>
+  <type>select</type>
+  <object-name>cover</object-name>
+  <object-name>access_ladder</object-name>
+  <object-name>frame1.008</object-name>
+  <object-name>frame1.009</object-name>
+  <condition>
+   <not>
+    <property alias="../../../../parameters/other-side"/>
+   </not>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>cover.m</object-name>
+  <object-name>access_ladder.m</object-name>
+  <object-name>frame1.008.m</object-name>
+  <object-name>frame1.009.m</object-name>
+  <condition>
+   <property alias="../../../parameters/other-side"/>
+  </condition>
+ </animation>
+
+ <!-- Move the instrument box to the appropriate place. -->
+ <animation>
+  <type>translate</type>
+  <object-name>instrument_box</object-name>
+  <object-name>instruments</object-name>
+  <property alias="../../parameters/other-side"/>
+  <factor>-2.14</factor>
+  <offset-deg>0.0</offset-deg>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>instrument_box</object-name>
+  <object-name>instruments</object-name>
+  <property alias="../../parameters/other-side"/>
+  <factor>180.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <!-- x/y/z == back/right/up -->
+   <x-m>4.625</x-m>
+   <y-m>1.070</y-m>
+   <z-m>0.000</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+</PropertyList>

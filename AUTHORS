@@ -10,7 +10,6 @@ Detlef Faber
   - Crew 3d model. (From FlightGear/Aircraft/F4U/)
 
 Syd Adams
-  - Radio panel. (From FlightGear/Aircraft/Instruments-3d/ky196/)
   - Template for the Nasal electrical system.
 
 Emmanuel BARANGER
@@ -20,3 +19,10 @@ Anonymous?
   - FDM propeller definitions. (From FlightGear/Aircraft/Boeing314/)
   - Template for the sound configuration.
   - The mooring mast is based on Models/Airport/beacon.{ac,xml}
+
+
+Dependencies
+------------
+
+Aircraft/Superwal (All engine instruments.)
+

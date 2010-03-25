@@ -1,0 +1,101 @@
+<!-- $Id: LZ-129_engine_cars.xml,v 1.1 2010-03-25 17:29:55 anders Exp $ -->
+<!--
+  LZ-129 Hindenburg.
+
+  Copyright (C) 2008 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license v2 or later.
+-->
+<PropertyList>
+
+ <path>../../../Models/Geometry/null.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!-- The engine cars. -->
+ <model>
+  <name>Engine car 1</name>
+  <path>Aircraft/LZ-129/Models/engine_car.xml</path>
+  <offsets>
+   <heading-deg>177</heading-deg>
+   <x-m> 155.720 </x-m>
+   <y-m> -15.390 </y-m>
+   <z-m> -17.820 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <engine-rpm>engines/engine[0]/rpm</engine-rpm>
+    <engine-oil-pressure-psi>engines/engine[0]/oil-pressure-psi</engine-oil-pressure-psi>
+    <engine-oil-temperature-degf>engines/engine[0]/oil-temperature-degf</engine-oil-temperature-degf>
+    <cowl-flaps-norm>controls/engines/engine[0]/cowl-flaps-norm</cowl-flaps-norm>
+    <other-side>constants/one</other-side>
+   </parameters>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Engine car 2</name>
+  <path>Aircraft/LZ-129/Models/engine_car.xml</path>
+  <offsets>
+   <heading-deg>183</heading-deg>
+   <x-m> 155.720 </x-m>
+   <y-m>  15.390 </y-m>
+   <z-m> -17.820 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <engine-rpm>engines/engine[1]/rpm</engine-rpm>
+    <engine-oil-pressure-psi>engines/engine[1]/oil-pressure-psi</engine-oil-pressure-psi>
+    <engine-oil-temperature-degf>engines/engine[1]/oil-temperature-degf</engine-oil-temperature-degf>
+    <cowl-flaps-norm>controls/engines/engine[1]/cowl-flaps-norm</cowl-flaps-norm>
+   </parameters>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Engine car 3</name>
+  <path>Aircraft/LZ-129/Models/engine_car.xml</path>
+  <offsets>
+   <heading-deg>176</heading-deg>
+   <x-m> 107.525 </x-m>
+   <y-m> -20.250 </y-m>
+   <z-m> -14.310 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <engine-rpm>engines/engine[2]/rpm</engine-rpm>
+    <engine-oil-pressure-psi>engines/engine[2]/oil-pressure-psi</engine-oil-pressure-psi>
+    <engine-oil-temperature-degf>engines/engine[2]/oil-temperature-degf</engine-oil-temperature-degf>
+    <cowl-flaps-norm>controls/engines/engine[2]/cowl-flaps-norm</cowl-flaps-norm>
+    <other-side>constants/one</other-side>
+   </parameters>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Engine car 4</name>
+  <path>Aircraft/LZ-129/Models/engine_car.xml</path>
+  <offsets>
+   <heading-deg>184</heading-deg>
+   <x-m> 107.525 </x-m>
+   <y-m>  20.250 </y-m>
+   <z-m> -14.310 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <engine-rpm>engines/engine[3]/rpm</engine-rpm>
+    <engine-oil-pressure-psi>engines/engine[3]/oil-pressure-psi</engine-oil-pressure-psi>
+    <engine-oil-temperature-degf>engines/engine[3]/oil-temperature-degf</engine-oil-temperature-degf>
+    <cowl-flaps-norm>controls/engines/engine[3]/cowl-flaps-norm</cowl-flaps-norm>
+   </parameters>
+  </overlay>
+ </model>
+
+ <!--
+  ==== Animations =============================================================
+ -->
+ 
+</PropertyList>
