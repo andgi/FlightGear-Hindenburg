@@ -1,8 +1,8 @@
-<!-- $Id: LZ-129.xml,v 1.24 2010-03-25 17:29:55 anders Exp $ -->
+<!-- $Id: LZ-129.xml,v 1.25 2011-01-09 20:55:15 anders Exp $ -->
 <!--
   LZ-129 Hindenburg.
 
-  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license v2 or later.
 -->
 <PropertyList>
@@ -279,7 +279,7 @@
  <animation>
   <type>rotate</type>
   <object-name>Main Gear</object-name>
-  <property>fdm/jsbsim/gear/unit[0]/slip-angle-deg</property>
+  <property>fdm/jsbsim/gear/unit[0]/steering-angle-deg</property>
   <center>
    <x-m> 42.70 </x-m>
    <y-m>  0.00 </y-m>
