@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!-- $Id: LZ-129-set.xml,v 1.26 2010-03-25 17:29:52 anders Exp $ -->
+<!-- $Id: LZ-129-set.xml,v 1.27 2011-01-09 20:54:23 anders Exp $ -->
 <!--
   LZ-129 Hindenburg
 
-  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList include="Systems/LZ-129-views.xml">
@@ -13,7 +13,7 @@
   <description>LZ 129 Hindenburg</description>
   <author>Anders Gidenstam</author>
   <status>Alpha</status>
-  <aircraft-version>$Id: LZ-129-set.xml,v 1.26 2010-03-25 17:29:52 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: LZ-129-set.xml,v 1.27 2011-01-09 20:54:23 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>LZ-129</aero>
@@ -232,8 +232,8 @@
     <binding>
      <command>nasal</command>
      <script>
-      sel = props.globals.getNode("/sim/input/selected").getChildren("engine");
-      foreach(node; sel) {
+      var sel = props.globals.getNode("/sim/input/selected").getChildren("engine");
+      foreach(var node; sel) {
           if (node.getValue()) {
               LZ129.switch_engine_direction(node.getIndex());
           }

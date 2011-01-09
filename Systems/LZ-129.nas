@@ -1,9 +1,9 @@
 ###############################################################################
-## $Id: LZ-129.nas,v 1.26 2009-02-15 19:16:11 anders Exp $
+## $Id: LZ-129.nas,v 1.27 2011-01-09 20:54:23 anders Exp $
 ##
 ## LZ-129 Hindenburg
 ##
-##  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -96,7 +96,7 @@ var static_condition = func {
     var L = 0;
     var W = getprop(weight);
     
-    foreach (c; cells) {
+    foreach (var c; cells) {
         L += c.getChild("buoyancy-lbs").getValue();
     }
     return L - W;
@@ -175,7 +175,7 @@ var ground_crew = {
     var ais =
       props.globals.getNode("/ai/models").getChildren("aircraft");
     var found = 0;
-    foreach (ai; ais) {
+    foreach (var ai; ais) {
       var name = ai.getNode("callsign").getValue();
       if (me.moorings[name] != nil) {
         me.selected = name;
@@ -277,7 +277,7 @@ var ground_crew = {
     var distance = FT2M * me.mooring.getNode("total-distance-ft").getValue();
     var ac_pos = geo.aircraft_position();
     var found = 0;
-    foreach (ai; ais) {
+    foreach (var ai; ais) {
       var name = ai.getNode("callsign").getValue();
       if (name == "") { name = ai.getNode("name").getValue(); }
       if (me.moorings[name] != nil) {
