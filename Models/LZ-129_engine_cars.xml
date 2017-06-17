@@ -2,12 +2,12 @@
 <!--
   LZ-129 Hindenburg.
 
-  Copyright (C) 2008 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2009, 2017  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license v2 or later.
 -->
 <PropertyList>
 
- <path>../../../Models/Geometry/null.ac</path>
+ <path>Models/Geometry/null.ac</path>
  <offsets>
   <!-- x/y/z == back/right/up -->
   <x-m> 0.0 </x-m>
